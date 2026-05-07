@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Amenity from "./Amenity.astro";
 import Eyebrow from "./Eyebrow.astro";
+import RoomCarousel from "./RoomCarousel.astro";
 
 type AmenityKind =
   | "air-con" | "wifi" | "flat-tv" | "private-bath" | "bathtub-shower"
@@ -36,14 +37,8 @@ const { id, cat, numberLabel, familyLabel, name, size, beds, view, outdoor, capa
   class={`max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-24 grid md:grid-cols-12 gap-8 md:gap-12 items-start border-t border-[color:var(--color-divider)] first:border-t-0 reveal`}
 >
   <div class={`md:col-span-7 ${flip ? "md:order-2" : ""}`}>
-    {photos[0] && (
-      <Image
-        src={photos[0]}
-        alt={name}
-        width={1600}
-        quality={82}
-        class="w-full aspect-[4/3] object-cover rounded-md"
-      />
+    {photos.length > 0 && (
+      <RoomCarousel photos={photos} alt={name} />
     )}
   </div>
 

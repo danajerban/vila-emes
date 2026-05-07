@@ -13,17 +13,66 @@ import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 
-import imgApt1Bed     from "../assets/photos/apt-1bed-terrace/dsc-0434-1600.webp";
-import imgApt2Bed     from "../assets/photos/apt-2bed/dsc-0457-1600.webp";
-import imgDeluxeKing  from "../assets/photos/deluxe-rooms/dsc-0327-1600.webp";
-import imgDeluxeQueen from "../assets/photos/deluxe-rooms/dsc-0329-1600.webp";
-import imgDeluxeBalc  from "../assets/photos/deluxe-rooms/dsc-0330-1600.webp";
-import imgQuadSea     from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
-import imgQuadBalc    from "../assets/photos/standard-rooms/dsc-0382-1600.webp";
-import imgFamilyBalc  from "../assets/photos/standard-rooms/dsc-0384-1600.webp";
-import imgFamilyStd   from "../assets/photos/standard-rooms/dsc-0385-1600.webp";
-import imgEconTriple  from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
-import imgBudgetTriple from "../assets/photos/standard-rooms/dsc-0382-1600.webp";
+// Apartments — 5 photos each
+import imgApt1Bed1 from "../assets/photos/apt-1bed-terrace/dsc-0434-1600.webp";
+import imgApt1Bed2 from "../assets/photos/apt-1bed-terrace/dsc-0435-1600.webp";
+import imgApt1Bed3 from "../assets/photos/apt-1bed-terrace/dsc-0440-1600.webp";
+import imgApt1Bed4 from "../assets/photos/apt-1bed-terrace/dsc-0444-1600.webp";
+import imgApt1Bed5 from "../assets/photos/apt-1bed-terrace/dsc-0447-1600.webp";
+
+import imgApt2Bed1 from "../assets/photos/apt-2bed/dsc-0457-1600.webp";
+import imgApt2Bed2 from "../assets/photos/apt-2bed/dsc-0461-1600.webp";
+import imgApt2Bed3 from "../assets/photos/apt-2bed/dsc-0465-1600.webp";
+import imgApt2Bed4 from "../assets/photos/apt-2bed/dsc-0470-1600.webp";
+import imgApt2Bed5 from "../assets/photos/apt-2bed/dsc-0479-1600.webp";
+
+// Deluxe (3 rooms split from deluxe-rooms/)
+import imgDeluxeKing1 from "../assets/photos/deluxe-rooms/dsc-0327-1600.webp";
+import imgDeluxeKing2 from "../assets/photos/deluxe-rooms/dsc-0333-1600.webp";
+import imgDeluxeKing3 from "../assets/photos/deluxe-rooms/dsc-0334-1600.webp";
+import imgDeluxeKing4 from "../assets/photos/deluxe-rooms/dsc-0337-1600.webp";
+
+import imgDeluxeQueen1 from "../assets/photos/deluxe-rooms/dsc-0329-1600.webp";
+import imgDeluxeQueen2 from "../assets/photos/deluxe-rooms/dsc-0335-1600.webp";
+import imgDeluxeQueen3 from "../assets/photos/deluxe-rooms/dsc-0336-1600.webp";
+import imgDeluxeQueen4 from "../assets/photos/deluxe-rooms/dsc-0345-1600.webp";
+
+import imgDeluxeBalc1 from "../assets/photos/deluxe-rooms/dsc-0330-1600.webp";
+import imgDeluxeBalc2 from "../assets/photos/deluxe-rooms/dsc-0340-1600.webp";
+import imgDeluxeBalc3 from "../assets/photos/deluxe-rooms/dsc-0342-1600.webp";
+import imgDeluxeBalc4 from "../assets/photos/deluxe-rooms/dsc-0346-1600.webp";
+
+// Family + Standard (split from standard-rooms/)
+import imgQuadSea1   from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
+import imgQuadSea2   from "../assets/photos/standard-rooms/dsc-0386-1600.webp";
+import imgQuadSea3   from "../assets/photos/standard-rooms/dsc-0397-1600.webp";
+import imgQuadSea4   from "../assets/photos/standard-rooms/dsc-0398-1600.webp";
+
+import imgQuadBalc1  from "../assets/photos/standard-rooms/dsc-0382-1600.webp";
+import imgQuadBalc2  from "../assets/photos/standard-rooms/dsc-0389-1600.webp";
+import imgQuadBalc3  from "../assets/photos/standard-rooms/dsc-0391-1600.webp";
+import imgQuadBalc4  from "../assets/photos/standard-rooms/dsc-0393-1600.webp";
+
+import imgFamilyBalc1 from "../assets/photos/standard-rooms/dsc-0384-1600.webp";
+import imgFamilyBalc2 from "../assets/photos/standard-rooms/dsc-0394-1600.webp";
+import imgFamilyBalc3 from "../assets/photos/standard-rooms/dsc-0399-1600.webp";
+import imgFamilyBalc4 from "../assets/photos/standard-rooms/dsc-0402-1600.webp";
+
+import imgFamilyStd1  from "../assets/photos/standard-rooms/dsc-0385-1600.webp";
+import imgFamilyStd2  from "../assets/photos/standard-rooms/dsc-0405-1600.webp";
+import imgFamilyStd3  from "../assets/photos/standard-rooms/dsc-0406-1600.webp";
+import imgFamilyStd4  from "../assets/photos/standard-rooms/dsc-0407-1600.webp";
+
+// Economy — unique sets (no longer dups of quad-sea / quad-balcony)
+import imgEconTriple1   from "../assets/photos/standard-rooms/dsc-0411-1600.webp";
+import imgEconTriple2   from "../assets/photos/standard-rooms/dsc-0412-1600.webp";
+import imgEconTriple3   from "../assets/photos/standard-rooms/dsc-0413-1600.webp";
+import imgEconTriple4   from "../assets/photos/standard-rooms/dsc-0414-1600.webp";
+
+import imgBudgetTriple1 from "../assets/photos/standard-rooms/dsc-0420-1600.webp";
+import imgBudgetTriple2 from "../assets/photos/standard-rooms/dsc-0421-1600.webp";
+import imgBudgetTriple3 from "../assets/photos/standard-rooms/dsc-0422-1600.webp";
+import imgBudgetTriple4 from "../assets/photos/standard-rooms/dsc-0425-1600.webp";
 
 interface Props {
   lang: Lang;
@@ -35,18 +84,18 @@ const page = site.data.rooms_page;
 const rooms = site.data.rooms;
 const baseLink = lang === "en" ? "" : `/${lang}`;
 
-const roomPhoto: Record<string, ImageMetadata> = {
-  "apt-1bed-terrace": imgApt1Bed,
-  "apt-2bed":         imgApt2Bed,
-  "deluxe-king":      imgDeluxeKing,
-  "deluxe-queen":     imgDeluxeQueen,
-  "deluxe-balcony":   imgDeluxeBalc,
-  "quad-sea":         imgQuadSea,
-  "quad-balcony":     imgQuadBalc,
-  "family-balcony":   imgFamilyBalc,
-  "family-standard":  imgFamilyStd,
-  "econ-triple":      imgEconTriple,
-  "budget-triple":    imgBudgetTriple,
+const roomPhotos: Record<string, ImageMetadata[]> = {
+  "apt-1bed-terrace": [imgApt1Bed1, imgApt1Bed2, imgApt1Bed3, imgApt1Bed4, imgApt1Bed5],
+  "apt-2bed":         [imgApt2Bed1, imgApt2Bed2, imgApt2Bed3, imgApt2Bed4, imgApt2Bed5],
+  "deluxe-king":      [imgDeluxeKing1, imgDeluxeKing2, imgDeluxeKing3, imgDeluxeKing4],
+  "deluxe-queen":     [imgDeluxeQueen1, imgDeluxeQueen2, imgDeluxeQueen3, imgDeluxeQueen4],
+  "deluxe-balcony":   [imgDeluxeBalc1, imgDeluxeBalc2, imgDeluxeBalc3, imgDeluxeBalc4],
+  "quad-sea":         [imgQuadSea1, imgQuadSea2, imgQuadSea3, imgQuadSea4],
+  "quad-balcony":     [imgQuadBalc1, imgQuadBalc2, imgQuadBalc3, imgQuadBalc4],
+  "family-balcony":   [imgFamilyBalc1, imgFamilyBalc2, imgFamilyBalc3, imgFamilyBalc4],
+  "family-standard":  [imgFamilyStd1, imgFamilyStd2, imgFamilyStd3, imgFamilyStd4],
+  "econ-triple":      [imgEconTriple1, imgEconTriple2, imgEconTriple3, imgEconTriple4],
+  "budget-triple":    [imgBudgetTriple1, imgBudgetTriple2, imgBudgetTriple3, imgBudgetTriple4],
 };
 
 const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
@@ -78,7 +127,7 @@ const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
         capacity={r.sleeps_label}
         description={r.description}
         amenities={r.amenities.map((kind) => ({ kind, label: ui.amenity_labels[kind] }))}
-        photos={[roomPhoto[r.id]]}
+        photos={roomPhotos[r.id]}
         bookHref={SITE.links.booking_com}
         bookLabel={ui.buttons.book}
         flip={i % 2 === 1}
