@@ -122,6 +122,7 @@ export const collections = {
           handwritten: z.string(),
           heading: z.string(),
           sub: z.string().optional(),
+          wa_text: z.string().optional(),
           book_label: z.string(),
           whatsapp_label: z.string(),
           map_label: z.string(),
