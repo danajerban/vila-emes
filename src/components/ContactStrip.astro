@@ -37,7 +37,7 @@ const ICONS: Record<Tile["kind"], string> = {
       {intro && <p class="mt-4 text-[color:var(--color-ink)]/80">{intro}</p>}
     </div>
 
-    <ul class="mt-12 grid gap-4 grid-cols-2 md:grid-cols-5">
+    <ul class="mt-12 grid gap-4 grid-cols-2 md:grid-cols-5 reveal-stagger">
       {tiles.map((t) => (
         <li>
           <a

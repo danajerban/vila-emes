@@ -146,39 +146,47 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
 
 <script is:inline>
   // Hero slideshow + tagline rotator. Zero-bundle: pure inline.
-  document.addEventListener("DOMContentLoaded", () => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const hero = document.querySelector("[data-hero]");
-    if (!hero) return;
+  (function () {
+    function init() {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const hero = document.querySelector("[data-hero]");
+      if (!hero) return;
 
-    // 1) Slideshow crossfade with Ken Burns
-    const slides = hero.querySelectorAll(".hero-slide");
-    if (!reduced && slides.length > 1) {
-      let current = 0;
-      setInterval(() => {
-        slides[current].setAttribute("data-active", "false");
-        current = (current + 1) % slides.length;
-        slides[current].setAttribute("data-active", "true");
-      }, 6500);
-    }
-
-    // 2) Tagline rotator
-    const rotator = hero.querySelector(".hero-rotator");
-    if (!reduced && rotator) {
-      let phrases = [];
-      try { phrases = JSON.parse(rotator.getAttribute("data-rotators") || "[]"); } catch (e) {}
-      if (Array.isArray(phrases) && phrases.length >= 2) {
-        let idx = 0;
-        const inner = rotator.querySelector("span");
+      // 1) Slideshow crossfade with Ken Burns
+      const slides = hero.querySelectorAll(".hero-slide");
+      if (!reduced && slides.length > 1) {
+        let current = 0;
         setInterval(() => {
-          rotator.classList.add("fading");
-          setTimeout(() => {
-            idx = (idx + 1) % phrases.length;
-            if (inner) inner.textContent = phrases[idx];
-            rotator.classList.remove("fading");
-          }, 400);
-        }, 4000);
+          slides[current].setAttribute("data-active", "false");
+          current = (current + 1) % slides.length;
+          slides[current].setAttribute("data-active", "true");
+        }, 6500);
+      }
+
+      // 2) Tagline rotator
+      const rotator = hero.querySelector(".hero-rotator");
+      if (!reduced && rotator) {
+        let phrases = [];
+        try { phrases = JSON.parse(rotator.getAttribute("data-rotators") || "[]"); } catch (e) {}
+        if (Array.isArray(phrases) && phrases.length >= 2) {
+          let idx = 0;
+          const inner = rotator.querySelector("span");
+          setInterval(() => {
+            rotator.classList.add("fading");
+            setTimeout(() => {
+              idx = (idx + 1) % phrases.length;
+              if (inner) inner.textContent = phrases[idx];
+              rotator.classList.remove("fading");
+            }, 400);
+          }, 4000);
+        }
       }
     }
-  });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    document.addEventListener("astro:page-load", init);
+  })();
 </script>

@@ -86,10 +86,11 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
 </style>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  (function () {
+    function init() {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    document.querySelectorAll("[data-room-carousel]").forEach((el) => {
+      document.querySelectorAll("[data-room-carousel]").forEach((el) => {
       const track = el.querySelector(".rc-track");
       const slides = el.querySelectorAll(".rc-slide");
       const dots = el.querySelectorAll(".rc-dot");
@@ -160,5 +161,12 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
       if (entryObserver) entryObserver.observe(el);
       else startAutoplay();
     });
-  });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    document.addEventListener("astro:page-load", init);
+  })();
 </script>

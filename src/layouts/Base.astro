@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 import { LOCALE_TO_LANG, type Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 import MobileCTAStack from "../components/MobileCTAStack.astro";
@@ -32,6 +33,7 @@ const ogImageUrl = `${SITE.url}/og-image.png`;
     <meta property="og:url" content={SITE.url} />
 
     <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
   </head>
   <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
     <slot />
@@ -39,18 +41,17 @@ const ogImageUrl = `${SITE.url}/og-image.png`;
     <WhatsAppFloat />
 
     <script is:inline>
-      // Sticky header transparent → solid on scroll.
-      document.addEventListener("DOMContentLoaded", () => {
+      // Header transparent → solid on scroll
+      document.addEventListener("astro:page-load", () => {
         const header = document.getElementById("siteHeader");
-        if (!header) return;
-        if (header.dataset.transparent !== "true") {
-          header.classList.add("is-solid");
-        } else {
-          const onScroll = () => {
-            header.classList.toggle("is-solid", window.scrollY > 24);
-          };
-          onScroll();
-          window.addEventListener("scroll", onScroll, { passive: true });
+        if (header) {
+          if (header.dataset.transparent !== "true") {
+            header.classList.add("is-solid");
+          } else {
+            const onScroll = () => header.classList.toggle("is-solid", window.scrollY > 24);
+            onScroll();
+            window.addEventListener("scroll", onScroll, { passive: true });
+          }
         }
 
         // Mobile nav toggle
@@ -63,27 +64,69 @@ const ogImageUrl = `${SITE.url}/og-image.png`;
             btn.setAttribute("aria-expanded", String(!isOpen));
           });
         }
-      });
 
-      // Reveal-on-scroll via IntersectionObserver.
-      document.addEventListener("DOMContentLoaded", () => {
-        const targets = document.querySelectorAll(".reveal");
+        // Reveal-on-scroll (.reveal + .reveal-stagger)
+        const targets = document.querySelectorAll(".reveal, .reveal-stagger");
         if (!("IntersectionObserver" in window) || targets.length === 0) {
           targets.forEach((t) => t.classList.add("is-visible"));
-          return;
-        }
-        const io = new IntersectionObserver(
-          (entries) => {
+        } else {
+          const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add("is-visible");
                 io.unobserve(entry.target);
               }
             });
-          },
-          { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
-        );
-        targets.forEach((t) => io.observe(t));
+          }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
+          targets.forEach((t) => io.observe(t));
+        }
+
+        // Photo-enter
+        const photos = document.querySelectorAll(".photo-enter");
+        if ("IntersectionObserver" in window && photos.length) {
+          const photoIO = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-entered");
+                photoIO.unobserve(entry.target);
+              }
+            });
+          }, { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+          photos.forEach((p) => photoIO.observe(p));
+        }
+
+        // Number count-ups: any element with [data-count-up]
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const counters = document.querySelectorAll("[data-count-up]");
+        if (!reduced && "IntersectionObserver" in window && counters.length) {
+          const countIO = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target;
+              const target = parseFloat(el.getAttribute("data-count-up") || "0");
+              const decimals = (target.toString().split(".")[1] || "").length;
+              const duration = 1200;
+              const start = performance.now();
+              const initial = 0;
+              const tick = (now) => {
+                const t = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+                el.textContent = (initial + (target - initial) * eased).toFixed(decimals);
+                if (t < 1) requestAnimationFrame(tick);
+                else el.textContent = target.toFixed(decimals);
+              };
+              requestAnimationFrame(tick);
+              countIO.unobserve(el);
+            });
+          }, { threshold: 0.5 });
+          counters.forEach((c) => countIO.observe(c));
+        } else {
+          counters.forEach((c) => {
+            const target = parseFloat(c.getAttribute("data-count-up") || "0");
+            const decimals = (target.toString().split(".")[1] || "").length;
+            c.textContent = target.toFixed(decimals);
+          });
+        }
       });
     </script>
   </body>

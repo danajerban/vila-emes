@@ -80,8 +80,9 @@ const { heading, eyebrow, intro, photos } = Astro.props;
 </style>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  (function () {
+    function init() {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const photos = Array.from(document.querySelectorAll("[data-lightbox-index]")).map((btn) => ({
       src: btn.getAttribute("data-lightbox-src") || "",
       caption: btn.getAttribute("data-lightbox-caption") || "",
@@ -230,5 +231,12 @@ const { heading, eyebrow, intro, photos } = Astro.props;
     box.addEventListener("touchend", (e) => {
       if (e.touches.length === 0) pinchStartDist = 0;
     }, { passive: true });
-  });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    document.addEventListener("astro:page-load", init);
+  })();
 </script>

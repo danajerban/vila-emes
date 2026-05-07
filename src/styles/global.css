@@ -140,3 +140,91 @@
   box-shadow: inset 0 -80px 60px -20px rgba(45, 34, 24, 0.45);
   pointer-events: none;
 }
+
+/* Reveal-stagger: extends .reveal so children animate in sequence. */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: 0ms;
+}
+.reveal-stagger.is-visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 50ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 100ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 150ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 200ms; }
+.reveal-stagger.is-visible > *:nth-child(n+6) { opacity: 1; transform: translateY(0); transition-delay: 250ms; }
+
+/* Photo enter: image fades in + slight scale + drift on intersection */
+.photo-enter {
+  opacity: 0;
+  transform: scale(0.96) translateY(12px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.photo-enter.is-entered {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Palm doodle gentle 4s sway */
+@keyframes palm-sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50%      { transform: rotate(1deg); }
+}
+.palm-sway {
+  animation: palm-sway 4s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+
+/* Polaroid one-time wobble on enter */
+@keyframes polaroid-drop {
+  0%   { transform: rotate(-3deg) translateY(-12px); opacity: 0.6; }
+  60%  { transform: rotate(-1deg) translateY(0); opacity: 1; }
+  80%  { transform: rotate(-4deg); }
+  100% { transform: rotate(-3deg); }
+}
+.polaroid-wobble.is-visible {
+  animation: polaroid-drop 1s ease-out;
+}
+
+/* Tap feedback (works everywhere — :active fires on touch + click) */
+.tappable {
+  transition: transform 0.15s ease;
+}
+.tappable:active {
+  transform: scale(0.98);
+}
+
+/* Desktop-only hover variants */
+@media (hover: hover) {
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-stagger > *,
+  .photo-enter,
+  .polaroid-wobble.is-visible {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  .palm-sway { animation: none; }
+}

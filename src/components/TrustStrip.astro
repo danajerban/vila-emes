@@ -17,11 +17,11 @@ const { bookingLabel, bookingScore, googleLabel, googleScore, quote, readAllRevi
   <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-10 items-center">
     <div class="md:col-span-4">
       <div class="flex items-baseline gap-2">
-        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums">{bookingScore.toFixed(1)}</span>
+        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums" data-count-up={bookingScore}>0.0</span>
         <Eyebrow class="!text-[color:var(--color-muted)]">{bookingLabel}</Eyebrow>
       </div>
       <div class="mt-4 flex items-baseline gap-2">
-        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums">{googleScore.toFixed(1)}</span>
+        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums" data-count-up={googleScore}>0.0</span>
         <Eyebrow class="!text-[color:var(--color-muted)]">{googleLabel} · ★</Eyebrow>
       </div>
     </div>

@@ -28,23 +28,31 @@ const telHref = `tel:${SITE.contact.phone.replace(/\s+/g, "")}`;
 </div>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const bar = document.getElementById("mobileCTAStack");
-    if (!bar) return;
-    let lastY = window.scrollY;
-    let ticking = false;
+  (function () {
+    function init() {
+      const bar = document.getElementById("mobileCTAStack");
+      if (!bar) return;
+      let lastY = window.scrollY;
+      let ticking = false;
 
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        const goingDown = y > lastY && y > 200;
-        bar.style.transform = goingDown ? "translateY(100%)" : "translateY(0)";
-        lastY = y;
-        ticking = false;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-  });
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          const goingDown = y > lastY && y > 200;
+          bar.style.transform = goingDown ? "translateY(100%)" : "translateY(0)";
+          lastY = y;
+          ticking = false;
+        });
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    document.addEventListener("astro:page-load", init);
+  })();
 </script>
