@@ -1,0 +1,42 @@
+---
+import { LOCALES, LOCALE_SHORT, LOCALE_LABELS, stripLocalePrefix, localizedPath, type Lang } from "../i18n/locales";
+
+interface Props {
+  lang: Lang;
+  variant?: "inline" | "stacked";
+}
+const { lang, variant = "inline" } = Astro.props;
+
+const path = stripLocalePrefix(Astro.url.pathname.replace(/\/+$/, "") || "/");
+---
+{variant === "inline" ? (
+  <nav class="flex items-center gap-0.5 text-[12px] tracking-[0.18em] uppercase" aria-label="Language">
+    {LOCALES.map((l, i) => {
+      const active = l === lang;
+      return (
+        <>
+          {i > 0 && <span class="opacity-40 px-0.5" aria-hidden="true">·</span>}
+          <a
+            href={localizedPath(l, path)}
+            class={`px-1.5 py-1 transition ${active ? "text-[color:var(--color-terracotta)] font-medium" : "opacity-70 hover:opacity-100"}`}
+            aria-current={active ? "true" : undefined}
+            aria-label={LOCALE_LABELS[l]}
+          >{LOCALE_SHORT[l]}</a>
+        </>
+      );
+    })}
+  </nav>
+) : (
+  <nav class="flex flex-wrap items-center justify-center gap-3 text-[12px] tracking-[0.18em] uppercase" aria-label="Language">
+    {LOCALES.map((l) => {
+      const active = l === lang;
+      return (
+        <a
+          href={localizedPath(l, path)}
+          class={`px-3 py-1.5 rounded-full border transition ${active ? "border-[color:var(--color-terracotta)] text-[color:var(--color-terracotta)]" : "border-[color:var(--color-divider)] hover:border-[color:var(--color-ink)]"}`}
+          aria-current={active ? "true" : undefined}
+        >{LOCALE_SHORT[l]}</a>
+      );
+    })}
+  </nav>
+)}

@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+import { LOCALE_TO_LANG, type Lang } from "../i18n/locales";
+import { SITE } from "../config/site";
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+}
+const { lang, title, description } = Astro.props;
+
+const htmlLang = LOCALE_TO_LANG[lang];
+const ogImageUrl = `${SITE.url}/og-image.png`;
+---
+<!doctype html>
+<html lang={htmlLang} data-vibe="sunset">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:url" content={SITE.url} />
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
+    <slot />
+
+    <script is:inline>
+      // Sticky header transparent → solid on scroll.
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.getElementById("siteHeader");
+        if (!header) return;
+        if (header.dataset.transparent !== "true") {
+          header.classList.add("is-solid");
+        } else {
+          const onScroll = () => {
+            header.classList.toggle("is-solid", window.scrollY > 24);
+          };
+          onScroll();
+          window.addEventListener("scroll", onScroll, { passive: true });
+        }
+
+        // Mobile nav toggle
+        const btn = document.getElementById("mobileNavToggle");
+        const nav = document.getElementById("mobileNav");
+        if (btn && nav) {
+          btn.addEventListener("click", () => {
+            const isOpen = !nav.hidden;
+            nav.hidden = isOpen;
+            btn.setAttribute("aria-expanded", String(!isOpen));
+          });
+        }
+      });
+
+      // Reveal-on-scroll via IntersectionObserver.
+      document.addEventListener("DOMContentLoaded", () => {
+        const targets = document.querySelectorAll(".reveal");
+        if (!("IntersectionObserver" in window) || targets.length === 0) {
+          targets.forEach((t) => t.classList.add("is-visible"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+        );
+        targets.forEach((t) => io.observe(t));
+      });
+    </script>
+  </body>
+</html>

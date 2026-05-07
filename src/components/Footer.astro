@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import LangSwitch from "./LangSwitch.astro";
+import logoPng from "../assets/logo/vila-emes-1024.png";
+import type { Lang } from "../i18n/locales";
+
+interface Props {
+  lang: Lang;
+  handwritten: string;
+  copyright: string;
+}
+const { lang, handwritten, copyright } = Astro.props;
+---
+<footer class="bg-[color:var(--color-cream-elevated)] border-t border-[color:var(--color-divider)]">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-14 md:py-20 flex flex-col items-center gap-6 text-center">
+    <div class="md:hidden w-full">
+      <LangSwitch lang={lang} variant="stacked" />
+    </div>
+
+    <Image src={logoPng} alt="Vila Emes" width={140} height={140} class="opacity-90" />
+
+    <p class="handwritten text-2xl md:text-3xl text-[color:var(--color-terracotta)]">{handwritten}</p>
+
+    <p class="text-sm text-[color:var(--color-muted)] tracking-wide">{copyright}</p>
+  </div>
+</footer>

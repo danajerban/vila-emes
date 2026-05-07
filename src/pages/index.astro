@@ -1,28 +1,27 @@
 ---
-import "../styles/global.css";
----
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getSite } from "../i18n/content";
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Vila Emes — bootstrap test</title>
-  </head>
-  <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
-    <main class="max-w-3xl mx-auto px-5 py-20">
-      <p class="eyebrow">Bootstrap test</p>
-      <h1 class="font-serif text-6xl md:text-8xl mt-3 leading-none">Vila Emes</h1>
-      <p class="handwritten text-3xl text-[color:var(--color-terracotta)] mt-2">— since 1998</p>
-      <p class="mt-6 max-w-prose text-[color:var(--color-ink)]/85">
-        If this renders with cream background, serif heading, terracotta handwritten caveat, and Inter body — Phase 1 is good.
-      </p>
-      <div class="mt-8 flex gap-3">
-        <span class="inline-block px-4 py-2 bg-[color:var(--color-terracotta)] text-[color:var(--color-cream)] rounded">terracotta</span>
-        <span class="inline-block px-4 py-2 bg-[color:var(--color-sea)] text-[color:var(--color-cream)] rounded">sea</span>
-        <span class="inline-block px-4 py-2 bg-[color:var(--color-sub-bg)] text-[color:var(--color-ink-deep)] rounded">sub-bg</span>
-      </div>
-    </main>
-  </body>
-</html>
+const lang = "en" as const;
+const site = await getSite(lang);
+const ui = site.data.ui;
+---
+<Base lang={lang} title={`${site.data.hotel.name} — ${site.data.hotel.tagline}`}>
+  <Header lang={lang} ui={ui.nav} isHome hotelName={site.data.hotel.name} />
+
+  <main class="pt-32 pb-20 max-w-3xl mx-auto px-5">
+    <p class="eyebrow">Phase 5 smoke test</p>
+    <h1 class="font-serif text-6xl md:text-8xl mt-3 leading-none">{site.data.hotel.name}</h1>
+    <p class="handwritten text-3xl text-[color:var(--color-terracotta)] mt-2">— since 1998</p>
+    <p class="mt-6 max-w-prose text-[color:var(--color-ink)]/85">
+      Header above is sticky transparent (over a hero) → solid on scroll. Footer below has the optimized hand-drawn logo, handwritten signature, and copyright. Lang switcher in both.
+    </p>
+    <div class="mt-12 h-[150vh] grid place-items-center text-[color:var(--color-muted)] text-sm border border-dashed border-[color:var(--color-divider)] rounded">
+      <span>scroll past me to test header transparent → solid</span>
+    </div>
+  </main>
+
+  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} />
+</Base>
