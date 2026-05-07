@@ -1,0 +1,118 @@
+---
+import type { ImageMetadata } from "astro";
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
+import RoomFilterBar from "../components/RoomFilterBar.astro";
+import RoomDetails from "../components/RoomDetails.astro";
+import RoomsIncludes from "../components/RoomsIncludes.astro";
+import HouseRules from "../components/HouseRules.astro";
+import Handwritten from "../components/Handwritten.astro";
+import Footer from "../components/Footer.astro";
+import { getSite } from "../i18n/content";
+import type { Lang } from "../i18n/locales";
+import { SITE } from "../config/site";
+
+import imgApt1Bed     from "../assets/photos/apt-1bed-terrace/dsc-0434-1600.webp";
+import imgApt2Bed     from "../assets/photos/apt-2bed/dsc-0457-1600.webp";
+import imgDeluxeKing  from "../assets/photos/deluxe-rooms/dsc-0327-1600.webp";
+import imgDeluxeQueen from "../assets/photos/deluxe-rooms/dsc-0329-1600.webp";
+import imgDeluxeBalc  from "../assets/photos/deluxe-rooms/dsc-0330-1600.webp";
+import imgQuadSea     from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
+import imgQuadBalc    from "../assets/photos/standard-rooms/dsc-0382-1600.webp";
+import imgFamilyBalc  from "../assets/photos/standard-rooms/dsc-0384-1600.webp";
+import imgFamilyStd   from "../assets/photos/standard-rooms/dsc-0385-1600.webp";
+import imgEconTriple  from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
+import imgBudgetTriple from "../assets/photos/standard-rooms/dsc-0382-1600.webp";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const site = await getSite(lang);
+const ui = site.data.ui;
+const page = site.data.rooms_page;
+const rooms = site.data.rooms;
+const baseLink = lang === "en" ? "" : `/${lang}`;
+
+const roomPhoto: Record<string, ImageMetadata> = {
+  "apt-1bed-terrace": imgApt1Bed,
+  "apt-2bed":         imgApt2Bed,
+  "deluxe-king":      imgDeluxeKing,
+  "deluxe-queen":     imgDeluxeQueen,
+  "deluxe-balcony":   imgDeluxeBalc,
+  "quad-sea":         imgQuadSea,
+  "quad-balcony":     imgQuadBalc,
+  "family-balcony":   imgFamilyBalc,
+  "family-standard":  imgFamilyStd,
+  "econ-triple":      imgEconTriple,
+  "budget-triple":    imgBudgetTriple,
+};
+
+const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
+---
+<Base lang={lang} title={`${ui.nav.rooms} — ${site.data.hotel.name}`}>
+  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} />
+
+  <PageHero
+    eyebrow={page.hero_eyebrow}
+    headingPart1={page.hero_heading_part_1}
+    headingPart2Handwritten={page.hero_heading_part_2_handwritten}
+    intro={page.hero_intro}
+  >
+    <RoomFilterBar labels={ui.filter} />
+  </PageHero>
+
+  <main class="rooms-main">
+    {orderedRooms.map((r, i) => (
+      <RoomDetails
+        id={r.id}
+        cat={r.family}
+        numberLabel={String(r.order).padStart(2, "0")}
+        familyLabel={ui.family_groups[r.family]}
+        name={r.name}
+        size={`${r.size_m2} m²`}
+        beds={r.beds}
+        view={r.view}
+        outdoor={r.outdoor}
+        capacity={r.sleeps_label}
+        description={r.description}
+        amenities={r.amenities.map((kind) => ({ kind, label: ui.amenity_labels[kind] }))}
+        photos={[roomPhoto[r.id]]}
+        bookHref={SITE.links.booking_com}
+        bookLabel={ui.buttons.book}
+        flip={i % 2 === 1}
+        labels={ui.labels}
+      />
+    ))}
+  </main>
+
+  <RoomsIncludes
+    eyebrow={page.includes.eyebrow}
+    heading={page.includes.heading}
+    handwritten={page.includes.handwritten}
+    pastryNote={page.includes.pastry_note}
+    list={page.includes.list}
+  />
+
+  <HouseRules
+    eyebrow={page.rules.eyebrow}
+    heading={page.rules.heading}
+    checkIn={page.rules.check_in}
+    checkOut={page.rules.check_out}
+    notes={page.rules.notes}
+  />
+
+  <section class="reveal">
+    <div class="max-w-2xl mx-auto px-5 py-20 text-center">
+      <Handwritten as="p" color="terracotta" class="text-2xl">{page.cta.handwritten}</Handwritten>
+      <h2 class="mt-3 font-serif text-3xl md:text-4xl text-[color:var(--color-ink)]">{page.cta.heading}</h2>
+      <a
+        href={`${baseLink}/contact`}
+        class="inline-flex items-center mt-8 px-6 py-3 border border-[color:var(--color-sea)] text-[color:var(--color-sea)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] rounded-md transition"
+      >{page.cta.button}</a>
+    </div>
+  </section>
+
+  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} />
+</Base>

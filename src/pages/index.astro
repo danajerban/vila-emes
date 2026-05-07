@@ -1,27 +1,4 @@
 ---
-import Base from "../layouts/Base.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { getSite } from "../i18n/content";
-
-const lang = "en" as const;
-const site = await getSite(lang);
-const ui = site.data.ui;
+import HomeView from "../views/HomeView.astro";
 ---
-<Base lang={lang} title={`${site.data.hotel.name} — ${site.data.hotel.tagline}`}>
-  <Header lang={lang} ui={ui.nav} isHome hotelName={site.data.hotel.name} />
-
-  <main class="pt-32 pb-20 max-w-3xl mx-auto px-5">
-    <p class="eyebrow">Phase 5 smoke test</p>
-    <h1 class="font-serif text-6xl md:text-8xl mt-3 leading-none">{site.data.hotel.name}</h1>
-    <p class="handwritten text-3xl text-[color:var(--color-terracotta)] mt-2">— since 1998</p>
-    <p class="mt-6 max-w-prose text-[color:var(--color-ink)]/85">
-      Header above is sticky transparent (over a hero) → solid on scroll. Footer below has the optimized hand-drawn logo, handwritten signature, and copyright. Lang switcher in both.
-    </p>
-    <div class="mt-12 h-[150vh] grid place-items-center text-[color:var(--color-muted)] text-sm border border-dashed border-[color:var(--color-divider)] rounded">
-      <span>scroll past me to test header transparent → solid</span>
-    </div>
-  </main>
-
-  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} />
-</Base>
+<HomeView lang="en" />
