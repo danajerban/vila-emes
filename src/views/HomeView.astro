@@ -70,15 +70,16 @@ const tiles = [
   { kind: "booking",   label: "Booking.com", value: "Book online",         href: SITE.links.booking_com },
 ] as const;
 
+const captions = home.gallery.captions ?? {};
 const galleryPhotos = [
-  { src: g01, alt: "Vila Emes drone view" },
+  { src: g01, alt: "Vila Emes drone view", caption: captions["DSC_0169"] },
   { src: g02, alt: "Drone toward beach" },
   { src: g03, alt: "Building exterior from above" },
   { src: g04, alt: "Avenue and palm trees" },
-  { src: g05, alt: "Rooftop terrace" },
-  { src: g06, alt: "Durrës beach" },
+  { src: g05, alt: "Rooftop terrace", caption: captions["DSC_0204"] },
+  { src: g06, alt: "Durrës beach", caption: captions["DSC_0145"] },
   { src: g07, alt: "The Emes family" },
-  { src: g08, alt: "Deluxe room interior" },
+  { src: g08, alt: "Deluxe room interior", caption: captions["DSC_0123"] },
   { src: g09, alt: "Apartment with terrace" },
   { src: g10, alt: "Two-bedroom apartment" },
   { src: g11, alt: "Standard room with sea view" },
