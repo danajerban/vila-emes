@@ -67,7 +67,7 @@ home:
     heading_part_2_handwritten: "frequenti"
     items:
       - q: "A che ora sono il check-in e il check-out?"
-        a: "Check-in dalle 12:00 alle 18:00. Check-out dalle 07:00 alle 11:00. La reception è aperta 24 ore su 24, quindi gli arrivi tardivi non sono un problema — basta avvisarci su WhatsApp così possiamo venirvi a prendere."
+        a: "Check-in dalle 12:00 alle 18:00. Check-out dalle 07:00 alle 11:00. La reception è aperta 24 ore su 24, quindi gli arrivi tardivi non sono un problema — basta avvisarci su WhatsApp così possiamo accogliervi."
       - q: "La colazione è inclusa?"
         a: "La colazione non è inclusa nel prezzo della camera, ma la nostra pasticceria al piano terra apre presto e serve cappuccino, espresso e pasticcini freschi — a cinque passi dalla hall."
       - q: "Dove posso parcheggiare?"
@@ -78,21 +78,21 @@ home:
         a: "Le culle non sono disponibili. È possibile aggiungere un letto supplementare nella maggior parte delle camere al costo di 5 € a persona, a notte — vi preghiamo di comunicarcelo in anticipo."
       - q: "Quali lingue parlate?"
         a: "Inglese, italiano e albanese — tutti i giorni, tutto il giorno."
-    footer_cta_handwritten: "Non trovi la tua domanda? Scrivici →"
+    footer_cta_handwritten: "Non trovate la vostra domanda? Scriveteci →"
   ready_cta:
     handwritten: "— pronti a venire?"
-    heading: "Prenota il tuo soggiorno a Vila Emes"
-    sub: "Scegli le date su Booking.com, scrivici su WhatsApp, o aprici in Maps."
+    heading: "Prenotate il vostro soggiorno a Vila Emes"
+    sub: "Scegliete le date su Booking.com, scriveteci su WhatsApp, o apriteci in Maps."
     wa_text: "Ciao, vorrei prenotare a Vila Emes"
     book_label: "Prenota su Booking.com"
     whatsapp_label: "Scrivici su WhatsApp"
     map_label: "Apri in Maps"
 
 rooms_page:
-  hero_eyebrow: "Soggiorna da noi"
+  hero_eyebrow: "Soggiornate da noi"
   hero_heading_part_1: "Le nostre"
   hero_heading_part_2_handwritten: "camere"
-  hero_intro: "Undici tipologie di camere in una piccola casa di famiglia. Scegli quella che fa per te."
+  hero_intro: "Undici tipologie di camere in una piccola casa di famiglia. Scegliete quella che fa per voi."
   includes:
     eyebrow: "In ogni camera"
     heading: "Cosa è sempre incluso"
@@ -137,13 +137,13 @@ contact_page:
     heading: "Scrivici"
     intro: "Diteci quando vorreste venire e cosa state cercando. Rispondiamo in giornata."
     fields:
-      name: "Il tuo nome"
+      name: "Il vostro nome"
       email: "Email"
       arrival: "Data di arrivo"
       guests: "Ospiti"
       message: "Messaggio"
     submit: "Invia messaggio"
-    success: "Grazie — la tua bozza email è aperta. Premi Invia e ti risponderemo nel giro di poche ore."
+    success: "Grazie — la vostra bozza email è aperta. Premete Invia e vi risponderemo nel giro di poche ore."
   sidebar:
     address_label: "Indirizzo"
     hours_label: "Orari"
@@ -216,7 +216,7 @@ rooms:
     beds: "1 matrimoniale · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Terrazza privata"
-    description: "Ottanta metri quadrati su una camera da letto, un soggiorno e una cucina privata — piano cottura, forno, lavatrice — con un'ampia terrazza che guarda dal viale verso il mare. Tre letti in totale. Ottimo per due coppie in viaggio insieme, o per una famiglia che vuole cucinarsi qualche pasto a casa."
+    description: "Ottanta metri quadrati su una camera da letto, un soggiorno e una cucina privata — piano cottura, forno, lavatrice — con un'ampia terrazza che si affaccia sul viale verso il mare. Tre letti in totale. Ottimo per due coppie in viaggio insieme, o per una famiglia che vuole cucinarsi qualche pasto a casa."
     amenities: ["terrace", "kitchenette", "air-con", "wifi", "family-friendly"]
 
   - id: "apt-2bed"
@@ -229,7 +229,7 @@ rooms:
     beds: "1 matrimoniale · 1 singolo · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Balcone + terrazza"
-    description: "La nostra tipologia più ampia — novanta metri quadrati, due camere da letto separate, una cucina completa con forno, tavolo da pranzo, lavatrice, balcone affacciato dal soggiorno e una terrazza. Fino a sei ospiti. Due famiglie in vacanza insieme, o una famiglia che apprezza i propri spazi."
+    description: "La nostra tipologia più ampia — novanta metri quadrati, due camere da letto separate, una cucina completa con forno, tavolo da pranzo, lavatrice, balcone che si apre dal soggiorno e una terrazza. Fino a sei ospiti. Due famiglie in vacanza insieme, o una famiglia che apprezza i propri spazi."
     amenities: ["kitchenette", "2-bedrooms", "balcony", "terrace", "family-friendly"]
 
   - id: "deluxe-king"
