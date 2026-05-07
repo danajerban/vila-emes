@@ -59,8 +59,8 @@ home:
     cta: "Hap në Harta"
   contact_strip:
     eyebrow: "Ejani të na përshëndetni"
-    heading_part_1: "Na kontaktoni"
-    heading_part_2_handwritten: "tani"
+    heading_part_1: "Na"
+    heading_part_2_handwritten: "shkruani"
   faq:
     eyebrow: "Para se të pyesni"
     heading_part_1: "Pyetje"
@@ -81,7 +81,7 @@ home:
     footer_cta_handwritten: "Nuk e gjeni pyetjen tuaj? Na shkruani →"
   ready_cta:
     handwritten: "— gati për të ardhur?"
-    heading: "Rezervo qëndrimin tënd në Vila Emes"
+    heading: "Rezervo qëndrimin tuaj në Vila Emes"
     sub: "Zgjidh datat në Booking.com, na shkruaj në WhatsApp, ose na hap në Harta."
     wa_text: "Përshëndetje, dëshiroj të rezervoj në Vila Emes"
     book_label: "Rezervo në Booking.com"
@@ -242,7 +242,7 @@ rooms:
     beds: "1 krevat dopio"
     view: "Qytet"
     outdoor: "—"
-    description: "Tridhjetë metra katrorë të gjerë, krevat dopio, dush me bide, TV me ekran të sheshtë me kabllo, dhe një cep i qetë për t'u ulur. I rinovuar së fundmi — çarçafët, pajisjet e banjos dhe dyshemeja janë të gjitha të reja në vitin 2024."
+    description: "Tridhjetë metra katrorë të gjerë, krevat dopio, dush me kabinë me bide, TV me ekran të sheshtë me kabllo, dhe një cep i qetë për t'u ulur. I rinovuar së fundmi — çarçafët, pajisjet e banjos dhe dyshemeja janë të gjitha të reja në vitin 2024."
     amenities: ["renovated-2024", "air-con", "mini-fridge", "private-bath", "flat-tv"]
 
   - id: "deluxe-queen"
@@ -255,7 +255,7 @@ rooms:
     beds: "1 krevat dopio"
     view: "Pamje"
     outdoor: "—"
-    description: "Njëzet e shtatë metra katrorë rehati e rafinuar — krevat dopio, dush me bide, TV me ekran të sheshtë me kabllo. I rinovuar në 2024 me çarçafë të freskët dhe pajisje neutrale e të qeta. Një dhomë e qetë për dy."
+    description: "Njëzet e shtatë metra katrorë rehati e rafinuar — krevat dopio, dush me kabinë me bide, TV me ekran të sheshtë me kabllo. I rinovuar në 2024 me çarçafë të freskët dhe pajisje neutrale e të qeta. Një dhomë e qetë për dy."
     amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
@@ -294,7 +294,7 @@ rooms:
     beds: "1 dopio · 2 krevate marinari"
     view: "Qytet"
     outdoor: "Ballkon"
-    description: "Tridhjetë metra katrorë, tre shtretër, një ballkon mbi bulevard. Miqësore për familjet pa kompromis: prindërit në krevatin dopio, fëmijët në krevatet marinari, dhe një ballkon për të pirë kafe ndërsa ata flenë."
+    description: "Tridhjetë metra katrorë, tre shtretër, një ballkon mbi bulevard. Miqësore për familjet pa kompromis: prindërit në krevatin dopio, fëmijët në krevatet marinari, dhe një ballkon për të pirë kafe ndërsa ata flenë gjatë."
     amenities: ["balcony", "air-con", "mini-fridge", "wifi", "family-friendly"]
 
   - id: "family-balcony"
@@ -320,7 +320,7 @@ rooms:
     beds: "1 dopio · 2 krevate marinari"
     view: "Qytet"
     outdoor: "Ballkon"
-    description: "Opsioni ynë familjar i drejtpërdrejtë — tridhjetë metra katrorë, tre shtretër, një ballkon, dhe gjithçka që ju nevojitet për disa netë të rehatshme pa upgrade-in deluxe."
+    description: "Opsioni ynë familjar i drejtpërdrejtë — tridhjetë metra katrorë, tre shtretër, një ballkon, dhe gjithçka që ju nevojitet për disa netë të rehatshme pa nivelin deluxe."
     amenities: ["balcony", "air-con", "mini-fridge", "family-friendly", "wifi"]
 
   - id: "econ-triple"
