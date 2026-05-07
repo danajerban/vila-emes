@@ -2,17 +2,14 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import PageHero from "../components/PageHero.astro";
-import ContactStrip from "../components/ContactStrip.astro";
 import ContactForm from "../components/ContactForm.astro";
 import ContactSidebar from "../components/ContactSidebar.astro";
 import Directions from "../components/Directions.astro";
-import LocationMap from "../components/LocationMap.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
 import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
-import { SITE } from "../config/site";
 
 interface Props {
   lang: Lang;
@@ -22,14 +19,6 @@ const site = await getSite(lang);
 const ui = site.data.ui;
 const page = site.data.contact_page;
 const home = site.data.home;
-
-const tiles = [
-  { kind: "phone",     label: "Phone",       value: SITE.contact.phone,    href: `tel:${SITE.contact.phone.replace(/\s+/g, "")}` },
-  { kind: "whatsapp",  label: "WhatsApp",    value: SITE.contact.whatsapp, href: `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}` },
-  { kind: "email",     label: "Email",       value: SITE.contact.email,    href: `mailto:${SITE.contact.email}` },
-  { kind: "instagram", label: "Instagram",   value: "@vilaemes",           href: SITE.links.instagram },
-  { kind: "booking",   label: "Booking.com", value: "Book online",         href: SITE.links.booking_com },
-] as const;
 ---
 <Base lang={lang} title={`${ui.nav.contact} — ${site.data.hotel.name}`}>
   <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} />
@@ -39,13 +28,6 @@ const tiles = [
     headingPart1={page.hero_heading_part_1}
     headingPart2Handwritten={page.hero_heading_part_2_handwritten}
     intro={page.hero_intro}
-  />
-
-  <ContactStrip
-    eyebrow={home.contact_strip.eyebrow}
-    headingPart1={home.contact_strip.heading_part_1}
-    headingPart2Handwritten={home.contact_strip.heading_part_2_handwritten}
-    tiles={tiles}
   />
 
   <section class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 grid md:grid-cols-5 gap-12 reveal">
@@ -75,13 +57,6 @@ const tiles = [
     heading={page.directions.heading}
     mapsCta={ui.buttons.map}
   />
-
-  <section class="max-w-[1180px] mx-auto px-5 md:px-10 pb-20 reveal">
-    <LocationMap
-      embedUrl={SITE.links.google_maps_embed}
-      ariaLabel="Vila Emes location on Google Maps"
-    />
-  </section>
 
   <FAQ
     eyebrow={home.faq.eyebrow}

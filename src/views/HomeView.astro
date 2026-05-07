@@ -59,31 +59,33 @@ const previewFamilies = [
   { room: get("apt-2bed"),       photo: imgApt2Bed,    numberLabel: "01", familyLabel: ui.family_groups.apartments },
   { room: get("deluxe-king"),    photo: imgDeluxeKing, numberLabel: "02", familyLabel: ui.family_groups.deluxe },
   { room: get("family-balcony"), photo: imgFamilyBalc, numberLabel: "03", familyLabel: ui.family_groups.family },
-  { room: get("quad-sea"),       photo: imgQuadSea,    numberLabel: "04", familyLabel: "Triple & Quad" },
+  { room: get("quad-sea"),       photo: imgQuadSea,    numberLabel: "04", familyLabel: ui.family_groups.family },
 ];
 
+const tileLabels = home.contact_strip.tile_labels;
 const tiles = [
-  { kind: "phone",     label: "Phone",       value: SITE.contact.phone,    href: `tel:${SITE.contact.phone.replace(/\s+/g, "")}` },
-  { kind: "whatsapp",  label: "WhatsApp",    value: SITE.contact.whatsapp, href: `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}` },
-  { kind: "email",     label: "Email",       value: SITE.contact.email,    href: `mailto:${SITE.contact.email}` },
-  { kind: "instagram", label: "Instagram",   value: "@vilaemes",           href: SITE.links.instagram },
-  { kind: "booking",   label: "Booking.com", value: "Book online",         href: SITE.links.booking_com },
+  { kind: "phone",     label: tileLabels.phone,     value: SITE.contact.phone,    href: `tel:${SITE.contact.phone.replace(/\s+/g, "")}` },
+  { kind: "whatsapp",  label: tileLabels.whatsapp,  value: SITE.contact.whatsapp, href: `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}` },
+  { kind: "email",     label: tileLabels.email,     value: SITE.contact.email,    href: `mailto:${SITE.contact.email}` },
+  { kind: "instagram", label: tileLabels.instagram, value: "@vilaemes",           href: SITE.links.instagram },
+  { kind: "booking",   label: tileLabels.booking,   value: "Book online",         href: SITE.links.booking_com },
 ] as const;
 
 const captions = home.gallery.captions ?? {};
+const alts = home.gallery.alts;
 const galleryPhotos = [
-  { src: g01, alt: "Vila Emes drone view", caption: captions["DSC_0169"] },
-  { src: g02, alt: "Drone toward beach" },
-  { src: g03, alt: "Building exterior from above" },
-  { src: g04, alt: "Avenue and palm trees" },
-  { src: g05, alt: "Rooftop terrace", caption: captions["DSC_0204"] },
-  { src: g06, alt: "Durrës beach", caption: captions["DSC_0145"] },
-  { src: g07, alt: "The Emes family" },
-  { src: g08, alt: "Deluxe room interior", caption: captions["DSC_0123"] },
-  { src: g09, alt: "Apartment with terrace" },
-  { src: g10, alt: "Two-bedroom apartment" },
-  { src: g11, alt: "Standard room with sea view" },
-  { src: g12, alt: "Deluxe queen room" },
+  { src: g01, alt: alts[0],  caption: captions["DSC_0169"] },
+  { src: g02, alt: alts[1] },
+  { src: g03, alt: alts[2] },
+  { src: g04, alt: alts[3] },
+  { src: g05, alt: alts[4],  caption: captions["DSC_0204"] },
+  { src: g06, alt: alts[5],  caption: captions["DSC_0145"] },
+  { src: g07, alt: alts[6] },
+  { src: g08, alt: alts[7],  caption: captions["DSC_0123"] },
+  { src: g09, alt: alts[8] },
+  { src: g10, alt: alts[9] },
+  { src: g11, alt: alts[10] },
+  { src: g12, alt: alts[11] },
 ];
 ---
 <Base lang={lang} title={`${site.data.hotel.name} — ${site.data.hotel.tagline}`}>
