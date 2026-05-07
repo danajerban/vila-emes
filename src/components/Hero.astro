@@ -147,7 +147,22 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
 <script is:inline>
   // Hero slideshow + tagline rotator. Zero-bundle: pure inline.
   (function () {
+    // Outer guard: ClientRouter can re-execute inline scripts on revisit.
+    // Without this, every revisit to the home page would spawn another
+    // pair of intervals on top of the previously-running ones.
+    if (window.__heroInited) return;
+    window.__heroInited = true;
+
+    let intervalIds = [];
+    function clearTimers() {
+      intervalIds.forEach(clearInterval);
+      intervalIds = [];
+    }
+
     function init() {
+      // Clear any timers from a prior page render before starting fresh.
+      clearTimers();
+
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const hero = document.querySelector("[data-hero]");
       if (!hero) return;
@@ -156,11 +171,11 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
       const slides = hero.querySelectorAll(".hero-slide");
       if (!reduced && slides.length > 1) {
         let current = 0;
-        setInterval(() => {
+        intervalIds.push(setInterval(() => {
           slides[current].setAttribute("data-active", "false");
           current = (current + 1) % slides.length;
           slides[current].setAttribute("data-active", "true");
-        }, 6500);
+        }, 6500));
       }
 
       // 2) Tagline rotator
@@ -171,14 +186,14 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
         if (Array.isArray(phrases) && phrases.length >= 2) {
           let idx = 0;
           const inner = rotator.querySelector("span");
-          setInterval(() => {
+          intervalIds.push(setInterval(() => {
             rotator.classList.add("fading");
             setTimeout(() => {
               idx = (idx + 1) % phrases.length;
               if (inner) inner.textContent = phrases[idx];
               rotator.classList.remove("fading");
             }, 400);
-          }, 4000);
+          }, 4000));
         }
       }
     }

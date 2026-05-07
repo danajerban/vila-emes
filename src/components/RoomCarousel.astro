@@ -87,7 +87,22 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
 
 <script is:inline>
   (function () {
+    // Outer guard: ClientRouter can re-execute inline scripts on revisit.
+    // Without this, every revisit to /rooms would spawn fresh autoplay
+    // intervals (one per carousel) on top of the previously-running set.
+    if (window.__roomCarouselInited) return;
+    window.__roomCarouselInited = true;
+
+    // Track every autoplay timer started across all carousel instances on
+    // the current page; clear them at the top of init() before re-binding.
+    let autoplayIds = [];
+    function clearTimers() {
+      autoplayIds.forEach(clearInterval);
+      autoplayIds = [];
+    }
+
     function init() {
+      clearTimers();
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       document.querySelectorAll("[data-room-carousel]").forEach((el) => {
@@ -133,9 +148,14 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
           if (reduced || autoplay) return;
           const ms = parseInt(el.dataset.autoplayMs || "8000", 10);
           autoplay = setInterval(() => goTo(current + 1), ms);
+          autoplayIds.push(autoplay);
         };
         const stopAutoplay = () => {
-          if (autoplay) { clearInterval(autoplay); autoplay = null; }
+          if (autoplay) {
+            clearInterval(autoplay);
+            autoplayIds = autoplayIds.filter((id) => id !== autoplay);
+            autoplay = null;
+          }
         };
 
         el.addEventListener("pointerenter", stopAutoplay);
