@@ -18,85 +18,215 @@ const { heading, eyebrow, intro, photos } = Astro.props;
     {intro && <p class="mt-4 text-[color:var(--color-ink)]/80">{intro}</p>}
   </div>
 
-  <div class="mt-10 columns-2 md:columns-3 lg:columns-4 gap-3 [column-fill:_balance]">
-    {photos.map((photo, i) => (
-      <figure class="mb-3 break-inside-avoid">
-        <button
-          type="button"
-          class="block w-full overflow-hidden rounded-md cursor-zoom-in"
-          data-lightbox-index={i}
-          aria-label={photo.alt}
-        >
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            width={900}
-            quality={82}
-            class="w-full h-auto"
-            loading={i < 4 ? "eager" : "lazy"}
-          />
-        </button>
-        {photo.caption && (
-          <figcaption class="handwritten text-[color:var(--color-terracotta)] text-lg mt-2 px-1">
-            — {photo.caption}
-          </figcaption>
-        )}
-      </figure>
-    ))}
+  <div class="mt-10 -mx-5 md:-mx-10 px-5 md:px-10">
+    <div class="gallery-track flex snap-x snap-mandatory overflow-x-auto gap-3 scroll-smooth no-scrollbar pb-2">
+      {photos.map((photo, i) => (
+        <figure class="snap-start shrink-0 w-[60vw] md:w-[280px]" data-gallery-index={i}>
+          <button
+            type="button"
+            class="block w-full overflow-hidden rounded-md cursor-zoom-in tappable"
+            data-lightbox-index={i}
+            data-lightbox-src={photo.src.src}
+            data-lightbox-caption={photo.caption ?? ""}
+            data-lightbox-alt={photo.alt}
+            aria-label={photo.alt}
+          >
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={900}
+              quality={82}
+              class="w-full aspect-[4/3] object-cover photo-enter"
+              loading={i < 4 ? "eager" : "lazy"}
+            />
+          </button>
+          {photo.caption && (
+            <figcaption class="handwritten text-[color:var(--color-terracotta)] text-lg mt-2 px-1">
+              — {photo.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
   </div>
 
   <div
     id="lightbox"
-    class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-6"
+    class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-6 select-none"
     role="dialog"
     aria-modal="true"
     aria-label={heading}
   >
-    <button type="button" id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl" aria-label="Close">×</button>
-    <button type="button" id="lightbox-prev" class="absolute left-4 text-white text-3xl" aria-label="Previous">‹</button>
-    <button type="button" id="lightbox-next" class="absolute right-4 text-white text-3xl" aria-label="Next">›</button>
-    <img id="lightbox-img" src="" alt="" class="max-h-[90vh] max-w-[92vw] object-contain" />
+    <div id="lightbox-counter" class="absolute top-4 left-1/2 -translate-x-1/2 text-white/80 text-sm font-mono lightbox-control"></div>
+    <button type="button" id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl lightbox-control" aria-label="Close">×</button>
+    <button type="button" id="lightbox-prev" class="absolute left-4 text-white text-4xl lightbox-control" aria-label="Previous">‹</button>
+    <button type="button" id="lightbox-next" class="absolute right-4 text-white text-4xl lightbox-control" aria-label="Next">›</button>
+    <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-[92vw] object-contain transition-transform duration-300" />
+    <div id="lightbox-caption" class="absolute bottom-6 left-0 right-0 text-center handwritten text-[color:var(--color-cream)] text-xl px-6 lightbox-control"></div>
   </div>
 </section>
 
-<script>
-  const photos = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-lightbox-index]"))
-    .map((btn) => {
-      const img = btn.querySelector("img");
-      return img?.getAttribute("src") ?? "";
-    });
-  const box = document.getElementById("lightbox") as HTMLElement | null;
-  const imgEl = document.getElementById("lightbox-img") as HTMLImageElement | null;
-  const close = document.getElementById("lightbox-close");
-  const prev = document.getElementById("lightbox-prev");
-  const next = document.getElementById("lightbox-next");
-  let current = 0;
+<style>
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .lightbox-control {
+    transition: opacity 0.3s ease;
+  }
+  #lightbox.hide-controls .lightbox-control {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
 
-  function show(i: number) {
-    if (!box || !imgEl) return;
-    current = (i + photos.length) % photos.length;
-    imgEl.src = photos[current];
-    box.classList.remove("hidden");
-    box.classList.add("flex");
-    document.body.style.overflow = "hidden";
-  }
-  function hide() {
-    if (!box) return;
-    box.classList.add("hidden");
-    box.classList.remove("flex");
-    document.body.style.overflow = "";
-  }
-  document.querySelectorAll<HTMLButtonElement>("[data-lightbox-index]").forEach((btn) => {
-    btn.addEventListener("click", () => show(Number(btn.dataset.lightboxIndex)));
-  });
-  close?.addEventListener("click", hide);
-  prev?.addEventListener("click", () => show(current - 1));
-  next?.addEventListener("click", () => show(current + 1));
-  box?.addEventListener("click", (e) => { if (e.target === box) hide(); });
-  document.addEventListener("keydown", (e) => {
-    if (box?.classList.contains("hidden")) return;
-    if (e.key === "Escape") hide();
-    if (e.key === "ArrowLeft") show(current - 1);
-    if (e.key === "ArrowRight") show(current + 1);
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const photos = Array.from(document.querySelectorAll("[data-lightbox-index]")).map((btn) => ({
+      src: btn.getAttribute("data-lightbox-src") || "",
+      caption: btn.getAttribute("data-lightbox-caption") || "",
+      alt: btn.getAttribute("data-lightbox-alt") || "",
+      thumb: btn,
+    }));
+    const box = document.getElementById("lightbox");
+    const imgEl = document.getElementById("lightbox-img");
+    const captionEl = document.getElementById("lightbox-caption");
+    const counterEl = document.getElementById("lightbox-counter");
+    const close = document.getElementById("lightbox-close");
+    const prev = document.getElementById("lightbox-prev");
+    const next = document.getElementById("lightbox-next");
+    let current = 0;
+    let hideTimer;
+    let scale = 1;
+    let touchStart = null;
+
+    if (!box || !imgEl || photos.length === 0) return;
+
+    const resetZoom = () => { scale = 1; imgEl.style.transform = "translate3d(0,0,0) scale(1)"; };
+
+    const updateCounter = () => {
+      if (counterEl) counterEl.textContent = `${current + 1} / ${photos.length}`;
+    };
+
+    const updateCaption = () => {
+      if (captionEl) {
+        captionEl.textContent = photos[current].caption ? `— ${photos[current].caption}` : "";
+      }
+    };
+
+    const armAutoHide = () => {
+      box.classList.remove("hide-controls");
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => box.classList.add("hide-controls"), 2000);
+    };
+
+    const show = (i, originRect) => {
+      current = ((i % photos.length) + photos.length) % photos.length;
+      imgEl.src = photos[current].src;
+      imgEl.alt = photos[current].alt;
+      updateCounter();
+      updateCaption();
+      resetZoom();
+      box.classList.remove("hidden");
+      box.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      armAutoHide();
+
+      // FLIP from thumbnail rect
+      if (!reduced && originRect && imgEl.getBoundingClientRect) {
+        requestAnimationFrame(() => {
+          const finalRect = imgEl.getBoundingClientRect();
+          const dx = originRect.left - finalRect.left;
+          const dy = originRect.top - finalRect.top;
+          const sx = originRect.width / finalRect.width;
+          const sy = originRect.height / finalRect.height;
+          imgEl.style.transition = "none";
+          imgEl.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${(sx+sy)/2})`;
+          requestAnimationFrame(() => {
+            imgEl.style.transition = "transform 0.4s ease";
+            imgEl.style.transform = "translate3d(0,0,0) scale(1)";
+          });
+        });
+      }
+    };
+
+    const hide = () => {
+      box.classList.add("hidden");
+      box.classList.remove("flex");
+      document.body.style.overflow = "";
+      clearTimeout(hideTimer);
+    };
+
+    photos.forEach((p) => {
+      p.thumb.addEventListener("click", () => {
+        const rect = p.thumb.getBoundingClientRect();
+        show(Number(p.thumb.dataset.lightboxIndex), rect);
+      });
+    });
+
+    close.addEventListener("click", hide);
+    prev.addEventListener("click", () => { armAutoHide(); show(current - 1); });
+    next.addEventListener("click", () => { armAutoHide(); show(current + 1); });
+
+    box.addEventListener("click", (e) => {
+      if (e.target === box || e.target === imgEl) {
+        // Tap on backdrop or image: arm auto-hide cycle (image tap = wake controls)
+        armAutoHide();
+      }
+    });
+    box.addEventListener("pointermove", armAutoHide);
+
+    document.addEventListener("keydown", (e) => {
+      if (box.classList.contains("hidden")) return;
+      if (e.key === "Escape") hide();
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+
+    // Swipe nav (left/right) + swipe-down dismiss
+    box.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 1) {
+        touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+      }
+    }, { passive: true });
+
+    box.addEventListener("touchend", (e) => {
+      if (!touchStart) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - touchStart.x;
+      const dy = t.clientY - touchStart.y;
+      const dt = Date.now() - touchStart.t;
+      const fast = dt < 400;
+      if (Math.abs(dx) > 60 && fast && Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 0) show(current - 1);
+        else show(current + 1);
+        armAutoHide();
+      } else if (dy > 90 && fast) {
+        hide();
+      }
+      touchStart = null;
+    });
+
+    // Pinch-zoom (two-finger) — basic scale only
+    let pinchStartDist = 0;
+    let pinchStartScale = 1;
+    box.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 2) {
+        const [a, b] = e.touches;
+        pinchStartDist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+        pinchStartScale = scale;
+      }
+    }, { passive: true });
+    box.addEventListener("touchmove", (e) => {
+      if (e.touches.length === 2 && pinchStartDist > 0) {
+        const [a, b] = e.touches;
+        const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+        scale = Math.max(1, Math.min(4, pinchStartScale * (dist / pinchStartDist)));
+        imgEl.style.transition = "none";
+        imgEl.style.transform = `translate3d(0,0,0) scale(${scale})`;
+      }
+    }, { passive: true });
+    box.addEventListener("touchend", (e) => {
+      if (e.touches.length === 0) pinchStartDist = 0;
+    });
   });
 </script>
