@@ -1,5 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "zod";
 
 export const FAMILIES = ["apartments", "deluxe", "family", "standard", "economy"] as const;
 
