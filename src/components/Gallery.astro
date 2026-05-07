@@ -176,6 +176,7 @@ const { heading, eyebrow, intro, photos } = Astro.props;
         box.classList.remove("flex");
         document.body.style.overflow = "";
         clearTimeout(hideTimer);
+        photos[current]?.thumb?.focus();
       };
 
       photos.forEach((p) => {
