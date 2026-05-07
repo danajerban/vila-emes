@@ -16,7 +16,7 @@ interface Props {
 }
 const { href, bookHref, bookLabel, photo, numberLabel, familyLabel, name, capacity, detailsLabel } = Astro.props;
 ---
-<article class="group block overflow-hidden rounded-md border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] tappable transition duration-500">
+<article class="overflow-hidden rounded-md border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] tappable transition duration-500">
   <a href={href} class="block">
     <div class="aspect-[4/3] overflow-hidden">
       <Image
