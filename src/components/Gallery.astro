@@ -81,6 +81,25 @@ const { heading, eyebrow, intro, photos } = Astro.props;
 
 <script is:inline>
   (function () {
+    // Outer guard: only the FIRST script execution per session sets up
+    // window-scoped listeners. Inline scripts can re-execute when
+    // ClientRouter navigates back to a page, and document listeners
+    // don't get GC'd with the swapped DOM.
+    if (window.__galleryInited) return;
+    window.__galleryInited = true;
+
+    // ONE-TIME: keyboard navigation. Re-query DOM each event so it works
+    // after ClientRouter swaps the page, and synthesize clicks on the
+    // lightbox buttons so the navigation logic stays in init()'s click
+    // handlers (single source of truth, also re-arms auto-hide).
+    document.addEventListener("keydown", (e) => {
+      const box = document.getElementById("lightbox");
+      if (!box || box.classList.contains("hidden")) return;
+      if (e.key === "Escape") document.getElementById("lightbox-close")?.click();
+      else if (e.key === "ArrowLeft") document.getElementById("lightbox-prev")?.click();
+      else if (e.key === "ArrowRight") document.getElementById("lightbox-next")?.click();
+    });
+
     function init() {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const photos = Array.from(document.querySelectorAll("[data-lightbox-index]")).map((btn) => ({
@@ -177,13 +196,6 @@ const { heading, eyebrow, intro, photos } = Astro.props;
         }
       });
       box.addEventListener("pointermove", armAutoHide);
-
-      document.addEventListener("keydown", (e) => {
-        if (box.classList.contains("hidden")) return;
-        if (e.key === "Escape") hide();
-        if (e.key === "ArrowLeft") show(current - 1);
-        if (e.key === "ArrowRight") show(current + 1);
-      });
 
       // Swipe nav (left/right) + swipe-down dismiss
       box.addEventListener("touchstart", (e) => {
