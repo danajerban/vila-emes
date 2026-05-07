@@ -5,11 +5,13 @@ import Eyebrow from "./Eyebrow.astro";
 import Handwritten from "./Handwritten.astro";
 
 interface Props {
-  cover: ImageMetadata;
+  slides: ImageMetadata[];
   polaroid: ImageMetadata;
   eyebrow: string;
   welcomeHandwritten: string;
   heading: string;
+  taglineStable?: string;
+  taglineRotators?: string[];
   sub: string;
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
@@ -17,32 +19,52 @@ interface Props {
   hotelName: string;
 }
 const {
-  cover,
+  slides,
   polaroid,
   eyebrow,
   welcomeHandwritten,
   heading,
+  taglineStable,
+  taglineRotators,
   sub,
   ctaPrimary,
   ctaSecondary,
   polaroidCaption,
   hotelName,
 } = Astro.props;
----
-<section class="relative isolate min-h-[88vh] flex items-end overflow-hidden">
-  <Image
-    src={cover}
-    alt={hotelName}
-    width={2400}
-    quality={82}
-    loading="eager"
-    fetchpriority="high"
-    class="absolute inset-0 w-full h-full object-cover"
-  />
-  <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/55 to-transparent" aria-hidden="true"></div>
-  <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent" aria-hidden="true"></div>
 
-  <figure class="absolute bottom-12 right-12 hidden lg:block reveal" style="transform: rotate(-3deg);">
+const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length >= 2);
+---
+<section class="relative isolate min-h-[88vh] flex items-end overflow-hidden" data-hero>
+  <!-- Slideshow track: each slide is a stacked absolute layer with the sunset filter. -->
+  <div class="absolute inset-0" aria-hidden="true">
+    {slides.map((slide, i) => (
+      <div
+        class="absolute inset-0 hero-slide"
+        data-slide-index={i}
+        data-active={i === 0 ? "true" : "false"}
+      >
+        <Image
+          src={slide}
+          alt=""
+          width={2400}
+          quality={82}
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchpriority={i === 0 ? "high" : undefined}
+          class="absolute inset-0 w-full h-full object-cover sunset-photo hero-img"
+        />
+        <div class="sunset-overlay"></div>
+        <div class="sunset-vignette"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Top + bottom gradient masks for legibility. -->
+  <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/55 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Polaroid (lg+ only). One-time wobble on enter via .polaroid-wobble. -->
+  <figure class="absolute bottom-12 right-12 hidden lg:block reveal polaroid-wobble" style="transform: rotate(-3deg);">
     <div class="bg-[color:var(--color-cream-elevated)] p-3 pb-12 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.55)] w-56 relative">
       <Image src={polaroid} alt="" width={420} class="w-full aspect-square object-cover" />
       <figcaption class="absolute bottom-3 left-0 right-0 text-center handwritten text-[color:var(--color-ink)] text-lg">
@@ -51,26 +73,112 @@ const {
     </div>
   </figure>
 
+  <!-- Copy + CTAs. -->
   <div class="relative max-w-[1180px] mx-auto px-5 md:px-10 pb-20 md:pb-28 text-[color:var(--color-cream)]">
     <Eyebrow class="!text-[color:var(--color-cream)]/80">{eyebrow}</Eyebrow>
     <Handwritten as="p" color="terracotta" class="!text-[color:var(--color-cream)] mt-3 text-3xl md:text-4xl">
       {welcomeHandwritten}
     </Handwritten>
     <h1 class="font-serif text-6xl md:text-8xl mt-1 leading-none">{heading}</h1>
-    <p class="mt-5 max-w-2xl text-lg md:text-xl text-[color:var(--color-cream)]/90">{sub}</p>
+
+    {useRotator ? (
+      <p class="mt-5 max-w-2xl text-lg md:text-xl text-[color:var(--color-cream)]/90" aria-live="polite">
+        <span>{taglineStable}{" "}</span>
+        <span class="hero-rotator inline-block min-w-[12ch]" data-rotators={JSON.stringify(taglineRotators)}>
+          <span class="handwritten text-[color:var(--color-cream)]/95 text-[1.2em]">{taglineRotators![0]}</span>
+        </span>
+      </p>
+    ) : (
+      <p class="mt-5 max-w-2xl text-lg md:text-xl text-[color:var(--color-cream)]/90">{sub}</p>
+    )}
+
     <div class="mt-8 flex flex-wrap gap-3">
       <a
         href={ctaPrimary.href}
         target="_blank"
         rel="noopener"
-        class="inline-flex items-center px-6 py-3 bg-[color:var(--color-terracotta)] hover:bg-[color:var(--color-terracotta-hover)] text-[color:var(--color-cream)] font-medium tracking-wide rounded-md transition"
+        class="inline-flex items-center px-6 py-3 bg-[color:var(--color-terracotta)] hover:bg-[color:var(--color-terracotta-hover)] text-[color:var(--color-cream)] font-medium tracking-wide rounded-md transition tappable"
       >{ctaPrimary.label}</a>
       <a
         href={ctaSecondary.href}
         target="_blank"
         rel="noopener"
-        class="inline-flex items-center px-6 py-3 border border-[color:var(--color-cream)]/80 hover:bg-[color:var(--color-cream)]/10 text-[color:var(--color-cream)] font-medium tracking-wide rounded-md transition"
+        class="inline-flex items-center px-6 py-3 border border-[color:var(--color-cream)]/80 hover:bg-[color:var(--color-cream)]/10 text-[color:var(--color-cream)] font-medium tracking-wide rounded-md transition tappable"
       >{ctaSecondary.label}</a>
     </div>
   </div>
 </section>
+
+<style>
+  .hero-slide {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    will-change: opacity;
+  }
+  .hero-slide[data-active="true"] {
+    opacity: 1;
+  }
+  .hero-slide .hero-img {
+    transform: scale(1.0);
+    transition: transform 6.5s linear;
+    transform-origin: center center;
+    will-change: transform;
+  }
+  .hero-slide[data-active="true"] .hero-img {
+    transform: scale(1.06) translate3d(0.5%, -0.5%, 0);
+  }
+  .hero-rotator > span {
+    display: inline-block;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .hero-rotator.fading > span {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide { transition: none; opacity: 1; }
+    .hero-slide:not([data-active="true"]) { opacity: 0; }
+    .hero-slide .hero-img { transition: none; transform: none; }
+    .hero-rotator > span { transition: none; }
+  }
+</style>
+
+<script is:inline>
+  // Hero slideshow + tagline rotator. Zero-bundle: pure inline.
+  document.addEventListener("DOMContentLoaded", () => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hero = document.querySelector("[data-hero]");
+    if (!hero) return;
+
+    // 1) Slideshow crossfade with Ken Burns
+    const slides = hero.querySelectorAll(".hero-slide");
+    if (!reduced && slides.length > 1) {
+      let current = 0;
+      setInterval(() => {
+        slides[current].setAttribute("data-active", "false");
+        current = (current + 1) % slides.length;
+        slides[current].setAttribute("data-active", "true");
+      }, 6500);
+    }
+
+    // 2) Tagline rotator
+    const rotator = hero.querySelector(".hero-rotator");
+    if (!reduced && rotator) {
+      let phrases = [];
+      try { phrases = JSON.parse(rotator.getAttribute("data-rotators") || "[]"); } catch (e) {}
+      if (Array.isArray(phrases) && phrases.length >= 2) {
+        let idx = 0;
+        const inner = rotator.querySelector("span");
+        setInterval(() => {
+          rotator.classList.add("fading");
+          setTimeout(() => {
+            idx = (idx + 1) % phrases.length;
+            if (inner) inner.textContent = phrases[idx];
+            rotator.classList.remove("fading");
+          }, 400);
+        }, 4000);
+      }
+    }
+  });
+</script>

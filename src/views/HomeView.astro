@@ -16,6 +16,10 @@ import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 
 import heroCover from "../assets/photos/main/dji-0379-2400.webp";
+import heroSlide2 from "../assets/photos/main/dji-0380-2400.webp";
+import heroSlide3 from "../assets/photos/main/dji-0382-2400.webp";
+import heroSlide4 from "../assets/photos/main/dji-0384-2400.webp";
+import heroSlide5 from "../assets/photos/main/beach-2400.webp";
 import heroPolaroid from "../assets/photos/main/691204535-1600.webp";
 import aboutPhoto from "../assets/photos/main/dji-0380-1600.webp";
 
@@ -84,11 +88,13 @@ const galleryPhotos = [
   <Header lang={lang} ui={ui.nav} isHome hotelName={site.data.hotel.name} />
 
   <Hero
-    cover={heroCover}
+    slides={[heroCover, heroSlide2, heroSlide3, heroSlide4, heroSlide5]}
     polaroid={heroPolaroid}
     eyebrow={home.hero.eyebrow}
     welcomeHandwritten={home.hero.welcome_handwritten}
     heading={home.hero.heading}
+    taglineStable={home.hero.tagline_stable}
+    taglineRotators={home.hero.tagline_rotators}
     sub={home.hero.sub}
     ctaPrimary={{ label: home.hero.cta_primary, href: SITE.links.booking_com }}
     ctaSecondary={{ label: home.hero.cta_secondary, href: SITE.links.google_maps }}
