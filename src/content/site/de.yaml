@@ -36,7 +36,7 @@ home:
       text: "Gemütliches familiengeführtes Hotel. Außergewöhnlich nettes Personal, immer freundlich und hilfsbereit. Hervorragende Lage. Alles, was man braucht, ist in der Nähe. Nur einen Steinwurf vom Strand entfernt. Sehr empfehlenswert!"
       author: "Gry"
       location: "Norwegen"
-      when: "übernachtete letzten Sommer"
+      when: "Aufenthalt letzten Sommer"
     read_all_reviews_label: "Alle Bewertungen auf Booking lesen →"
     read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
@@ -108,14 +108,14 @@ rooms_page:
       - "Kostenlose Parkplätze an der Straße"
       - "Moskitonetz"
       - "Heizung im Winter"
-      - "Familiär geführter Empfang"
+      - "Familiärer Empfang"
   rules:
     eyebrow: "Hausordnung"
     heading: "Ein paar einfache Hinweise"
     check_in:
       label: "Check-in"
       value: "12:00 – 18:00"
-      note: "Späte Anreise willkommen — bitte vorher Bescheid geben"
+      note: "Späte Anreise willkommen — geben Sie uns bitte vorher Bescheid"
     check_out:
       label: "Check-out"
       value: "07:00 – 11:00"
