@@ -67,6 +67,8 @@ export const collections = {
           welcome_handwritten: z.string(),
           heading: z.string(),
           sub: z.string(),
+          tagline_stable: z.string().optional(),
+          tagline_rotators: z.array(z.string()).min(2).optional(),
           cta_primary: z.string(),
           cta_secondary: z.string(),
           polaroid_caption_handwritten: z.string(),

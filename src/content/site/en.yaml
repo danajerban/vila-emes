@@ -8,6 +8,12 @@ home:
     eyebrow: "Durrës · Albania · Since 1998"
     welcome_handwritten: "welcome to"
     heading: "Vila Emes"
+    tagline_stable: "A family hotel"
+    tagline_rotators:
+      - "by the sea"
+      - "since 1998"
+      - "with love"
+      - "100 m from the water"
     sub: "Eleven layouts. A family that opens the door themselves. The same coffee on the terrace every morning."
     cta_primary: "Book on Booking.com"
     cta_secondary: "Open in Maps"
