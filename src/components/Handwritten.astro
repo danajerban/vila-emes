@@ -4,7 +4,7 @@ interface Props {
   class?: string;
   color?: "terracotta" | "ink" | "sea";
 }
-const { as: As = "span", class: className = "", color = "terracotta" } = Astro.props;
+const { as: As = "span", class: className = "", color = "terracotta" } = Astro.props as Props;
 const colorClass = {
   terracotta: "text-[color:var(--color-terracotta)]",
   ink: "text-[color:var(--color-ink)]",

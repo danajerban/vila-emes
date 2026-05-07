@@ -14,7 +14,7 @@ interface Props {
   headingPart1: string;
   headingPart2Handwritten: string;
   intro?: string;
-  tiles: Tile[];
+  tiles: readonly Tile[];
 }
 const { eyebrow, headingPart1, headingPart2Handwritten, intro, tiles } = Astro.props;
 

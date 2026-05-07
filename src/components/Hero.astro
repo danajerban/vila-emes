@@ -16,7 +16,6 @@ interface Props {
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
   polaroidCaption: string;
-  hotelName: string;
 }
 const {
   slides,
@@ -30,7 +29,6 @@ const {
   ctaPrimary,
   ctaSecondary,
   polaroidCaption,
-  hotelName,
 } = Astro.props;
 
 const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length >= 2);
