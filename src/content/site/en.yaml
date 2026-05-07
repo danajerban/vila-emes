@@ -79,6 +79,13 @@ home:
       - q: "What languages do you speak?"
         a: "English, Italian, and Albanian — every day, all day."
     footer_cta_handwritten: "Don't see your question? Write to us →"
+  ready_cta:
+    handwritten: "— ready to come?"
+    heading: "Book your stay at Vila Emes"
+    sub: "Pick your dates on Booking.com, message us on WhatsApp, or open us in Maps."
+    book_label: "Book on Booking.com"
+    whatsapp_label: "WhatsApp us"
+    map_label: "Open in Maps"
 
 rooms_page:
   hero_eyebrow: "Stay with us"

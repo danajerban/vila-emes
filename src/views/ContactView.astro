@@ -9,6 +9,7 @@ import Directions from "../components/Directions.astro";
 import LocationMap from "../components/LocationMap.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
+import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
@@ -89,6 +90,17 @@ const tiles = [
     items={home.faq.items}
     variant="subbg"
   />
+
+  {home.ready_cta && (
+    <ReadyToBookCTA
+      handwritten={home.ready_cta.handwritten}
+      heading={home.ready_cta.heading}
+      sub={home.ready_cta.sub}
+      bookLabel={home.ready_cta.book_label}
+      whatsappLabel={home.ready_cta.whatsapp_label}
+      mapLabel={home.ready_cta.map_label}
+    />
+  )}
 
   <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} ui={ui} brandTagline={site.data.hotel.tagline} />
 </Base>

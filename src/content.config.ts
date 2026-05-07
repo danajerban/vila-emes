@@ -118,6 +118,14 @@ export const collections = {
           items: z.array(faqItem).length(6),
           footer_cta_handwritten: z.string(),
         }),
+        ready_cta: z.object({
+          handwritten: z.string(),
+          heading: z.string(),
+          sub: z.string().optional(),
+          book_label: z.string(),
+          whatsapp_label: z.string(),
+          map_label: z.string(),
+        }).optional(),
       }),
 
       rooms_page: z.object({

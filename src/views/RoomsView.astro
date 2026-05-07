@@ -9,6 +9,7 @@ import RoomsIncludes from "../components/RoomsIncludes.astro";
 import HouseRules from "../components/HouseRules.astro";
 import Handwritten from "../components/Handwritten.astro";
 import Footer from "../components/Footer.astro";
+import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
@@ -81,6 +82,7 @@ const { lang } = Astro.props;
 const site = await getSite(lang);
 const ui = site.data.ui;
 const page = site.data.rooms_page;
+const home = site.data.home;
 const rooms = site.data.rooms;
 const baseLink = lang === "en" ? "" : `/${lang}`;
 
@@ -162,6 +164,17 @@ const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
       >{page.cta.button}</a>
     </div>
   </section>
+
+  {home.ready_cta && (
+    <ReadyToBookCTA
+      handwritten={home.ready_cta.handwritten}
+      heading={home.ready_cta.heading}
+      sub={home.ready_cta.sub}
+      bookLabel={home.ready_cta.book_label}
+      whatsappLabel={home.ready_cta.whatsapp_label}
+      mapLabel={home.ready_cta.map_label}
+    />
+  )}
 
   <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} ui={ui} brandTagline={site.data.hotel.tagline} />
 </Base>
