@@ -91,76 +91,76 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       document.querySelectorAll("[data-room-carousel]").forEach((el) => {
-      const track = el.querySelector(".rc-track");
-      const slides = el.querySelectorAll(".rc-slide");
-      const dots = el.querySelectorAll(".rc-dot");
-      const prevBtn = el.querySelector(".rc-prev");
-      const nextBtn = el.querySelector(".rc-next");
-      if (!track || slides.length < 2) return;
+        const track = el.querySelector(".rc-track");
+        const slides = el.querySelectorAll(".rc-slide");
+        const dots = el.querySelectorAll(".rc-dot");
+        const prevBtn = el.querySelector(".rc-prev");
+        const nextBtn = el.querySelector(".rc-next");
+        if (!track || slides.length < 2) return;
 
-      const total = slides.length;
-      let current = 0;
-      let autoplay;
+        const total = slides.length;
+        let current = 0;
+        let autoplay;
 
-      const goTo = (i) => {
-        current = ((i % total) + total) % total;
-        const targetSlide = slides[current];
-        track.scrollTo({ left: targetSlide.offsetLeft - track.offsetLeft, behavior: "smooth" });
-        dots.forEach((d, j) => d.setAttribute("data-active", j === current ? "true" : "false"));
-      };
-
-      prevBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current - 1); });
-      nextBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current + 1); });
-
-      // Sync dots when user scrolls manually (drag/swipe).
-      let scrollTimer;
-      track.addEventListener("scroll", () => {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => {
-          let closestIdx = 0;
-          let closestDist = Infinity;
-          slides.forEach((s, j) => {
-            const d = Math.abs(s.offsetLeft - track.scrollLeft - track.offsetLeft);
-            if (d < closestDist) { closestDist = d; closestIdx = j; }
-          });
-          current = closestIdx;
+        const goTo = (i) => {
+          current = ((i % total) + total) % total;
+          const targetSlide = slides[current];
+          track.scrollTo({ left: targetSlide.offsetLeft - track.offsetLeft, behavior: "smooth" });
           dots.forEach((d, j) => d.setAttribute("data-active", j === current ? "true" : "false"));
-        }, 100);
-      });
+        };
 
-      // Autoplay (gated to in-view + not reduced-motion + not hovered/focused)
-      const startAutoplay = () => {
-        if (reduced || autoplay) return;
-        const ms = parseInt(el.dataset.autoplayMs || "8000", 10);
-        autoplay = setInterval(() => goTo(current + 1), ms);
-      };
-      const stopAutoplay = () => {
-        if (autoplay) { clearInterval(autoplay); autoplay = null; }
-      };
+        prevBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current - 1); });
+        nextBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current + 1); });
 
-      el.addEventListener("pointerenter", stopAutoplay);
-      el.addEventListener("focusin", stopAutoplay);
-      el.addEventListener("pointerleave", () => {
-        if (entryObserver && entryObserver.lastEntry?.isIntersecting) startAutoplay();
-      });
-      el.addEventListener("focusout", () => {
-        if (entryObserver && entryObserver.lastEntry?.isIntersecting) startAutoplay();
-      });
+        // Sync dots when user scrolls manually (drag/swipe).
+        let scrollTimer;
+        track.addEventListener("scroll", () => {
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(() => {
+            let closestIdx = 0;
+            let closestDist = Infinity;
+            slides.forEach((s, j) => {
+              const d = Math.abs(s.offsetLeft - track.scrollLeft - track.offsetLeft);
+              if (d < closestDist) { closestDist = d; closestIdx = j; }
+            });
+            current = closestIdx;
+            dots.forEach((d, j) => d.setAttribute("data-active", j === current ? "true" : "false"));
+          }, 100);
+        });
 
-      // Only autoplay when in viewport
-      const entryObserver = ("IntersectionObserver" in window) ? new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            entryObserver.lastEntry = entry;
-            if (entry.isIntersecting) startAutoplay();
-            else stopAutoplay();
-          });
-        },
-        { threshold: 0.4 }
-      ) : null;
-      if (entryObserver) entryObserver.observe(el);
-      else startAutoplay();
-    });
+        // Autoplay (gated to in-view + not reduced-motion + not hovered/focused)
+        const startAutoplay = () => {
+          if (reduced || autoplay) return;
+          const ms = parseInt(el.dataset.autoplayMs || "8000", 10);
+          autoplay = setInterval(() => goTo(current + 1), ms);
+        };
+        const stopAutoplay = () => {
+          if (autoplay) { clearInterval(autoplay); autoplay = null; }
+        };
+
+        el.addEventListener("pointerenter", stopAutoplay);
+        el.addEventListener("focusin", stopAutoplay);
+        el.addEventListener("pointerleave", () => {
+          if (entryObserver && entryObserver.lastEntry?.isIntersecting) startAutoplay();
+        });
+        el.addEventListener("focusout", () => {
+          if (entryObserver && entryObserver.lastEntry?.isIntersecting) startAutoplay();
+        });
+
+        // Only autoplay when in viewport
+        const entryObserver = ("IntersectionObserver" in window) ? new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              entryObserver.lastEntry = entry;
+              if (entry.isIntersecting) startAutoplay();
+              else stopAutoplay();
+            });
+          },
+          { threshold: 0.4 }
+        ) : null;
+        if (entryObserver) entryObserver.observe(el);
+        else startAutoplay();
+      });
     }
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", init);

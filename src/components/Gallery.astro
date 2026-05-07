@@ -83,154 +83,154 @@ const { heading, eyebrow, intro, photos } = Astro.props;
   (function () {
     function init() {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const photos = Array.from(document.querySelectorAll("[data-lightbox-index]")).map((btn) => ({
-      src: btn.getAttribute("data-lightbox-src") || "",
-      caption: btn.getAttribute("data-lightbox-caption") || "",
-      alt: btn.getAttribute("data-lightbox-alt") || "",
-      thumb: btn,
-    }));
-    const box = document.getElementById("lightbox");
-    const imgEl = document.getElementById("lightbox-img");
-    const captionEl = document.getElementById("lightbox-caption");
-    const counterEl = document.getElementById("lightbox-counter");
-    const close = document.getElementById("lightbox-close");
-    const prev = document.getElementById("lightbox-prev");
-    const next = document.getElementById("lightbox-next");
-    let current = 0;
-    let hideTimer;
-    let scale = 1;
-    let touchStart = null;
+      const photos = Array.from(document.querySelectorAll("[data-lightbox-index]")).map((btn) => ({
+        src: btn.getAttribute("data-lightbox-src") || "",
+        caption: btn.getAttribute("data-lightbox-caption") || "",
+        alt: btn.getAttribute("data-lightbox-alt") || "",
+        thumb: btn,
+      }));
+      const box = document.getElementById("lightbox");
+      const imgEl = document.getElementById("lightbox-img");
+      const captionEl = document.getElementById("lightbox-caption");
+      const counterEl = document.getElementById("lightbox-counter");
+      const close = document.getElementById("lightbox-close");
+      const prev = document.getElementById("lightbox-prev");
+      const next = document.getElementById("lightbox-next");
+      let current = 0;
+      let hideTimer;
+      let scale = 1;
+      let touchStart = null;
 
-    if (!box || !imgEl || photos.length === 0) return;
+      if (!box || !imgEl || photos.length === 0) return;
 
-    const resetZoom = () => { scale = 1; imgEl.style.transform = "translate3d(0,0,0) scale(1)"; };
+      const resetZoom = () => { scale = 1; imgEl.style.transform = "translate3d(0,0,0) scale(1)"; };
 
-    const updateCounter = () => {
-      if (counterEl) counterEl.textContent = `${current + 1} / ${photos.length}`;
-    };
+      const updateCounter = () => {
+        if (counterEl) counterEl.textContent = `${current + 1} / ${photos.length}`;
+      };
 
-    const updateCaption = () => {
-      if (captionEl) {
-        captionEl.textContent = photos[current].caption ? `— ${photos[current].caption}` : "";
-      }
-    };
+      const updateCaption = () => {
+        if (captionEl) {
+          captionEl.textContent = photos[current].caption ? `— ${photos[current].caption}` : "";
+        }
+      };
 
-    const armAutoHide = () => {
-      box.classList.remove("hide-controls");
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => box.classList.add("hide-controls"), 2000);
-    };
+      const armAutoHide = () => {
+        box.classList.remove("hide-controls");
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => box.classList.add("hide-controls"), 2000);
+      };
 
-    const show = (i, originRect) => {
-      current = ((i % photos.length) + photos.length) % photos.length;
-      imgEl.src = photos[current].src;
-      imgEl.alt = photos[current].alt;
-      updateCounter();
-      updateCaption();
-      resetZoom();
-      box.classList.remove("hidden");
-      box.classList.add("flex");
-      document.body.style.overflow = "hidden";
-      armAutoHide();
+      const show = (i, originRect) => {
+        current = ((i % photos.length) + photos.length) % photos.length;
+        imgEl.src = photos[current].src;
+        imgEl.alt = photos[current].alt;
+        updateCounter();
+        updateCaption();
+        resetZoom();
+        box.classList.remove("hidden");
+        box.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        armAutoHide();
 
-      // FLIP from thumbnail rect
-      if (!reduced && originRect && originRect.width > 0 && originRect.height > 0) {
-        requestAnimationFrame(() => {
-          const finalRect = imgEl.getBoundingClientRect();
-          const dx = originRect.left - finalRect.left;
-          const dy = originRect.top - finalRect.top;
-          const sx = originRect.width / finalRect.width;
-          const sy = originRect.height / finalRect.height;
-          // FLIP: snap instantly to inverted state, then animate to identity in next frame.
-          imgEl.style.transition = "none";
-          imgEl.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${(sx+sy)/2})`;
+        // FLIP from thumbnail rect
+        if (!reduced && originRect && originRect.width > 0 && originRect.height > 0) {
           requestAnimationFrame(() => {
-            imgEl.style.transition = "transform 0.4s ease";
-            imgEl.style.transform = "translate3d(0,0,0) scale(1)";
+            const finalRect = imgEl.getBoundingClientRect();
+            const dx = originRect.left - finalRect.left;
+            const dy = originRect.top - finalRect.top;
+            const sx = originRect.width / finalRect.width;
+            const sy = originRect.height / finalRect.height;
+            // FLIP: snap instantly to inverted state, then animate to identity in next frame.
+            imgEl.style.transition = "none";
+            imgEl.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${(sx+sy)/2})`;
+            requestAnimationFrame(() => {
+              imgEl.style.transition = "transform 0.4s ease";
+              imgEl.style.transform = "translate3d(0,0,0) scale(1)";
+            });
           });
+        }
+      };
+
+      const hide = () => {
+        box.classList.add("hidden");
+        box.classList.remove("flex");
+        document.body.style.overflow = "";
+        clearTimeout(hideTimer);
+      };
+
+      photos.forEach((p) => {
+        p.thumb.addEventListener("click", () => {
+          const rect = p.thumb.getBoundingClientRect();
+          show(Number(p.thumb.dataset.lightboxIndex), rect);
         });
-      }
-    };
-
-    const hide = () => {
-      box.classList.add("hidden");
-      box.classList.remove("flex");
-      document.body.style.overflow = "";
-      clearTimeout(hideTimer);
-    };
-
-    photos.forEach((p) => {
-      p.thumb.addEventListener("click", () => {
-        const rect = p.thumb.getBoundingClientRect();
-        show(Number(p.thumb.dataset.lightboxIndex), rect);
       });
-    });
 
-    close.addEventListener("click", hide);
-    prev.addEventListener("click", () => { armAutoHide(); show(current - 1); });
-    next.addEventListener("click", () => { armAutoHide(); show(current + 1); });
+      close.addEventListener("click", hide);
+      prev.addEventListener("click", () => { armAutoHide(); show(current - 1); });
+      next.addEventListener("click", () => { armAutoHide(); show(current + 1); });
 
-    box.addEventListener("click", (e) => {
-      if (e.target === box || e.target === imgEl) {
-        // Tap on backdrop or image: arm auto-hide cycle (image tap = wake controls)
-        armAutoHide();
-      }
-    });
-    box.addEventListener("pointermove", armAutoHide);
+      box.addEventListener("click", (e) => {
+        if (e.target === box || e.target === imgEl) {
+          // Tap on backdrop or image: arm auto-hide cycle (image tap = wake controls)
+          armAutoHide();
+        }
+      });
+      box.addEventListener("pointermove", armAutoHide);
 
-    document.addEventListener("keydown", (e) => {
-      if (box.classList.contains("hidden")) return;
-      if (e.key === "Escape") hide();
-      if (e.key === "ArrowLeft") show(current - 1);
-      if (e.key === "ArrowRight") show(current + 1);
-    });
+      document.addEventListener("keydown", (e) => {
+        if (box.classList.contains("hidden")) return;
+        if (e.key === "Escape") hide();
+        if (e.key === "ArrowLeft") show(current - 1);
+        if (e.key === "ArrowRight") show(current + 1);
+      });
 
-    // Swipe nav (left/right) + swipe-down dismiss
-    box.addEventListener("touchstart", (e) => {
-      if (e.touches.length === 1) {
-        touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
-      }
-    }, { passive: true });
+      // Swipe nav (left/right) + swipe-down dismiss
+      box.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1) {
+          touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+        }
+      }, { passive: true });
 
-    box.addEventListener("touchend", (e) => {
-      if (!touchStart) return;
-      const t = e.changedTouches[0];
-      const dx = t.clientX - touchStart.x;
-      const dy = t.clientY - touchStart.y;
-      const dt = Date.now() - touchStart.t;
-      const fast = dt < 400;
-      if (Math.abs(dx) > 60 && fast && Math.abs(dx) > Math.abs(dy) && scale === 1) {
-        if (dx > 0) show(current - 1);
-        else show(current + 1);
-        armAutoHide();
-      } else if (dy > 90 && fast) {
-        hide();
-      }
-      touchStart = null;
-    }, { passive: true });
+      box.addEventListener("touchend", (e) => {
+        if (!touchStart) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - touchStart.x;
+        const dy = t.clientY - touchStart.y;
+        const dt = Date.now() - touchStart.t;
+        const fast = dt < 400;
+        if (Math.abs(dx) > 60 && fast && Math.abs(dx) > Math.abs(dy) && scale === 1) {
+          if (dx > 0) show(current - 1);
+          else show(current + 1);
+          armAutoHide();
+        } else if (dy > 90 && fast) {
+          hide();
+        }
+        touchStart = null;
+      }, { passive: true });
 
-    // Pinch-zoom (two-finger) — basic scale only
-    let pinchStartDist = 0;
-    let pinchStartScale = 1;
-    box.addEventListener("touchstart", (e) => {
-      if (e.touches.length === 2) {
-        const [a, b] = e.touches;
-        pinchStartDist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-        pinchStartScale = scale;
-      }
-    }, { passive: true });
-    box.addEventListener("touchmove", (e) => {
-      if (e.touches.length === 2 && pinchStartDist > 0) {
-        const [a, b] = e.touches;
-        const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-        scale = Math.max(1, Math.min(4, pinchStartScale * (dist / pinchStartDist)));
-        imgEl.style.transition = "none";
-        imgEl.style.transform = `translate3d(0,0,0) scale(${scale})`;
-      }
-    }, { passive: true });
-    box.addEventListener("touchend", (e) => {
-      if (e.touches.length === 0) pinchStartDist = 0;
-    }, { passive: true });
+      // Pinch-zoom (two-finger) — basic scale only
+      let pinchStartDist = 0;
+      let pinchStartScale = 1;
+      box.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 2) {
+          const [a, b] = e.touches;
+          pinchStartDist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+          pinchStartScale = scale;
+        }
+      }, { passive: true });
+      box.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 2 && pinchStartDist > 0) {
+          const [a, b] = e.touches;
+          const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+          scale = Math.max(1, Math.min(4, pinchStartScale * (dist / pinchStartDist)));
+          imgEl.style.transition = "none";
+          imgEl.style.transform = `translate3d(0,0,0) scale(${scale})`;
+        }
+      }, { passive: true });
+      box.addEventListener("touchend", (e) => {
+        if (e.touches.length === 0) pinchStartDist = 0;
+      }, { passive: true });
     }
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", init);

@@ -108,7 +108,8 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
               if (!entry.isIntersecting) return;
               const el = entry.target;
               const target = parseFloat(el.getAttribute("data-count-up") || "0");
-              const decimals = (target.toString().split(".")[1] || "").length;
+              if (!Number.isFinite(target)) return;
+              const decimals = parseInt(el.getAttribute("data-count-decimals") || "0", 10) || (target.toString().split(".")[1] || "").length;
               const duration = 1200;
               const start = performance.now();
               const initial = 0;
@@ -127,7 +128,8 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
         } else {
           counters.forEach((c) => {
             const target = parseFloat(c.getAttribute("data-count-up") || "0");
-            const decimals = (target.toString().split(".")[1] || "").length;
+            if (!Number.isFinite(target)) return;
+            const decimals = parseInt(c.getAttribute("data-count-decimals") || "0", 10) || (target.toString().split(".")[1] || "").length;
             c.textContent = target.toFixed(decimals);
           });
         }
