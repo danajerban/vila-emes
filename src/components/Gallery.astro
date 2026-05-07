@@ -72,6 +72,7 @@ const { heading, eyebrow, intro, photos } = Astro.props;
   .lightbox-control {
     transition: opacity 0.3s ease;
   }
+  #lightbox-img { touch-action: none; }
   #lightbox.hide-controls .lightbox-control {
     opacity: 0;
     pointer-events: none;
@@ -132,13 +133,14 @@ const { heading, eyebrow, intro, photos } = Astro.props;
       armAutoHide();
 
       // FLIP from thumbnail rect
-      if (!reduced && originRect && imgEl.getBoundingClientRect) {
+      if (!reduced && originRect && originRect.width > 0 && originRect.height > 0) {
         requestAnimationFrame(() => {
           const finalRect = imgEl.getBoundingClientRect();
           const dx = originRect.left - finalRect.left;
           const dy = originRect.top - finalRect.top;
           const sx = originRect.width / finalRect.width;
           const sy = originRect.height / finalRect.height;
+          // FLIP: snap instantly to inverted state, then animate to identity in next frame.
           imgEl.style.transition = "none";
           imgEl.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${(sx+sy)/2})`;
           requestAnimationFrame(() => {
@@ -196,7 +198,7 @@ const { heading, eyebrow, intro, photos } = Astro.props;
       const dy = t.clientY - touchStart.y;
       const dt = Date.now() - touchStart.t;
       const fast = dt < 400;
-      if (Math.abs(dx) > 60 && fast && Math.abs(dx) > Math.abs(dy)) {
+      if (Math.abs(dx) > 60 && fast && Math.abs(dx) > Math.abs(dy) && scale === 1) {
         if (dx > 0) show(current - 1);
         else show(current + 1);
         armAutoHide();
@@ -204,7 +206,7 @@ const { heading, eyebrow, intro, photos } = Astro.props;
         hide();
       }
       touchStart = null;
-    });
+    }, { passive: true });
 
     // Pinch-zoom (two-finger) — basic scale only
     let pinchStartDist = 0;
@@ -227,6 +229,6 @@ const { heading, eyebrow, intro, photos } = Astro.props;
     }, { passive: true });
     box.addEventListener("touchend", (e) => {
       if (e.touches.length === 0) pinchStartDist = 0;
-    });
+    }, { passive: true });
   });
 </script>
