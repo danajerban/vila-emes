@@ -165,7 +165,10 @@ const galleryPhotos = [
         class="inline-flex items-center mt-8 px-5 py-3 border border-[color:var(--color-sea)] text-[color:var(--color-sea)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] rounded-md transition"
       >{home.location.cta}</a>
     </div>
-    <LocationMap mode="drawn" ariaLabel="Hand-drawn map of Vila Emes location" />
+    <LocationMap
+      embedUrl={SITE.links.google_maps_embed}
+      ariaLabel="Vila Emes location on Google Maps"
+    />
   </section>
 
   <ContactStrip

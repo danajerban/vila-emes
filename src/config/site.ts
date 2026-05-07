@@ -5,8 +5,8 @@ export const SITE = {
   url: "https://vila-emes.pages.dev", // until custom domain
 
   contact: {
-    phone: "+355 ___ ___ ___", // PLACEHOLDER
-    whatsapp: "+355 ___ ___ ___", // PLACEHOLDER
+    phone: "+355 4 867 654",
+    whatsapp: "+355 4 867 654",
     email: "vilaemes@gmail.com",
     address: ["Rruga Pavarësia", "Plazh, Durrës 2001", "Albania"],
   },
@@ -18,10 +18,10 @@ export const SITE = {
   },
 
   links: {
-    booking_com: "https://www.booking.com/hotel/al/vila-emes.html", // PLACEHOLDER
-    instagram: "https://instagram.com/vilaemes", // PLACEHOLDER
-    google_maps: "https://maps.app.goo.gl/PLACEHOLDER",
-    google_maps_embed: "https://www.google.com/maps/embed?pb=PLACEHOLDER",
+    booking_com: "https://www.booking.com/hotel/al/vila-emes.html",
+    instagram: "https://instagram.com/vilaemes", // PLACEHOLDER — update when owner provides handle
+    google_maps: "https://maps.app.goo.gl/PWWqRPcZb76uutfSA",
+    google_maps_embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4495.525837783402!2d19.48510047719195!3d41.30848697131005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134fd988d042b5b1%3A0xa7caa866087393d0!2sHotel%20Vila%20Emes!5e1!3m2!1sen!2s!4v1778163921675!5m2!1sen!2s",
   },
 
   ratings: {
