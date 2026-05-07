@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rooms — Vila Emes</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { cream:'#FAF6EE', ink:'#1F1A14', terracotta:'#C25B3F', sea:'#2E5C7E', muted:'#8C7E6A', divider:'#E8DFCF' },
+      fontFamily: { serif:['"Cormorant Garamond"','Georgia','serif'], sans:['"Inter"','system-ui','sans-serif'] }
+    }}
+  }
+</script>
+</head>
+<body class="bg-cream text-ink" data-layout="alternating" data-density="balanced" data-voice="family">
+
+<style>
+/* ===== Tweak: Layout ===== */
+/* alternating = default markup. gallery + compact reshape main and .room */
+[data-layout="gallery"] main.rooms-main { max-width: 1180px; margin: 0 auto; padding: 64px 20px 80px; }
+@media (min-width:768px){ [data-layout="gallery"] main.rooms-main { padding: 96px 40px 128px; } }
+[data-layout="gallery"] .room {
+  display:grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  margin-bottom: 96px !important;
+  position: relative;
+}
+[data-layout="gallery"] .room > div:first-child {
+  order: 1 !important;
+  aspect-ratio: 16/9 !important;
+  width: 100% !important;
+  border-radius: 8px;
+}
+[data-layout="gallery"] .room > div:last-child {
+  order: 2 !important;
+  background:#FAF6EE; border:1px solid #E8DFCF;
+  margin: -64px 24px 0; padding: 32px 28px;
+  border-radius: 6px; position:relative; z-index:2;
+  box-shadow: 0 1px 0 rgba(31,26,20,0.02);
+}
+@media (min-width:768px){
+  [data-layout="gallery"] .room > div:last-child { margin: -96px 64px 0; padding: 44px 48px; max-width: 720px; }
+  [data-layout="gallery"] .room:nth-child(even) > div:last-child { margin-left: auto; margin-right: 64px; }
+}
+
+[data-layout="compact"] main.rooms-main { max-width: 1280px; margin:0 auto; padding: 48px 20px 64px; }
+@media (min-width:768px){ [data-layout="compact"] main.rooms-main { padding: 80px 40px 96px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+[data-layout="compact"] .room {
+  display:flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  border:1px solid #E8DFCF; border-radius:6px; overflow:hidden;
+  background:#FAF6EE;
+  transition: transform .25s ease, border-color .25s ease;
+}
+[data-layout="compact"] .room:hover { transform: translateY(-2px); border-color:#C25B3F; }
+[data-layout="compact"] .room > div:first-child { order:1 !important; aspect-ratio: 4/3 !important; border-radius:0 !important; width:100% !important; }
+[data-layout="compact"] .room > div:last-child { order:2 !important; padding: 20px 22px 24px; }
+[data-layout="compact"] .room h2 { font-size: 22px !important; line-height:1.2 !important; margin-bottom: 8px !important; }
+[data-layout="compact"] .room > div:last-child > *:not(h2):not(.compact-meta):not(.compact-link) { display: none !important; }
+[data-layout="compact"] .voice-postcard-stamp { display: none !important; }
+[data-layout="compact"] .room .compact-meta { display:flex !important; gap:14px; font-size:12px; color:#8C7E6A; letter-spacing:.04em; text-transform:uppercase; padding-top:6px; border-top:1px solid #E8DFCF; margin-top:10px; }
+[data-layout="compact"] .room .compact-link { display:inline-flex !important; margin-top:14px; }
+
+/* ===== Tweak: Density ===== */
+/* essentials — hide stats grid + amenity pills */
+[data-density="essentials"] .room .grid.grid-cols-2.gap-y-2 { display: none !important; }
+[data-density="essentials"] .room .flex.flex-wrap.gap-2 { display: none !important; }
+[data-density="essentials"] .room p:not(.eyebrow):not(.compact-meta):first-of-type { font-size: 17px; }
+/* everything — show extra blocks */
+.room-extras { display:none; }
+[data-density="everything"] .room-extras { display:block; margin-bottom: 28px; }
+[data-density="everything"] .room-extras .from {
+  display:inline-flex; align-items:baseline; gap:8px; font-family:'Cormorant Garamond',serif;
+  padding: 6px 14px; border:1px solid #C25B3F; color:#C25B3F; border-radius:999px;
+  font-size:14px; letter-spacing:.04em;
+}
+[data-density="everything"] .room-extras .from .num { font-size: 22px; font-weight:500; }
+[data-density="everything"] .room-extras .nearby { color:#5C5141; font-size:14px; margin-top:14px; max-width: 52ch; }
+[data-density="everything"] .room-extras .good-for { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+[data-density="everything"] .room-extras .good-for span {
+  font-family:'Caveat',cursive; font-size:18px; color:#C25B3F; padding: 2px 10px 2px 0;
+}
+[data-density="everything"] .room-extras .good-for span::before { content:"— "; }
+
+/* ===== Tweak: Voice ===== */
+/* family is default. concierge strips handwriting, formalises chrome */
+[data-voice="concierge"] .handwritten { font-family:'Cormorant Garamond', serif !important; font-style: italic; font-weight:400; font-size:1.1em !important; color:#8C7E6A !important; }
+[data-voice="concierge"] .handwritten::before { content: ""; }
+[data-voice="concierge"] h1 .handwritten,
+[data-voice="concierge"] h2 .handwritten { color: inherit !important; }
+[data-voice="concierge"] .btn-primary { border-radius: 0; letter-spacing: 0.18em; text-transform: uppercase; font-size: 12px; }
+[data-voice="concierge"] .tab-bar { border-radius: 0; }
+[data-voice="concierge"] .tab-bar button { border-radius: 0; }
+[data-voice="concierge"] .room > div:last-child h2 { letter-spacing: -0.01em; }
+[data-voice="concierge"] .voice-postcard-stamp { display:none; }
+
+/* postcard — heavier handwriting, italic serif H1/H2, vintage paper */
+[data-voice="postcard"] body, [data-voice="postcard"] { background:#F4E9D0 !important; }
+[data-voice="postcard"] .bg-cream { background:#F4E9D0 !important; }
+[data-voice="postcard"] .bg-\[\#F5EFE2\] { background:#EFE0C0 !important; }
+[data-voice="postcard"] h1, [data-voice="postcard"] h2, [data-voice="postcard"] h3 { font-style: italic; font-weight: 400; }
+[data-voice="postcard"] .room h2 { font-style: italic; }
+[data-voice="postcard"] .handwritten { font-size: 1.15em; color:#A94A30; }
+[data-voice="postcard"] .room { position: relative; }
+[data-voice="postcard"] .voice-postcard-stamp {
+  display: block; position: absolute; top: -14px; right: 18px;
+  font-family:'Caveat', cursive; color: #C25B3F;
+  border: 1.5px dashed #C25B3F; padding: 4px 12px; transform: rotate(-3deg);
+  font-size: 18px; background: #F4E9D0; z-index: 3;
+}
+[data-voice="postcard"] [data-layout="gallery"] .voice-postcard-stamp,
+[data-layout="gallery"][data-voice="postcard"] .voice-postcard-stamp { top: -14px; right: 80px; }
+[data-voice="postcard"] .room > div:last-child { background:#F8EFD8 !important; }
+[data-voice="family"] .voice-postcard-stamp { display: none; }
+[data-voice="concierge"] .voice-postcard-stamp { display: none; }
+
+/* Tweaks panel polish */
+.tweaks-host { font-family: 'Inter', system-ui, sans-serif; }
+</style>
+
+<!-- ===== HEADER ===== -->
+<header id="siteHeader" class="site-header is-solid fixed top-0 inset-x-0 z-50">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+    <a href="Vila Emes.html" class="wordmark text-[15px] md:text-[16px] ink-swap inline-flex items-center gap-2.5">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 22V11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 11C12 8 9 6 5 6 5 9 7 11.5 12 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 11C12 8 15 6 19 6 19 9 17 11.5 12 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 10C12 7.5 11 4 8 2 7.5 5 9 8 12 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 10C12 7.5 13 4 16 2 16.5 5 15 8 12 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span>VILA&nbsp;EMES</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-10 ink-swap" aria-label="Primary">
+      <a href="Vila Emes.html" class="nav-link hover:text-terracotta transition-colors" data-i18n="nav.home">Home</a>
+      <a href="Rooms.html"     class="nav-link hover:text-terracotta transition-colors text-terracotta" aria-current="page" data-i18n="nav.rooms">Rooms</a>
+      <a href="Contact.html"   class="nav-link hover:text-terracotta transition-colors" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="flex items-center gap-4 ink-swap">
+      <div class="hidden sm:flex items-center gap-2" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="EN" aria-pressed="true">EN</button>
+        <span class="lang-divider w-px h-3"></span>
+        <button class="lang-btn" data-lang="AL" aria-pressed="false">AL</button>
+        <span class="lang-divider w-px h-3"></span>
+        <button class="lang-btn" data-lang="IT" aria-pressed="false">IT</button>
+      </div>
+      <button id="mobileNavBtn" class="md:hidden -mr-2 p-2" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 7h16M3 15h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileNav" class="md:hidden bg-cream border-t border-divider text-ink" hidden>
+    <nav class="px-5 py-3 flex flex-col" aria-label="Mobile">
+      <a href="Vila Emes.html" class="nav-link py-3 border-b border-divider" data-i18n="nav.home">Home</a>
+      <a href="Rooms.html"     class="nav-link py-3 border-b border-divider text-terracotta" data-i18n="nav.rooms">Rooms</a>
+      <a href="Contact.html"   class="nav-link py-3" data-i18n="nav.contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero pt-28 md:pt-36 pb-16 md:pb-24 border-b border-divider">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="palm palm-1" aria-hidden="true"><svg viewBox="0 0 200 240" fill="none"><path d="M100 240V90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M100 90C100 60 70 35 25 35 25 60 50 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 90C100 60 130 35 175 35 175 60 150 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 80 20 45 5 40 35 60 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 120 20 155 5 160 35 140 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="palm palm-2" aria-hidden="true"><svg viewBox="0 0 200 240" fill="none"><path d="M100 240V90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M100 90C100 60 70 35 25 35 25 60 50 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 90C100 60 130 35 175 35 175 60 150 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 80 20 45 5 40 35 60 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 120 20 155 5 160 35 140 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="palm palm-4" aria-hidden="true"><svg viewBox="0 0 200 240" fill="none"><path d="M100 240V90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M100 90C100 60 70 35 25 35 25 60 50 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 90C100 60 130 35 175 35 175 60 150 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10">
+    <p class="eyebrow text-muted mb-5">Stay with us</p>
+    <h1 class="font-serif text-[52px] md:text-[88px] lg:text-[104px] leading-[1] max-w-[14ch]">Our <span class="handwritten italic text-terracotta">rooms</span></h1>
+    <p class="mt-6 max-w-[58ch] text-ink/80 text-[16px] md:text-[18px] leading-relaxed">
+      Eleven layouts across four floors — from a budget triple for backpackers
+      to two-bedroom apartments with terraces facing the sea. Every room is
+      cleaned and made up by hand each morning.
+    </p>
+
+    <!-- Filter bar -->
+    <div class="mt-10 flex flex-col md:flex-row md:items-center gap-5">
+      <div class="tab-bar" role="tablist" aria-label="Filter by category">
+        <button data-filter="all" aria-pressed="true">All · 11</button>
+        <button data-filter="apartment" aria-pressed="false">Apartments</button>
+        <button data-filter="deluxe" aria-pressed="false">Deluxe</button>
+        <button data-filter="family" aria-pressed="false">Family</button>
+        <button data-filter="standard" aria-pressed="false">Standard</button>
+        <button data-filter="economy" aria-pressed="false">Economy</button>
+      </div>
+      <p class="text-[13px] text-muted">All rates handled by Booking.com — tap any room to reserve.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROOMS LIST ===== -->
+<main class="rooms-main max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-24" id="roomsList">
+
+  <!-- 01 — One-Bedroom Apartment with Terrace -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="apartment" id="apt-1bed-terrace">
+    <div class="ph ph-2 aspect-[4/3] w-full rounded-md order-1"></div>
+    <div class="order-2">
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">01 · Apartment</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps up to 4</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">One-Bedroom Apartment with Terrace</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Our largest one-bedroom — eighty square metres, with a private terrace
+        big enough for a long lunch in the shade. Living area with a sofa bed,
+        a separate bedroom, kitchenette, and dining table.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 large double · 1 sofa bed</p>
+        <p class="text-muted">Size</p>          <p class="num">80 m²</p>
+        <p class="text-muted">Outdoor</p>       <p>Private terrace</p>
+        <p class="text-muted">View</p>          <p>City &amp; partial sea</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Terrace</span>
+        <span class="amenity">Kitchenette</span>
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Family-friendly</span>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="#" class="btn btn-primary">Book on Booking.com</a>
+        <a href="#apt-2bed" class="text-terracotta text-[14px] font-medium inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">See the larger one <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 — Two-Bedroom Apartment -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="apartment" id="apt-2bed">
+    <div class="md:order-2 ph ph-10 aspect-[4/3] w-full rounded-md"></div>
+    <div class="md:order-1">
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">02 · Apartment</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps up to 6</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Two-Bedroom Apartment</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Ninety square metres — two bedrooms, a separate living room, a full
+        kitchenette, and a dining table for four. The room families come back
+        to year after year.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 large double · 2 single · 1 sofa bed</p>
+        <p class="text-muted">Size</p>          <p class="num">90 m²</p>
+        <p class="text-muted">View</p>          <p>City</p>
+        <p class="text-muted">Floor</p>         <p class="num">Upper floors, with lift</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Kitchenette</span>
+        <span class="amenity">Dining table</span>
+        <span class="amenity">2 bedrooms</span>
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Family-friendly</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 03 — Deluxe King -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="deluxe" id="deluxe-king">
+    <div class="ph ph-6 aspect-[4/3] w-full rounded-md"></div>
+    <div>
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">03 · Deluxe</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 2</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Deluxe King</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Thirty square metres of calm — a king bed with linen sheets, a small
+        seating corner by the window, and a renovated bathroom in cream tile.
+        Quiet hours, even in August.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 king</p>
+        <p class="text-muted">Size</p>          <p class="num">30 m²</p>
+        <p class="text-muted">View</p>          <p>City / inner garden</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Mini-fridge</span>
+        <span class="amenity">Renovated 2024</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 04 — Deluxe Queen -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="deluxe" id="deluxe-queen">
+    <div class="md:order-2 ph ph-3 aspect-[4/3] w-full rounded-md"></div>
+    <div class="md:order-1">
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">04 · Deluxe</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 2</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Deluxe Queen</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        A slightly smaller deluxe with a queen bed and a deep bathtub.
+        Best for couples who like a long bath after a day at the beach.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 queen</p>
+        <p class="text-muted">Size</p>          <p class="num">26 m²</p>
+        <p class="text-muted">View</p>          <p>City / side street</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Bathtub</span>
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Mini-fridge</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 05 — Deluxe Double with Balcony -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="deluxe" id="deluxe-balcony">
+    <div class="ph ph-5 aspect-[4/3] w-full rounded-md"></div>
+    <div>
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">05 · Deluxe</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 2</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Deluxe Double with Balcony</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Double bed, French windows, and a small balcony with two chairs.
+        The kind of room where you take coffee outside in your dressing-gown.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 large double</p>
+        <p class="text-muted">Size</p>          <p class="num">26 m²</p>
+        <p class="text-muted">Outdoor</p>       <p>Balcony</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Balcony</span>
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Mini-fridge</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 06 — Quadruple Sea View -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="family" id="quad-sea">
+    <div class="md:order-2 ph ph-12 aspect-[4/3] w-full rounded-md"></div>
+    <div class="md:order-1">
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">06 · Family</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 4</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Quadruple Sea View</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Top-floor room for four with a clear partial view toward the Adriatic.
+        A double for the parents, two singles for the children, and enough
+        floor space for a suitcase explosion.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 double · 2 single</p>
+        <p class="text-muted">Size</p>          <p class="num">32 m²</p>
+        <p class="text-muted">View</p>          <p>Sea (partial)</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Sea view</span>
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Family-friendly</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 07 — Family Room with Balcony -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="family" id="family-balcony">
+    <div class="ph ph-7 aspect-[4/3] w-full rounded-md"></div>
+    <div>
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">07 · Family</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 4</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Family Room with Balcony</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        A family room a couple of floors down — same beds as the Quadruple,
+        but with a private balcony in place of the sea view. Quieter, often
+        cooler in the afternoon.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 double · 2 single</p>
+        <p class="text-muted">Size</p>          <p class="num">30 m²</p>
+        <p class="text-muted">Outdoor</p>       <p>Balcony</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Balcony</span>
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Family-friendly</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 08 — Standard Family Room -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="family" id="family-standard">
+    <div class="md:order-2 ph ph-9 aspect-[4/3] w-full rounded-md"></div>
+    <div class="md:order-1">
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">08 · Family</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 3–4</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Standard Family Room</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Our most popular family room: simple, comfortable, no fuss. A double
+        and a single, with space to roll in a fourth bed on request.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 double · 1 single</p>
+        <p class="text-muted">Size</p>          <p class="num">24 m²</p>
+        <p class="text-muted">Extra</p>         <p>Extra bed €5/night</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Mini-fridge</span>
+        <span class="amenity">Family-friendly</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 09 — Standard Double -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="standard" id="std-double">
+    <div class="ph ph-1 aspect-[4/3] w-full rounded-md"></div>
+    <div>
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">09 · Standard</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 2</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Standard Double</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        The room most people book — comfortable, simply furnished, and cleaned
+        to a shine every morning. Walk-in shower and a small writing desk.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">1 double</p>
+        <p class="text-muted">Size</p>          <p class="num">20 m²</p>
+        <p class="text-muted">View</p>          <p>Side street / courtyard</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Mini-fridge</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 10 — Economy Triple -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center mb-20 md:mb-28 reveal" data-cat="economy" id="econ-triple">
+    <div class="md:order-2 ph ph-4 aspect-[4/3] w-full rounded-md"></div>
+    <div class="md:order-1">
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">10 · Economy</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 3</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Economy Triple</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Three single beds, a private bathroom, an honest price. Best for
+        friends on a road trip or a parent travelling with two kids.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">3 single</p>
+        <p class="text-muted">Size</p>          <p class="num">22 m²</p>
+        <p class="text-muted">Best for</p>      <p>Friends &amp; small families</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+        <span class="amenity">Mini-fridge</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+  <!-- 11 — Budget Triple -->
+  <article class="room grid md:grid-cols-2 gap-8 md:gap-14 items-center reveal" data-cat="economy" id="budget-triple">
+    <div class="ph ph-8 aspect-[4/3] w-full rounded-md"></div>
+    <div>
+      <div class="flex items-center gap-3 mb-3 flex-wrap">
+        <span class="eyebrow text-terracotta">11 · Economy</span>
+        <span class="hairline w-10"></span>
+        <span class="eyebrow text-muted num">Sleeps 3</span>
+      </div>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-4">Budget Triple</h2>
+      <p class="text-ink/80 max-w-[52ch] mb-6">
+        Our most affordable room. Smaller, cosier, with the same care as the rest —
+        clean sheets, hot showers, and someone at the desk if you need anything.
+      </p>
+      <div class="grid grid-cols-2 gap-y-2 max-w-[420px] mb-7 text-[14px]">
+        <p class="text-muted">Beds</p>          <p class="num">3 single</p>
+        <p class="text-muted">Size</p>          <p class="num">18 m²</p>
+        <p class="text-muted">Best for</p>      <p>Backpackers &amp; long stays</p>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="amenity">Air conditioning</span>
+        <span class="amenity">Wi-Fi</span>
+        <span class="amenity">Private bath</span>
+      </div>
+      <a href="#" class="btn btn-primary">Book on Booking.com</a>
+    </div>
+  </article>
+
+</main>
+
+<!-- ===== AMENITIES ALL ROOMS SHARE ===== -->
+<section class="border-t border-divider bg-[#F5EFE2]">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div>
+        <p class="eyebrow text-muted mb-4">In every room</p>
+        <h2 class="font-serif text-[40px] md:text-[56px] leading-[1.05]">What's always included</h2>
+        <p class="handwritten text-[26px] text-terracotta mt-4">— no fine print, no surprises</p>
+        <p class="text-muted text-[14px] mt-6 max-w-[42ch]">Breakfast isn't included, but the pastry shop on the ground floor opens early — guests usually take coffee and bakllava there before heading to the beach.</p>
+      </div>
+      <ul class="grid grid-cols-2 gap-y-3 gap-x-6 text-[15px] text-ink/85">
+        <li>· Daily housekeeping</li>
+        <li>· Free Wi-Fi</li>
+        <li>· Air conditioning</li>
+        <li>· Private bathroom</li>
+        <li>· 24-hour front desk</li>
+        <li>· Lift to all floors</li>
+        <li>· Free parking out front</li>
+        <li>· Iron + hairdryer on request</li>
+        <li>· Extra bed €5/night</li>
+        <li>· Help booking taxis &amp; tours</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOUSE RULES ===== -->
+<section class="border-t border-divider">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-24 grid md:grid-cols-3 gap-10">
+    <div>
+      <p class="eyebrow text-muted mb-3">Check-in</p>
+      <p class="font-serif text-[28px] num">12:00 – 18:00</p>
+      <p class="text-muted text-[14px] mt-2">Late arrivals welcome — front desk is staffed 24 hours.</p>
+    </div>
+    <div>
+      <p class="eyebrow text-muted mb-3">Check-out</p>
+      <p class="font-serif text-[28px] num">07:00 – 11:00</p>
+      <p class="text-muted text-[14px] mt-2">We can hold your bags after check-out at no charge.</p>
+    </div>
+    <div>
+      <p class="eyebrow text-muted mb-3">House notes</p>
+      <p class="text-[15px] leading-relaxed">No pets. Children of all ages welcome. Cribs aren't available; an extra bed can be added for €5 per person, per night.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT CTA ===== -->
+<section class="border-t border-divider">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-20 text-center">
+    <p class="handwritten text-[28px] text-terracotta mb-3">— still deciding?</p>
+    <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.1] mb-6 max-w-[24ch] mx-auto">Tell us what you're looking for and we'll write back the same day.</h2>
+    <a href="Contact.html" class="btn btn-outline-sea">Get in touch</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-cream border-t border-divider">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-10 flex flex-col items-center gap-5">
+    <div class="sm:hidden flex items-center gap-3" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="EN" aria-pressed="true">EN</button>
+      <span class="lang-divider w-px h-3 bg-divider"></span>
+      <button class="lang-btn" data-lang="AL" aria-pressed="false">AL</button>
+      <span class="lang-divider w-px h-3 bg-divider"></span>
+      <button class="lang-btn" data-lang="IT" aria-pressed="false">IT</button>
+    </div>
+    <p class="wordmark text-[13px] text-ink/80">VILA&nbsp;EMES</p>
+    <p class="handwritten text-[18px] text-muted">made with care by the Emes family</p>
+    <p class="text-[12px] text-muted">© 2026 Vila Emes · Durrës, Albania</p>
+  </div>
+</footer>
+
+<script>
+  // Filter
+  const tabs = document.querySelectorAll('[data-filter]');
+  const rooms = document.querySelectorAll('.room');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    const f = t.dataset.filter;
+    tabs.forEach(b => b.setAttribute('aria-pressed', b === t ? 'true' : 'false'));
+    rooms.forEach(r => {
+      const show = f === 'all' || r.dataset.cat === f;
+      r.style.display = show ? '' : 'none';
+    });
+  }));
+
+  // ---- Room extras (price-from, good-for, nearby, compact-meta, postcard stamp) ----
+  const ROOM_DATA = {
+    'apt-1bed-terrace':  { from: 65, goodFor: ['couples', 'long stays', 'shaded mornings'],         nearby: 'Three minutes to the seafront promenade — the terrace catches the breeze before sunset.' },
+    'apt-2bed':          { from: 85, goodFor: ['families of four', 'two couples travelling'],        nearby: 'Two bedrooms, full kitchen — a real apartment for a long week, not a hotel room.' },
+    'deluxe-king':       { from: 55, goodFor: ['couples', 'newlyweds'],                              nearby: 'Renovated in 2024 — the quietest corner of the second floor.' },
+    'deluxe-queen':      { from: 50, goodFor: ['couples', 'longer baths'],                           nearby: 'The only room with a full bathtub — guests ask for it by name.' },
+    'deluxe-balcony':    { from: 50, goodFor: ['couples', 'morning coffee on the balcony'],         nearby: 'Balcony faces the courtyard, so it stays calm even in August.' },
+    'quad-sea':          { from: 70, goodFor: ['families of four', 'a sea view'],                    nearby: 'The widest sea-view window in the house — third floor, west side.' },
+    'family-balcony':    { from: 60, goodFor: ['families', 'kids who wake early'],                  nearby: 'Two interconnected beds plus a balcony — easy to keep an eye on small ones.' },
+    'family-standard':   { from: 55, goodFor: ['families on a budget'],                              nearby: 'Honest family room — clean, simple, two minutes to the bakery downstairs.' },
+    'std-double':        { from: 38, goodFor: ['couples on a budget', 'short stays'],                nearby: 'Our most-booked room. Reserve early in July and August.' },
+    'econ-triple':       { from: 42, goodFor: ['friends', 'three travellers on a budget'],           nearby: 'Three single beds, all the essentials — popular with summer-camp leaders.' },
+    'budget-triple':     { from: 36, goodFor: ['backpackers', 'short stays'],                        nearby: 'Smallest, friendliest price. Linens fresh, bathroom private, no fuss.' },
+  };
+  document.querySelectorAll('.room').forEach(room => {
+    const id = room.id; const d = ROOM_DATA[id]; if (!d) return;
+    const body = room.querySelector('.order-2, .md\\:order-1') || room.children[1];
+    if (!body) return;
+
+    // Postcard stamp
+    const stamp = document.createElement('span');
+    stamp.className = 'voice-postcard-stamp';
+    stamp.textContent = 'from €' + d.from + ' / night';
+    room.appendChild(stamp);
+
+    // Density: everything block, inserted before the CTA row
+    const extras = document.createElement('div');
+    extras.className = 'room-extras';
+    extras.innerHTML = `
+      <div class="from"><span class="text-[12px] tracking-[0.18em] uppercase">From</span><span class="num">€${d.from}</span><span class="text-[12px] text-muted">/ night</span></div>
+      <div class="good-for">${d.goodFor.map(g => `<span>${g}</span>`).join('')}</div>
+      <p class="nearby">${d.nearby}</p>
+    `;
+    const ctaRow = body.querySelector('.flex.items-center.gap-5') || body.querySelector('a.btn-primary')?.parentElement;
+    if (ctaRow && ctaRow.parentElement === body) body.insertBefore(extras, ctaRow);
+    else body.appendChild(extras);
+
+    // Compact-meta line for compact layout
+    const beds = body.querySelector('.grid.grid-cols-2.gap-y-2 p:nth-child(2)')?.textContent || '';
+    const size = body.querySelector('.grid.grid-cols-2.gap-y-2 p:nth-child(4)')?.textContent || '';
+    const meta = document.createElement('div');
+    meta.className = 'compact-meta';
+    meta.innerHTML = `<span class="num">${size}</span><span>·</span><span>from €${d.from}</span>`;
+    body.appendChild(meta);
+
+    // Compact link
+    const link = document.createElement('a');
+    link.href = '#'; link.className = 'compact-link text-terracotta text-[14px] font-medium';
+    link.textContent = 'View room →';
+    link.style.display = 'none';
+    body.appendChild(link);
+  });
+
+  // i18n (nav only)
+  const I18N = {
+    EN: { 'nav.home':'Home', 'nav.rooms':'Rooms', 'nav.contact':'Contact' },
+    AL: { 'nav.home':'Faqja', 'nav.rooms':'Dhomat', 'nav.contact':'Kontakt' },
+    IT: { 'nav.home':'Home', 'nav.rooms':'Camere', 'nav.contact':'Contatti' },
+  };
+  function applyLang(lang){
+    document.documentElement.setAttribute('lang', lang.toLowerCase());
+    const dict = I18N[lang] || I18N.EN;
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k]) el.textContent = dict[k]; });
+  }
+  document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === btn.dataset.lang ? 'true' : 'false'));
+    applyLang(btn.dataset.lang);
+  }));
+
+  // Mobile nav
+  const mb = document.getElementById('mobileNavBtn');
+  const mn = document.getElementById('mobileNav');
+  mb && mb.addEventListener('click', () => { const open = !mn.hidden; mn.hidden = open; mb.setAttribute('aria-expanded', String(!open)); });
+
+  // Reveal
+  const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<!-- Tweaks panel mount -->
+<div id="tweaks-root" class="tweaks-host"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const ROOMS_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "layout": "alternating",
+    "density": "balanced",
+    "voice": "family"
+  }/*EDITMODE-END*/;
+
+  function RoomsTweaks() {
+    const [t, setTweak] = useTweaks(ROOMS_TWEAK_DEFAULTS);
+    React.useEffect(() => {
+      document.body.setAttribute('data-layout', t.layout);
+      document.body.setAttribute('data-density', t.density);
+      document.body.setAttribute('data-voice', t.voice);
+    }, [t.layout, t.density, t.voice]);
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Layout" subtitle="How the rooms read down the page">
+          <TweakRadio label="Layout" value={t.layout} options={['alternating','gallery','compact']} onChange={(v)=>setTweak('layout',v)} />
+        </TweakSection>
+        <TweakSection title="Density" subtitle="How much detail each room shows">
+          <TweakRadio label="Detail" value={t.density} options={['essentials','balanced','everything']} onChange={(v)=>setTweak('density',v)} />
+        </TweakSection>
+        <TweakSection title="Voice" subtitle="The tone of the page">
+          <TweakRadio label="Tone" value={t.voice} options={['family','concierge','postcard']} onChange={(v)=>setTweak('voice',v)} />
+        </TweakSection>
+      </TweaksPanel>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<RoomsTweaks />);
+</script>
+<script src="palm-doodles.js"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vila Emes — A small family hotel by the sea</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream:     '#FAF6EE',
+          ink:       '#1F1A14',
+          terracotta:'#C25B3F',
+          sea:       '#2E5C7E',
+          muted:     '#8C7E6A',
+          divider:   '#E8DFCF',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans:  ['"Inter"', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html, body { background:#FBF3E4; color:#1F1A14; }
+  /* slightly warmer cream than spec base for a softer, more home-like feel */
+  body { font-family:'Inter', system-ui, sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  @media (min-width: 768px) { body { font-size:17px; } }
+  h1,h2,h3,h4 { font-family:'Cormorant Garamond', Georgia, serif; font-weight:500; letter-spacing:-0.005em; }
+  .wordmark { font-family:'Cormorant Garamond', Georgia, serif; letter-spacing:0.22em; font-weight:500; }
+  .handwritten { font-family:'Caveat', 'Cormorant Garamond', cursive; font-weight:500; }
+  .eyebrow  { font-family:'Inter', sans-serif; letter-spacing:0.22em; text-transform:uppercase; font-size:11px; font-weight:500; }
+  .nav-link { font-size:13px; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; }
+
+  /* Hero: warm sand → sea-blue gradient placeholder */
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 90%, rgba(194,91,63,0.35), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 80% 20%, rgba(255,232,200,0.45), transparent 60%),
+      linear-gradient(180deg,
+        #E9C9A0 0%,
+        #D9B286 28%,
+        #8FA9B8 62%,
+        #547690 85%,
+        #2E5C7E 100%);
+  }
+  /* Subtle film grain over hero, very faint */
+  .hero-grain::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.10; mix-blend-mode:overlay;
+    background-image: radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  /* Generic warm gradient placeholder tiles for gallery + cards */
+  .ph { position:relative; overflow:hidden; }
+  .ph::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(31,26,20,0) 60%, rgba(31,26,20,0.08) 100%); pointer-events:none; }
+  .ph-1 { background:linear-gradient(135deg,#E9C9A0,#C9A57E); }
+  .ph-2 { background:linear-gradient(160deg,#F1DDC0,#C25B3F 120%); }
+  .ph-3 { background:linear-gradient(140deg,#B7C7D2,#2E5C7E); }
+  .ph-4 { background:linear-gradient(170deg,#EFE2CB,#A89578); }
+  .ph-5 { background:linear-gradient(135deg,#DCC6A6,#8FA9B8); }
+  .ph-6 { background:linear-gradient(150deg,#F4E6D0,#D2A07F); }
+  .ph-7 { background:linear-gradient(180deg,#A5B7C2,#557287); }
+  .ph-8 { background:linear-gradient(160deg,#E9D6B7,#B58662); }
+  .ph-9 { background:linear-gradient(140deg,#F2E1C5,#E8B695); }
+  .ph-10{ background:linear-gradient(135deg,#C8B594,#7C9AA8); }
+  .ph-11{ background:linear-gradient(165deg,#EFDDBE,#9C8161); }
+  .ph-12{ background:linear-gradient(155deg,#D4BEA0,#3F6D8C); }
+
+  /* Map placeholder: subtle cream/blue grid */
+  .map-tile {
+    background:
+      linear-gradient(#E8DFCF 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, #E8DFCF 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(#F0E5D2 1px, transparent 1px) 0 0/8px 8px,
+      linear-gradient(90deg, #F0E5D2 1px, transparent 1px) 0 0/8px 8px,
+      radial-gradient(ellipse 70% 50% at 35% 65%, rgba(46,92,126,0.10), transparent 60%),
+      linear-gradient(180deg,#F6EDD9,#EFE3C9);
+  }
+  .map-pin { filter: drop-shadow(0 4px 6px rgba(31,26,20,0.18)); }
+
+  /* Header: transparent over hero, solid after scroll */
+  .site-header { transition: background-color .35s ease, border-color .35s ease, color .35s ease; }
+  .site-header.is-solid { background:rgba(250,246,238,0.92); backdrop-filter: blur(10px); border-bottom:1px solid #E8DFCF; }
+  .site-header.is-transparent { background:transparent; color:#FAF6EE; }
+  .site-header.is-transparent .ink-swap { color:#FAF6EE; }
+  .site-header.is-transparent .lang-divider { background:rgba(250,246,238,0.4); }
+  .site-header.is-solid .ink-swap { color:#1F1A14; }
+  .site-header.is-solid .lang-divider { background:#E8DFCF; }
+
+  /* Buttons */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; padding:.95rem 1.4rem; border-radius:6px; font-weight:500; font-size:14px; letter-spacing:.04em; transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .15s ease; }
+  .btn:active { transform:translateY(1px); }
+  .btn-primary { background:#C25B3F; color:#FAF6EE; }
+  .btn-primary:hover { background:#A94A30; }
+  .btn-outline { border:1px solid #FAF6EE; color:#FAF6EE; background:transparent; }
+  .btn-outline:hover { background:rgba(250,246,238,0.10); }
+  .btn-outline-sea { border:1px solid #2E5C7E; color:#2E5C7E; background:transparent; }
+  .btn-outline-sea:hover { background:rgba(46,92,126,0.06); }
+
+  /* Lang switcher */
+  .lang-btn { font-size:11px; letter-spacing:0.22em; font-weight:500; padding:.25rem .15rem; }
+  .lang-btn[aria-pressed="true"] { color:#C25B3F; }
+
+  /* Rooms card */
+  .room-card { transition: transform .35s ease; }
+  .room-card:hover { transform: translateY(-2px); }
+  .room-card:hover .room-photo > div { transform: scale(1.02); }
+  .room-photo > div { transition: transform .6s ease; }
+
+  /* Subtle reveal on scroll */
+  .reveal { opacity:0; transform: translateY(14px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* Lang dropdown */
+  .lang-menu { transform-origin: top right; }
+  .lang-menu[hidden] { display:none; }
+
+  /* Photo on About section uses the real exterior shot */
+  .about-photo {
+    background-image: url('assets/vila-emes-exterior.png');
+    background-size: cover;
+    background-position: center 30%;
+  }
+
+  /* Footer divider */
+  .hairline { height:1px; background:#E8DFCF; }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    .room-photo > div, .room-card { transition:none; }
+  }
+
+  /* Small numerals on capacity etc */
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="bg-cream text-ink">
+
+<!-- ====================== HEADER ====================== -->
+<header id="siteHeader" class="site-header is-transparent fixed top-0 inset-x-0 z-50">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+    <a href="Vila Emes.html" class="wordmark text-[15px] md:text-[16px] ink-swap inline-flex items-center gap-2.5">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 22V11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 11C12 8 9 6 5 6 5 9 7 11.5 12 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 11C12 8 15 6 19 6 19 9 17 11.5 12 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 10C12 7.5 11 4 8 2 7.5 5 9 8 12 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 10C12 7.5 13 4 16 2 16.5 5 15 8 12 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span>VILA&nbsp;EMES</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-10 ink-swap" aria-label="Primary">
+      <a href="Vila Emes.html" class="nav-link hover:text-terracotta transition-colors" aria-current="page" data-i18n="nav.home">Home</a>
+      <a href="Rooms.html"     class="nav-link hover:text-terracotta transition-colors" data-i18n="nav.rooms">Rooms</a>
+      <a href="Contact.html"   class="nav-link hover:text-terracotta transition-colors" data-i18n="nav.contact">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-4 ink-swap">
+      <!-- Desktop language switcher -->
+      <div class="hidden sm:flex items-center gap-2" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="EN" aria-pressed="true">EN</button>
+        <span class="lang-divider w-px h-3"></span>
+        <button class="lang-btn" data-lang="AL" aria-pressed="false">AL</button>
+        <span class="lang-divider w-px h-3"></span>
+        <button class="lang-btn" data-lang="IT" aria-pressed="false">IT</button>
+      </div>
+
+      <!-- Mobile: simple lang dropdown -->
+      <div class="sm:hidden relative">
+        <button id="langTrigger" class="lang-btn flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+          <span id="langCurrent">EN</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="langMenu" class="lang-menu absolute right-0 mt-2 bg-cream text-ink border border-divider rounded-md py-1 min-w-[80px] shadow-sm" hidden>
+          <button class="lang-btn block w-full text-left px-3 py-1.5" data-lang="EN">EN</button>
+          <button class="lang-btn block w-full text-left px-3 py-1.5" data-lang="AL">AL</button>
+          <button class="lang-btn block w-full text-left px-3 py-1.5" data-lang="IT">IT</button>
+        </div>
+      </div>
+
+      <!-- Mobile nav toggle (simple anchor menu) -->
+      <button id="mobileNavBtn" class="md:hidden -mr-2 p-2" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M3 7h16M3 15h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu sheet -->
+  <div id="mobileNav" class="md:hidden bg-cream border-t border-divider text-ink" hidden>
+    <nav class="px-5 py-3 flex flex-col" aria-label="Mobile">
+      <a href="Vila Emes.html" class="nav-link py-3 border-b border-divider" data-i18n="nav.home">Home</a>
+      <a href="Rooms.html"     class="nav-link py-3 border-b border-divider" data-i18n="nav.rooms">Rooms</a>
+      <a href="Contact.html"   class="nav-link py-3" data-i18n="nav.contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ====================== HERO (React-mounted, Tweak-switchable) ====================== -->
+<div id="hero-root"></div>
+
+<!-- ====================== ABOUT ====================== -->
+<section id="about" class="relative">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-32 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="reveal">
+      <p class="eyebrow text-muted mb-5">Our story</p>
+      <h2 class="font-serif text-[40px] md:text-[56px] leading-[1.1] mb-3 max-w-[18ch]">A small house, <span class="handwritten italic text-terracotta">kept by one family.</span></h2>
+      <p class="handwritten text-[22px] text-muted mb-7">— since 1998</p>
+      <div class="space-y-4 text-ink/85 max-w-[52ch]">
+        <p>
+          Vila Emes is a small hotel a short walk from the Adriatic. Three generations of our family look after the rooms, the breakfast table, and the little garden out back — and we've done so since the doors first opened in 1998.
+        </p>
+        <p>
+          Mornings start with coffee on the terrace and the smell of warm bread from the pastry shop just downstairs. Afternoons are unhurried. Shaban — our owner — will reserve a parking spot for you (sometimes with a chair), point you to the quiet stretch of beach, and is awake at 3am to meet you if your flight lands late.
+        </p>
+        <p>
+          We keep things simple: clean rooms, honest prices, and the kind of welcome you only get from a house run by people who live in it. You arrive a guest. You leave family.
+        </p>
+      </div>
+      <div class="hairline w-16 mt-9"></div>
+      <p class="mt-5 handwritten text-[28px] text-terracotta">— with love, the Emes family</p>
+    </div>
+
+    <div class="reveal">
+      <div class="about-photo aspect-square w-full rounded-md ph"></div>
+      <p class="eyebrow text-muted mt-4">Vila Emes · Plazh, Durrës</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== TRUST STRIP ====================== -->
+<section class="relative border-t border-divider bg-[#F5EFE2]">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-14 md:py-16">
+    <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center reveal">
+      <div class="md:col-span-5">
+        <p class="eyebrow text-muted mb-4">What guests say</p>
+        <div class="flex items-end gap-8">
+          <div>
+            <p class="font-serif text-[56px] md:text-[64px] leading-none num">9.0</p>
+            <p class="eyebrow text-muted mt-2">Booking.com</p>
+          </div>
+          <div class="hairline w-px h-14 bg-divider"></div>
+          <div>
+            <p class="font-serif text-[56px] md:text-[64px] leading-none num">4.7</p>
+            <p class="eyebrow text-muted mt-2">Google · 5</p>
+          </div>
+        </div>
+        <p class="mt-5 text-muted text-[14px]">From 47 reviews in the past year.</p>
+      </div>
+      <figure class="md:col-span-7">
+        <svg width="28" height="22" viewBox="0 0 28 22" fill="#C25B3F" aria-hidden="true" class="mb-3 opacity-80"><path d="M0 22V12C0 5.4 4.4 1 11 0v4c-3.6.6-6 3-6 6h6v12H0zm17 0V12C17 5.4 21.4 1 28 0v4c-3.6.6-6 3-6 6h6v12H17z"/></svg>
+        <blockquote class="font-serif text-[24px] md:text-[30px] leading-[1.35] text-ink max-w-[52ch]" style="text-wrap: pretty;">
+          It is not a fake luxury hotel — it is a simple place with a real heart. Lovely owner, always there to help, big spacious room, great value for money.
+        </blockquote>
+        <figcaption class="mt-5 flex items-center gap-3 text-[13px]">
+          <span class="font-serif text-[18px]">Baling</span>
+          <span class="hairline w-6 bg-muted/50"></span>
+          <span class="text-muted">Hungary · stayed September</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ROOMS ====================== -->
+<section id="rooms" class="relative border-t border-divider">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-32">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16 reveal">
+      <div>
+        <p class="eyebrow text-muted mb-4">Stay</p>
+        <h2 class="font-serif text-[40px] md:text-[56px] leading-[1.05]">Our Rooms</h2>
+      </div>
+      <p class="text-ink/75 max-w-[42ch]">Eleven layouts in total, from a 30 m² double to a 90 m² apartment with sea view. Each is cleaned and made up by hand every morning.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <!-- Apartments -->
+      <article class="room-card reveal">
+        <div class="room-photo ph ph-5 aspect-[4/5] w-full rounded-md mb-5"><div class="absolute inset-0"></div></div>
+        <p class="eyebrow text-muted mb-2">01 · Apartments</p>
+        <h3 class="font-serif text-[26px] mb-1">One- &amp; Two-Bedroom</h3>
+        <p class="text-muted text-[14px] num mb-4">80–90 m² · sleeps up to 6 · sea view</p>
+        <a href="Rooms.html" class="text-terracotta text-[14px] font-medium inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">View details <span aria-hidden="true">→</span></a>
+      </article>
+
+      <!-- Family -->
+      <article class="room-card reveal">
+        <div class="room-photo ph ph-2 aspect-[4/5] w-full rounded-md mb-5"><div class="absolute inset-0"></div></div>
+        <p class="eyebrow text-muted mb-2">02 · Family</p>
+        <h3 class="font-serif text-[26px] mb-1">Family Rooms</h3>
+        <p class="text-muted text-[14px] num mb-4">30 m² · sleeps 3–4 · balcony</p>
+        <a href="Rooms.html" class="text-terracotta text-[14px] font-medium inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">View details <span aria-hidden="true">→</span></a>
+      </article>
+
+      <!-- Deluxe -->
+      <article class="room-card reveal">
+        <div class="room-photo ph ph-9 aspect-[4/5] w-full rounded-md mb-5"><div class="absolute inset-0"></div></div>
+        <p class="eyebrow text-muted mb-2">03 · Deluxe</p>
+        <h3 class="font-serif text-[26px] mb-1">Deluxe Double</h3>
+        <p class="text-muted text-[14px] num mb-4">27–30 m² · sleeps 2 · balcony</p>
+        <a href="Rooms.html" class="text-terracotta text-[14px] font-medium inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">View details <span aria-hidden="true">→</span></a>
+      </article>
+
+      <!-- Triple/Quad -->
+      <article class="room-card reveal">
+        <div class="room-photo ph ph-1 aspect-[4/5] w-full rounded-md mb-5"><div class="absolute inset-0"></div></div>
+        <p class="eyebrow text-muted mb-2">04 · Triple &amp; Quad</p>
+        <h3 class="font-serif text-[26px] mb-1">Triple &amp; Quadruple</h3>
+        <p class="text-muted text-[14px] num mb-4">27–30 m² · sleeps 3–4 · sea or city view</p>
+        <a href="Rooms.html" class="text-terracotta text-[14px] font-medium inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">View details <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== GALLERY ====================== -->
+<section id="gallery" class="relative border-t border-divider">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-20 md:py-32">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16 reveal">
+      <div>
+        <p class="eyebrow text-muted mb-4">Inside &amp; out</p>
+        <h2 class="font-serif text-[40px] md:text-[56px] leading-[1.05]">Gallery</h2>
+      </div>
+      <p class="text-ink/75 max-w-[40ch]">Twelve frames: rooms, terrace, breakfast, the walk to the water.</p>
+    </div>
+
+    <!-- Masonry via CSS columns; tiles vary in aspect ratio -->
+    <div class="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance] reveal">
+      <figure class="mb-4 break-inside-avoid">
+        <div class="ph ph-1 rounded-md w-full" style="aspect-ratio: 4/5;"></div>
+        <figcaption class="handwritten text-[18px] text-muted mt-2">balcony, room 204</figcaption>
+      </figure>
+      <div class="ph ph-3 mb-4 rounded-md w-full" style="aspect-ratio: 1/1;"></div>
+      <figure class="mb-4 break-inside-avoid">
+        <div class="ph ph-6 rounded-md w-full" style="aspect-ratio: 3/4;"></div>
+        <figcaption class="handwritten text-[18px] text-muted mt-2">breakfast on the terrace</figcaption>
+      </figure>
+      <div class="ph ph-7 mb-4 rounded-md w-full" style="aspect-ratio: 4/3;"></div>
+      <figure class="mb-4 break-inside-avoid">
+        <div class="ph ph-2 rounded-md w-full" style="aspect-ratio: 3/4;"></div>
+        <figcaption class="handwritten text-[18px] text-muted mt-2">the walk down to the water</figcaption>
+      </figure>
+      <div class="ph ph-10 mb-4 rounded-md w-full" style="aspect-ratio: 1/1;"></div>
+      <div class="ph ph-4 mb-4 rounded-md w-full" style="aspect-ratio: 4/5;"></div>
+      <figure class="mb-4 break-inside-avoid">
+        <div class="ph ph-12 rounded-md w-full" style="aspect-ratio: 4/3;"></div>
+        <figcaption class="handwritten text-[18px] text-muted mt-2">first light, August</figcaption>
+      </figure>
+      <div class="ph ph-8 mb-4 rounded-md w-full" style="aspect-ratio: 1/1;"></div>
+      <figure class="mb-4 break-inside-avoid">
+        <div class="ph ph-11 rounded-md w-full" style="aspect-ratio: 3/4;"></div>
+        <figcaption class="handwritten text-[18px] text-muted mt-2">our coffee corner</figcaption>
+      </figure>
+      <div class="ph ph-5 mb-4 rounded-md w-full" style="aspect-ratio: 4/5;"></div>
+      <div class="ph ph-9 mb-4 rounded-md w-full" style="aspect-ratio: 1/1;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== LOCATION ====================== -->
+<section id="location" class="relative border-t border-divider">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-32 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="reveal">
+      <p class="eyebrow text-muted mb-5">Where we are</p>
+      <h2 class="font-serif text-[40px] md:text-[56px] leading-[1.05] mb-8">Find us</h2>
+
+      <div class="space-y-1 mb-8">
+        <p class="font-serif text-[26px] leading-tight">Rruga Pavarësia</p>
+        <p class="font-serif text-[26px] leading-tight">Plazh, Durrës 2001</p>
+        <p class="font-serif text-[26px] leading-tight">Albania</p>
+      </div>
+
+      <div class="hairline w-16 mb-6"></div>
+      <p class="text-ink/80 max-w-[42ch] mb-9">
+        <span class="num">22 mi</span> from Tirana International Airport · <span class="num">100 m</span> to the beach · <span class="num">3.5 km</span> to the centre of Durrës.
+      </p>
+
+      <a href="#" class="btn btn-primary">
+        Open in Maps
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="reveal">
+      <div class="map-tile relative aspect-[5/4] w-full rounded-md border border-divider overflow-hidden">
+        <!-- a faint coastline curve -->
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,260 C90,250 140,220 210,235 C280,250 320,300 410,290 C460,284 490,300 500,310 L500,400 L0,400 Z" fill="#2E5C7E" fill-opacity="0.10"/>
+          <path d="M0,260 C90,250 140,220 210,235 C280,250 320,300 410,290 C460,284 490,300 500,310" stroke="#2E5C7E" stroke-opacity="0.35" stroke-width="1" fill="none"/>
+        </svg>
+        <!-- Pin -->
+        <div class="absolute" style="left:38%; top:46%;">
+          <svg class="map-pin" width="34" height="44" viewBox="0 0 34 44" fill="none" aria-hidden="true">
+            <path d="M17 2c8.3 0 15 6.4 15 14.3C32 27 17 42 17 42S2 27 2 16.3C2 8.4 8.7 2 17 2z" fill="#C25B3F" stroke="#FAF6EE" stroke-width="2"/>
+            <circle cx="17" cy="16" r="4.5" fill="#FAF6EE"/>
+          </svg>
+        </div>
+        <!-- Subtle compass marker -->
+        <div class="absolute top-3 right-3 text-[10px] tracking-[0.22em] text-sea/70 uppercase">N</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONTACT STRIP ====================== -->
+<section id="contact" class="relative border-t border-divider bg-[#F5EFE2]">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-20 md:py-28">
+    <div class="text-center mb-12 md:mb-16 reveal">
+      <p class="eyebrow text-muted mb-4">Come say hello</p>
+      <h2 class="font-serif text-[40px] md:text-[56px] leading-[1.05]">Get in <span class="handwritten italic text-terracotta">touch</span></h2>
+      <p class="mt-5 text-ink/70 max-w-[42ch] mx-auto">Pick up the phone, send a message, or just drop by — someone from the family is always around.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 reveal">
+      <!-- Phone -->
+      <a href="tel:+355000000000" class="group bg-cream rounded-md border border-divider p-6 md:p-7 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2 2A14 14 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Phone</p>
+          <p class="font-serif text-[22px] leading-tight num">+355 52 000 000</p>
+        </div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="#" class="group bg-cream rounded-md border border-divider p-6 md:p-7 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.5-4.5A8 8 0 1 1 7 19l-4 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 10c.5 2 2 3.5 4 4l1.5-1.2 2 .8.3 2c-2.5.5-5.5-1-7-3.5-1-1.7-1.2-3.4-.8-3.7L11 8l.7 2L10.3 11" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">WhatsApp</p>
+          <p class="font-serif text-[22px] leading-tight num">+355 69 000 0000</p>
+        </div>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:hello@vilaemes.al" class="group bg-cream rounded-md border border-divider p-6 md:p-7 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5L12 13l8.5-6.5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Email</p>
+          <p class="font-serif text-[22px] leading-tight">hello@vilaemes.al</p>
+        </div>
+      </a>
+
+      <!-- Instagram -->
+      <a href="#" class="group bg-cream rounded-md border border-divider p-6 md:p-7 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Instagram</p>
+          <p class="font-serif text-[22px] leading-tight">@vilaemes</p>
+        </div>
+      </a>
+
+      <!-- Booking -->
+      <a href="#" class="group bg-cream rounded-md border border-divider p-6 md:p-7 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors col-span-2 md:col-span-1">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 4v4h4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Booking.com</p>
+          <p class="font-serif text-[22px] leading-tight">Reserve a room</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FAQ ====================== -->
+<section id="faq" class="relative border-t border-divider bg-cream">
+  <div class="max-w-[920px] mx-auto px-5 md:px-10 py-20 md:py-28">
+    <div class="text-center mb-12 md:mb-16 reveal">
+      <p class="eyebrow text-muted mb-4">Before you ask</p>
+      <h2 class="font-serif text-[40px] md:text-[56px] leading-[1.05]">Frequently <span class="handwritten italic text-terracotta">asked</span></h2>
+    </div>
+    <div class="reveal">
+      <details class="faq-item" open>
+        <summary><span class="q">What time is check-in and check-out?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Check-in is 12:00 – 18:00, check-out is 07:00 – 11:00. The front desk is staffed 24 hours, so if your flight lands late just let us know and we'll wait up.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Is breakfast included?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Breakfast isn't included in the room rate, but the pastry shop on the ground floor opens early and does excellent espresso, cappuccino, and fresh bakllava. Most guests start their day there.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Do you have parking?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Yes — free public parking right out front. With a little luck Shaban will hold a spot for you (sometimes with a chair).</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Are pets welcome?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">We're sorry — pets aren't allowed at Vila Emes.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Can children stay? Cribs and extra beds?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Children of all ages are welcome. Cribs aren't available, but an extra bed can be added on request for €5 per person, per night.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">What languages do you speak?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Albanian, Italian, and English — between Shaban and his daughter you'll always find someone who can help.</p>
+      </details>
+    </div>
+    <p class="text-center mt-10 text-muted text-[14px]">Don't see your question? <a href="Contact.html" class="text-terracotta font-medium hover:underline">Write to us →</a></p>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="bg-cream border-t border-divider">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-10 flex flex-col items-center gap-5">
+    <div class="sm:hidden flex items-center gap-3" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="EN" aria-pressed="true">EN</button>
+      <span class="lang-divider w-px h-3 bg-divider"></span>
+      <button class="lang-btn" data-lang="AL" aria-pressed="false">AL</button>
+      <span class="lang-divider w-px h-3 bg-divider"></span>
+      <button class="lang-btn" data-lang="IT" aria-pressed="false">IT</button>
+    </div>
+    <p class="wordmark text-[13px] text-ink/80">VILA&nbsp;EMES</p>
+    <p class="handwritten text-[18px] text-muted">made with care by the Emes family</p>
+    <p class="text-[12px] text-muted">© 2026 Vila Emes · Durrës, Albania</p>
+  </div>
+</footer>
+
+<!-- React + Babel + Tweaks panel + Hero variants -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="hero.jsx"></script>
+<script src="palm-doodles.js"></script>
+
+<script>
+  // ---- Header transparent → solid on scroll ----
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    const lightHero = header.dataset.heroLight === "true";
+    if (window.scrollY > 60 || lightHero) {
+      header.classList.remove('is-transparent');
+      header.classList.add('is-solid');
+    } else {
+      header.classList.add('is-transparent');
+      header.classList.remove('is-solid');
+    }
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  window.__updateHeader = onScroll;
+  onScroll();
+
+  // ---- Language switcher (translates strings on the page) ----
+  const I18N = {
+    EN: {
+      'nav.home': 'Home', 'nav.rooms': 'Rooms', 'nav.contact': 'Contact',
+    },
+    AL: {
+      'nav.home': 'Faqja', 'nav.rooms': 'Dhomat', 'nav.contact': 'Kontakt',
+    },
+    IT: {
+      'nav.home': 'Home', 'nav.rooms': 'Camere', 'nav.contact': 'Contatti',
+    },
+  };
+  function applyLang(lang) {
+    document.documentElement.setAttribute('lang', lang.toLowerCase());
+    const dict = I18N[lang] || I18N.EN;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+  }
+  const langButtons = document.querySelectorAll('[data-lang]');
+  const langCurrent = document.getElementById('langCurrent');
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      langButtons.forEach(b => b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false'));
+      if (langCurrent) langCurrent.textContent = lang;
+      applyLang(lang);
+      const menu = document.getElementById('langMenu');
+      if (menu) { menu.hidden = true; document.getElementById('langTrigger')?.setAttribute('aria-expanded','false'); }
+    });
+  });
+
+  // Mobile lang dropdown
+  const langTrigger = document.getElementById('langTrigger');
+  const langMenu = document.getElementById('langMenu');
+  if (langTrigger && langMenu) {
+    langTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = !langMenu.hidden;
+      langMenu.hidden = open;
+      langTrigger.setAttribute('aria-expanded', String(!open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!langMenu.contains(e.target) && e.target !== langTrigger) {
+        langMenu.hidden = true;
+        langTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Mobile nav
+  const mobileBtn = document.getElementById('mobileNavBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  if (mobileBtn && mobileNav) {
+    mobileBtn.addEventListener('click', () => {
+      const open = !mobileNav.hidden;
+      mobileNav.hidden = open;
+      mobileBtn.setAttribute('aria-expanded', String(!open));
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.hidden = true;
+      mobileBtn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+
+  // ---- Reveal on scroll ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

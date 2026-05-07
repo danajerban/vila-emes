@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Vila Emes</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { cream:'#FAF6EE', ink:'#1F1A14', terracotta:'#C25B3F', sea:'#2E5C7E', muted:'#8C7E6A', divider:'#E8DFCF' },
+      fontFamily: { serif:['"Cormorant Garamond"','Georgia','serif'], sans:['"Inter"','system-ui','sans-serif'] }
+    }}
+  }
+</script>
+</head>
+<body class="bg-cream text-ink">
+
+<!-- ===== HEADER ===== -->
+<header id="siteHeader" class="site-header is-solid fixed top-0 inset-x-0 z-50">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+    <a href="Vila Emes.html" class="wordmark text-[15px] md:text-[16px] ink-swap inline-flex items-center gap-2.5">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 22V11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 11C12 8 9 6 5 6 5 9 7 11.5 12 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 11C12 8 15 6 19 6 19 9 17 11.5 12 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 10C12 7.5 11 4 8 2 7.5 5 9 8 12 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 10C12 7.5 13 4 16 2 16.5 5 15 8 12 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span>VILA&nbsp;EMES</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-10 ink-swap" aria-label="Primary">
+      <a href="Vila Emes.html" class="nav-link hover:text-terracotta transition-colors" data-i18n="nav.home">Home</a>
+      <a href="Rooms.html"     class="nav-link hover:text-terracotta transition-colors" data-i18n="nav.rooms">Rooms</a>
+      <a href="Contact.html"   class="nav-link hover:text-terracotta transition-colors text-terracotta" aria-current="page" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="flex items-center gap-4 ink-swap">
+      <div class="hidden sm:flex items-center gap-2" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="EN" aria-pressed="true">EN</button>
+        <span class="lang-divider w-px h-3"></span>
+        <button class="lang-btn" data-lang="AL" aria-pressed="false">AL</button>
+        <span class="lang-divider w-px h-3"></span>
+        <button class="lang-btn" data-lang="IT" aria-pressed="false">IT</button>
+      </div>
+      <button id="mobileNavBtn" class="md:hidden -mr-2 p-2" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 7h16M3 15h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileNav" class="md:hidden bg-cream border-t border-divider text-ink" hidden>
+    <nav class="px-5 py-3 flex flex-col" aria-label="Mobile">
+      <a href="Vila Emes.html" class="nav-link py-3 border-b border-divider" data-i18n="nav.home">Home</a>
+      <a href="Rooms.html"     class="nav-link py-3 border-b border-divider" data-i18n="nav.rooms">Rooms</a>
+      <a href="Contact.html"   class="nav-link py-3 text-terracotta" data-i18n="nav.contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero pt-28 md:pt-36 pb-16 md:pb-24 border-b border-divider">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="palm palm-1" aria-hidden="true"><svg viewBox="0 0 200 240" fill="none"><path d="M100 240V90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M100 90C100 60 70 35 25 35 25 60 50 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 90C100 60 130 35 175 35 175 60 150 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 80 20 45 5 40 35 60 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 120 20 155 5 160 35 140 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 90C100 65 105 30 100 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+  <div class="palm palm-2" aria-hidden="true"><svg viewBox="0 0 200 240" fill="none"><path d="M100 240V90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M100 90C100 60 70 35 25 35 25 60 50 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 90C100 60 130 35 175 35 175 60 150 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 80 20 45 5 40 35 60 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 85C100 55 120 20 155 5 160 35 140 70 100 85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="palm palm-3" aria-hidden="true"><svg viewBox="0 0 200 240" fill="none"><path d="M100 240V90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M100 90C100 60 70 35 25 35 25 60 50 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M100 90C100 60 130 35 175 35 175 60 150 85 100 90" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10">
+    <p class="eyebrow text-muted mb-5">We'd love to hear from you</p>
+    <h1 class="font-serif text-[52px] md:text-[88px] lg:text-[104px] leading-[1] max-w-[14ch]">Get in <span class="handwritten italic text-terracotta">touch</span></h1>
+    <p class="mt-6 max-w-[58ch] text-ink/80 text-[16px] md:text-[18px] leading-relaxed">
+      Pick up the phone, drop a message, or just walk in — someone from the family
+      is at the front desk twenty-four hours a day.
+    </p>
+  </div>
+</section>
+
+<!-- ===== QUICK CONTACT TILES ===== -->
+<section class="border-b border-divider">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-14 md:py-20">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+      <a href="tel:+35552000000" class="group bg-cream rounded-md border border-divider p-6 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2 2A14 14 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Phone</p>
+          <p class="font-serif text-[22px] leading-tight num">+355 52 000 000</p>
+        </div>
+      </a>
+      <a href="https://wa.me/355690000000" class="group bg-cream rounded-md border border-divider p-6 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.5-4.5A8 8 0 1 1 7 19l-4 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">WhatsApp</p>
+          <p class="font-serif text-[22px] leading-tight num">+355 69 000 0000</p>
+        </div>
+      </a>
+      <a href="mailto:hello@vilaemes.al" class="group bg-cream rounded-md border border-divider p-6 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5L12 13l8.5-6.5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Email</p>
+          <p class="font-serif text-[22px] leading-tight">hello@vilaemes.al</p>
+        </div>
+      </a>
+      <a href="#" class="group bg-cream rounded-md border border-divider p-6 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Instagram</p>
+          <p class="font-serif text-[22px] leading-tight">@vilaemes</p>
+        </div>
+      </a>
+      <a href="#" class="group bg-cream rounded-md border border-divider p-6 flex flex-col items-start gap-4 hover:border-terracotta/50 transition-colors col-span-2 md:col-span-1">
+        <span class="w-10 h-10 rounded-full bg-cream border border-divider flex items-center justify-center text-sea group-hover:text-terracotta transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 4v4h4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="eyebrow text-muted mb-1.5">Booking.com</p>
+          <p class="font-serif text-[22px] leading-tight">Reserve a room</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORM + ADDRESS/HOURS ===== -->
+<section class="border-b border-divider">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 grid md:grid-cols-5 gap-12 md:gap-16">
+
+    <!-- LEFT: form -->
+    <div class="md:col-span-3">
+      <p class="eyebrow text-muted mb-4">Send a message</p>
+      <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-3">Write to us</h2>
+      <p class="text-ink/75 max-w-[48ch] mb-10">
+        Questions about a room, dates, transport, your dog — anything. We answer within the day, usually within a couple of hours.
+      </p>
+
+      <form id="contactForm" class="space-y-6" novalidate>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="field-label" for="f-name">Your name</label>
+            <input id="f-name" name="name" class="field-input" placeholder="Ardit Hoxha" required />
+            <p class="field-error" data-for="name"></p>
+          </div>
+          <div>
+            <label class="field-label" for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" class="field-input" placeholder="you@example.com" required />
+            <p class="field-error" data-for="email"></p>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="field-label" for="f-arrival">Arrival</label>
+            <input id="f-arrival" name="arrival" type="date" class="field-input" />
+          </div>
+          <div>
+            <label class="field-label" for="f-guests">Guests</label>
+            <select id="f-guests" name="guests" class="field-input">
+              <option>1 adult</option>
+              <option>2 adults</option>
+              <option>2 adults + 1 child</option>
+              <option>2 adults + 2 children</option>
+              <option>3 adults</option>
+              <option>4+ guests</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="field-label" for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" class="field-input" placeholder="Hi! We're thinking of staying three nights in July…" required></textarea>
+          <p class="field-error" data-for="message"></p>
+        </div>
+        <div class="flex items-center gap-5">
+          <button type="submit" class="btn btn-primary">
+            Send message
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p id="formStatus" class="form-success" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT: address / hours / family -->
+    <aside class="md:col-span-2 space-y-10">
+      <div>
+        <p class="eyebrow text-muted mb-4">Find us</p>
+        <p class="font-serif text-[26px] leading-tight">Rruga Pavarësia</p>
+        <p class="font-serif text-[26px] leading-tight">Plazh, Durrës 2001</p>
+        <p class="font-serif text-[26px] leading-tight">Albania</p>
+        <a href="#" class="mt-5 inline-flex items-center gap-1.5 text-terracotta text-[14px] font-medium hover:gap-2.5 transition-all">Open in Maps <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="hairline w-16"></div>
+
+      <div>
+        <p class="eyebrow text-muted mb-4">Hours</p>
+        <ul class="space-y-2 text-[15px]">
+          <li class="flex justify-between"><span>Front desk</span> <span class="num text-muted">24 hours</span></li>
+          <li class="flex justify-between"><span>Check-in</span>   <span class="num text-muted">12:00 – 18:00</span></li>
+          <li class="flex justify-between"><span>Check-out</span>  <span class="num text-muted">07:00 – 11:00</span></li>
+        </ul>
+      </div>
+
+      <div class="hairline w-16"></div>
+
+      <div>
+        <p class="eyebrow text-muted mb-4">Speak to</p>
+        <p class="font-serif text-[22px] leading-tight">Shaban Emes</p>
+        <p class="text-muted text-[14px] mt-1">Owner — and the voice on the phone, day or night</p>
+        <p class="handwritten text-[22px] text-terracotta mt-4">— I read every message myself</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== MAP + DIRECTIONS ===== -->
+<section class="border-b border-divider">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div>
+        <p class="eyebrow text-muted mb-4">Getting here</p>
+        <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] mb-6">From the airport, the port, the beach.</h2>
+        <ul class="space-y-6 text-[15px] text-ink/85">
+          <li class="grid grid-cols-[80px_1fr] gap-5 items-baseline">
+            <span class="num font-serif text-[28px] text-terracotta leading-none">22 mi</span>
+            <div>
+              <p class="font-medium">Tirana International Airport (TIA)</p>
+              <p class="text-muted">~40 min by taxi · we can arrange a pickup on request.</p>
+            </div>
+          </li>
+          <li class="grid grid-cols-[80px_1fr] gap-5 items-baseline">
+            <span class="num font-serif text-[28px] text-terracotta leading-none">100 m</span>
+            <div>
+              <p class="font-medium">The beach</p>
+              <p class="text-muted">A two-minute walk to the public &amp; private swimming areas.</p>
+            </div>
+          </li>
+          <li class="grid grid-cols-[80px_1fr] gap-5 items-baseline">
+            <span class="num font-serif text-[28px] text-terracotta leading-none">3.5 km</span>
+            <div>
+              <p class="font-medium">Centre of Durrës</p>
+              <p class="text-muted">Old town, the amphitheatre, the port — all within a short drive or bus ride.</p>
+            </div>
+          </li>
+          <li class="grid grid-cols-[80px_1fr] gap-5 items-baseline">
+            <span class="num font-serif text-[28px] text-terracotta leading-none">3 mi</span>
+            <div>
+              <p class="font-medium">Durrës Amphitheatre</p>
+              <p class="text-muted">Roman ruins · Rock of Kavaje is about 3.7 mi the other way.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="map-tile relative aspect-[5/4] w-full rounded-md border border-divider overflow-hidden">
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,260 C90,250 140,220 210,235 C280,250 320,300 410,290 C460,284 490,300 500,310 L500,400 L0,400 Z" fill="#2E5C7E" fill-opacity="0.10"/>
+            <path d="M0,260 C90,250 140,220 210,235 C280,250 320,300 410,290 C460,284 490,300 500,310" stroke="#2E5C7E" stroke-opacity="0.35" stroke-width="1" fill="none"/>
+          </svg>
+          <div class="absolute" style="left:38%; top:46%;">
+            <svg class="map-pin" width="34" height="44" viewBox="0 0 34 44" fill="none" aria-hidden="true">
+              <path d="M17 2c8.3 0 15 6.4 15 14.3C32 27 17 42 17 42S2 27 2 16.3C2 8.4 8.7 2 17 2z" fill="#C25B3F" stroke="#FAF6EE" stroke-width="2"/>
+              <circle cx="17" cy="16" r="4.5" fill="#FAF6EE"/>
+            </svg>
+          </div>
+          <div class="absolute top-3 right-3 text-[10px] tracking-[0.22em] text-sea/70 uppercase">N</div>
+        </div>
+        <a href="#" class="btn btn-primary mt-6">Open in Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="border-b border-divider bg-[#F5EFE2]">
+  <div class="max-w-[920px] mx-auto px-5 md:px-10 py-20 md:py-28">
+    <p class="eyebrow text-muted mb-4 text-center">Before you ask</p>
+    <h2 class="font-serif text-[36px] md:text-[48px] leading-[1.05] text-center mb-14">Frequently asked</h2>
+
+    <div>
+      <details class="faq-item" open>
+        <summary><span class="q">What time is check-in and check-out?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Check-in is 12:00 – 18:00, check-out is 07:00 – 11:00. The front desk is staffed 24 hours, so if your flight lands late just let us know and we'll wait up.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Is breakfast included?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Breakfast isn't included in the room rate, but the pastry shop on the ground floor opens early and does excellent espresso, cappuccino, and fresh bakllava. Most guests start their day there.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Do you have parking?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Yes — free public parking right out front. Reservation isn't possible, but with a little luck Shaban will hold a spot for you (sometimes with a chair).</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Are pets welcome?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">We're sorry — pets aren't allowed at Vila Emes.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Can children stay? Cribs and extra beds?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Children of all ages are welcome. Cribs aren't available, but an extra bed can be added on request for €5 per person, per night.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">What languages do you speak?</span><svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></summary>
+        <p class="a">Albanian, Italian, and English — between Shaban and his daughter you'll always find someone who can help.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-cream border-t border-divider">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-10 flex flex-col items-center gap-5">
+    <div class="sm:hidden flex items-center gap-3" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="EN" aria-pressed="true">EN</button>
+      <span class="lang-divider w-px h-3 bg-divider"></span>
+      <button class="lang-btn" data-lang="AL" aria-pressed="false">AL</button>
+      <span class="lang-divider w-px h-3 bg-divider"></span>
+      <button class="lang-btn" data-lang="IT" aria-pressed="false">IT</button>
+    </div>
+    <p class="wordmark text-[13px] text-ink/80">VILA&nbsp;EMES</p>
+    <p class="handwritten text-[18px] text-muted">made with care by the Emes family</p>
+    <p class="text-[12px] text-muted">© 2026 Vila Emes · Durrës, Albania</p>
+  </div>
+</footer>
+
+<script>
+  // Lang (translates nav strings)
+  const I18N = {
+    EN: { 'nav.home':'Home', 'nav.rooms':'Rooms', 'nav.contact':'Contact' },
+    AL: { 'nav.home':'Faqja', 'nav.rooms':'Dhomat', 'nav.contact':'Kontakt' },
+    IT: { 'nav.home':'Home', 'nav.rooms':'Camere', 'nav.contact':'Contatti' },
+  };
+  function applyLang(lang){
+    document.documentElement.setAttribute('lang', lang.toLowerCase());
+    const dict = I18N[lang] || I18N.EN;
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k]) el.textContent = dict[k]; });
+  }
+  document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === btn.dataset.lang ? 'true' : 'false'));
+    applyLang(btn.dataset.lang);
+  }));
+
+  // Mobile nav
+  const mb = document.getElementById('mobileNavBtn');
+  const mn = document.getElementById('mobileNav');
+  mb && mb.addEventListener('click', () => { const open = !mn.hidden; mn.hidden = open; mb.setAttribute('aria-expanded', String(!open)); });
+
+  // Form validation
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  const showError = (k, msg) => {
+    const el = form.querySelector(`[data-for="${k}"]`);
+    if (el) el.textContent = msg || '';
+  };
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = true;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const msg = form.message.value.trim();
+    showError('name'); showError('email'); showError('message');
+    if (!name) { showError('name', 'Please tell us your name.'); ok = false; }
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) { showError('email', 'A valid email please.'); ok = false; }
+    if (!msg || msg.length < 10) { showError('message', 'A few more words?'); ok = false; }
+    if (ok) {
+      status.textContent = '— sent. We\'ll write back today.';
+      form.reset();
+      setTimeout(() => { status.textContent = ''; }, 6000);
+    }
+  });
+</script>
+<script src="palm-doodles.js"></script>
+</body>
+</html>
