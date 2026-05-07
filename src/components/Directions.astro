@@ -28,7 +28,7 @@ const { eyebrow, heading, mapsCta } = Astro.props;
       </ul>
     </div>
     <div class="space-y-5">
-      <LocationMap mode="drawn" ariaLabel="Hand-drawn map of Vila Emes location" />
+      <LocationMap embedUrl={SITE.links.google_maps_embed} ariaLabel="Vila Emes location on Google Maps" />
       <a
         href={SITE.links.google_maps}
         target="_blank" rel="noopener"
