@@ -1,0 +1,333 @@
+hotel:
+  name: "Vila Emes"
+  tagline: "Two generations of one family by the sea"
+  location: "Plazh, Durrës · Albania"
+
+home:
+  hero:
+    eyebrow: "Durrës · Albania · Since 1998"
+    welcome_handwritten: "welcome to"
+    heading: "Vila Emes"
+    sub: "Eleven layouts. Two generations of one family. The same coffee on the terrace every morning."
+    cta_primary: "Book on Booking.com"
+    cta_secondary: "Open in Maps"
+    polaroid_caption_handwritten: "— Shaban, his daughter and his son"
+  about:
+    eyebrow: "Our story"
+    heading_part_1: "A small house,"
+    heading_part_2_handwritten: "kept by one family."
+    handwritten_year: "— since 1998"
+    body:
+      - "Shaban Emes opened Vila Emes in 1998. Two generations of the family run the house now — his daughter and son welcome guests alongside him most days, and the same hands that lay out fresh towels know which room catches the morning light first."
+      - "We sit on Rruga Pavarësia in Plazh, the long avenue that runs above the beach in Durrës. The pastry shop on our ground floor opens early — cappuccino, espresso, fresh croissants — five steps from the lobby. Restaurants, supermarkets, and the bus stop are all within a short stroll."
+      - "What to expect: a hundred metres to the water, a 24-hour front desk, simple rooms cared for daily, and Shaban himself reserving you a parking space out front (sometimes with a chair on it). It is not a luxury hotel. It is a small house with a real heart."
+    signature_handwritten: "— with love, the Emes family"
+    photo_caption: "Vila Emes · Plazh, Durrës"
+  trust:
+    booking_label: "Booking.com"
+    google_label: "Google"
+    quote:
+      text: "The location of the hotel was perfect, very close to the beach and lots of lovely restaurants and cafes. The room was everything you would want. The best part about the hotel is Shaban, the owner. He was beyond welcoming and friendly to us throughout our whole stay. We will definitely stay in Hotel Vila Emes again!"
+      author: "Etain"
+      location: "Ireland"
+      when: "stayed last summer"
+  rooms:
+    eyebrow: "Stay"
+    heading: "Our Rooms"
+    intro: "Eleven layouts in total, from a 30 m² double to a 90 m² apartment with sea view."
+    preview_card_cta: "View details →"
+  gallery:
+    eyebrow: "Inside & out"
+    heading: "Twelve frames"
+    intro: "Rooms, terrace, breakfast, the walk to the water."
+    captions:
+      "DSC_0123": "balcony, room 204"
+      "DSC_0145": "the walk down to the water"
+      "DSC_0169": "first light, August"
+      "DSC_0204": "our coffee corner"
+  location:
+    eyebrow: "Where we are"
+    heading: "On the avenue, by the sea"
+    cta: "Open in Maps"
+  contact_strip:
+    eyebrow: "Come say hello"
+    heading_part_1: "Get in"
+    heading_part_2_handwritten: "touch"
+  faq:
+    eyebrow: "Before you ask"
+    heading_part_1: "Frequently"
+    heading_part_2_handwritten: "asked"
+    items:
+      - q: "What time is check-in and check-out?"
+        a: "Check-in from 12:00 to 18:00. Check-out from 07:00 to 11:00. The front desk is open 24 hours, so late arrivals are fine — just let us know by WhatsApp so Shaban can meet you."
+      - q: "Is breakfast included?"
+        a: "Breakfast is not included in the room rate, but our ground-floor pastry shop opens early and serves cappuccino, espresso, and fresh pastries — five steps from the lobby."
+      - q: "Where do I park?"
+        a: "Free street parking in front of the hotel. Shaban will reserve a space for you with a chair if he can — first-come, first-served."
+      - q: "Do you allow pets?"
+        a: "Pets are not allowed at Vila Emes."
+      - q: "Are cribs or extra beds available?"
+        a: "Cribs are not available. An extra bed can be added to most rooms for €5 per person, per night — let us know in advance."
+      - q: "What languages do you speak?"
+        a: "English, Italian, and Albanian — every day, all day."
+    footer_cta_handwritten: "Don't see your question? Write to us →"
+
+rooms_page:
+  hero_eyebrow: "Stay with us"
+  hero_heading_part_1: "Our"
+  hero_heading_part_2_handwritten: "rooms"
+  hero_intro: "Eleven layouts across one small family house. Pick the one that fits."
+  includes:
+    eyebrow: "In every room"
+    heading: "What's always included"
+    handwritten: "— no fine print, no surprises"
+    pastry_note: "Plus the pastry shop on the ground floor — open from 7:00 with cappuccino and fresh croissants."
+    list:
+      - "Air conditioning"
+      - "Free Wi-Fi"
+      - "Daily housekeeping"
+      - "Private bathroom"
+      - "Free toiletries"
+      - "Linens & towels"
+      - "Free street parking"
+      - "Mosquito net"
+      - "Heating in winter"
+      - "Family-run welcome"
+  rules:
+    eyebrow: "House rules"
+    heading: "A few simple things"
+    check_in:
+      label: "Check-in"
+      value: "12:00 – 18:00"
+      note: "Late arrivals welcome — message us first"
+    check_out:
+      label: "Check-out"
+      value: "07:00 – 11:00"
+      note: "Quick coffee on the terrace before you go"
+    notes:
+      label: "House notes"
+      value: "No pets · No cribs · Extra bed €5 / night"
+  cta:
+    handwritten: "— still deciding?"
+    heading: "Tell us what you're looking for and we'll write back the same day."
+    button: "Write to us"
+
+contact_page:
+  hero_eyebrow: "We'd love to hear from you"
+  hero_heading_part_1: "Get in"
+  hero_heading_part_2_handwritten: "touch"
+  hero_intro: "Phone us. Message on WhatsApp. Or write a few lines below — Shaban reads every message himself."
+  form:
+    heading: "Write to us"
+    intro: "Tell us when you'd like to come and what you're looking for. We answer the same day."
+    fields:
+      name: "Your name"
+      email: "Email"
+      arrival: "Arrival date"
+      guests: "Guests"
+      message: "Message"
+    submit: "Send message"
+    success: "Thanks — your mail draft is open. Hit Send and we'll be in touch within hours."
+  sidebar:
+    address_label: "Address"
+    hours_label: "Hours"
+    speak_to_label: "Speak to"
+    speak_to_name: "Shaban Emes"
+    speak_to_role: "Owner"
+    speak_to_handwritten: "— I read every message myself"
+  directions:
+    eyebrow: "Getting here"
+    heading: "How to find us"
+
+ui:
+  nav:
+    home: "Home"
+    rooms: "Rooms"
+    contact: "Contact"
+  buttons:
+    book: "Book on Booking.com"
+    map: "Open in Maps"
+    details: "View details"
+    next_room: "Next room →"
+    write: "Write to us"
+  filter:
+    all: "All · 11"
+    apartments: "Apartments · 2"
+    deluxe: "Deluxe · 3"
+    family: "Family · 3"
+    standard: "Standard · 1"
+    economy: "Economy · 2"
+  labels:
+    sleeps: "Sleeps"
+    beds: "Beds"
+    size: "Size"
+    view: "View"
+    outdoor: "Outdoor"
+  family_groups:
+    apartments: "Apartments"
+    deluxe: "Deluxe"
+    family: "Family"
+    standard: "Standard"
+    economy: "Economy"
+  amenity_labels:
+    air-con: "Air conditioning"
+    wifi: "Free Wi-Fi"
+    flat-tv: "Flat-screen TV"
+    private-bath: "Private bathroom"
+    bathtub-shower: "Bathtub or shower"
+    sea-view: "Sea view"
+    balcony: "Balcony"
+    terrace: "Terrace"
+    kitchenette: "Kitchen"
+    "2-bedrooms": "Two bedrooms"
+    mini-fridge: "Mini-fridge"
+    family-friendly: "Family-friendly"
+    sofa-bed: "Sofa bed"
+    renovated-2024: "Renovated 2024"
+  footer:
+    handwritten: "made with care by the Emes family"
+    copyright: "© 2026 Vila Emes · Plazh, Durrës"
+
+rooms:
+  - id: "apt-1bed-terrace"
+    family: "apartments"
+    order: 1
+    name: "One-Bedroom Apartment with Terrace"
+    size_m2: 80
+    sleeps: 4
+    sleeps_label: "Sleeps up to 4"
+    beds: "1 full · 2 bunk beds"
+    view: "Sea + city"
+    outdoor: "Private terrace"
+    description: "Eighty square metres across one bedroom, a living room, and a private kitchen — stovetop, oven, washing machine — with a generous terrace looking over the avenue toward the sea. Three beds total. Great for two couples travelling together, or a family that wants to cook a few meals at home."
+    amenities: ["terrace", "kitchenette", "air-con", "wifi", "family-friendly"]
+
+  - id: "apt-2bed"
+    family: "apartments"
+    order: 2
+    name: "Two-Bedroom Apartment with Balcony and Terrace"
+    size_m2: 90
+    sleeps: 6
+    sleeps_label: "Sleeps up to 6"
+    beds: "1 full · 1 twin · 2 bunk beds"
+    view: "Sea + city"
+    outdoor: "Balcony + terrace"
+    description: "Our largest layout — ninety square metres, two separate bedrooms, a full kitchen with oven, dining table, washing machine, balcony off the living room, and a terrace. Up to six guests. Two families on holiday together, or one family that values its own space."
+    amenities: ["kitchenette", "2-bedrooms", "balcony", "terrace", "family-friendly"]
+
+  - id: "deluxe-king"
+    family: "deluxe"
+    order: 3
+    name: "Deluxe King Room"
+    size_m2: 30
+    sleeps: 2
+    sleeps_label: "Sleeps 2"
+    beds: "1 queen bed"
+    view: "City"
+    outdoor: "—"
+    description: "A spacious thirty square metres, queen bed, walk-in shower with bidet, flat-screen with cable, and a quiet seating corner. Recently renovated — the linens, the bathroom fittings, and the flooring are all new in 2024."
+    amenities: ["renovated-2024", "air-con", "mini-fridge", "private-bath", "flat-tv"]
+
+  - id: "deluxe-queen"
+    family: "deluxe"
+    order: 4
+    name: "Deluxe Queen Room"
+    size_m2: 27
+    sleeps: 2
+    sleeps_label: "Sleeps 2"
+    beds: "1 queen bed"
+    view: "View"
+    outdoor: "—"
+    description: "Twenty-seven square metres of refined comfort — queen bed, walk-in shower with bidet, flat-screen with cable. Renovated in 2024 with fresh linens and quiet, neutral fittings. A calm room for two."
+    amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]
+
+  - id: "deluxe-balcony"
+    family: "deluxe"
+    order: 5
+    name: "Deluxe Double Room with Balcony"
+    size_m2: 30
+    sleeps: 2
+    sleeps_label: "Sleeps 2"
+    beds: "1 queen bed"
+    view: "Quiet street"
+    outdoor: "Balcony"
+    description: "Thirty square metres with a private balcony onto a quieter side street — cooler in summer, easier to sleep in. Walk-in shower, flat-screen, mini-fridge. Renovated in 2024."
+    amenities: ["renovated-2024", "balcony", "air-con", "mini-fridge", "flat-tv"]
+
+  - id: "quad-sea"
+    family: "family"
+    order: 6
+    name: "Quadruple Room with Sea View"
+    size_m2: 27
+    sleeps: 4
+    sleeps_label: "Sleeps 4"
+    beds: "1 full · 2 bunk beds"
+    view: "Sea"
+    outdoor: "Balcony"
+    description: "Three beds, a balcony with a view straight out to the Adriatic, and twenty-seven square metres of well-organised space. Built for families who want the sea in front of them when they wake up."
+    amenities: ["sea-view", "balcony", "air-con", "wifi", "family-friendly"]
+
+  - id: "quad-balcony"
+    family: "family"
+    order: 7
+    name: "Quadruple Room with Balcony"
+    size_m2: 30
+    sleeps: 4
+    sleeps_label: "Sleeps 4"
+    beds: "1 queen · 2 bunk beds"
+    view: "City"
+    outdoor: "Balcony"
+    description: "Thirty square metres, three beds, a balcony onto the avenue. Family-friendly without compromise: parents in the queen bed, kids in the bunks, and a balcony to drink coffee on while they sleep in."
+    amenities: ["balcony", "air-con", "mini-fridge", "wifi", "family-friendly"]
+
+  - id: "family-balcony"
+    family: "family"
+    order: 8
+    name: "Family Room with Balcony"
+    size_m2: 30
+    sleeps: 5
+    sleeps_label: "Sleeps up to 5"
+    beds: "1 queen · 2 bunk · 1 sofa bed"
+    view: "Sea"
+    outdoor: "Balcony"
+    description: "The most flexible room in the house — a queen, two bunks, and a pull-out sofa, all with a balcony onto the sea. Up to five guests in a single, well-thought-out thirty square metres."
+    amenities: ["balcony", "sea-view", "air-con", "sofa-bed", "family-friendly"]
+
+  - id: "family-standard"
+    family: "standard"
+    order: 9
+    name: "Standard Family Room"
+    size_m2: 30
+    sleeps: 4
+    sleeps_label: "Sleeps 4"
+    beds: "1 queen · 2 bunk beds"
+    view: "City"
+    outdoor: "Balcony"
+    description: "Our straightforward family option — thirty square metres, three beds, a balcony, and everything you need for a comfortable few nights without the deluxe upgrade."
+    amenities: ["balcony", "air-con", "mini-fridge", "family-friendly", "wifi"]
+
+  - id: "econ-triple"
+    family: "economy"
+    order: 10
+    name: "Economy Triple Room"
+    size_m2: 27
+    sleeps: 3
+    sleeps_label: "Sleeps 3"
+    beds: "1 queen · 1 sofa bed"
+    view: "City"
+    outdoor: "Balcony"
+    description: "Twenty-seven square metres, a queen bed and a pull-out sofa, balcony onto the avenue. Our value pick for three travellers who want the location without the deluxe price."
+    amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
+
+  - id: "budget-triple"
+    family: "economy"
+    order: 11
+    name: "Budget Triple Room"
+    size_m2: 30
+    sleeps: 3
+    sleeps_label: "Sleeps 3"
+    beds: "1 queen · 1 sofa bed"
+    view: "City"
+    outdoor: "Balcony"
+    description: "Three sleeps, a balcony, and the essentials done well — air conditioning, private bath, free Wi-Fi. The simplest, friendliest way to stay at Vila Emes."
+    amenities: ["balcony", "air-con", "private-bath", "wifi", "sofa-bed"]
