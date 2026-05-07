@@ -5,6 +5,8 @@ import Eyebrow from "./Eyebrow.astro";
 
 interface Props {
   href: string;
+  bookHref: string;
+  bookLabel: string;
   photo: ImageMetadata;
   numberLabel: string;
   familyLabel: string;
@@ -12,25 +14,39 @@ interface Props {
   capacity: string;
   detailsLabel: string;
 }
-const { href, photo, numberLabel, familyLabel, name, capacity, detailsLabel } = Astro.props;
+const { href, bookHref, bookLabel, photo, numberLabel, familyLabel, name, capacity, detailsLabel } = Astro.props;
 ---
-<a
-  href={href}
-  class="group block overflow-hidden rounded-md border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] hover:-translate-y-[2px] transition duration-500"
->
-  <div class="aspect-[4/3] overflow-hidden">
-    <Image
-      src={photo}
-      alt={name}
-      width={1200}
-      quality={82}
-      class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
-    />
+<article class="group block overflow-hidden rounded-md border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] tappable transition duration-500">
+  <a href={href} class="block">
+    <div class="aspect-[4/3] overflow-hidden">
+      <Image
+        src={photo}
+        alt={name}
+        width={1200}
+        quality={82}
+        class="w-full h-full object-cover transition duration-500 photo-enter"
+      />
+    </div>
+    <div class="p-5 pb-3">
+      <Eyebrow>{numberLabel} · {familyLabel}</Eyebrow>
+      <h3 class="mt-2 font-serif text-2xl text-[color:var(--color-ink)] leading-tight">{name}</h3>
+      <p class="mt-1 text-sm text-[color:var(--color-muted)]">{capacity}</p>
+    </div>
+  </a>
+  <div class="px-5 pb-5 flex items-center justify-between">
+    <a href={href} class="text-sm text-[color:var(--color-terracotta)] font-medium hover:underline">{detailsLabel}</a>
+    <a
+      href={bookHref}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center px-3 py-1.5 bg-[color:var(--color-terracotta)] hover:bg-[color:var(--color-terracotta-hover)] text-[color:var(--color-cream)] text-[11px] tracking-[0.18em] uppercase rounded font-medium tappable"
+    >{bookLabel}</a>
   </div>
-  <div class="p-5">
-    <Eyebrow>{numberLabel} · {familyLabel}</Eyebrow>
-    <h3 class="mt-2 font-serif text-2xl text-[color:var(--color-ink)] leading-tight">{name}</h3>
-    <p class="mt-1 text-sm text-[color:var(--color-muted)]">{capacity}</p>
-    <p class="mt-4 text-sm text-[color:var(--color-terracotta)] font-medium">{detailsLabel}</p>
-  </div>
-</a>
+</article>
+
+<style>
+  @media (hover: hover) {
+    article:hover { transform: translateY(-4px); box-shadow: 0 12px 32px -8px rgba(0,0,0,0.12); }
+    article:hover img { transform: scale(1.03); }
+  }
+</style>

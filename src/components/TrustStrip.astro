@@ -8,8 +8,10 @@ interface Props {
   googleLabel: string;
   googleScore: number;
   quote: { text: string; author: string; location: string; when?: string };
+  readAllReviewsLabel?: string;
+  readAllReviewsUrl?: string;
 }
-const { bookingLabel, bookingScore, googleLabel, googleScore, quote } = Astro.props;
+const { bookingLabel, bookingScore, googleLabel, googleScore, quote, readAllReviewsLabel, readAllReviewsUrl } = Astro.props;
 ---
 <section class="bg-[color:var(--color-sub-bg)] reveal">
   <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-10 items-center">
@@ -36,6 +38,14 @@ const { bookingLabel, bookingScore, googleLabel, googleScore, quote } = Astro.pr
         {" · "}{quote.location}
         {quote.when && (<><span> · </span><Handwritten as="span" color="terracotta">{quote.when}</Handwritten></>)}
       </figcaption>
+      {readAllReviewsLabel && readAllReviewsUrl && (
+        <a
+          href={readAllReviewsUrl}
+          target="_blank"
+          rel="noopener"
+          class="handwritten text-[color:var(--color-terracotta)] text-lg mt-4 inline-block hover:underline"
+        >{readAllReviewsLabel}</a>
+      )}
     </figure>
   </div>
 </section>

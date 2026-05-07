@@ -37,6 +37,8 @@ home:
       author: "Gry"
       location: "Norway"
       when: "stayed last summer"
+    read_all_reviews_label: "Read all reviews on Booking →"
+    read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
     eyebrow: "Stay"
     heading: "Our Rooms"
@@ -152,6 +154,7 @@ ui:
     contact: "Contact"
   buttons:
     book: "Book on Booking.com"
+    book_short: "Book us"
     map: "Open in Maps"
     details: "View details"
     next_room: "Next room →"

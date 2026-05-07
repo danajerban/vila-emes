@@ -85,7 +85,7 @@ const galleryPhotos = [
 ];
 ---
 <Base lang={lang} title={`${site.data.hotel.name} — ${site.data.hotel.tagline}`}>
-  <Header lang={lang} ui={ui.nav} isHome hotelName={site.data.hotel.name} bookLabel="Book us" />
+  <Header lang={lang} ui={ui.nav} isHome hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} />
 
   <Hero
     slides={[heroCover, heroSlide2, heroSlide3, heroSlide4, heroSlide5]}
@@ -119,6 +119,8 @@ const galleryPhotos = [
     googleLabel={home.trust.google_label}
     googleScore={SITE.ratings.google}
     quote={home.trust.quote}
+    readAllReviewsLabel={home.trust.read_all_reviews_label}
+    readAllReviewsUrl={home.trust.read_all_reviews_url}
   />
 
   <section class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-32 reveal">
@@ -131,6 +133,8 @@ const galleryPhotos = [
       {previewFamilies.map((p) => (
         <RoomCard
           href={`${baseLink}/rooms#${p.room.id}`}
+          bookHref={SITE.links.booking_com}
+          bookLabel={ui.buttons.book_short ?? "Book us"}
           photo={p.photo}
           numberLabel={p.numberLabel}
           familyLabel={p.familyLabel}

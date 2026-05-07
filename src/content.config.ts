@@ -86,6 +86,8 @@ export const collections = {
           booking_label: z.string(),
           google_label: z.string(),
           quote: trustQuote,
+          read_all_reviews_label: z.string().optional(),
+          read_all_reviews_url: z.string().optional(),
         }),
         rooms: z.object({
           eyebrow: z.string(),
@@ -180,6 +182,7 @@ export const collections = {
         nav: z.object({ home: z.string(), rooms: z.string(), contact: z.string() }),
         buttons: z.object({
           book: z.string(),
+          book_short: z.string().optional(),
           map: z.string(),
           details: z.string(),
           next_room: z.string(),
