@@ -1,0 +1,11 @@
+<!-- PLACEHOLDER PALM — the "real" version should be a single tree extracted from src/assets/logo/vila-emes.svg. This stand-in keeps the same hand-drawn line-quality (1.4 stroke, round caps, soft curves) until the extraction happens. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M100 280 C 102 200 100 90 100 70" />
+  <path d="M100 70 C 60 60 35 45 20 25" />
+  <path d="M100 70 C 65 80 40 100 30 130" />
+  <path d="M100 70 C 140 60 165 45 180 25" />
+  <path d="M100 70 C 135 80 160 100 170 130" />
+  <path d="M100 70 C 100 40 90 20 85 8" />
+  <path d="M100 70 C 110 40 125 20 135 12" />
+  <path d="M88 75 q 2 3 4 1 M114 73 q -2 4 -4 1" />
+</svg>
