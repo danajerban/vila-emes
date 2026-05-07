@@ -52,7 +52,7 @@ const roomPhoto: Record<string, ImageMetadata> = {
 const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
 ---
 <Base lang={lang} title={`${ui.nav.rooms} — ${site.data.hotel.name}`}>
-  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} />
+  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel="Book" />
 
   <PageHero
     eyebrow={page.hero_eyebrow}
