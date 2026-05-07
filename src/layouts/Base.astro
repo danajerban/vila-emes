@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import { LOCALE_TO_LANG, type Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
+import MobileCTAStack from "../components/MobileCTAStack.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 
 interface Props {
   lang: Lang;
@@ -33,6 +35,8 @@ const ogImageUrl = `${SITE.url}/og-image.png`;
   </head>
   <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
     <slot />
+    <MobileCTAStack />
+    <WhatsAppFloat />
 
     <script is:inline>
       // Sticky header transparent → solid on scroll.

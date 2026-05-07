@@ -1,0 +1,51 @@
+---
+import { SITE } from "../config/site";
+
+const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hello, I'd like to book at Vila Emes")}`;
+const telHref = `tel:${SITE.contact.phone.replace(/\s+/g, "")}`;
+---
+<div
+  id="mobileCTAStack"
+  class="md:hidden fixed inset-x-0 bottom-0 z-30 bg-[color:var(--color-cream-elevated)] border-t border-[color:var(--color-divider)] grid grid-cols-3 transition-transform duration-300"
+  style="padding-bottom: env(safe-area-inset-bottom);"
+  data-visible="true"
+>
+  <a
+    href={waHref}
+    target="_blank"
+    rel="noopener"
+    class="py-3 text-center text-[12px] tracking-[0.18em] uppercase font-medium border-r border-[color:var(--color-divider)] text-[#25D366] tappable"
+  >WhatsApp</a>
+  <a
+    href={telHref}
+    class="py-3 text-center text-[12px] tracking-[0.18em] uppercase font-medium border-r border-[color:var(--color-divider)] text-[color:var(--color-sea)] tappable"
+  >Call</a>
+  <a
+    href={SITE.links.booking_com}
+    target="_blank"
+    rel="noopener"
+    class="py-3 text-center text-[12px] tracking-[0.18em] uppercase font-medium bg-[color:var(--color-terracotta)] text-[color:var(--color-cream)] tappable"
+  >Book</a>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const bar = document.getElementById("mobileCTAStack");
+    if (!bar) return;
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const goingDown = y > lastY && y > 200;
+        bar.style.transform = goingDown ? "translateY(100%)" : "translateY(0)";
+        lastY = y;
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+  });
+</script>

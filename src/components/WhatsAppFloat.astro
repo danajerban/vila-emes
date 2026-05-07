@@ -1,0 +1,32 @@
+---
+import { SITE } from "../config/site";
+
+const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hello, I'd like to book at Vila Emes")}`;
+---
+<a
+  href={waHref}
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat on WhatsApp"
+  class="hidden md:flex fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full bg-[#25D366] items-center justify-center shadow-[0_8px_20px_-4px_rgba(37,211,102,0.5)] tappable wa-float"
+>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" class="text-white" aria-hidden="true">
+    <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-1.9-.2-.3 0-.4.1-.6.1-.1.3-.4.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.2-.2-.5-.3z"/>
+    <path d="M20.5 3.5C18.2 1.3 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.5-8.4zM12 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.6.9.9-3.5-.2-.4c-1-1.6-1.5-3.5-1.5-5.4 0-5.6 4.6-10.2 10.2-10.2 2.7 0 5.3 1.1 7.2 3 1.9 1.9 3 4.5 3 7.2 0 5.6-4.6 10-10.3 10z"/>
+  </svg>
+</a>
+
+<style>
+  .wa-float {
+    animation: wa-pulse 8s ease-in-out infinite;
+  }
+  @keyframes wa-pulse {
+    0%, 92%, 100% { transform: scale(1); }
+    94% { transform: scale(1.06); }
+    96% { transform: scale(1); }
+    98% { transform: scale(1.04); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wa-float { animation: none; }
+  }
+</style>
