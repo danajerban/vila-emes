@@ -47,23 +47,31 @@ const { heading, intro, fields, submit, success } = Astro.props;
 </div>
 
 <script is:inline define:vars={{ MAIL: SITE.contact.email }}>
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contactForm");
-    if (!form) return;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = data.get("name") || "";
-      const email = data.get("email") || "";
-      const arrival = data.get("arrival") || "";
-      const guests = data.get("guests") || "";
-      const message = data.get("message") || "";
-      const subject = encodeURIComponent(`Vila Emes — message from ${name}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nArrival: ${arrival}\nGuests: ${guests}\n\n${message}\n`
-      );
-      window.location.href = `mailto:${MAIL}?subject=${subject}&body=${body}`;
-      document.getElementById("contactFormSuccess")?.classList.remove("hidden");
-    });
-  });
+  (function () {
+    function init() {
+      const form = document.getElementById("contactForm");
+      if (!form) return;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const name = data.get("name") || "";
+        const email = data.get("email") || "";
+        const arrival = data.get("arrival") || "";
+        const guests = data.get("guests") || "";
+        const message = data.get("message") || "";
+        const subject = encodeURIComponent(`Vila Emes — message from ${name}`);
+        const body = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\nArrival: ${arrival}\nGuests: ${guests}\n\n${message}\n`
+        );
+        window.location.href = `mailto:${MAIL}?subject=${subject}&body=${body}`;
+        document.getElementById("contactFormSuccess")?.classList.remove("hidden");
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    document.addEventListener("astro:page-load", init);
+  })();
 </script>

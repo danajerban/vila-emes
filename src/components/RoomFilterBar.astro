@@ -41,21 +41,29 @@ const cats = [
 </style>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btns = document.querySelectorAll(".room-filter-btn");
-    if (btns.length === 0) return;
-    btns.forEach((b) => b.addEventListener("click", () => {
-      const filter = b.getAttribute("data-filter");
-      btns.forEach((x) => {
-        x.classList.toggle("is-active", x === b);
-        x.setAttribute("aria-selected", x === b ? "true" : "false");
-      });
-      const articles = document.querySelectorAll("article[data-cat]");
-      articles.forEach((a) => {
-        const cat = a.getAttribute("data-cat");
-        const show = filter === "all" || cat === filter;
-        a.style.display = show ? "" : "none";
-      });
-    }));
-  });
+  (function () {
+    function init() {
+      const btns = document.querySelectorAll(".room-filter-btn");
+      if (btns.length === 0) return;
+      btns.forEach((b) => b.addEventListener("click", () => {
+        const filter = b.getAttribute("data-filter");
+        btns.forEach((x) => {
+          x.classList.toggle("is-active", x === b);
+          x.setAttribute("aria-selected", x === b ? "true" : "false");
+        });
+        const articles = document.querySelectorAll("article[data-cat]");
+        articles.forEach((a) => {
+          const cat = a.getAttribute("data-cat");
+          const show = filter === "all" || cat === filter;
+          a.style.display = show ? "" : "none";
+        });
+      }));
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    document.addEventListener("astro:page-load", init);
+  })();
 </script>
