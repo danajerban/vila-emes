@@ -232,7 +232,7 @@ rooms:
     name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
-    sleeps_label: "Sleeps up to 4"
+    sleeps_label: "up to 4 people"
     beds: "1 full · 2 bunk beds"
     view: "Sea + city"
     outdoor: "Private terrace"
@@ -245,7 +245,7 @@ rooms:
     name: "Two-Bedroom Apartment with Balcony and Terrace"
     size_m2: 90
     sleeps: 6
-    sleeps_label: "Sleeps up to 6"
+    sleeps_label: "up to 6 people"
     beds: "1 full · 1 twin · 2 bunk beds"
     view: "Sea + city"
     outdoor: "Balcony + terrace"
@@ -258,7 +258,7 @@ rooms:
     name: "Deluxe King Room"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "Sleeps 2"
+    sleeps_label: "2 people"
     beds: "1 queen bed"
     view: "City"
     outdoor: "—"
@@ -271,7 +271,7 @@ rooms:
     name: "Deluxe Queen Room"
     size_m2: 27
     sleeps: 2
-    sleeps_label: "Sleeps 2"
+    sleeps_label: "2 people"
     beds: "1 queen bed"
     view: "View"
     outdoor: "—"
@@ -284,7 +284,7 @@ rooms:
     name: "Deluxe Double Room with Balcony"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "Sleeps 2"
+    sleeps_label: "2 people"
     beds: "1 queen bed"
     view: "Quiet street"
     outdoor: "Balcony"
@@ -297,7 +297,7 @@ rooms:
     name: "Quadruple Room with Sea View"
     size_m2: 27
     sleeps: 4
-    sleeps_label: "Sleeps 4"
+    sleeps_label: "4 people"
     beds: "1 full · 2 bunk beds"
     view: "Sea"
     outdoor: "Balcony"
@@ -310,7 +310,7 @@ rooms:
     name: "Quadruple Room with Balcony"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "Sleeps 4"
+    sleeps_label: "4 people"
     beds: "1 queen · 2 bunk beds"
     view: "City"
     outdoor: "Balcony"
@@ -323,7 +323,7 @@ rooms:
     name: "Family Room with Balcony"
     size_m2: 30
     sleeps: 5
-    sleeps_label: "Sleeps up to 5"
+    sleeps_label: "up to 5 people"
     beds: "1 queen · 2 bunk · 1 sofa bed"
     view: "Sea"
     outdoor: "Balcony"
@@ -336,7 +336,7 @@ rooms:
     name: "Standard Family Room"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "Sleeps 4"
+    sleeps_label: "4 people"
     beds: "1 queen · 2 bunk beds"
     view: "City"
     outdoor: "Balcony"
@@ -349,7 +349,7 @@ rooms:
     name: "Economy Triple Room"
     size_m2: 27
     sleeps: 3
-    sleeps_label: "Sleeps 3"
+    sleeps_label: "3 people"
     beds: "1 queen · 1 sofa bed"
     view: "City"
     outdoor: "Balcony"
@@ -362,7 +362,7 @@ rooms:
     name: "Budget Triple Room"
     size_m2: 30
     sleeps: 3
-    sleeps_label: "Sleeps 3"
+    sleeps_label: "3 people"
     beds: "1 queen · 1 sofa bed"
     view: "City"
     outdoor: "Balcony"

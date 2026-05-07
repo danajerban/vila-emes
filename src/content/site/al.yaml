@@ -229,10 +229,10 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "Apartament me një dhomë gjumi me tarracë"
+    name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
-    sleeps_label: "Fle deri në 4"
+    sleeps_label: "deri në 4 persona"
     beds: "1 dopio · 2 krevate marinari"
     view: "Det + qytet"
     outdoor: "Tarracë private"
@@ -242,10 +242,10 @@ rooms:
   - id: "apt-2bed"
     family: "apartments"
     order: 2
-    name: "Apartament me dy dhoma gjumi me ballkon dhe tarracë"
+    name: "Two-Bedroom Apartment with Balcony and Terrace"
     size_m2: 90
     sleeps: 6
-    sleeps_label: "Fle deri në 6"
+    sleeps_label: "deri në 6 persona"
     beds: "1 dopio · 1 tek · 2 krevate marinari"
     view: "Det + qytet"
     outdoor: "Ballkon + tarracë"
@@ -255,10 +255,10 @@ rooms:
   - id: "deluxe-king"
     family: "deluxe"
     order: 3
-    name: "Dhomë Deluxe King"
+    name: "Deluxe King Room"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "Fle 2"
+    sleeps_label: "2 persona"
     beds: "1 krevat dopio"
     view: "Qytet"
     outdoor: "—"
@@ -268,10 +268,10 @@ rooms:
   - id: "deluxe-queen"
     family: "deluxe"
     order: 4
-    name: "Dhomë Deluxe Queen"
+    name: "Deluxe Queen Room"
     size_m2: 27
     sleeps: 2
-    sleeps_label: "Fle 2"
+    sleeps_label: "2 persona"
     beds: "1 krevat dopio"
     view: "Pamje"
     outdoor: "—"
@@ -281,10 +281,10 @@ rooms:
   - id: "deluxe-balcony"
     family: "deluxe"
     order: 5
-    name: "Dhomë Dyshe Deluxe me ballkon"
+    name: "Deluxe Double Room with Balcony"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "Fle 2"
+    sleeps_label: "2 persona"
     beds: "1 krevat dopio"
     view: "Rrugë e qetë"
     outdoor: "Ballkon"
@@ -294,10 +294,10 @@ rooms:
   - id: "quad-sea"
     family: "family"
     order: 6
-    name: "Dhomë me Katër Krevate me Pamje nga Deti"
+    name: "Quadruple Room with Sea View"
     size_m2: 27
     sleeps: 4
-    sleeps_label: "Fle 4"
+    sleeps_label: "4 persona"
     beds: "1 dopio · 2 krevate marinari"
     view: "Det"
     outdoor: "Ballkon"
@@ -307,10 +307,10 @@ rooms:
   - id: "quad-balcony"
     family: "family"
     order: 7
-    name: "Dhomë me Katër Krevate me Ballkon"
+    name: "Quadruple Room with Balcony"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "Fle 4"
+    sleeps_label: "4 persona"
     beds: "1 dopio · 2 krevate marinari"
     view: "Qytet"
     outdoor: "Ballkon"
@@ -320,10 +320,10 @@ rooms:
   - id: "family-balcony"
     family: "family"
     order: 8
-    name: "Dhomë Familjare me Ballkon"
+    name: "Family Room with Balcony"
     size_m2: 30
     sleeps: 5
-    sleeps_label: "Fle deri në 5"
+    sleeps_label: "deri në 5 persona"
     beds: "1 dopio · 2 krevate marinari · 1 divan-krevat"
     view: "Det"
     outdoor: "Ballkon"
@@ -333,10 +333,10 @@ rooms:
   - id: "family-standard"
     family: "standard"
     order: 9
-    name: "Dhomë Familjare Standarde"
+    name: "Standard Family Room"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "Fle 4"
+    sleeps_label: "4 persona"
     beds: "1 dopio · 2 krevate marinari"
     view: "Qytet"
     outdoor: "Ballkon"
@@ -346,10 +346,10 @@ rooms:
   - id: "econ-triple"
     family: "economy"
     order: 10
-    name: "Dhomë Treshe Ekonomike"
+    name: "Economy Triple Room"
     size_m2: 27
     sleeps: 3
-    sleeps_label: "Fle 3"
+    sleeps_label: "3 persona"
     beds: "1 dopio · 1 divan-krevat"
     view: "Qytet"
     outdoor: "Ballkon"
@@ -359,10 +359,10 @@ rooms:
   - id: "budget-triple"
     family: "economy"
     order: 11
-    name: "Dhomë Treshe Buxhet"
+    name: "Budget Triple Room"
     size_m2: 30
     sleeps: 3
-    sleeps_label: "Fle 3"
+    sleeps_label: "3 persona"
     beds: "1 dopio · 1 divan-krevat"
     view: "Qytet"
     outdoor: "Ballkon"

@@ -229,10 +229,10 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "Appartamento con una camera da letto e terrazza"
+    name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
-    sleeps_label: "Fino a 4 ospiti"
+    sleeps_label: "fino a 4 persone"
     beds: "1 matrimoniale · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Terrazza privata"
@@ -242,10 +242,10 @@ rooms:
   - id: "apt-2bed"
     family: "apartments"
     order: 2
-    name: "Appartamento con due camere da letto, balcone e terrazza"
+    name: "Two-Bedroom Apartment with Balcony and Terrace"
     size_m2: 90
     sleeps: 6
-    sleeps_label: "Fino a 6 ospiti"
+    sleeps_label: "fino a 6 persone"
     beds: "1 matrimoniale · 1 singolo · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Balcone + terrazza"
@@ -255,10 +255,10 @@ rooms:
   - id: "deluxe-king"
     family: "deluxe"
     order: 3
-    name: "Camera Deluxe King"
+    name: "Deluxe King Room"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "2 ospiti"
+    sleeps_label: "2 persone"
     beds: "1 letto queen size"
     view: "Città"
     outdoor: "—"
@@ -268,10 +268,10 @@ rooms:
   - id: "deluxe-queen"
     family: "deluxe"
     order: 4
-    name: "Camera Deluxe Queen"
+    name: "Deluxe Queen Room"
     size_m2: 27
     sleeps: 2
-    sleeps_label: "2 ospiti"
+    sleeps_label: "2 persone"
     beds: "1 letto queen size"
     view: "Vista"
     outdoor: "—"
@@ -281,10 +281,10 @@ rooms:
   - id: "deluxe-balcony"
     family: "deluxe"
     order: 5
-    name: "Camera Matrimoniale Deluxe con Balcone"
+    name: "Deluxe Double Room with Balcony"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "2 ospiti"
+    sleeps_label: "2 persone"
     beds: "1 letto queen size"
     view: "Strada tranquilla"
     outdoor: "Balcone"
@@ -294,10 +294,10 @@ rooms:
   - id: "quad-sea"
     family: "family"
     order: 6
-    name: "Camera Quadrupla con Vista Mare"
+    name: "Quadruple Room with Sea View"
     size_m2: 27
     sleeps: 4
-    sleeps_label: "4 ospiti"
+    sleeps_label: "4 persone"
     beds: "1 matrimoniale · 2 letti a castello"
     view: "Mare"
     outdoor: "Balcone"
@@ -307,10 +307,10 @@ rooms:
   - id: "quad-balcony"
     family: "family"
     order: 7
-    name: "Camera Quadrupla con Balcone"
+    name: "Quadruple Room with Balcony"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "4 ospiti"
+    sleeps_label: "4 persone"
     beds: "1 queen · 2 letti a castello"
     view: "Città"
     outdoor: "Balcone"
@@ -320,10 +320,10 @@ rooms:
   - id: "family-balcony"
     family: "family"
     order: 8
-    name: "Camera Familiare con Balcone"
+    name: "Family Room with Balcony"
     size_m2: 30
     sleeps: 5
-    sleeps_label: "Fino a 5 ospiti"
+    sleeps_label: "fino a 5 persone"
     beds: "1 queen · 2 letti a castello · 1 divano letto"
     view: "Mare"
     outdoor: "Balcone"
@@ -333,10 +333,10 @@ rooms:
   - id: "family-standard"
     family: "standard"
     order: 9
-    name: "Camera Familiare Standard"
+    name: "Standard Family Room"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "4 ospiti"
+    sleeps_label: "4 persone"
     beds: "1 queen · 2 letti a castello"
     view: "Città"
     outdoor: "Balcone"
@@ -346,10 +346,10 @@ rooms:
   - id: "econ-triple"
     family: "economy"
     order: 10
-    name: "Camera Tripla Economy"
+    name: "Economy Triple Room"
     size_m2: 27
     sleeps: 3
-    sleeps_label: "3 ospiti"
+    sleeps_label: "3 persone"
     beds: "1 queen · 1 divano letto"
     view: "Città"
     outdoor: "Balcone"
@@ -359,10 +359,10 @@ rooms:
   - id: "budget-triple"
     family: "economy"
     order: 11
-    name: "Camera Tripla Budget"
+    name: "Budget Triple Room"
     size_m2: 30
     sleeps: 3
-    sleeps_label: "3 ospiti"
+    sleeps_label: "3 persone"
     beds: "1 queen · 1 divano letto"
     view: "Città"
     outdoor: "Balcone"

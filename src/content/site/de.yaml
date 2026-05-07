@@ -229,10 +229,10 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "Apartment mit einem Schlafzimmer und Terrasse"
+    name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
-    sleeps_label: "Bis zu 4 Personen"
+    sleeps_label: "bis zu 4 Personen"
     beds: "1 Doppelbett · 2 Etagenbetten"
     view: "Meer + Stadt"
     outdoor: "Private Terrasse"
@@ -242,10 +242,10 @@ rooms:
   - id: "apt-2bed"
     family: "apartments"
     order: 2
-    name: "Apartment mit zwei Schlafzimmern, Balkon und Terrasse"
+    name: "Two-Bedroom Apartment with Balcony and Terrace"
     size_m2: 90
     sleeps: 6
-    sleeps_label: "Bis zu 6 Personen"
+    sleeps_label: "bis zu 6 Personen"
     beds: "1 Doppelbett · 1 Einzelbett · 2 Etagenbetten"
     view: "Meer + Stadt"
     outdoor: "Balkon + Terrasse"
@@ -255,10 +255,10 @@ rooms:
   - id: "deluxe-king"
     family: "deluxe"
     order: 3
-    name: "Deluxe-King-Zimmer"
+    name: "Deluxe King Room"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "Für 2 Personen"
+    sleeps_label: "2 Personen"
     beds: "1 Queensize-Bett"
     view: "Stadt"
     outdoor: "—"
@@ -268,10 +268,10 @@ rooms:
   - id: "deluxe-queen"
     family: "deluxe"
     order: 4
-    name: "Deluxe-Queen-Zimmer"
+    name: "Deluxe Queen Room"
     size_m2: 27
     sleeps: 2
-    sleeps_label: "Für 2 Personen"
+    sleeps_label: "2 Personen"
     beds: "1 Queensize-Bett"
     view: "Aussicht"
     outdoor: "—"
@@ -281,10 +281,10 @@ rooms:
   - id: "deluxe-balcony"
     family: "deluxe"
     order: 5
-    name: "Deluxe-Doppelzimmer mit Balkon"
+    name: "Deluxe Double Room with Balcony"
     size_m2: 30
     sleeps: 2
-    sleeps_label: "Für 2 Personen"
+    sleeps_label: "2 Personen"
     beds: "1 Queensize-Bett"
     view: "Ruhige Straße"
     outdoor: "Balkon"
@@ -294,10 +294,10 @@ rooms:
   - id: "quad-sea"
     family: "family"
     order: 6
-    name: "Vierbettzimmer mit Meerblick"
+    name: "Quadruple Room with Sea View"
     size_m2: 27
     sleeps: 4
-    sleeps_label: "Für 4 Personen"
+    sleeps_label: "4 Personen"
     beds: "1 Doppelbett · 2 Etagenbetten"
     view: "Meer"
     outdoor: "Balkon"
@@ -307,10 +307,10 @@ rooms:
   - id: "quad-balcony"
     family: "family"
     order: 7
-    name: "Vierbettzimmer mit Balkon"
+    name: "Quadruple Room with Balcony"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "Für 4 Personen"
+    sleeps_label: "4 Personen"
     beds: "1 Queensize-Bett · 2 Etagenbetten"
     view: "Stadt"
     outdoor: "Balkon"
@@ -320,10 +320,10 @@ rooms:
   - id: "family-balcony"
     family: "family"
     order: 8
-    name: "Familienzimmer mit Balkon"
+    name: "Family Room with Balcony"
     size_m2: 30
     sleeps: 5
-    sleeps_label: "Bis zu 5 Personen"
+    sleeps_label: "bis zu 5 Personen"
     beds: "1 Queensize-Bett · 2 Etagenbetten · 1 Schlafsofa"
     view: "Meer"
     outdoor: "Balkon"
@@ -333,10 +333,10 @@ rooms:
   - id: "family-standard"
     family: "standard"
     order: 9
-    name: "Standard-Familienzimmer"
+    name: "Standard Family Room"
     size_m2: 30
     sleeps: 4
-    sleeps_label: "Für 4 Personen"
+    sleeps_label: "4 Personen"
     beds: "1 Queensize-Bett · 2 Etagenbetten"
     view: "Stadt"
     outdoor: "Balkon"
@@ -346,10 +346,10 @@ rooms:
   - id: "econ-triple"
     family: "economy"
     order: 10
-    name: "Economy-Dreibettzimmer"
+    name: "Economy Triple Room"
     size_m2: 27
     sleeps: 3
-    sleeps_label: "Für 3 Personen"
+    sleeps_label: "3 Personen"
     beds: "1 Queensize-Bett · 1 Schlafsofa"
     view: "Stadt"
     outdoor: "Balkon"
@@ -359,10 +359,10 @@ rooms:
   - id: "budget-triple"
     family: "economy"
     order: 11
-    name: "Budget-Dreibettzimmer"
+    name: "Budget Triple Room"
     size_m2: 30
     sleeps: 3
-    sleeps_label: "Für 3 Personen"
+    sleeps_label: "3 Personen"
     beds: "1 Queensize-Bett · 1 Schlafsofa"
     view: "Stadt"
     outdoor: "Balkon"
