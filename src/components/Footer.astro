@@ -2,25 +2,69 @@
 import { Image } from "astro:assets";
 import LangSwitch from "./LangSwitch.astro";
 import logoPng from "../assets/logo/vila-emes-1024.png";
-import type { Lang } from "../i18n/locales";
+import { localizedPath, type Lang } from "../i18n/locales";
+import { SITE } from "../config/site";
 
 interface Props {
   lang: Lang;
   handwritten: string;
   copyright: string;
+  ui: {
+    nav: { home: string; rooms: string; contact: string };
+    buttons: { book: string; map: string };
+    footer_columns?: { visit: string; stay_in_touch: string };
+  };
+  brandTagline: string;
 }
-const { lang, handwritten, copyright } = Astro.props;
+const { lang, handwritten, copyright, ui, brandTagline } = Astro.props;
+
+const visitTitle = ui.footer_columns?.visit ?? "Visit";
+const stayTitle = ui.footer_columns?.stay_in_touch ?? "Stay in touch";
 ---
 <footer class="bg-[color:var(--color-cream-elevated)] border-t border-[color:var(--color-divider)]">
-  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-14 md:py-20 flex flex-col items-center gap-6 text-center">
-    <div class="md:hidden w-full">
-      <LangSwitch lang={lang} variant="stacked" />
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-14 md:py-20">
+    <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+      <!-- Brand column -->
+      <div class="text-center md:text-left">
+        <Image src={logoPng} alt="Vila Emes" width={120} height={120} class="opacity-90 mx-auto md:mx-0" />
+        <p class="mt-4 text-sm text-[color:var(--color-ink)]/75 max-w-xs mx-auto md:mx-0">{brandTagline}</p>
+        <address class="mt-3 not-italic text-sm text-[color:var(--color-muted)] space-y-0.5">
+          {SITE.contact.address.map((line) => <p>{line}</p>)}
+        </address>
+      </div>
+
+      <!-- Visit column -->
+      <nav class="text-center md:text-left" aria-label={visitTitle}>
+        <p class="eyebrow mb-4">{visitTitle}</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href={localizedPath(lang, "/")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.home}</a></li>
+          <li><a href={localizedPath(lang, "/rooms")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.rooms}</a></li>
+          <li><a href={localizedPath(lang, "/contact")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.contact}</a></li>
+          <li><a href={SITE.links.booking_com} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">{ui.buttons.book}</a></li>
+          <li><a href={SITE.links.google_maps} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">{ui.buttons.map}</a></li>
+        </ul>
+      </nav>
+
+      <!-- Stay in touch column -->
+      <div class="text-center md:text-left">
+        <p class="eyebrow mb-4">{stayTitle}</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`tel:${SITE.contact.phone.replace(/\s+/g, "")}`} class="hover:text-[color:var(--color-terracotta)] transition">{SITE.contact.phone}</a></li>
+          <li><a href={`mailto:${SITE.contact.email}`} class="hover:text-[color:var(--color-terracotta)] transition">{SITE.contact.email}</a></li>
+          <li><a href={`https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">WhatsApp</a></li>
+          <li><a href={SITE.links.instagram} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">Instagram</a></li>
+        </ul>
+        <div class="mt-6 flex justify-center md:justify-start">
+          <LangSwitch lang={lang} variant="stacked" />
+        </div>
+      </div>
     </div>
 
-    <Image src={logoPng} alt="Vila Emes" width={140} height={140} class="opacity-90" />
+    <hr class="mt-12 border-[color:var(--color-divider)]" />
 
-    <p class="handwritten text-2xl md:text-3xl text-[color:var(--color-terracotta)]">{handwritten}</p>
-
-    <p class="text-sm text-[color:var(--color-muted)] tracking-wide">{copyright}</p>
+    <div class="mt-6 flex flex-col md:flex-row items-center md:justify-between gap-3">
+      <p class="handwritten text-xl text-[color:var(--color-terracotta)]">— {handwritten} —</p>
+      <p class="text-xs text-[color:var(--color-muted)] tracking-wide">{copyright}</p>
+    </div>
   </div>
 </footer>

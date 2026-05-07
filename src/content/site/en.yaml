@@ -191,8 +191,8 @@ ui:
     sofa-bed: "Sofa bed"
     renovated-2024: "Renovated 2024"
   footer:
-    handwritten: "made with care by the Emes family"
-    copyright: "© 2026 Vila Emes · Plazh, Durrës"
+    handwritten: "with love, the Emes family"
+    copyright: "© 2026 Vila Emes · made with ❤️"
 
 rooms:
   - id: "apt-1bed-terrace"
