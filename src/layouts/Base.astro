@@ -4,7 +4,6 @@ import { ClientRouter } from "astro:transitions";
 import { LOCALE_TO_LANG, type Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 import { getSite } from "../i18n/content";
-import MobileCTAStack from "../components/MobileCTAStack.astro";
 import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 
 interface Props {
@@ -41,7 +40,6 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
   </head>
   <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
     <slot />
-    <MobileCTAStack waText={waText} />
     <WhatsAppFloat waText={waText} />
 
     <script is:inline>
@@ -75,14 +73,23 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
             }
           }
 
-          // Mobile nav toggle
+          // Mobile nav toggle — body scroll-lock while open + close-on-link.
           const btn = document.getElementById("mobileNavToggle");
           const nav = document.getElementById("mobileNav");
           if (btn && nav) {
+            const closeNav = () => {
+              nav.hidden = true;
+              btn.setAttribute("aria-expanded", "false");
+              document.body.style.overflow = "";
+            };
             btn.addEventListener("click", () => {
-              const isOpen = !nav.hidden;
-              nav.hidden = isOpen;
-              btn.setAttribute("aria-expanded", String(!isOpen));
+              const willOpen = nav.hidden;
+              nav.hidden = !willOpen;
+              btn.setAttribute("aria-expanded", String(willOpen));
+              document.body.style.overflow = willOpen ? "hidden" : "";
+            });
+            nav.querySelectorAll("a").forEach((a) => {
+              a.addEventListener("click", closeNav);
             });
           }
 
