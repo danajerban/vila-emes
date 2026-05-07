@@ -12,14 +12,10 @@ interface Props {
   ui: {
     nav: { home: string; rooms: string; contact: string };
     buttons: { book: string; map: string };
-    footer_columns?: { visit: string; stay_in_touch: string };
   };
   brandTagline: string;
 }
 const { lang, handwritten, copyright, ui, brandTagline } = Astro.props;
-
-const visitTitle = ui.footer_columns?.visit ?? "Visit";
-const stayTitle = ui.footer_columns?.stay_in_touch ?? "Stay in touch";
 ---
 <footer class="bg-[color:var(--color-cream-elevated)] border-t border-[color:var(--color-divider)]">
   <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-14 md:py-20">
@@ -34,8 +30,7 @@ const stayTitle = ui.footer_columns?.stay_in_touch ?? "Stay in touch";
       </div>
 
       <!-- Visit column -->
-      <nav class="text-center md:text-left" aria-label={visitTitle}>
-        <p class="eyebrow mb-4">{visitTitle}</p>
+      <nav class="text-center md:text-left" aria-label={ui.nav.home}>
         <ul class="space-y-2 text-sm">
           <li><a href={localizedPath(lang, "/")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.home}</a></li>
           <li><a href={localizedPath(lang, "/rooms")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.rooms}</a></li>
@@ -45,9 +40,8 @@ const stayTitle = ui.footer_columns?.stay_in_touch ?? "Stay in touch";
         </ul>
       </nav>
 
-      <!-- Stay in touch column -->
+      <!-- Contact column -->
       <div class="text-center md:text-left">
-        <p class="eyebrow mb-4">{stayTitle}</p>
         <ul class="space-y-2 text-sm">
           <li><a href={`tel:${SITE.contact.phone.replace(/\s+/g, "")}`} class="hover:text-[color:var(--color-terracotta)] transition">{SITE.contact.phone}</a></li>
           <li><a href={`mailto:${SITE.contact.email}`} class="hover:text-[color:var(--color-terracotta)] transition">{SITE.contact.email}</a></li>
