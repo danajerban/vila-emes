@@ -22,14 +22,6 @@ export const LOCALE_LABELS: Record<Lang, string> = {
   de: "Deutsch",
 };
 
-// Short label for compact switchers
-export const LOCALE_SHORT: Record<Lang, string> = {
-  en: "EN",
-  al: "AL",
-  it: "IT",
-  de: "DE",
-};
-
 export function isLang(value: string): value is Lang {
   return (LOCALES as readonly string[]).includes(value);
 }

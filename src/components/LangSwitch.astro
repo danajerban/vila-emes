@@ -17,7 +17,7 @@ const path = stripLocalePrefix(Astro.url.pathname.replace(/\/+$/, "") || "/");
         <a
           href={localizedPath(l, path)}
           class={`flag-pill ${active ? "is-active" : ""}`}
-          aria-current={active ? "true" : undefined}
+          aria-current={active ? "page" : undefined}
           aria-label={LOCALE_LABELS[l]}
         >
           <img src={`/flags/${l}.svg`} alt="" width="28" height="20" loading="lazy" />
@@ -33,7 +33,7 @@ const path = stripLocalePrefix(Astro.url.pathname.replace(/\/+$/, "") || "/");
         <a
           href={localizedPath(l, path)}
           class={`flag-pill flag-pill-stacked ${active ? "is-active" : ""}`}
-          aria-current={active ? "true" : undefined}
+          aria-current={active ? "page" : undefined}
           aria-label={LOCALE_LABELS[l]}
         >
           <img src={`/flags/${l}.svg`} alt="" width="32" height="24" loading="lazy" />
