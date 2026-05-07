@@ -53,6 +53,19 @@ home:
       "DSC_0145": "the walk down to the water"
       "DSC_0169": "first light, August"
       "DSC_0204": "our coffee corner"
+    alts:
+      - "Vila Emes drone view"
+      - "Drone toward beach"
+      - "Building exterior from above"
+      - "Avenue and palm trees"
+      - "Rooftop terrace"
+      - "Durrës beach"
+      - "The Emes family"
+      - "Deluxe room interior"
+      - "Apartment with terrace"
+      - "Two-bedroom apartment"
+      - "Standard room with sea view"
+      - "Deluxe queen room"
   location:
     eyebrow: "Where we are"
     heading: "On the avenue, by the sea"
@@ -61,6 +74,12 @@ home:
     eyebrow: "Come say hello"
     heading_part_1: "Get in"
     heading_part_2_handwritten: "touch"
+    tile_labels:
+      phone: "Phone"
+      whatsapp: "WhatsApp"
+      email: "Email"
+      instagram: "Instagram"
+      booking: "Booking.com"
   faq:
     eyebrow: "Before you ask"
     heading_part_1: "Frequently"
@@ -139,7 +158,8 @@ contact_page:
     fields:
       name: "Your name"
       email: "Email"
-      arrival: "Arrival date"
+      arrival: "Check-in date"
+      checkout: "Check-out date"
       guests: "Guests"
       message: "Message"
     submit: "Send message"

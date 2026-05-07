@@ -100,6 +100,7 @@ export const collections = {
           heading: z.string(),
           intro: z.string(),
           captions: z.record(z.string(), z.string()).optional(),
+          alts: z.array(z.string()).length(12),
         }),
         location: z.object({
           eyebrow: z.string(),
@@ -110,6 +111,13 @@ export const collections = {
           eyebrow: z.string(),
           heading_part_1: z.string(),
           heading_part_2_handwritten: z.string(),
+          tile_labels: z.object({
+            phone: z.string(),
+            whatsapp: z.string(),
+            email: z.string(),
+            instagram: z.string(),
+            booking: z.string(),
+          }),
         }),
         faq: z.object({
           eyebrow: z.string(),
@@ -167,6 +175,7 @@ export const collections = {
             name: z.string(),
             email: z.string(),
             arrival: z.string(),
+            checkout: z.string(),
             guests: z.string(),
             message: z.string(),
           }),
