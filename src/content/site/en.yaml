@@ -1,6 +1,6 @@
 hotel:
   name: "Vila Emes"
-  tagline: "Two generations of one family by the sea"
+  tagline: "A family hotel by the sea"
   location: "Plazh, Durrës · Albania"
 
 home:
@@ -8,28 +8,28 @@ home:
     eyebrow: "Durrës · Albania · Since 1998"
     welcome_handwritten: "welcome to"
     heading: "Vila Emes"
-    sub: "Eleven layouts. Two generations of one family. The same coffee on the terrace every morning."
+    sub: "Eleven layouts. A family that opens the door themselves. The same coffee on the terrace every morning."
     cta_primary: "Book on Booking.com"
     cta_secondary: "Open in Maps"
-    polaroid_caption_handwritten: "— Shaban, his daughter and his son"
+    polaroid_caption_handwritten: "— the Emes family"
   about:
     eyebrow: "Our story"
     heading_part_1: "A small house,"
     heading_part_2_handwritten: "kept by one family."
     handwritten_year: "— since 1998"
     body:
-      - "Shaban Emes opened Vila Emes in 1998. Two generations of the family run the house now — his daughter and son welcome guests alongside him most days, and the same hands that lay out fresh towels know which room catches the morning light first."
+      - "Vila Emes opened in 1998. The same family runs the house — two of them welcome guests most days, and the same hands that lay out fresh towels know which room catches the morning light first."
       - "We sit on Rruga Pavarësia in Plazh, the long avenue that runs above the beach in Durrës. The pastry shop on our ground floor opens early — cappuccino, espresso, fresh croissants — five steps from the lobby. Restaurants, supermarkets, and the bus stop are all within a short stroll."
-      - "What to expect: a hundred metres to the water, a 24-hour front desk, simple rooms cared for daily, and Shaban himself reserving you a parking space out front (sometimes with a chair on it). It is not a luxury hotel. It is a small house with a real heart."
+      - "What to expect: a hundred metres to the water, a 24-hour front desk, simple rooms cared for daily, and the owner reserving you a parking space out front (sometimes with a chair on it). It is not a luxury hotel. It is a small house with a real heart."
     signature_handwritten: "— with love, the Emes family"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
     booking_label: "Booking.com"
     google_label: "Google"
     quote:
-      text: "The location of the hotel was perfect, very close to the beach and lots of lovely restaurants and cafes. The room was everything you would want. The best part about the hotel is Shaban, the owner. He was beyond welcoming and friendly to us throughout our whole stay. We will definitely stay in Hotel Vila Emes again!"
-      author: "Etain"
-      location: "Ireland"
+      text: "Cozy family-run hotel. Exceptionally nice staff, always friendly and helpful. Excellent location. Everything you need is nearby. Just a stone's throw from the beach. Highly recommended!"
+      author: "Gry"
+      location: "Norway"
       when: "stayed last summer"
   rooms:
     eyebrow: "Stay"
@@ -59,11 +59,11 @@ home:
     heading_part_2_handwritten: "asked"
     items:
       - q: "What time is check-in and check-out?"
-        a: "Check-in from 12:00 to 18:00. Check-out from 07:00 to 11:00. The front desk is open 24 hours, so late arrivals are fine — just let us know by WhatsApp so Shaban can meet you."
+        a: "Check-in from 12:00 to 18:00. Check-out from 07:00 to 11:00. The front desk is open 24 hours, so late arrivals are fine — just let us know by WhatsApp so we can meet you."
       - q: "Is breakfast included?"
         a: "Breakfast is not included in the room rate, but our ground-floor pastry shop opens early and serves cappuccino, espresso, and fresh pastries — five steps from the lobby."
       - q: "Where do I park?"
-        a: "Free street parking in front of the hotel. Shaban will reserve a space for you with a chair if he can — first-come, first-served."
+        a: "Free street parking in front of the hotel. The owner will reserve a space for you with a chair if he can — first-come, first-served."
       - q: "Do you allow pets?"
         a: "Pets are not allowed at Vila Emes."
       - q: "Are cribs or extra beds available?"
@@ -116,7 +116,7 @@ contact_page:
   hero_eyebrow: "We'd love to hear from you"
   hero_heading_part_1: "Get in"
   hero_heading_part_2_handwritten: "touch"
-  hero_intro: "Phone us. Message on WhatsApp. Or write a few lines below — Shaban reads every message himself."
+  hero_intro: "Phone us. Message on WhatsApp. Or write a few lines below — we read every message ourselves."
   form:
     heading: "Write to us"
     intro: "Tell us when you'd like to come and what you're looking for. We answer the same day."
@@ -132,9 +132,9 @@ contact_page:
     address_label: "Address"
     hours_label: "Hours"
     speak_to_label: "Speak to"
-    speak_to_name: "Shaban Emes"
-    speak_to_role: "Owner"
-    speak_to_handwritten: "— I read every message myself"
+    speak_to_name: "The Emes family"
+    speak_to_role: "Owners"
+    speak_to_handwritten: "— we read every message ourselves"
   directions:
     eyebrow: "Getting here"
     heading: "How to find us"
