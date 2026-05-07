@@ -1,0 +1,61 @@
+---
+interface Props {
+  labels: { all: string; apartments: string; deluxe: string; family: string; standard: string; economy: string };
+}
+const { labels } = Astro.props;
+const cats = [
+  { value: "all",         label: labels.all },
+  { value: "apartments",  label: labels.apartments },
+  { value: "deluxe",      label: labels.deluxe },
+  { value: "family",      label: labels.family },
+  { value: "standard",    label: labels.standard },
+  { value: "economy",     label: labels.economy },
+];
+---
+<div class="mt-10 flex justify-center">
+  <div class="inline-flex flex-wrap gap-2 p-1.5 rounded-full bg-[color:var(--color-cream-elevated)] border border-[color:var(--color-divider)]" role="tablist" aria-label="Filter rooms">
+    {cats.map((c, i) => (
+      <button
+        type="button"
+        data-filter={c.value}
+        class={`room-filter-btn px-4 py-1.5 rounded-full text-[13px] tracking-wide transition ${i === 0 ? "is-active" : ""}`}
+        role="tab"
+        aria-selected={i === 0 ? "true" : "false"}
+      >{c.label}</button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .room-filter-btn {
+    color: var(--color-ink);
+    background: transparent;
+  }
+  .room-filter-btn.is-active {
+    background: var(--color-terracotta);
+    color: var(--color-cream);
+  }
+  .room-filter-btn:not(.is-active):hover {
+    background: var(--color-sub-bg);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btns = document.querySelectorAll(".room-filter-btn");
+    if (btns.length === 0) return;
+    btns.forEach((b) => b.addEventListener("click", () => {
+      const filter = b.getAttribute("data-filter");
+      btns.forEach((x) => {
+        x.classList.toggle("is-active", x === b);
+        x.setAttribute("aria-selected", x === b ? "true" : "false");
+      });
+      const articles = document.querySelectorAll("article[data-cat]");
+      articles.forEach((a) => {
+        const cat = a.getAttribute("data-cat");
+        const show = filter === "all" || cat === filter;
+        a.style.display = show ? "" : "none";
+      });
+    }));
+  });
+</script>

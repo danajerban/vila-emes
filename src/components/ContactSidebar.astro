@@ -1,0 +1,48 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import Handwritten from "./Handwritten.astro";
+import { SITE } from "../config/site";
+
+interface Props {
+  addressLabel: string;
+  hoursLabel: string;
+  speakToLabel: string;
+  speakToName: string;
+  speakToRole: string;
+  speakToHandwritten: string;
+}
+const { addressLabel, hoursLabel, speakToLabel, speakToName, speakToRole, speakToHandwritten } = Astro.props;
+---
+<aside class="space-y-10">
+  <div>
+    <Eyebrow>{addressLabel}</Eyebrow>
+    <address class="mt-3 not-italic font-serif text-lg text-[color:var(--color-ink)] space-y-0.5">
+      {SITE.contact.address.map((line) => <p>{line}</p>)}
+    </address>
+  </div>
+
+  <div>
+    <Eyebrow>{hoursLabel}</Eyebrow>
+    <dl class="mt-3 grid gap-1.5 text-sm">
+      <div class="flex justify-between gap-4">
+        <dt class="text-[color:var(--color-muted)]">Front desk</dt>
+        <dd class="text-[color:var(--color-ink)] font-serif">{SITE.hours.front_desk}</dd>
+      </div>
+      <div class="flex justify-between gap-4">
+        <dt class="text-[color:var(--color-muted)]">Check-in</dt>
+        <dd class="text-[color:var(--color-ink)] font-serif tabular-nums">{SITE.hours.check_in}</dd>
+      </div>
+      <div class="flex justify-between gap-4">
+        <dt class="text-[color:var(--color-muted)]">Check-out</dt>
+        <dd class="text-[color:var(--color-ink)] font-serif tabular-nums">{SITE.hours.check_out}</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div>
+    <Eyebrow>{speakToLabel}</Eyebrow>
+    <p class="mt-3 font-serif text-xl text-[color:var(--color-ink)]">{speakToName}</p>
+    <p class="text-sm text-[color:var(--color-muted)]">{speakToRole}</p>
+    <Handwritten as="p" color="terracotta" class="mt-3 text-2xl">{speakToHandwritten}</Handwritten>
+  </div>
+</aside>

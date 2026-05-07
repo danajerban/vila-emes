@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Eyebrow from "./Eyebrow.astro";
+
+interface Props {
+  href: string;
+  photo: ImageMetadata;
+  numberLabel: string;
+  familyLabel: string;
+  name: string;
+  capacity: string;
+  detailsLabel: string;
+}
+const { href, photo, numberLabel, familyLabel, name, capacity, detailsLabel } = Astro.props;
+---
+<a
+  href={href}
+  class="group block overflow-hidden rounded-md border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] hover:-translate-y-[2px] transition duration-500"
+>
+  <div class="aspect-[4/3] overflow-hidden">
+    <Image
+      src={photo}
+      alt={name}
+      width={1200}
+      quality={82}
+      class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
+    />
+  </div>
+  <div class="p-5">
+    <Eyebrow>{numberLabel} · {familyLabel}</Eyebrow>
+    <h3 class="mt-2 font-serif text-2xl text-[color:var(--color-ink)] leading-tight">{name}</h3>
+    <p class="mt-1 text-sm text-[color:var(--color-muted)]">{capacity}</p>
+    <p class="mt-4 text-sm text-[color:var(--color-terracotta)] font-medium">{detailsLabel}</p>
+  </div>
+</a>

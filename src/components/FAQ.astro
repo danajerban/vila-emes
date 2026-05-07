@@ -1,0 +1,58 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import Handwritten from "./Handwritten.astro";
+
+interface Props {
+  eyebrow: string;
+  headingPart1: string;
+  headingPart2Handwritten: string;
+  items: { q: string; a: string }[];
+  footerCtaHandwritten?: string;
+  footerCtaHref?: string;
+  variant?: "default" | "subbg";
+}
+const {
+  eyebrow,
+  headingPart1,
+  headingPart2Handwritten,
+  items,
+  footerCtaHandwritten,
+  footerCtaHref,
+  variant = "default",
+} = Astro.props;
+---
+<section class={variant === "subbg" ? "bg-[color:var(--color-sub-bg)]" : ""}>
+  <div class="max-w-[920px] mx-auto px-5 md:px-10 py-20 md:py-28 reveal">
+    <div class="text-center">
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 class="mt-3 font-serif text-4xl md:text-5xl text-[color:var(--color-ink)] leading-tight">
+        {headingPart1}{" "}
+        <Handwritten as="em" color="terracotta" class="not-italic text-[1.1em]">{headingPart2Handwritten}</Handwritten>
+      </h2>
+    </div>
+
+    <ul class="mt-10 space-y-3">
+      {items.map((item) => (
+        <li>
+          <details class="group rounded-md border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] open:bg-[color:var(--color-cream)] transition">
+            <summary class="flex items-center justify-between gap-4 p-5 font-serif text-lg md:text-xl text-[color:var(--color-ink)]">
+              <span>{item.q}</span>
+              <span class="faq-chev" aria-hidden="true"></span>
+            </summary>
+            <div class="px-5 pb-5 text-[color:var(--color-ink)]/85">
+              {item.a}
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+
+    {footerCtaHandwritten && footerCtaHref && (
+      <p class="mt-10 text-center">
+        <a href={footerCtaHref} class="inline-block">
+          <Handwritten as="span" color="terracotta" class="text-2xl">{footerCtaHandwritten}</Handwritten>
+        </a>
+      </p>
+    )}
+  </div>
+</section>

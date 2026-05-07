@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Eyebrow from "./Eyebrow.astro";
+
+interface Props {
+  heading: string;
+  eyebrow?: string;
+  intro?: string;
+  photos: { src: ImageMetadata; alt: string; caption?: string }[];
+}
+const { heading, eyebrow, intro, photos } = Astro.props;
+---
+<section class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 reveal">
+  <div class="max-w-2xl">
+    {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+    <h2 class="mt-3 font-serif text-4xl md:text-5xl text-[color:var(--color-ink)] leading-tight">{heading}</h2>
+    {intro && <p class="mt-4 text-[color:var(--color-ink)]/80">{intro}</p>}
+  </div>
+
+  <div class="mt-10 columns-2 md:columns-3 lg:columns-4 gap-3 [column-fill:_balance]">
+    {photos.map((photo, i) => (
+      <figure class="mb-3 break-inside-avoid">
+        <button
+          type="button"
+          class="block w-full overflow-hidden rounded-md cursor-zoom-in"
+          data-lightbox-index={i}
+          aria-label={photo.alt}
+        >
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            width={900}
+            quality={82}
+            class="w-full h-auto"
+            loading={i < 4 ? "eager" : "lazy"}
+          />
+        </button>
+        {photo.caption && (
+          <figcaption class="handwritten text-[color:var(--color-terracotta)] text-lg mt-2 px-1">
+            — {photo.caption}
+          </figcaption>
+        )}
+      </figure>
+    ))}
+  </div>
+
+  <div
+    id="lightbox"
+    class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-label={heading}
+  >
+    <button type="button" id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl" aria-label="Close">×</button>
+    <button type="button" id="lightbox-prev" class="absolute left-4 text-white text-3xl" aria-label="Previous">‹</button>
+    <button type="button" id="lightbox-next" class="absolute right-4 text-white text-3xl" aria-label="Next">›</button>
+    <img id="lightbox-img" src="" alt="" class="max-h-[90vh] max-w-[92vw] object-contain" />
+  </div>
+</section>
+
+<script>
+  const photos = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-lightbox-index]"))
+    .map((btn) => {
+      const img = btn.querySelector("img");
+      return img?.getAttribute("src") ?? "";
+    });
+  const box = document.getElementById("lightbox") as HTMLElement | null;
+  const imgEl = document.getElementById("lightbox-img") as HTMLImageElement | null;
+  const close = document.getElementById("lightbox-close");
+  const prev = document.getElementById("lightbox-prev");
+  const next = document.getElementById("lightbox-next");
+  let current = 0;
+
+  function show(i: number) {
+    if (!box || !imgEl) return;
+    current = (i + photos.length) % photos.length;
+    imgEl.src = photos[current];
+    box.classList.remove("hidden");
+    box.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+  function hide() {
+    if (!box) return;
+    box.classList.add("hidden");
+    box.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+  document.querySelectorAll<HTMLButtonElement>("[data-lightbox-index]").forEach((btn) => {
+    btn.addEventListener("click", () => show(Number(btn.dataset.lightboxIndex)));
+  });
+  close?.addEventListener("click", hide);
+  prev?.addEventListener("click", () => show(current - 1));
+  next?.addEventListener("click", () => show(current + 1));
+  box?.addEventListener("click", (e) => { if (e.target === box) hide(); });
+  document.addEventListener("keydown", (e) => {
+    if (box?.classList.contains("hidden")) return;
+    if (e.key === "Escape") hide();
+    if (e.key === "ArrowLeft") show(current - 1);
+    if (e.key === "ArrowRight") show(current + 1);
+  });
+</script>

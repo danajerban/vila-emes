@@ -1,0 +1,31 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  checkIn: { label: string; value: string; note: string };
+  checkOut: { label: string; value: string; note: string };
+  notes: { label: string; value: string };
+}
+const { eyebrow, heading, checkIn, checkOut, notes } = Astro.props;
+---
+<section class="reveal">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 text-center">
+    <Eyebrow>{eyebrow}</Eyebrow>
+    <h2 class="mt-3 font-serif text-3xl md:text-4xl text-[color:var(--color-ink)]">{heading}</h2>
+    <div class="mt-12 grid md:grid-cols-3 gap-10 max-w-3xl mx-auto">
+      {[checkIn, checkOut].map((rule) => (
+        <div>
+          <Eyebrow>{rule.label}</Eyebrow>
+          <p class="mt-3 font-serif text-2xl text-[color:var(--color-ink)] tabular-nums">{rule.value}</p>
+          <p class="mt-2 text-sm text-[color:var(--color-muted)]">{rule.note}</p>
+        </div>
+      ))}
+      <div>
+        <Eyebrow>{notes.label}</Eyebrow>
+        <p class="mt-3 text-[color:var(--color-ink)]/85 leading-relaxed">{notes.value}</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import Handwritten from "./Handwritten.astro";
+
+interface Props {
+  bookingLabel: string;
+  bookingScore: number;
+  googleLabel: string;
+  googleScore: number;
+  quote: { text: string; author: string; location: string; when?: string };
+}
+const { bookingLabel, bookingScore, googleLabel, googleScore, quote } = Astro.props;
+---
+<section class="bg-[color:var(--color-sub-bg)] reveal">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-10 items-center">
+    <div class="md:col-span-4">
+      <div class="flex items-baseline gap-2">
+        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums">{bookingScore.toFixed(1)}</span>
+        <Eyebrow class="!text-[color:var(--color-muted)]">{bookingLabel}</Eyebrow>
+      </div>
+      <div class="mt-4 flex items-baseline gap-2">
+        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums">{googleScore.toFixed(1)}</span>
+        <Eyebrow class="!text-[color:var(--color-muted)]">{googleLabel} · ★</Eyebrow>
+      </div>
+    </div>
+
+    <figure class="md:col-span-8">
+      <svg width="28" height="22" viewBox="0 0 28 22" class="text-[color:var(--color-terracotta)] mb-3" fill="currentColor" aria-hidden="true">
+        <path d="M0 14c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5h3.6V22H0V14zm14.4 0c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5H22V22h-7.6V14z"/>
+      </svg>
+      <blockquote class="font-serif text-xl md:text-2xl text-[color:var(--color-ink)] leading-snug italic">
+        {quote.text}
+      </blockquote>
+      <figcaption class="mt-4 text-sm text-[color:var(--color-muted)]">
+        <span class="font-medium text-[color:var(--color-ink)]">{quote.author}</span>
+        {" · "}{quote.location}
+        {quote.when && (<><span> · </span><Handwritten as="span" color="terracotta">{quote.when}</Handwritten></>)}
+      </figcaption>
+    </figure>
+  </div>
+</section>

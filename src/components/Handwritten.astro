@@ -1,0 +1,14 @@
+---
+interface Props {
+  as?: "span" | "p" | "h2" | "em";
+  class?: string;
+  color?: "terracotta" | "ink" | "sea";
+}
+const { as: As = "span", class: className = "", color = "terracotta" } = Astro.props;
+const colorClass = {
+  terracotta: "text-[color:var(--color-terracotta)]",
+  ink: "text-[color:var(--color-ink)]",
+  sea: "text-[color:var(--color-sea)]",
+}[color];
+---
+<As class={`handwritten ${colorClass} ${className}`}><slot /></As>

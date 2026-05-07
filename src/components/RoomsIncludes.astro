@@ -1,0 +1,30 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import Handwritten from "./Handwritten.astro";
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  handwritten: string;
+  pastryNote: string;
+  list: string[];
+}
+const { eyebrow, heading, handwritten, pastryNote, list } = Astro.props;
+const half = Math.ceil(list.length / 2);
+const left = list.slice(0, half);
+const right = list.slice(half);
+---
+<section class="bg-[color:var(--color-sub-bg)] reveal">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-start">
+    <div>
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 class="mt-3 font-serif text-3xl md:text-4xl text-[color:var(--color-ink)] leading-tight">{heading}</h2>
+      <Handwritten as="p" color="terracotta" class="mt-3 text-2xl">{handwritten}</Handwritten>
+      <p class="mt-5 text-[color:var(--color-ink)]/80 max-w-prose">{pastryNote}</p>
+    </div>
+    <ul class="grid grid-cols-2 gap-x-6 gap-y-3 text-[color:var(--color-ink)]/85">
+      {left.map((item) => <li class="flex items-baseline gap-2"><span class="text-[color:var(--color-terracotta)]">·</span><span>{item}</span></li>)}
+      {right.map((item) => <li class="flex items-baseline gap-2"><span class="text-[color:var(--color-terracotta)]">·</span><span>{item}</span></li>)}
+    </ul>
+  </div>
+</section>

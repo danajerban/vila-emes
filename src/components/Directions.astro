@@ -1,0 +1,39 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import LocationMap from "./LocationMap.astro";
+import { SITE } from "../config/site";
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  mapsCta: string;
+}
+const { eyebrow, heading, mapsCta } = Astro.props;
+---
+<section class="reveal">
+  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+    <div>
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 class="mt-3 font-serif text-3xl md:text-4xl text-[color:var(--color-ink)]">{heading}</h2>
+      <ul class="mt-8 divide-y divide-[color:var(--color-divider)]">
+        {SITE.distances.map((d) => (
+          <li class="py-4 grid grid-cols-[auto_1fr] gap-x-6 items-baseline">
+            <span class="font-serif text-3xl text-[color:var(--color-terracotta)] tabular-nums">{d.value}</span>
+            <div>
+              <p class="font-medium text-[color:var(--color-ink)]">{d.label}</p>
+              <p class="text-sm text-[color:var(--color-muted)] mt-1">{d.blurb}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="space-y-5">
+      <LocationMap mode="drawn" ariaLabel="Hand-drawn map of Vila Emes location" />
+      <a
+        href={SITE.links.google_maps}
+        target="_blank" rel="noopener"
+        class="inline-flex items-center px-5 py-3 border border-[color:var(--color-sea)] text-[color:var(--color-sea)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] rounded-md transition"
+      >{mapsCta}</a>
+    </div>
+  </div>
+</section>
