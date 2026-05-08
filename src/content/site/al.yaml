@@ -167,6 +167,9 @@ contact_page:
   sidebar:
     address_label: "Adresa"
     hours_label: "Orari"
+    front_desk_label: "Recepsioni"
+    check_in_label: "Check-in"
+    check_out_label: "Check-out"
     speak_to_label: "Flisni me"
     speak_to_name: "Familja Emes"
     speak_to_role: "Pronarët"

@@ -167,6 +167,9 @@ contact_page:
   sidebar:
     address_label: "Adresse"
     hours_label: "Öffnungszeiten"
+    front_desk_label: "Rezeption"
+    check_in_label: "Check-in"
+    check_out_label: "Check-out"
     speak_to_label: "Sprechen Sie mit"
     speak_to_name: "Die Familie Emes"
     speak_to_role: "Inhaber"

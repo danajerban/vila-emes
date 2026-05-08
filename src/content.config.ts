@@ -185,6 +185,9 @@ export const collections = {
         sidebar: z.object({
           address_label: z.string(),
           hours_label: z.string(),
+          front_desk_label: z.string(),
+          check_in_label: z.string(),
+          check_out_label: z.string(),
           speak_to_label: z.string(),
           speak_to_name: z.string(),
           speak_to_role: z.string(),
