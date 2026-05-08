@@ -25,7 +25,7 @@ home:
     handwritten_year: "— seit 1998"
     body:
       - "Die Vila Emes wurde 1998 eröffnet. Dieselbe Familie führt das Haus — zwei von ihnen begrüßen die Gäste fast täglich, und dieselben Hände, die frische Handtücher bereitlegen, wissen, welches Zimmer als erstes die Morgensonne einfängt."
-      - "Wir befinden uns an der Rruga Pavarësia in Plazh, der langen Allee oberhalb des Strandes in Durrës. Die Bäckerei in unserem Erdgeschoss öffnet früh — Cappuccino, Espresso, frische Croissants — nur fünf Schritte von der Lobby entfernt. Restaurants, Supermärkte und die Bushaltestelle sind alle fußläufig erreichbar."
+      - "Wir befinden uns an der Rruga Pavarësia in Plazh, der langen Allee am Strand entlang in Durrës. Die Bäckerei in unserem Erdgeschoss öffnet früh — Cappuccino, Espresso, frische Croissants — nur fünf Schritte von der Lobby entfernt. Restaurants, Supermärkte und die Bushaltestelle sind alle fußläufig erreichbar."
       - "Was Sie erwartet: hundert Meter bis zum Wasser, eine 24-Stunden-Rezeption, einfache, täglich gepflegte Zimmer und der Inhaber, der Ihnen einen Parkplatz vor dem Haus reserviert (manchmal sogar mit einem Stuhl darauf). Es ist kein Luxushotel. Es ist ein kleines Haus mit viel Herz."
     signature_handwritten: "— mit Liebe, die Familie Emes"
     photo_caption: "Vila Emes · Plazh, Durrës"
@@ -71,7 +71,7 @@ home:
     heading: "An der Allee, am Meer"
     cta: "In Karten öffnen"
   contact_strip:
-    eyebrow: "Kommen Sie vorbei und sagen Sie Hallo"
+    eyebrow: "Wir freuen uns auf Ihren Besuch"
     heading_part_1: "Kontakt"
     heading_part_2_handwritten: "aufnehmen"
     tile_labels:
@@ -122,7 +122,7 @@ rooms_page:
       - "Kostenloses WLAN"
       - "Tägliche Zimmerreinigung"
       - "Eigenes Badezimmer"
-      - "Kostenlose Pflegeprodukte"
+      - "Kostenlose Toilettenartikel"
       - "Bettwäsche und Handtücher"
       - "Kostenlose Parkplätze an der Straße"
       - "Moskitonetz"

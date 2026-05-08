@@ -24,7 +24,7 @@ home:
     heading_part_2_handwritten: "e mbajtur nga një familje."
     handwritten_year: "— që nga 1998"
     body:
-      - "Vila Emes u hap në vitin 1998. E njëjta familje drejton shtëpinë — dy prej tyre i mirëpresin mysafirët shumicën e ditëve, dhe të njëjtat duar që shtrojnë peshqirët e freskët e dinë se cila dhomë e kap e para dritën e mëngjesit."
+      - "Vila Emes u hap në vitin 1998. E njëjta familje kujdeset për shtëpinë — dy prej tyre i mirëpresin mysafirët shumicën e ditëve, dhe të njëjtat duar që shtrojnë peshqirët e freskët e dinë se cila dhomë e kap e para dritën e mëngjesit."
       - "Ndodhemi në Rrugën Pavarësia në Plazh, bulevardi i gjatë që shtrihet mbi plazhin e Durrësit. Pastiçeria në katin përdhes hapet herët — kapuçino, espresso, kroasanë të freskët — pesë hapa nga holli. Restorantet, supermarketet dhe stacioni i autobusit janë të gjitha brenda një shëtitjeje të shkurtër."
       - "Çfarë të prisni: njëqind metra nga deti, një recepsion 24-orësh, dhoma të thjeshta të mirëmbajtura çdo ditë, dhe pronari ju rezervon një vend parkimi përpara (ndonjëherë me një karrige mbi të). Nuk është një hotel luksoz. Është një shtëpi e vogël me një zemër të vërtetë."
     signature_handwritten: "— me dashuri, familja Emes"
@@ -86,11 +86,11 @@ home:
     heading_part_2_handwritten: "të shpeshta"
     items:
       - q: "Në çfarë ore janë check-in dhe check-out?"
-        a: "Check-in nga 12:00 deri 18:00. Check-out nga 07:00 deri 11:00. Recepsioni është i hapur 24 orë, kështu që mbërritjet e vona janë në rregull — thjesht na njoftoni në WhatsApp që ne mund t'ju takojmë."
+        a: "Check-in nga 12:00 deri 18:00. Check-out nga 07:00 deri 11:00. Recepsioni është i hapur 24 orë, kështu që mbërritjet e vona janë në rregull — thjesht na njoftoni në WhatsApp dhe ju presim."
       - q: "A përfshihet mëngjesi?"
         a: "Mëngjesi nuk përfshihet në çmimin e dhomës, por pastiçeria jonë në katin përdhes hapet herët dhe shërben kapuçino, espresso dhe ëmbëlsira të freskëta — pesë hapa nga holli."
       - q: "Ku mund të parkoj?"
-        a: "Parkim falas në rrugë përpara hotelit. Pronari do t'ju rezervojë një vend me një karrige nëse mundet — kush vjen i pari, shërbehet i pari."
+        a: "Parkim falas në rrugë përpara hotelit. Pronari do t'ju rezervojë një vend me një karrige nëse mundet — sipas radhës së ardhjes."
       - q: "A lejohen kafshët shtëpiake?"
         a: "Kafshët shtëpiake nuk lejohen në Vila Emes."
       - q: "A ofroni djepa ose shtretër shtesë?"
@@ -125,7 +125,7 @@ rooms_page:
       - "Artikuj tualeti falas"
       - "Çarçafë dhe peshqirë"
       - "Parkim falas në rrugë"
-      - "Rrjetë kundër mushkonjave"
+      - "Rrjetë mushkonjash"
       - "Ngrohje në dimër"
       - "Mikpritje familjare"
   rules:
