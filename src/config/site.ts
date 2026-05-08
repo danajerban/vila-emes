@@ -12,7 +12,6 @@ export const SITE = {
   },
 
   hours: {
-    front_desk: "24-hour",
     check_in: "12:00 – 18:00",
     check_out: "07:00 – 11:00",
   },
@@ -30,10 +29,10 @@ export const SITE = {
   },
 
   distances: [
-    { value: "22 mi", label: "Tirana International Airport", blurb: "Door-to-door taxis run all day; ~35 minutes in light traffic." },
+    { value: "35 km", label: "Tirana International Airport", blurb: "Door-to-door taxis run all day; ~35 minutes in light traffic." },
     { value: "100 m", label: "Durrës Beach", blurb: "A two-minute walk through the palm-lined avenue." },
     { value: "3.5 km", label: "Centre of Durrës", blurb: "City buses pass the corner every ten minutes." },
-    { value: "3 mi", label: "Durres Amphitheatre", blurb: "The 2nd-century Roman amphitheatre is a 10-minute drive." },
+    { value: "5 km", label: "Durres Amphitheatre", blurb: "The 2nd-century Roman amphitheatre is a 10-minute drive." },
   ],
 } as const;
 

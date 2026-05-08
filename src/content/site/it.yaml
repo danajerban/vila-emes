@@ -176,6 +176,7 @@ contact_page:
     address_label: "Indirizzo"
     hours_label: "Orari"
     front_desk_label: "Reception"
+    front_desk_value: "24 ore"
     check_in_label: "Check-in"
     check_out_label: "Check-out"
     speak_to_label: "Parla con"
