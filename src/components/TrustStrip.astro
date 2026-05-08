@@ -14,8 +14,8 @@ interface Props {
 const { bookingLabel, bookingScore, googleLabel, googleScore, quote, readAllReviewsLabel, readAllReviewsUrl } = Astro.props;
 ---
 <section class="bg-[color:var(--color-sub-bg)] reveal">
-  <div class="max-w-[1180px] mx-auto px-5 md:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-10 items-center">
-    <div class="md:col-span-4 space-y-4">
+  <div class="max-w-3xl mx-auto px-5 md:px-10 py-16 md:py-20">
+    <div class="max-w-md mx-auto space-y-4">
       <div class="flex items-baseline gap-3 px-5 py-4 rounded-lg border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)]">
         <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums" data-count-up={bookingScore} data-count-decimals="1">0.0</span>
         <Eyebrow class="!text-[color:var(--color-muted)]">{bookingLabel}</Eyebrow>
@@ -26,8 +26,8 @@ const { bookingLabel, bookingScore, googleLabel, googleScore, quote, readAllRevi
       </div>
     </div>
 
-    <figure class="md:col-span-8">
-      <svg width="28" height="22" viewBox="0 0 28 22" class="text-[color:var(--color-terracotta)] mb-3" fill="currentColor" aria-hidden="true">
+    <figure class="mt-12 text-center">
+      <svg width="28" height="22" viewBox="0 0 28 22" class="text-[color:var(--color-terracotta)] mb-3 mx-auto" fill="currentColor" aria-hidden="true">
         <path d="M0 14c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5h3.6V22H0V14zm14.4 0c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5H22V22h-7.6V14z"/>
       </svg>
       <blockquote class="font-serif text-xl md:text-2xl text-[color:var(--color-ink)] leading-snug italic">

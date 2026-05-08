@@ -90,7 +90,7 @@ home:
       - q: "Ist das Frühstück inklusive?"
         a: "Das Frühstück ist nicht im Zimmerpreis enthalten. Unsere Bäckerei im Erdgeschoss öffnet jedoch früh und serviert Cappuccino, Espresso und frisches Gebäck — nur fünf Schritte von der Lobby entfernt."
       - q: "Wo kann ich parken?"
-        a: "Kostenlose Parkplätze an der Straße vor dem Hotel. Der Inhaber reserviert Ihnen nach Möglichkeit einen Platz mit einem Stuhl — solange Plätze verfügbar sind."
+        a: "Kostenlose öffentliche Parkplätze an der Straße vor dem Hotel. Wir versuchen, Ihnen nach Möglichkeit einen Platz zu reservieren — solange Plätze verfügbar sind."
       - q: "Sind Haustiere erlaubt?"
         a: "Haustiere sind in der Vila Emes nicht erlaubt."
       - q: "Sind Babybetten oder Zustellbetten verfügbar?"
@@ -237,8 +237,8 @@ ui:
     sofa-bed: "Schlafsofa"
     renovated-2024: "Renoviert 2024"
   footer:
-    handwritten: "mit Liebe, die Familie Emes"
-    copyright: "© 2026 Vila Emes · mit ❤️ gemacht"
+    handwritten: "mit Liebe, die Familie Emes ❤️"
+    copyright: "© 2026 Vila Emes"
 
 rooms:
   - id: "apt-1bed-terrace"

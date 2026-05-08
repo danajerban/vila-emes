@@ -90,7 +90,7 @@ home:
       - q: "Is breakfast included?"
         a: "Breakfast is not included in the room rate, but our ground-floor pastry shop opens early and serves cappuccino, espresso, and fresh pastries — five steps from the lobby."
       - q: "Where do I park?"
-        a: "Free street parking in front of the hotel. The owner will reserve a space for you with a chair if he can — first-come, first-served."
+        a: "Free public street parking in front of the hotel. We will try to reserve a space for you if we can — first-come, first-served."
       - q: "Do you allow pets?"
         a: "Pets are not allowed at Vila Emes."
       - q: "Are cribs or extra beds available?"
@@ -237,8 +237,8 @@ ui:
     sofa-bed: "Sofa bed"
     renovated-2024: "Renovated 2024"
   footer:
-    handwritten: "with love, the Emes family"
-    copyright: "© 2026 Vila Emes · made with ❤️"
+    handwritten: "with love, the Emes family ❤️"
+    copyright: "© 2026 Vila Emes"
 
 rooms:
   - id: "apt-1bed-terrace"

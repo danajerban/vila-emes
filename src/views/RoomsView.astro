@@ -7,64 +7,89 @@ import RoomFilterBar from "../components/RoomFilterBar.astro";
 import RoomDetails from "../components/RoomDetails.astro";
 import RoomsIncludes from "../components/RoomsIncludes.astro";
 import HouseRules from "../components/HouseRules.astro";
-import Handwritten from "../components/Handwritten.astro";
 import Footer from "../components/Footer.astro";
 import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 
-// Apartments — 5 photos each
+// Apartments — 7 photos each
 import imgApt1Bed1 from "../assets/photos/apt-1bed-terrace/dsc-0434-1600.webp";
 import imgApt1Bed2 from "../assets/photos/apt-1bed-terrace/dsc-0435-1600.webp";
-import imgApt1Bed3 from "../assets/photos/apt-1bed-terrace/dsc-0440-1600.webp";
-import imgApt1Bed4 from "../assets/photos/apt-1bed-terrace/dsc-0444-1600.webp";
-import imgApt1Bed5 from "../assets/photos/apt-1bed-terrace/dsc-0447-1600.webp";
+import imgApt1Bed3 from "../assets/photos/apt-1bed-terrace/dsc-0436-1600.webp";
+import imgApt1Bed4 from "../assets/photos/apt-1bed-terrace/dsc-0437-1600.webp";
+import imgApt1Bed5 from "../assets/photos/apt-1bed-terrace/dsc-0440-1600.webp";
+import imgApt1Bed6 from "../assets/photos/apt-1bed-terrace/dsc-0444-1600.webp";
+import imgApt1Bed7 from "../assets/photos/apt-1bed-terrace/dsc-0447-1600.webp";
 
 import imgApt2Bed1 from "../assets/photos/apt-2bed/dsc-0457-1600.webp";
 import imgApt2Bed2 from "../assets/photos/apt-2bed/dsc-0461-1600.webp";
-import imgApt2Bed3 from "../assets/photos/apt-2bed/dsc-0465-1600.webp";
-import imgApt2Bed4 from "../assets/photos/apt-2bed/dsc-0470-1600.webp";
-import imgApt2Bed5 from "../assets/photos/apt-2bed/dsc-0479-1600.webp";
+import imgApt2Bed3 from "../assets/photos/apt-2bed/dsc-0463-1600.webp";
+import imgApt2Bed4 from "../assets/photos/apt-2bed/dsc-0465-1600.webp";
+import imgApt2Bed5 from "../assets/photos/apt-2bed/dsc-0467-1600.webp";
+import imgApt2Bed6 from "../assets/photos/apt-2bed/dsc-0470-1600.webp";
+import imgApt2Bed7 from "../assets/photos/apt-2bed/dsc-0479-1600.webp";
 
-// Deluxe (3 rooms split from deluxe-rooms/)
+// Deluxe — 7 photos each (split from deluxe-rooms/)
 import imgDeluxeKing1 from "../assets/photos/deluxe-rooms/dsc-0327-1600.webp";
 import imgDeluxeKing2 from "../assets/photos/deluxe-rooms/dsc-0333-1600.webp";
 import imgDeluxeKing3 from "../assets/photos/deluxe-rooms/dsc-0334-1600.webp";
 import imgDeluxeKing4 from "../assets/photos/deluxe-rooms/dsc-0337-1600.webp";
+import imgDeluxeKing5 from "../assets/photos/deluxe-rooms/dsc-0344-1600.webp";
+import imgDeluxeKing6 from "../assets/photos/deluxe-rooms/dsc-0351-1600.webp";
+import imgDeluxeKing7 from "../assets/photos/deluxe-rooms/dsc-0353-1600.webp";
 
 import imgDeluxeQueen1 from "../assets/photos/deluxe-rooms/dsc-0329-1600.webp";
 import imgDeluxeQueen2 from "../assets/photos/deluxe-rooms/dsc-0335-1600.webp";
 import imgDeluxeQueen3 from "../assets/photos/deluxe-rooms/dsc-0336-1600.webp";
 import imgDeluxeQueen4 from "../assets/photos/deluxe-rooms/dsc-0345-1600.webp";
+import imgDeluxeQueen5 from "../assets/photos/deluxe-rooms/dsc-0355-1600.webp";
+import imgDeluxeQueen6 from "../assets/photos/deluxe-rooms/dsc-0357-1600.webp";
+import imgDeluxeQueen7 from "../assets/photos/deluxe-rooms/dsc-0358-1600.webp";
 
 import imgDeluxeBalc1 from "../assets/photos/deluxe-rooms/dsc-0330-1600.webp";
 import imgDeluxeBalc2 from "../assets/photos/deluxe-rooms/dsc-0340-1600.webp";
 import imgDeluxeBalc3 from "../assets/photos/deluxe-rooms/dsc-0342-1600.webp";
 import imgDeluxeBalc4 from "../assets/photos/deluxe-rooms/dsc-0346-1600.webp";
+import imgDeluxeBalc5 from "../assets/photos/deluxe-rooms/dsc-0359-1600.webp";
+import imgDeluxeBalc6 from "../assets/photos/deluxe-rooms/dsc-0363-1600.webp";
+import imgDeluxeBalc7 from "../assets/photos/deluxe-rooms/dsc-0364-1600.webp";
 
-// Family + Standard (split from standard-rooms/)
+// Family + Standard — 7 photos each (split from standard-rooms/)
 import imgQuadSea1   from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
 import imgQuadSea2   from "../assets/photos/standard-rooms/dsc-0386-1600.webp";
-import imgQuadSea3   from "../assets/photos/standard-rooms/dsc-0397-1600.webp";
-import imgQuadSea4   from "../assets/photos/standard-rooms/dsc-0398-1600.webp";
+import imgQuadSea3   from "../assets/photos/standard-rooms/dsc-0395-1600.webp";
+import imgQuadSea4   from "../assets/photos/standard-rooms/dsc-0397-1600.webp";
+import imgQuadSea5   from "../assets/photos/standard-rooms/dsc-0398-1600.webp";
+import imgQuadSea6   from "../assets/photos/standard-rooms/dsc-0403-1600.webp";
+import imgQuadSea7   from "../assets/photos/standard-rooms/dsc-0408-1600.webp";
 
 import imgQuadBalc1  from "../assets/photos/standard-rooms/dsc-0382-1600.webp";
 import imgQuadBalc2  from "../assets/photos/standard-rooms/dsc-0389-1600.webp";
 import imgQuadBalc3  from "../assets/photos/standard-rooms/dsc-0391-1600.webp";
 import imgQuadBalc4  from "../assets/photos/standard-rooms/dsc-0393-1600.webp";
+import imgQuadBalc5  from "../assets/photos/standard-rooms/dsc-0410-1600.webp";
+import imgQuadBalc6  from "../assets/photos/standard-rooms/dsc-0416-1600.webp";
+import imgQuadBalc7  from "../assets/photos/standard-rooms/dsc-0417-1600.webp";
 
 import imgFamilyBalc1 from "../assets/photos/standard-rooms/dsc-0384-1600.webp";
 import imgFamilyBalc2 from "../assets/photos/standard-rooms/dsc-0394-1600.webp";
 import imgFamilyBalc3 from "../assets/photos/standard-rooms/dsc-0399-1600.webp";
 import imgFamilyBalc4 from "../assets/photos/standard-rooms/dsc-0402-1600.webp";
+import imgFamilyBalc5 from "../assets/photos/standard-rooms/dsc-0418-1600.webp";
+import imgFamilyBalc6 from "../assets/photos/standard-rooms/dsc-0428-1600.webp";
+import imgFamilyBalc7 from "../assets/photos/standard-rooms/dsc-0429-1600.webp";
 
 import imgFamilyStd1  from "../assets/photos/standard-rooms/dsc-0385-1600.webp";
 import imgFamilyStd2  from "../assets/photos/standard-rooms/dsc-0405-1600.webp";
 import imgFamilyStd3  from "../assets/photos/standard-rooms/dsc-0406-1600.webp";
 import imgFamilyStd4  from "../assets/photos/standard-rooms/dsc-0407-1600.webp";
+import imgFamilyStd5  from "../assets/photos/standard-rooms/dsc-0430-1600.webp";
+import imgFamilyStd6  from "../assets/photos/standard-rooms/dsc-0431-1600.webp";
+import imgFamilyStd7  from "../assets/photos/standard-rooms/dsc-0433-1600.webp";
 
-// Economy — unique sets (no longer dups of quad-sea / quad-balcony)
+// Economy — 7 photos each (own files + a few overlaps with family/quad,
+// since /standard-rooms/ has limited unique frames; content review can curate)
 import imgEconTriple1   from "../assets/photos/standard-rooms/dsc-0411-1600.webp";
 import imgEconTriple2   from "../assets/photos/standard-rooms/dsc-0412-1600.webp";
 import imgEconTriple3   from "../assets/photos/standard-rooms/dsc-0413-1600.webp";
@@ -84,20 +109,19 @@ const ui = site.data.ui;
 const page = site.data.rooms_page;
 const home = site.data.home;
 const rooms = site.data.rooms;
-const baseLink = lang === "en" ? "" : `/${lang}`;
 
 const roomPhotos: Record<string, ImageMetadata[]> = {
-  "apt-1bed-terrace": [imgApt1Bed1, imgApt1Bed2, imgApt1Bed3, imgApt1Bed4, imgApt1Bed5],
-  "apt-2bed":         [imgApt2Bed1, imgApt2Bed2, imgApt2Bed3, imgApt2Bed4, imgApt2Bed5],
-  "deluxe-king":      [imgDeluxeKing1, imgDeluxeKing2, imgDeluxeKing3, imgDeluxeKing4],
-  "deluxe-queen":     [imgDeluxeQueen1, imgDeluxeQueen2, imgDeluxeQueen3, imgDeluxeQueen4],
-  "deluxe-balcony":   [imgDeluxeBalc1, imgDeluxeBalc2, imgDeluxeBalc3, imgDeluxeBalc4],
-  "quad-sea":         [imgQuadSea1, imgQuadSea2, imgQuadSea3, imgQuadSea4],
-  "quad-balcony":     [imgQuadBalc1, imgQuadBalc2, imgQuadBalc3, imgQuadBalc4],
-  "family-balcony":   [imgFamilyBalc1, imgFamilyBalc2, imgFamilyBalc3, imgFamilyBalc4],
-  "family-standard":  [imgFamilyStd1, imgFamilyStd2, imgFamilyStd3, imgFamilyStd4],
-  "econ-triple":      [imgEconTriple1, imgEconTriple2, imgEconTriple3, imgEconTriple4],
-  "budget-triple":    [imgBudgetTriple1, imgBudgetTriple2, imgBudgetTriple3, imgBudgetTriple4],
+  "apt-1bed-terrace": [imgApt1Bed1, imgApt1Bed2, imgApt1Bed3, imgApt1Bed4, imgApt1Bed5, imgApt1Bed6, imgApt1Bed7],
+  "apt-2bed":         [imgApt2Bed1, imgApt2Bed2, imgApt2Bed3, imgApt2Bed4, imgApt2Bed5, imgApt2Bed6, imgApt2Bed7],
+  "deluxe-king":      [imgDeluxeKing1, imgDeluxeKing2, imgDeluxeKing3, imgDeluxeKing4, imgDeluxeKing5, imgDeluxeKing6, imgDeluxeKing7],
+  "deluxe-queen":     [imgDeluxeQueen1, imgDeluxeQueen2, imgDeluxeQueen3, imgDeluxeQueen4, imgDeluxeQueen5, imgDeluxeQueen6, imgDeluxeQueen7],
+  "deluxe-balcony":   [imgDeluxeBalc1, imgDeluxeBalc2, imgDeluxeBalc3, imgDeluxeBalc4, imgDeluxeBalc5, imgDeluxeBalc6, imgDeluxeBalc7],
+  "quad-sea":         [imgQuadSea1, imgQuadSea2, imgQuadSea3, imgQuadSea4, imgQuadSea5, imgQuadSea6, imgQuadSea7],
+  "quad-balcony":     [imgQuadBalc1, imgQuadBalc2, imgQuadBalc3, imgQuadBalc4, imgQuadBalc5, imgQuadBalc6, imgQuadBalc7],
+  "family-balcony":   [imgFamilyBalc1, imgFamilyBalc2, imgFamilyBalc3, imgFamilyBalc4, imgFamilyBalc5, imgFamilyBalc6, imgFamilyBalc7],
+  "family-standard":  [imgFamilyStd1, imgFamilyStd2, imgFamilyStd3, imgFamilyStd4, imgFamilyStd5, imgFamilyStd6, imgFamilyStd7],
+  "econ-triple":      [imgEconTriple1, imgEconTriple2, imgEconTriple3, imgEconTriple4, imgQuadSea3, imgQuadSea7, imgFamilyBalc5],
+  "budget-triple":    [imgBudgetTriple1, imgBudgetTriple2, imgBudgetTriple3, imgBudgetTriple4, imgQuadBalc5, imgFamilyBalc6, imgFamilyStd6],
 };
 
 const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
@@ -153,17 +177,6 @@ const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
     checkOut={page.rules.check_out}
     notes={page.rules.notes}
   />
-
-  <section class="reveal">
-    <div class="max-w-2xl mx-auto px-5 py-20 text-center">
-      <Handwritten as="p" color="terracotta" class="text-2xl">{page.cta.handwritten}</Handwritten>
-      <h2 class="mt-3 font-serif text-3xl md:text-4xl text-[color:var(--color-ink)]">{page.cta.heading}</h2>
-      <a
-        href={`${baseLink}/contact`}
-        class="inline-flex items-center mt-8 px-6 py-3 border border-[color:var(--color-sea)] text-[color:var(--color-sea)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] rounded-md transition"
-      >{page.cta.button}</a>
-    </div>
-  </section>
 
   {home.ready_cta && (
     <ReadyToBookCTA

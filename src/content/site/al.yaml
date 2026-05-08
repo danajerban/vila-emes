@@ -90,7 +90,7 @@ home:
       - q: "A përfshihet mëngjesi?"
         a: "Mëngjesi nuk përfshihet në çmimin e dhomës, por pastiçeria jonë në katin përdhes hapet herët dhe shërben kapuçino, espresso dhe ëmbëlsira të freskëta — pesë hapa nga holli."
       - q: "Ku mund të parkoj?"
-        a: "Parkim falas në rrugë përpara hotelit. Pronari do t'ju rezervojë një vend me një karrige nëse mundet — sipas radhës së ardhjes."
+        a: "Parkim publik falas në rrugë përpara hotelit. Do të përpiqemi t'ju rezervojmë një vend nëse mundemi — sipas radhës së ardhjes."
       - q: "A lejohen kafshët shtëpiake?"
         a: "Kafshët shtëpiake nuk lejohen në Vila Emes."
       - q: "A ofroni djepa ose shtretër shtesë?"
@@ -237,8 +237,8 @@ ui:
     sofa-bed: "Divan-krevat"
     renovated-2024: "I rinovuar 2024"
   footer:
-    handwritten: "me dashuri, familja Emes"
-    copyright: "© 2026 Vila Emes · bërë me ❤️"
+    handwritten: "me dashuri, familja Emes ❤️"
+    copyright: "© 2026 Vila Emes"
 
 rooms:
   - id: "apt-1bed-terrace"

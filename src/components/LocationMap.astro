@@ -5,7 +5,7 @@ interface Props {
 }
 const { embedUrl, ariaLabel } = Astro.props;
 ---
-<div class="w-full aspect-[16/9] rounded-md overflow-hidden border border-[color:var(--color-divider)]" aria-label={ariaLabel}>
+<div class="w-full aspect-[4/3] rounded-md overflow-hidden border border-[color:var(--color-divider)]" aria-label={ariaLabel}>
   <iframe
     src={embedUrl}
     title={ariaLabel}

@@ -16,41 +16,46 @@ interface Props {
   brandTagline: string;
 }
 const { lang, handwritten, copyright, ui, brandTagline } = Astro.props;
+
+const waText = "Hello, I'd like to book at Vila Emes";
+const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(waText)}`;
 ---
 <footer class="bg-[color:var(--color-cream-elevated)] border-t border-[color:var(--color-divider)]">
   <div class="max-w-[1280px] mx-auto px-5 md:px-10 py-14 md:py-20">
     <div class="grid md:grid-cols-3 gap-10 md:gap-12">
-      <!-- Brand column -->
+      <!-- Brand column: logo + tagline + address + compact lang switch -->
       <div class="text-center md:text-left">
         <Image src={logoPng} alt="Vila Emes" width={120} height={120} class="opacity-90 mx-auto md:mx-0" />
         <p class="mt-4 text-sm text-[color:var(--color-ink)]/75 max-w-xs mx-auto md:mx-0">{brandTagline}</p>
         <address class="mt-3 not-italic text-sm text-[color:var(--color-muted)] space-y-0.5">
           {SITE.contact.address.map((line) => <p>{line}</p>)}
         </address>
+        <div class="mt-5 flex justify-center md:justify-start">
+          <LangSwitch lang={lang} variant="inline" />
+        </div>
       </div>
 
-      <!-- Visit column -->
+      <!-- Visit column: nav links only -->
       <nav class="text-center md:text-left" aria-label={ui.nav.home}>
         <ul class="space-y-2 text-sm">
           <li><a href={localizedPath(lang, "/")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.home}</a></li>
           <li><a href={localizedPath(lang, "/rooms")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.rooms}</a></li>
           <li><a href={localizedPath(lang, "/contact")} class="hover:text-[color:var(--color-terracotta)] transition">{ui.nav.contact}</a></li>
-          <li><a href={SITE.links.booking_com} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">{ui.buttons.book}</a></li>
-          <li><a href={SITE.links.google_maps} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">{ui.buttons.map}</a></li>
         </ul>
       </nav>
 
-      <!-- Contact column -->
+      <!-- Contact column: contact tiles + stacked CTAs (Book / WhatsApp / Maps) -->
       <div class="text-center md:text-left">
         <ul class="space-y-2 text-sm">
           <li><a href={`tel:${SITE.contact.phone.replace(/\s+/g, "")}`} class="hover:text-[color:var(--color-terracotta)] transition">{SITE.contact.phone}</a></li>
           <li><a href={`mailto:${SITE.contact.email}`} class="hover:text-[color:var(--color-terracotta)] transition">{SITE.contact.email}</a></li>
-          <li><a href={`https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">WhatsApp</a></li>
           <li><a href={SITE.links.instagram} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">Instagram</a></li>
         </ul>
-        <div class="mt-6 flex justify-center md:justify-start">
-          <LangSwitch lang={lang} variant="stacked" />
-        </div>
+        <ul class="mt-6 flex flex-col gap-2 text-sm">
+          <li><a href={SITE.links.booking_com} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">{ui.buttons.book}</a></li>
+          <li><a href={waHref} target="_blank" rel="noopener" class="whatsapp-link transition">WhatsApp us</a></li>
+          <li><a href={SITE.links.google_maps} target="_blank" rel="noopener" class="hover:text-[color:var(--color-terracotta)] transition">{ui.buttons.map}</a></li>
+        </ul>
       </div>
     </div>
 
@@ -62,3 +67,7 @@ const { lang, handwritten, copyright, ui, brandTagline } = Astro.props;
     </div>
   </div>
 </footer>
+
+<style>
+  .whatsapp-link:hover { color: #25D366; }
+</style>

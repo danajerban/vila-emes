@@ -90,7 +90,7 @@ home:
       - q: "La colazione è inclusa?"
         a: "La colazione non è inclusa nel prezzo della camera, ma la nostra pasticceria al piano terra apre presto e serve cappuccino, espresso e pasticcini freschi — a cinque passi dalla hall."
       - q: "Dove posso parcheggiare?"
-        a: "Parcheggio gratuito sulla strada davanti all'hotel. Il proprietario vi riserverà un posto con una sedia se può — primo arrivato, primo servito."
+        a: "Parcheggio pubblico gratuito sulla strada davanti all'hotel. Cercheremo di riservarvi un posto se possiamo — primo arrivato, primo servito."
       - q: "Sono ammessi animali domestici?"
         a: "Gli animali domestici non sono ammessi a Vila Emes."
       - q: "Sono disponibili culle o letti supplementari?"
@@ -237,8 +237,8 @@ ui:
     sofa-bed: "Divano letto"
     renovated-2024: "Ristrutturato 2024"
   footer:
-    handwritten: "con amore, la famiglia Emes"
-    copyright: "© 2026 Vila Emes · fatto con ❤️"
+    handwritten: "con amore, la famiglia Emes ❤️"
+    copyright: "© 2026 Vila Emes"
 
 rooms:
   - id: "apt-1bed-terrace"
