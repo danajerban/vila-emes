@@ -1,0 +1,78 @@
+---
+import { SEO } from "astro-seo";
+import { LOCALES, LOCALE_TO_LANG, localizedPath, stripLocalePrefix, type Lang } from "../i18n/locales";
+import { SITE } from "../config/site";
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+  pathname: string;
+  ogImage?: string;
+}
+const { lang, title, description, pathname, ogImage = "/og-image.png" } = Astro.props;
+
+// Astro emits pathnames with a trailing slash for collection-style routes
+// (e.g. "/al/", "/it/contact/"). Mirror that exact form in the canonical so
+// it matches the served URL — and rebuild sister-locale URLs from the
+// locale-stripped tail with the same trailing slash semantics.
+const cleanPath = stripLocalePrefix(pathname);
+// Astro emits trailing-slashed paths for all routes including "/" — mirror
+// that on every sister-locale URL so the in-page hreflangs match the served
+// URLs exactly (no /al → /al/ 301 detour).
+const trailing = pathname.endsWith("/");
+const localized = (loc: Lang) => {
+  const base = localizedPath(loc, cleanPath);
+  if (trailing && !base.endsWith("/")) return `${base}/`;
+  return base;
+};
+
+const canonical = new URL(localized(lang), SITE.url).href;
+const ogImageUrl = new URL(ogImage, SITE.url).href;
+const htmlLang = LOCALE_TO_LANG[lang];
+const ogLocale = htmlLang.replace("-", "_");
+
+const languageAlternates = [
+  ...LOCALES.map((loc) => ({
+    href: new URL(localized(loc), SITE.url).href,
+    hrefLang: LOCALE_TO_LANG[loc],
+  })),
+  { href: new URL(localized("en"), SITE.url).href, hrefLang: "x-default" },
+];
+
+const localeAlternate = LOCALES
+  .filter((loc) => loc !== lang)
+  .map((loc) => LOCALE_TO_LANG[loc].replace("-", "_"));
+---
+<SEO
+  title={title}
+  description={description}
+  canonical={canonical}
+  languageAlternates={languageAlternates}
+  openGraph={{
+    basic: {
+      title,
+      type: "website",
+      image: ogImageUrl,
+      url: canonical,
+    },
+    optional: {
+      siteName: "Vila Emes",
+      description,
+      locale: ogLocale,
+      localeAlternate,
+    },
+    image: {
+      alt: title,
+      width: 1200,
+      height: 630,
+    },
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    image: ogImageUrl,
+    imageAlt: title,
+  }}
+/>

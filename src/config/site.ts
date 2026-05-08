@@ -2,7 +2,7 @@
 // Owner edits this one file when real values arrive — no hunting through 4 YAML translations.
 
 export const SITE = {
-  url: "https://vila-emes.pages.dev", // until custom domain
+  url: "https://www.vilaemes.com",
 
   contact: {
     phone: "+355 69 486 7654",

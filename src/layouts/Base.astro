@@ -2,8 +2,9 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import { LOCALE_TO_LANG, type Lang } from "../i18n/locales";
-import { SITE } from "../config/site";
 import { getSite } from "../i18n/content";
+import Seo from "../components/Seo.astro";
+import { hotelJsonLd } from "../lib/seo";
 import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 
 interface Props {
@@ -14,10 +15,11 @@ interface Props {
 const { lang, title, description } = Astro.props;
 
 const htmlLang = LOCALE_TO_LANG[lang];
-const ogImageUrl = `${SITE.url}/og-image.png`;
 
 const site = await getSite(lang);
 const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at Vila Emes";
+
+const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
 ---
 <!doctype html>
 <html lang={htmlLang} data-vibe="sunset">
@@ -26,14 +28,8 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <title>{title}</title>
-    {description && <meta name="description" content={description} />}
-
-    <meta property="og:title" content={title} />
-    {description && <meta property="og:description" content={description} />}
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:url" content={SITE.url} />
+    <Seo lang={lang} title={title} description={description} pathname={Astro.url.pathname} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")}></script>
 
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
@@ -51,25 +47,42 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
         if (window.__baseInited) return;
         window.__baseInited = true;
 
-        // Header transparent → solid on scroll. ONE-TIME registration;
-        // re-query the header on each scroll event so we always see the
-        // current page's header (or skip if missing / non-transparent).
-        const onScroll = () => {
+        // Header transparent ↔ cream toggle, anchored to the hero element
+        // itself rather than a scrollY threshold. While ANY part of the
+        // hero is in the viewport, header is in its transparent state.
+        // Once the hero has fully scrolled out of view, header solidifies
+        // to cream. Content-anchored — immune to iOS URL-bar reflow and
+        // ClientRouter scroll restoration that can otherwise mis-fire a
+        // pixel-based threshold on the visual "top" of the page.
+        let headerStateIO = null;
+        function bindHeaderState() {
+          const hero = document.querySelector("[data-hero]");
           const header = document.getElementById("siteHeader");
           if (!header) return;
           if (header.dataset.transparent !== "true") return;
-          header.classList.toggle("is-solid", window.scrollY > 24);
-        };
-        window.addEventListener("scroll", onScroll, { passive: true });
+          if (headerStateIO) headerStateIO.disconnect();
+          if (!hero) {
+            // Transparent home page without a hero element — keep header
+            // in transparent state (rare but defensive).
+            header.classList.remove("is-solid");
+            return;
+          }
+          headerStateIO = new IntersectionObserver(([entry]) => {
+            if (header.dataset.transparent !== "true") return;
+            header.classList.toggle("is-solid", !entry.isIntersecting);
+          }, { threshold: 0 });
+          headerStateIO.observe(hero);
+        }
 
         function init() {
+          // Header state — transparent on home hero, cream when scrolled past or off-home.
           const header = document.getElementById("siteHeader");
           if (header) {
             if (header.dataset.transparent !== "true") {
               header.classList.add("is-solid");
             } else {
-              // Sync state on page-load (covers initial load + back nav).
-              header.classList.toggle("is-solid", window.scrollY > 24);
+              header.classList.remove("is-solid");
+              bindHeaderState();
             }
           }
 
