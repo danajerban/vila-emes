@@ -151,7 +151,7 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
 </style>
 
 <script is:inline>
-  // Hero slideshow + tagline rotator. Zero-bundle: pure inline.
+  // Hero slideshow + tagline rotator + scroll exit animation. Zero-bundle: pure inline.
   (function () {
     // Outer guard: ClientRouter can re-execute inline scripts on revisit.
     // Without this, every revisit to the home page would spawn another
@@ -159,17 +159,53 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
     if (window.__heroInited) return;
     window.__heroInited = true;
 
+    // Captured once at IIFE level so the scroll listener install is one-shot.
+    // Trade-off: toggling prefers-reduced-motion mid-session requires a hard
+    // reload to re-evaluate (acceptable — rare on a hotel marketing site).
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     let intervalIds = [];
     function clearTimers() {
       intervalIds.forEach(clearInterval);
       intervalIds = [];
     }
 
+    // ---- Scroll exit animation state (IIFE-level; survives view transitions) ----
+    let currentHero = null;
+    let isOnScreen = false;
+    let ticking = false;
+
+    const io = !reduced ? new IntersectionObserver(([entry]) => {
+      isOnScreen = entry.isIntersecting;
+    }, { threshold: 0 }) : null;
+
+    function writeProgress() {
+      if (!currentHero) return;
+      const rect = currentHero.getBoundingClientRect();
+      const h = rect.height;
+      if (h <= 0) return;
+      const scrolled = Math.max(0, -rect.top);
+      const progress = Math.min(1, scrolled / (h * 0.5));
+      currentHero.style.setProperty("--hero-progress", String(progress));
+    }
+
+    function onScroll() {
+      if (!isOnScreen || ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        writeProgress();
+        ticking = false;
+      });
+    }
+
+    if (!reduced) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+
     function init() {
       // Clear any timers from a prior page render before starting fresh.
       clearTimers();
 
-      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const hero = document.querySelector("[data-hero]");
       if (!hero) return;
 
@@ -201,6 +237,18 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
             }, 400);
           }, 4000));
         }
+      }
+
+      // 3) Scroll exit animation: rebind IO to the freshly-rendered hero element
+      // (Astro view transitions replace the DOM; closures pointing at the old
+      // detached element would silently break getBoundingClientRect.)
+      if (io) {
+        if (currentHero && currentHero !== hero) io.unobserve(currentHero);
+        currentHero = hero;
+        io.observe(currentHero);
+        // Seed initial progress in case scroll position is already > 0
+        // (deep-link, scroll-restore on back/forward, or view transition mid-scroll)
+        writeProgress();
       }
     }
     if (document.readyState === "loading") {
