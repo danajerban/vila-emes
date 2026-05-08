@@ -159,11 +159,11 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
           }
         }
 
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", init);
-        } else {
-          init();
-        }
+        // ClientRouter is mounted in <head>, so astro:page-load fires on
+        // initial load AND every subsequent CR navigation. Listening on it
+        // alone gives us a single init() per page lifecycle. Listening to
+        // DOMContentLoaded too would stack non-idempotent addEventListener
+        // bindings (e.g. mobileNavToggle) on initial load.
         document.addEventListener("astro:page-load", init);
       })();
     </script>
