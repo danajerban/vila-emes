@@ -1,5 +1,4 @@
 ---
-import Eyebrow from "./Eyebrow.astro";
 import Handwritten from "./Handwritten.astro";
 
 interface Props {
@@ -14,38 +13,39 @@ interface Props {
 const { bookingLabel, bookingScore, googleLabel, googleScore, quote, readAllReviewsLabel, readAllReviewsUrl } = Astro.props;
 ---
 <section class="bg-[color:var(--color-sub-bg)] reveal">
-  <div class="max-w-3xl mx-auto px-5 md:px-10 py-16 md:py-20">
-    <div class="max-w-md mx-auto space-y-4">
-      <div class="flex items-baseline gap-3 px-5 py-4 rounded-lg border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)]">
-        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums" data-count-up={bookingScore} data-count-decimals="1">0.0</span>
-        <Eyebrow class="!text-[color:var(--color-muted)]">{bookingLabel}</Eyebrow>
+  <div class="max-w-3xl mx-auto px-5 md:px-10 py-16 md:py-20 text-center">
+    <svg width="32" height="26" viewBox="0 0 28 22" class="text-[color:var(--color-terracotta)] mb-4 mx-auto" fill="currentColor" aria-hidden="true">
+      <path d="M0 14c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5h3.6V22H0V14zm14.4 0c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5H22V22h-7.6V14z"/>
+    </svg>
+
+    <blockquote class="font-serif text-2xl md:text-3xl text-[color:var(--color-ink)] leading-snug italic">
+      {quote.text}
+    </blockquote>
+
+    <p class="mt-5 text-base md:text-lg text-[color:var(--color-muted)]">
+      <span class="font-medium text-[color:var(--color-ink)]">{quote.author}</span>
+      <span> · </span>{quote.location}
+      {quote.when && (<><span> · </span><Handwritten as="span" color="terracotta">{quote.when}</Handwritten></>)}
+    </p>
+
+    <div class="mt-12 flex flex-wrap justify-center items-baseline gap-x-12 md:gap-x-16 gap-y-4">
+      <div class="flex items-baseline gap-3">
+        <span class="font-serif text-6xl md:text-7xl text-[color:var(--color-terracotta)] tabular-nums leading-none" data-count-up={bookingScore} data-count-decimals="1">0.0</span>
+        <span class="text-base md:text-lg uppercase tracking-[0.2em] font-medium text-[color:var(--color-muted)]">{bookingLabel}</span>
       </div>
-      <div class="flex items-baseline gap-3 px-5 py-4 rounded-lg border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)]">
-        <span class="font-serif text-5xl md:text-6xl text-[color:var(--color-terracotta)] tabular-nums" data-count-up={googleScore} data-count-decimals="1">0.0</span>
-        <Eyebrow class="!text-[color:var(--color-muted)]">{googleLabel} · ★</Eyebrow>
+      <div class="flex items-baseline gap-3">
+        <span class="font-serif text-6xl md:text-7xl text-[color:var(--color-terracotta)] tabular-nums leading-none" data-count-up={googleScore} data-count-decimals="1">0.0</span>
+        <span class="text-base md:text-lg uppercase tracking-[0.2em] font-medium text-[color:var(--color-muted)]">{googleLabel} · ★</span>
       </div>
     </div>
 
-    <figure class="mt-12 text-center">
-      <svg width="28" height="22" viewBox="0 0 28 22" class="text-[color:var(--color-terracotta)] mb-3 mx-auto" fill="currentColor" aria-hidden="true">
-        <path d="M0 14c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5h3.6V22H0V14zm14.4 0c0-4.5 3.2-8.4 7.6-9l1 1.7c-2.6.5-4.6 2.7-4.6 5.5H22V22h-7.6V14z"/>
-      </svg>
-      <blockquote class="font-serif text-xl md:text-2xl text-[color:var(--color-ink)] leading-snug italic">
-        {quote.text}
-      </blockquote>
-      <figcaption class="mt-4 text-sm text-[color:var(--color-muted)]">
-        <span class="font-medium text-[color:var(--color-ink)]">{quote.author}</span>
-        {" · "}{quote.location}
-        {quote.when && (<><span> · </span><Handwritten as="span" color="terracotta">{quote.when}</Handwritten></>)}
-      </figcaption>
-      {readAllReviewsLabel && readAllReviewsUrl && (
-        <a
-          href={readAllReviewsUrl}
-          target="_blank"
-          rel="noopener"
-          class="handwritten text-[color:var(--color-terracotta)] text-lg mt-4 inline-block hover:underline"
-        >{readAllReviewsLabel}</a>
-      )}
-    </figure>
+    {readAllReviewsLabel && readAllReviewsUrl && (
+      <a
+        href={readAllReviewsUrl}
+        target="_blank"
+        rel="noopener"
+        class="handwritten text-[color:var(--color-terracotta)] text-2xl md:text-3xl mt-10 inline-block hover:underline"
+      >{readAllReviewsLabel}</a>
+    )}
   </div>
 </section>
