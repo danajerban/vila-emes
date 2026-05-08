@@ -24,11 +24,11 @@ const { eyebrow, heading, mapsCta } = Astro.props;
             <li class="py-5 grid grid-cols-[5rem_1fr] gap-x-6 items-baseline md:grid-cols-[6rem_1fr]">
               <div class="text-center">
                 <div class="font-serif text-4xl md:text-5xl text-[color:var(--color-terracotta)] tabular-nums leading-none">{num}</div>
-                <div class="mt-1 text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-muted)]">{unit}</div>
+                <div class="mt-2 text-base md:text-lg uppercase tracking-[0.2em] font-medium text-[color:var(--color-muted)]">{unit}</div>
               </div>
               <div>
-                <p class="font-medium text-[color:var(--color-ink)]">{d.label}</p>
-                <p class="text-sm text-[color:var(--color-muted)] mt-1">{d.blurb}</p>
+                <p class="font-medium text-[color:var(--color-ink)] text-lg">{d.label}</p>
+                <p class="text-base md:text-lg text-[color:var(--color-muted)] mt-1">{d.blurb}</p>
               </div>
             </li>
           );
