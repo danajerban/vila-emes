@@ -3,6 +3,17 @@ hotel:
   tagline: "Ein Familienhotel am Meer"
   location: "Plazh, Durrës · Albanien"
 
+seo:
+  home:
+    title: "Vila Emes — Familienhotel am Meer in Durrës"
+    description: "Familiengeführt seit 1998 in Plazh, Durrës — 100 m vom Wasser, elf Zimmerkategorien, 9.0 auf Booking. Direkt, auf Booking.com oder per WhatsApp buchen."
+  rooms:
+    title: "Zimmer & Apartments — Vila Emes, Strand von Durrës"
+    description: "Elf Zimmerkategorien in der Vila Emes — vom 30 m² Deluxe bis zum 90 m² Apartment mit zwei Schlafzimmern und Meerblick. Klimaanlage, WLAN, Balkone."
+  contact:
+    title: "Kontakt Vila Emes — Telefon, WhatsApp, E-Mail"
+    description: "Kontakt zu Vila Emes in Plazh, Durrës. 24-h-Rezeption, WhatsApp, Telefon, E-Mail — wir lesen jede Nachricht selbst und antworten noch am selben Tag."
+
 home:
   hero:
     eyebrow: "Durrës · Albanien · Seit 1998"
@@ -24,9 +35,9 @@ home:
     heading_part_2_handwritten: "geführt von einer Familie."
     handwritten_year: "— seit 1998"
     body:
-      - "Die Vila Emes wurde 1998 eröffnet. Dieselbe Familie führt das Haus — zwei von ihnen begrüßen die Gäste fast täglich, und dieselben Hände, die frische Handtücher bereitlegen, wissen, welches Zimmer als erstes die Morgensonne einfängt."
-      - "Wir befinden uns an der Rruga Pavarësia in Plazh, der langen Allee am Strand entlang in Durrës. Die Bäckerei in unserem Erdgeschoss öffnet früh — Cappuccino, Espresso, frische Croissants — nur fünf Schritte von der Lobby entfernt. Restaurants, Supermärkte und die Bushaltestelle sind alle fußläufig erreichbar."
-      - "Was Sie erwartet: hundert Meter bis zum Wasser, eine 24-Stunden-Rezeption, einfache, täglich gepflegte Zimmer und der Inhaber, der Ihnen einen Parkplatz vor dem Haus reserviert (manchmal sogar mit einem Stuhl darauf). Es ist kein Luxushotel. Es ist ein kleines Haus mit viel Herz."
+      - "Die Vila Emes wurde 1998 eröffnet. Seitdem führt dieselbe Familie den Betrieb und begrüßt die Gäste."
+      - "Wir befinden uns an der Rruga Pavarësia in Plazh, der Allee am Strand entlang in Durrës. Die Bäckerei in unserem Erdgeschoss öffnet früh — Cappuccino, Espresso, frische Croissants. Restaurants, Supermärkte und die Bushaltestelle sind nur wenige Minuten entfernt."
+      - "Hundert Meter bis zum Wasser, 24-Stunden-Rezeption, einfache, täglich gepflegte Zimmer — kein Luxushotel, sondern ein Ort mit echtem Herz."
     signature_handwritten: "— mit Liebe, die Familie Emes"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
@@ -72,8 +83,8 @@ home:
     cta: "In Karten öffnen"
   contact_strip:
     eyebrow: "Wir freuen uns auf Ihren Besuch"
-    heading_part_1: "Kontakt"
-    heading_part_2_handwritten: "aufnehmen"
+    heading_part_1: "Sagen Sie"
+    heading_part_2_handwritten: "Hallo"
     tile_labels:
       phone: "Telefon"
       whatsapp: "WhatsApp"
@@ -90,19 +101,19 @@ home:
       - q: "Ist das Frühstück inklusive?"
         a: "Das Frühstück ist nicht im Zimmerpreis enthalten. Unsere Bäckerei im Erdgeschoss öffnet jedoch früh und serviert Cappuccino, Espresso und frisches Gebäck — nur fünf Schritte von der Lobby entfernt."
       - q: "Wo kann ich parken?"
-        a: "Kostenlose öffentliche Parkplätze an der Straße vor dem Hotel. Wir versuchen, Ihnen nach Möglichkeit einen Platz zu reservieren — solange Plätze verfügbar sind."
+        a: "Kostenlose öffentliche Parkplätze direkt vor dem Hotel. Wir halten Ihnen nach Möglichkeit einen Platz frei — wer zuerst kommt, parkt zuerst :)"
       - q: "Sind Haustiere erlaubt?"
         a: "Haustiere sind in der Vila Emes nicht erlaubt."
       - q: "Sind Babybetten oder Zustellbetten verfügbar?"
         a: "Babybetten sind nicht verfügbar. Ein Zustellbett kann in den meisten Zimmern für 5 € pro Person und Nacht hinzugefügt werden — bitte geben Sie uns im Voraus Bescheid."
       - q: "Welche Sprachen sprechen Sie?"
-        a: "Englisch, Italienisch und Albanisch — jeden Tag, rund um die Uhr."
+        a: "Englisch, Italienisch und Albanisch — jeden Tag, von früh bis spät."
     footer_cta_handwritten: "Ihre Frage ist nicht dabei? Schreiben Sie uns →"
   ready_cta:
     handwritten: "— bereit zu kommen?"
     heading: "Buchen Sie Ihren Aufenthalt in der Vila Emes"
     sub: "Wählen Sie Ihre Daten auf Booking.com, schreiben Sie uns auf WhatsApp oder öffnen Sie uns in Maps."
-    wa_text: "Hallo, ich möchte im Vila Emes buchen"
+    wa_text: "Hallo, ich möchte ein Zimmer im Vila Emes buchen"
     book_label: "Auf Booking.com buchen"
     whatsapp_label: "WhatsApp schreiben"
     map_label: "In Karten öffnen"
@@ -142,10 +153,6 @@ rooms_page:
     notes:
       label: "Haushinweise"
       value: "Keine Haustiere · Keine Babybetten · Zustellbett 5 € / Nacht"
-  cta:
-    handwritten: "— noch unentschlossen?"
-    heading: "Sagen Sie uns, was Sie suchen, und wir antworten noch am selben Tag."
-    button: "Schreiben Sie uns"
 
 contact_page:
   hero_eyebrow: "Wir freuen uns, von Ihnen zu hören"
@@ -163,7 +170,7 @@ contact_page:
       guests: "Gäste"
       message: "Nachricht"
     submit: "Nachricht senden"
-    success: "Vielen Dank — Ihr E-Mail-Entwurf ist geöffnet. Klicken Sie auf Senden und wir melden uns innerhalb weniger Stunden bei Ihnen."
+    success: "Danke — Ihr E-Mail-Entwurf ist geöffnet. Klicken Sie auf Senden, und wir melden uns innerhalb weniger Stunden."
     mailto:
       subject: "Vila Emes — Nachricht von {name}"
       labels:
@@ -203,6 +210,7 @@ ui:
     next_room: "Nächstes Zimmer →"
     write: "Schreiben Sie uns"
     call: "Anrufen"
+    reserve: "Reservieren"
   filter:
     all: "Alle · 11"
     apartments: "Apartments · 2"
@@ -227,7 +235,7 @@ ui:
     wifi: "Kostenloses WLAN"
     flat-tv: "Flachbildfernseher"
     private-bath: "Eigenes Badezimmer"
-    bathtub-shower: "Badewanne oder Dusche"
+    bathtub-shower: "Dusche"
     sea-view: "Meerblick"
     balcony: "Balkon"
     terrace: "Terrasse"
@@ -238,8 +246,10 @@ ui:
     sofa-bed: "Schlafsofa"
     renovated-2024: "Renoviert 2024"
   footer:
-    handwritten: "mit Liebe, die Familie Emes ❤️"
+    handwritten: "von Herzen, Familie Emes ❤️"
     copyright: "© 2026 Vila Emes"
+    visit_label: "Besuchen"
+    reach_label: "Kontakt"
 
 rooms:
   - id: "apt-1bed-terrace"

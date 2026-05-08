@@ -3,6 +3,17 @@ hotel:
   tagline: "Un hotel di famiglia sul mare"
   location: "Plazh, Durrës · Albania"
 
+seo:
+  home:
+    title: "Vila Emes — Albergo a conduzione familiare a Durrës"
+    description: "A conduzione familiare dal 1998 a Plazh, Durrës — 100 m dall'acqua, undici tipologie, 9.0 su Booking. Prenota diretto, su Booking.com o su WhatsApp."
+  rooms:
+    title: "Camere e appartamenti — Vila Emes, Spiaggia di Durrës"
+    description: "Undici tipologie a Vila Emes, da una Deluxe di 30 m² a un appartamento bilocale di 90 m² con vista mare. Aria condizionata, Wi-Fi gratis, balconi."
+  contact:
+    title: "Contatta Vila Emes — Telefono, WhatsApp, Email"
+    description: "Mettiti in contatto con Vila Emes a Plazh, Durrës. Reception 24 ore, WhatsApp, telefono, email — leggiamo ogni messaggio noi e rispondiamo in giornata."
+
 home:
   hero:
     eyebrow: "Durrës · Albania · Dal 1998"
@@ -24,9 +35,9 @@ home:
     heading_part_2_handwritten: "gestita da una famiglia."
     handwritten_year: "— dal 1998"
     body:
-      - "Vila Emes ha aperto nel 1998. La stessa famiglia gestisce la casa: in due accolgono gli ospiti quasi tutti i giorni, e le stesse mani che preparano gli asciugamani puliti sanno quale camera viene illuminata per prima dalla luce del mattino."
-      - "Ci troviamo in Rruga Pavarësia a Plazh, il lungo viale che costeggia la spiaggia di Durrës. La pasticceria al piano terra apre presto — cappuccino, espresso, croissant freschi — a cinque passi dalla hall. Ristoranti, supermercati e la fermata dell'autobus sono tutti raggiungibili con una breve passeggiata."
-      - "Cosa aspettarsi: cento metri dall'acqua, reception aperta 24 ore su 24, camere semplici curate ogni giorno e il proprietario che vi riserva un posto auto davanti all'ingresso (a volte con una sedia sopra). Non è un hotel di lusso. È una piccola casa con un vero cuore."
+      - "Vila Emes ha aperto nel 1998. Da allora la stessa famiglia gestisce l'attività e accoglie gli ospiti."
+      - "Ci troviamo in Rruga Pavarësia a Plazh, il viale che costeggia la spiaggia di Durrës. La pasticceria al piano terra apre presto — cappuccino, espresso, croissant freschi. Ristoranti, supermercati e la fermata dell'autobus sono a pochi minuti."
+      - "Cento metri dall'acqua, reception 24 ore su 24, camere semplici curate ogni giorno — non un albergo di lusso, solo un posto con un vero cuore."
     signature_handwritten: "— con amore, la famiglia Emes"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
@@ -36,7 +47,7 @@ home:
       text: "Accogliente hotel a conduzione familiare. Personale eccezionalmente gentile, sempre cordiale e disponibile. Posizione eccellente. Tutto ciò di cui avete bisogno è nelle vicinanze. A due passi dalla spiaggia. Altamente consigliato!"
       author: "Gry"
       location: "Norvegia"
-      when: "ha soggiornato l'estate scorsa"
+      when: "soggiorno della scorsa estate"
     read_all_reviews_label: "Leggi tutte le recensioni su Booking →"
     read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
@@ -72,8 +83,8 @@ home:
     cta: "Apri in Maps"
   contact_strip:
     eyebrow: "Vieni a salutarci"
-    heading_part_1: "Mettiti in"
-    heading_part_2_handwritten: "contatto"
+    heading_part_1: "Scrivici"
+    heading_part_2_handwritten: "due righe"
     tile_labels:
       phone: "Telefono"
       whatsapp: "WhatsApp"
@@ -90,28 +101,28 @@ home:
       - q: "La colazione è inclusa?"
         a: "La colazione non è inclusa nel prezzo della camera, ma la nostra pasticceria al piano terra apre presto e serve cappuccino, espresso e pasticcini freschi — a cinque passi dalla hall."
       - q: "Dove posso parcheggiare?"
-        a: "Parcheggio pubblico gratuito sulla strada davanti all'hotel. Cercheremo di riservarvi un posto se possiamo — primo arrivato, primo servito."
+        a: "Parcheggio pubblico gratuito proprio davanti all'hotel. Cerchiamo di tenerti un posto quando possiamo — chi prima arriva, prima alloggia :)"
       - q: "Sono ammessi animali domestici?"
         a: "Gli animali domestici non sono ammessi a Vila Emes."
       - q: "Sono disponibili culle o letti supplementari?"
-        a: "Le culle non sono disponibili. È possibile aggiungere un letto supplementare nella maggior parte delle camere al costo di 5 € a persona, a notte — vi preghiamo di comunicarcelo in anticipo."
+        a: "Non abbiamo culle. Un letto supplementare si può aggiungere nella maggior parte delle camere a 5 € a persona per notte — faccelo sapere in anticipo."
       - q: "Quali lingue parlate?"
         a: "Inglese, italiano e albanese — tutti i giorni, dalla mattina alla sera."
-    footer_cta_handwritten: "Non trovate la vostra domanda? Scriveteci →"
+    footer_cta_handwritten: "Non trovi la tua domanda? Scrivici →"
   ready_cta:
     handwritten: "— pronti a venire?"
-    heading: "Prenotate il vostro soggiorno a Vila Emes"
-    sub: "Scegliete le date su Booking.com, scriveteci su WhatsApp, o trovateci su Maps."
+    heading: "Prenota il tuo soggiorno a Vila Emes"
+    sub: "Scegli le date su Booking.com, scrivici su WhatsApp, o trovaci su Maps."
     wa_text: "Ciao, vorrei prenotare a Vila Emes"
     book_label: "Prenota su Booking.com"
     whatsapp_label: "Scrivici su WhatsApp"
     map_label: "Apri in Maps"
 
 rooms_page:
-  hero_eyebrow: "Soggiornate da noi"
+  hero_eyebrow: "Soggiorna da noi"
   hero_heading_part_1: "Le nostre"
   hero_heading_part_2_handwritten: "camere"
-  hero_intro: "Undici tipologie di camere in una piccola casa di famiglia. Scegliete quella che fa per voi."
+  hero_intro: "Undici tipologie di camere in una piccola casa di famiglia. Scegli quella che fa per te."
   includes:
     eyebrow: "In ogni camera"
     heading: "Cosa è sempre incluso"
@@ -142,28 +153,24 @@ rooms_page:
     notes:
       label: "Note della casa"
       value: "Niente animali · Niente culle · Letto extra €5 / notte"
-  cta:
-    handwritten: "— ancora indecisi?"
-    heading: "Diteci cosa cercate e vi rispondiamo in giornata."
-    button: "Scrivici"
 
 contact_page:
-  hero_eyebrow: "Ci farebbe piacere sentirvi"
+  hero_eyebrow: "Ci farebbe piacere sentirti"
   hero_heading_part_1: "Mettiti in"
   hero_heading_part_2_handwritten: "contatto"
-  hero_intro: "Chiamateci. Scriveteci su WhatsApp. O lasciate qualche riga qui sotto — leggiamo personalmente ogni messaggio."
+  hero_intro: "Chiamaci. Scrivici su WhatsApp. O lascia qualche riga qui sotto — leggiamo personalmente ogni messaggio."
   form:
     heading: "Scrivici"
-    intro: "Diteci quando vorreste venire e cosa state cercando. Rispondiamo in giornata."
+    intro: "Dicci quando vorresti venire e cosa stai cercando. Rispondiamo in giornata."
     fields:
-      name: "Il vostro nome"
+      name: "Il tuo nome"
       email: "Email"
       arrival: "Data di arrivo"
       checkout: "Data di partenza"
       guests: "Ospiti"
       message: "Messaggio"
     submit: "Invia messaggio"
-    success: "Grazie — la vostra bozza email è aperta. Premete Invia e vi risponderemo nel giro di poche ore."
+    success: "Grazie — la tua bozza email è aperta. Premi Invia e ti rispondiamo nel giro di poche ore."
     mailto:
       subject: "Vila Emes — messaggio da {name}"
       labels:
@@ -203,6 +210,7 @@ ui:
     next_room: "Prossima camera →"
     write: "Scrivici"
     call: "Chiama"
+    reserve: "Prenota"
   filter:
     all: "Tutte · 11"
     apartments: "Appartamenti · 2"
@@ -227,7 +235,7 @@ ui:
     wifi: "Wi-Fi gratuito"
     flat-tv: "TV a schermo piatto"
     private-bath: "Bagno privato"
-    bathtub-shower: "Vasca o doccia"
+    bathtub-shower: "Doccia"
     sea-view: "Vista mare"
     balcony: "Balcone"
     terrace: "Terrazza"
@@ -240,6 +248,8 @@ ui:
   footer:
     handwritten: "con amore, la famiglia Emes ❤️"
     copyright: "© 2026 Vila Emes"
+    visit_label: "Esplora"
+    reach_label: "Contatti"
 
 rooms:
   - id: "apt-1bed-terrace"
@@ -249,7 +259,7 @@ rooms:
     size_m2: 80
     sleeps: 4
     sleeps_label: "fino a 4 persone"
-    beds: "1 matrimoniale · 2 letti a castello"
+    beds: "1 doppio · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Terrazza privata"
     description: "Ottanta metri quadrati su una camera da letto, un soggiorno e una cucina privata — piano cottura, forno, lavatrice — con un'ampia terrazza che si affaccia sul viale verso il mare. Tre letti in totale. Ottimo per due coppie in viaggio insieme, o per una famiglia che vuole cucinarsi qualche pasto a casa."
@@ -262,7 +272,7 @@ rooms:
     size_m2: 90
     sleeps: 6
     sleeps_label: "fino a 6 persone"
-    beds: "1 matrimoniale · 1 singolo · 2 letti a castello"
+    beds: "1 doppio · 1 singolo · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Balcone + terrazza"
     description: "La nostra tipologia più ampia — novanta metri quadrati, due camere da letto separate, una cucina completa con forno, tavolo da pranzo, lavatrice, balcone che si apre dal soggiorno e una terrazza. Fino a sei ospiti. Due famiglie in vacanza insieme, o una famiglia che apprezza i propri spazi."
@@ -275,7 +285,7 @@ rooms:
     size_m2: 30
     sleeps: 2
     sleeps_label: "2 persone"
-    beds: "1 letto queen size"
+    beds: "1 doppio"
     view: "Città"
     outdoor: "—"
     description: "Trenta metri quadrati spaziosi, letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo e un tranquillo angolo relax. Recentemente ristrutturata — biancheria, sanitari e pavimenti tutti nuovi del 2024."
@@ -288,7 +298,7 @@ rooms:
     size_m2: 27
     sleeps: 2
     sleeps_label: "2 persone"
-    beds: "1 letto queen size"
+    beds: "1 doppio"
     view: "Città"
     outdoor: "—"
     description: "Ventisette metri quadrati di comfort raffinato — letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo. Ristrutturata nel 2024 con biancheria fresca e arredi sobri e neutri. Una camera tranquilla per due."
@@ -301,7 +311,7 @@ rooms:
     size_m2: 30
     sleeps: 2
     sleeps_label: "2 persone"
-    beds: "1 letto queen size"
+    beds: "1 doppio"
     view: "Strada tranquilla"
     outdoor: "Balcone"
     description: "Trenta metri quadrati con balcone privato su una strada laterale più tranquilla — più fresco d'estate, più facile per dormire. Doccia walk-in, TV a schermo piatto, mini-frigo. Ristrutturata nel 2024."
@@ -314,7 +324,7 @@ rooms:
     size_m2: 27
     sleeps: 4
     sleeps_label: "4 persone"
-    beds: "1 matrimoniale · 2 letti a castello"
+    beds: "1 doppio · 2 letti a castello"
     view: "Mare"
     outdoor: "Balcone"
     description: "Tre letti, un balcone con vista diretta sull'Adriatico e ventisette metri quadrati di spazio ben organizzato. Pensata per le famiglie che vogliono il mare davanti quando si svegliano."
@@ -327,7 +337,7 @@ rooms:
     size_m2: 30
     sleeps: 4
     sleeps_label: "4 persone"
-    beds: "1 queen · 2 letti a castello"
+    beds: "1 doppio · 2 letti a castello"
     view: "Città"
     outdoor: "Balcone"
     description: "Trenta metri quadrati, tre letti, un balcone affacciato sul viale. Adatta alle famiglie senza compromessi: i genitori nel letto queen, i bambini nei letti a castello, e un balcone dove prendere il caffè mentre dormono ancora."
@@ -340,7 +350,7 @@ rooms:
     size_m2: 30
     sleeps: 5
     sleeps_label: "fino a 5 persone"
-    beds: "1 queen · 2 letti a castello · 1 divano letto"
+    beds: "1 doppio · 2 letti a castello · 1 divano letto"
     view: "Mare"
     outdoor: "Balcone"
     description: "La camera più versatile della casa — un queen, due letti a castello e un divano letto, il tutto con balcone vista mare. Fino a cinque ospiti in trenta metri quadrati ben pensati."
@@ -353,7 +363,7 @@ rooms:
     size_m2: 30
     sleeps: 4
     sleeps_label: "4 persone"
-    beds: "1 queen · 2 letti a castello"
+    beds: "1 doppio · 2 letti a castello"
     view: "Città"
     outdoor: "Balcone"
     description: "La nostra opzione famiglia più semplice — trenta metri quadrati, tre letti, un balcone, e tutto ciò che serve per qualche notte comoda senza l'upgrade deluxe."
@@ -366,7 +376,7 @@ rooms:
     size_m2: 27
     sleeps: 3
     sleeps_label: "3 persone"
-    beds: "1 queen · 1 divano letto"
+    beds: "1 doppio · 1 divano letto"
     view: "Città"
     outdoor: "Balcone"
     description: "Ventisette metri quadrati, un letto queen e un divano letto, balcone affacciato sul viale. La nostra scelta conveniente per tre viaggiatori che vogliono la posizione senza il prezzo deluxe."
@@ -379,7 +389,7 @@ rooms:
     size_m2: 30
     sleeps: 3
     sleeps_label: "3 persone"
-    beds: "1 queen · 1 divano letto"
+    beds: "1 doppio · 1 divano letto"
     view: "Città"
     outdoor: "Balcone"
     description: "Tre posti letto, un balcone, e gli essenziali fatti bene — aria condizionata, bagno privato, Wi-Fi gratuito. Il modo più semplice e accogliente di soggiornare a Vila Emes."

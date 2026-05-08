@@ -3,6 +3,17 @@ hotel:
   tagline: "A family hotel by the sea"
   location: "Plazh, Durrës · Albania"
 
+seo:
+  home:
+    title: "Vila Emes — A Family Hotel by the Sea in Durrës"
+    description: "Family-run since 1998 in Plazh, Durrës — 100 m from the water, eleven layouts, 9.0 on Booking. Book direct, on Booking.com, or message us on WhatsApp."
+  rooms:
+    title: "Rooms & Apartments — Vila Emes, Durrës Beach"
+    description: "Eleven layouts at Vila Emes, from a 30 m² Deluxe to a 90 m² two-bedroom apartment with sea view. Air conditioning, free Wi-Fi, balconies and terraces."
+  contact:
+    title: "Contact Vila Emes — Phone, WhatsApp, Email"
+    description: "Get in touch with Vila Emes in Plazh, Durrës. 24-hour front desk, WhatsApp, phone, email — we read every message ourselves and reply the same day."
+
 home:
   hero:
     eyebrow: "Durrës · Albania · Since 1998"
@@ -24,9 +35,9 @@ home:
     heading_part_2_handwritten: "kept by one family."
     handwritten_year: "— since 1998"
     body:
-      - "Vila Emes opened in 1998. The same family runs the house — two of them welcome guests most days, and the same hands that lay out fresh towels know which room catches the morning light first."
-      - "We sit on Rruga Pavarësia in Plazh, the long avenue that runs along the beach in Durrës. The pastry shop on our ground floor opens early — cappuccino, espresso, fresh croissants — five steps from the lobby. Restaurants, supermarkets, and the bus stop are all within a short stroll."
-      - "What to expect: a hundred metres to the water, a 24-hour front desk, simple rooms cared for daily, and the owner reserving you a parking space out front (sometimes with a chair on it). It is not a luxury hotel. It is a small house with a real heart."
+      - "Vila Emes opened in 1998. The same family has run the business and welcomed guests ever since."
+      - "We sit on Rruga Pavarësia in Plazh, the avenue along the beach in Durrës. The pastry shop downstairs opens early — cappuccino, espresso, fresh croissants. Restaurants, supermarkets, and the bus stop are minutes away."
+      - "A hundred metres to the water, 24-hour front desk, simple rooms cared for daily — not a luxury hotel, just a place with a real heart."
     signature_handwritten: "— with love, the Emes family"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
@@ -142,10 +153,6 @@ rooms_page:
     notes:
       label: "House notes"
       value: "No pets · No cribs · Extra bed €5 / night"
-  cta:
-    handwritten: "— still deciding?"
-    heading: "Tell us what you're looking for and we'll write back the same day."
-    button: "Write to us"
 
 contact_page:
   hero_eyebrow: "We'd love to hear from you"
@@ -203,6 +210,7 @@ ui:
     next_room: "Next room →"
     write: "Write to us"
     call: "Call"
+    reserve: "Reserve"
   filter:
     all: "All · 11"
     apartments: "Apartments · 2"
@@ -227,7 +235,7 @@ ui:
     wifi: "Free Wi-Fi"
     flat-tv: "Flat-screen TV"
     private-bath: "Private bathroom"
-    bathtub-shower: "Bathtub or shower"
+    bathtub-shower: "Shower"
     sea-view: "Sea view"
     balcony: "Balcony"
     terrace: "Terrace"
@@ -240,6 +248,8 @@ ui:
   footer:
     handwritten: "with love, the Emes family ❤️"
     copyright: "© 2026 Vila Emes"
+    visit_label: "Visit"
+    reach_label: "Reach us"
 
 rooms:
   - id: "apt-1bed-terrace"
@@ -291,7 +301,7 @@ rooms:
     beds: "1 queen bed"
     view: "City"
     outdoor: "—"
-    description: "Twenty-seven square metres of refined comfort — queen bed, walk-in shower with bidet, flat-screen with cable. Renovated in 2024 with fresh linens and quiet, neutral fittings. A calm room for two."
+    description: "Twenty-seven square metres, queen bed, walk-in shower with bidet, flat-screen with cable. Renovated in 2024 with fresh linens and quiet, neutral fittings. A calm room for two."
     amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"

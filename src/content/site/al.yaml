@@ -3,6 +3,17 @@ hotel:
   tagline: "Një hotel familjar pranë detit"
   location: "Plazh, Durrës · Shqipëria"
 
+seo:
+  home:
+    title: "Vila Emes — Hotel familjar pranë detit në Durrës"
+    description: "Familja Emes që nga 1998 në Plazh, Durrës — 100 m nga deti, njëmbëdhjetë tipologji dhomash, 9.0 në Booking. Rezervo direkt ose në Booking.com."
+  rooms:
+    title: "Dhoma & apartamente — Vila Emes, Plazhi i Durrësit"
+    description: "Njëmbëdhjetë tipologji dhomash në Vila Emes, nga një Deluxe 30 m² te një apartament me dy dhoma 90 m² me pamje nga deti. Klimë, Wi-Fi falas, ballkone."
+  contact:
+    title: "Kontakt Vila Emes — Telefon, WhatsApp, Email"
+    description: "Na kontaktoni në Vila Emes në Plazh, Durrës. Recepsion 24-orësh, WhatsApp, telefon, email — i lexojmë vetë mesazhet dhe përgjigjemi po atë ditë."
+
 home:
   hero:
     eyebrow: "Durrës · Shqipëria · Që nga 1998"
@@ -14,7 +25,7 @@ home:
       - "që nga 1998"
       - "me dashuri"
       - "100 m nga deti"
-    sub: "Njëmbëdhjetë planimetri. Një familje që ju hap derën vetë. E njëjta kafe në tarracë çdo mëngjes."
+    sub: "Njëmbëdhjetë tipologji dhomash. Një familje që ju hap derën vetë. E njëjta kafe në tarracë çdo mëngjes."
     cta_primary: "Rezervo në Booking.com"
     cta_secondary: "Hap në Harta"
     polaroid_caption_handwritten: "— familja Emes"
@@ -24,9 +35,9 @@ home:
     heading_part_2_handwritten: "e mbajtur nga një familje."
     handwritten_year: "— që nga 1998"
     body:
-      - "Vila Emes u hap në vitin 1998. E njëjta familje kujdeset për shtëpinë — dy prej tyre i mirëpresin mysafirët shumicën e ditëve, dhe të njëjtat duar që shtrojnë peshqirët e freskët e dinë se cila dhomë e kap e para dritën e mëngjesit."
-      - "Ndodhemi në Rrugën Pavarësia në Plazh, bulevardi i gjatë që shtrihet mbi plazhin e Durrësit. Pastiçeria në katin përdhes hapet herët — kapuçino, espresso, kroasanë të freskët — pesë hapa nga holli. Restorantet, supermarketet dhe stacioni i autobusit janë të gjitha brenda një shëtitjeje të shkurtër."
-      - "Çfarë të prisni: njëqind metra nga deti, një recepsion 24-orësh, dhoma të thjeshta të mirëmbajtura çdo ditë, dhe pronari ju rezervon një vend parkimi përpara (ndonjëherë me një karrige mbi të). Nuk është një hotel luksoz. Është një shtëpi e vogël me një zemër të vërtetë."
+      - "Vila Emes u hap në vitin 1998. E njëjta familje drejton biznesin dhe mirëpret mysafirët që atëherë."
+      - "Ndodhemi në Rrugën Pavarësia në Plazh, bulevardi përgjatë plazhit të Durrësit. Pastiçeria në katin përdhes hapet herët — kapuçino, espresso, kroasanë të freskët. Restorantet, supermarketet dhe stacioni i autobusit janë vetëm pak minuta larg."
+      - "Njëqind metra nga deti, recepsion 24-orësh, dhoma të thjeshta të mirëmbajtura çdo ditë — jo një hotel luksoz, thjesht një vend me një zemër të vërtetë."
     signature_handwritten: "— me dashuri, familja Emes"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
@@ -40,9 +51,9 @@ home:
     read_all_reviews_label: "Lexo të gjitha rishikimet në Booking →"
     read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
-    eyebrow: "Qëndroni"
+    eyebrow: "Fjetja"
     heading: "Dhomat tona"
-    intro: "Njëmbëdhjetë planimetri gjithsej, nga një dhomë dyshe 30 m² te një apartament 90 m² me pamje nga deti."
+    intro: "Njëmbëdhjetë tipologji dhomash gjithsej — nga një dhomë dyshe 30 m² deri te një apartament 90 m² me pamje nga deti."
     preview_card_cta: "Shiko detajet →"
   gallery:
     eyebrow: "Brenda dhe jashtë"
@@ -90,11 +101,11 @@ home:
       - q: "A përfshihet mëngjesi?"
         a: "Mëngjesi nuk përfshihet në çmimin e dhomës, por pastiçeria jonë në katin përdhes hapet herët dhe shërben kapuçino, espresso dhe ëmbëlsira të freskëta — pesë hapa nga holli."
       - q: "Ku mund të parkoj?"
-        a: "Parkim publik falas në rrugë përpara hotelit. Do të përpiqemi t'ju rezervojmë një vend nëse mundemi — sipas radhës së ardhjes."
+        a: "Parkim publik falas në rrugë, pikërisht përpara hotelit. Përpiqemi t'ju mbajmë një vend kur mundemi — kush vjen i pari, e zë i pari :)"
       - q: "A lejohen kafshët shtëpiake?"
         a: "Kafshët shtëpiake nuk lejohen në Vila Emes."
       - q: "A ofroni djepa ose shtretër shtesë?"
-        a: "Djepat nuk janë në dispozicion. Një shtrat shtesë mund të shtohet në shumicën e dhomave për 5 € për person, për natë — na njoftoni paraprakisht."
+        a: "Djepa nuk ofrojmë. Një shtrat shtesë mund të shtohet në shumicën e dhomave — 5 € për person, për natë. Na lajmëroni paraprakisht."
       - q: "Çfarë gjuhësh flisni?"
         a: "Anglisht, italisht dhe shqip — çdo ditë, gjithë ditën."
     footer_cta_handwritten: "Nuk e gjeni pyetjen tuaj? Na shkruani →"
@@ -111,7 +122,7 @@ rooms_page:
   hero_eyebrow: "Qëndroni me ne"
   hero_heading_part_1: "Dhomat"
   hero_heading_part_2_handwritten: "tona"
-  hero_intro: "Njëmbëdhjetë planimetri në një shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
+  hero_intro: "Njëmbëdhjetë tipologji dhomash në një shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
   includes:
     eyebrow: "Në çdo dhomë"
     heading: "Çfarë përfshihet gjithmonë"
@@ -142,10 +153,6 @@ rooms_page:
     notes:
       label: "Shënime për shtëpinë"
       value: "Pa kafshë · Pa djepa · Shtrat shtesë 5 € / natë"
-  cta:
-    handwritten: "— ende po vendosni?"
-    heading: "Na tregoni se çfarë kërkoni dhe ne ju përgjigjemi po atë ditë."
-    button: "Na shkruani"
 
 contact_page:
   hero_eyebrow: "Do të na pëlqente t'ju dëgjonim"
@@ -163,7 +170,7 @@ contact_page:
       guests: "Mysafirë"
       message: "Mesazhi"
     submit: "Dërgo mesazhin"
-    success: "Faleminderit — drafti i mailit tuaj është hapur. Shtypni Dërgo dhe do t'ju kontaktojmë brenda pak orësh."
+    success: "Faleminderit — drafti i email-it u hap. Shtypni Dërgo dhe ju kontaktojmë brenda pak orësh."
     mailto:
       subject: "Vila Emes — mesazh nga {name}"
       labels:
@@ -203,6 +210,7 @@ ui:
     next_room: "Dhoma tjetër →"
     write: "Na shkruani"
     call: "Telefono"
+    reserve: "Rezervo"
   filter:
     all: "Të gjitha · 11"
     apartments: "Apartamente · 2"
@@ -227,7 +235,7 @@ ui:
     wifi: "Wi-Fi falas"
     flat-tv: "TV me ekran të sheshtë"
     private-bath: "Banjo private"
-    bathtub-shower: "Vaskë ose dush"
+    bathtub-shower: "Dush"
     sea-view: "Pamje nga deti"
     balcony: "Ballkon"
     terrace: "Tarracë"
@@ -240,6 +248,8 @@ ui:
   footer:
     handwritten: "me dashuri, familja Emes ❤️"
     copyright: "© 2026 Vila Emes"
+    visit_label: "Vizito"
+    reach_label: "Na kontakto"
 
 rooms:
   - id: "apt-1bed-terrace"
