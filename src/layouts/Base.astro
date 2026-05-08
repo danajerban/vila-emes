@@ -40,7 +40,7 @@ const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at 
   </head>
   <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
     <slot />
-    <WhatsAppFloat waText={waText} />
+    <WhatsAppFloat waText={waText} ariaLabel={site.data.ui.aria_labels.whatsapp_float} />
 
     <script is:inline>
       (function () {

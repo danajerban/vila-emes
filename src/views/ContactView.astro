@@ -21,7 +21,7 @@ const page = site.data.contact_page;
 const home = site.data.home;
 ---
 <Base lang={lang} title={`${ui.nav.contact} — ${site.data.hotel.name}`}>
-  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} callLabel={ui.buttons.call} />
+  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} callLabel={ui.buttons.call} menuToggleLabel={ui.aria_labels.menu_toggle} />
 
   <PageHero
     eyebrow={page.hero_eyebrow}

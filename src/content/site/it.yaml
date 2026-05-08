@@ -183,6 +183,9 @@ ui:
     home: "Home"
     rooms: "Camere"
     contact: "Contatti"
+  aria_labels:
+    menu_toggle: "Apri menu"
+    whatsapp_float: "Chatta su WhatsApp"
   buttons:
     book: "Prenota su Booking.com"
     book_short: "Prenota"

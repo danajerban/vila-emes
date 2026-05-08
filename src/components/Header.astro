@@ -10,8 +10,9 @@ interface Props {
   hotelName: string;
   bookLabel: string;
   callLabel: string;
+  menuToggleLabel: string;
 }
-const { lang, ui, isHome = false, hotelName, bookLabel, callLabel } = Astro.props;
+const { lang, ui, isHome = false, hotelName, bookLabel, callLabel, menuToggleLabel } = Astro.props;
 
 const path = (Astro.url.pathname.replace(/\/+$/, "") || "/");
 const links = [
@@ -70,7 +71,7 @@ const links = [
         type="button"
         id="mobileNavToggle"
         class="p-2 -mr-2"
-        aria-label="Toggle navigation"
+        aria-label={menuToggleLabel}
         aria-expanded="false"
         aria-controls="mobileNav"
       >

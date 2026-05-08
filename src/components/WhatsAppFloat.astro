@@ -3,8 +3,9 @@ import { SITE } from "../config/site";
 
 interface Props {
   waText: string;
+  ariaLabel: string;
 }
-const { waText } = Astro.props;
+const { waText, ariaLabel } = Astro.props;
 
 const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(waText)}`;
 ---
@@ -12,7 +13,7 @@ const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?te
   href={waHref}
   target="_blank"
   rel="noopener"
-  aria-label="Chat on WhatsApp"
+  aria-label={ariaLabel}
   class="flex fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full bg-[#25D366] items-center justify-center shadow-[0_8px_20px_-4px_rgba(37,211,102,0.5)] tappable wa-float"
 >
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" class="text-white" aria-hidden="true">

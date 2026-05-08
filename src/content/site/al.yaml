@@ -183,6 +183,9 @@ ui:
     home: "Kreu"
     rooms: "Dhomat"
     contact: "Kontakt"
+  aria_labels:
+    menu_toggle: "Hap menynë"
+    whatsapp_float: "Bisedo në WhatsApp"
   buttons:
     book: "Rezervo në Booking.com"
     book_short: "Rezervo"

@@ -183,6 +183,9 @@ ui:
     home: "Startseite"
     rooms: "Zimmer"
     contact: "Kontakt"
+  aria_labels:
+    menu_toggle: "Menü öffnen"
+    whatsapp_float: "Auf WhatsApp chatten"
   buttons:
     book: "Auf Booking.com buchen"
     book_short: "Buchen"

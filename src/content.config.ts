@@ -201,6 +201,10 @@ export const collections = {
 
       ui: z.object({
         nav: z.object({ home: z.string(), rooms: z.string(), contact: z.string() }),
+        aria_labels: z.object({
+          menu_toggle: z.string(),
+          whatsapp_float: z.string(),
+        }),
         buttons: z.object({
           book: z.string(),
           book_short: z.string().optional(),
