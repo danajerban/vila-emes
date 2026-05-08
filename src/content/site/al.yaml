@@ -273,7 +273,7 @@ rooms:
     sleeps: 2
     sleeps_label: "2 persona"
     beds: "1 krevat dopio"
-    view: "Pamje"
+    view: "Qytet"
     outdoor: "—"
     description: "Njëzet e shtatë metra katrorë rehati e rafinuar — krevat dopio, dush me kabinë me bide, TV me ekran të sheshtë me kabllo. I rinovuar në 2024 me çarçafë të freskët dhe pajisje neutrale e të qeta. Një dhomë e qetë për dy."
     amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]

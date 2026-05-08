@@ -273,7 +273,7 @@ rooms:
     sleeps: 2
     sleeps_label: "2 persone"
     beds: "1 letto queen size"
-    view: "Vista"
+    view: "Città"
     outdoor: "—"
     description: "Ventisette metri quadrati di comfort raffinato — letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo. Ristrutturata nel 2024 con biancheria fresca e arredi sobri e neutri. Una camera tranquilla per due."
     amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]

@@ -273,7 +273,7 @@ rooms:
     sleeps: 2
     sleeps_label: "2 Personen"
     beds: "1 Queensize-Bett"
-    view: "Aussicht"
+    view: "Stadt"
     outdoor: "—"
     description: "Siebenundzwanzig Quadratmeter raffinierter Komfort — Queensize-Bett, ebenerdige Dusche mit Bidet, Flachbildfernseher mit Kabelanschluss. 2024 renoviert mit frischer Bettwäsche und ruhiger, neutraler Ausstattung. Ein ruhiges Zimmer für zwei Personen."
     amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]

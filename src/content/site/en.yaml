@@ -273,7 +273,7 @@ rooms:
     sleeps: 2
     sleeps_label: "2 people"
     beds: "1 queen bed"
-    view: "View"
+    view: "City"
     outdoor: "—"
     description: "Twenty-seven square metres of refined comfort — queen bed, walk-in shower with bidet, flat-screen with cable. Renovated in 2024 with fresh linens and quiet, neutral fittings. A calm room for two."
     amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]
