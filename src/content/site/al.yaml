@@ -164,6 +164,14 @@ contact_page:
       message: "Mesazhi"
     submit: "Dërgo mesazhin"
     success: "Faleminderit — drafti i mailit tuaj është hapur. Shtypni Dërgo dhe do t'ju kontaktojmë brenda pak orësh."
+    mailto:
+      subject: "Vila Emes — mesazh nga {name}"
+      labels:
+        name: "Emri"
+        email: "Email"
+        check_in: "Check-in"
+        check_out: "Check-out"
+        guests: "Mysafirë"
   sidebar:
     address_label: "Adresa"
     hours_label: "Orari"

@@ -164,6 +164,14 @@ contact_page:
       message: "Nachricht"
     submit: "Nachricht senden"
     success: "Vielen Dank — Ihr E-Mail-Entwurf ist geöffnet. Klicken Sie auf Senden und wir melden uns innerhalb weniger Stunden bei Ihnen."
+    mailto:
+      subject: "Vila Emes — Nachricht von {name}"
+      labels:
+        name: "Name"
+        email: "E-Mail"
+        check_in: "Check-in"
+        check_out: "Check-out"
+        guests: "Gäste"
   sidebar:
     address_label: "Adresse"
     hours_label: "Öffnungszeiten"

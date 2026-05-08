@@ -164,6 +164,14 @@ contact_page:
       message: "Message"
     submit: "Send message"
     success: "Thanks — your mail draft is open. Hit Send and we'll be in touch within hours."
+    mailto:
+      subject: "Vila Emes — message from {name}"
+      labels:
+        name: "Name"
+        email: "Email"
+        check_in: "Check-in"
+        check_out: "Check-out"
+        guests: "Guests"
   sidebar:
     address_label: "Address"
     hours_label: "Hours"

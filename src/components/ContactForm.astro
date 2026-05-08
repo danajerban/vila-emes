@@ -7,8 +7,12 @@ interface Props {
   fields: { name: string; email: string; arrival: string; checkout: string; guests: string; message: string };
   submit: string;
   success: string;
+  mailto: {
+    subject: string;
+    labels: { name: string; email: string; check_in: string; check_out: string; guests: string };
+  };
 }
-const { heading, intro, fields, submit, success } = Astro.props;
+const { heading, intro, fields, submit, success, mailto } = Astro.props;
 
 const inputClass = "px-4 py-3 rounded border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] focus:outline-none focus:border-[color:var(--color-terracotta)] focus:ring-2 focus:ring-[color:var(--color-terracotta)]/40 focus:ring-offset-1 focus:ring-offset-[color:var(--color-cream)]";
 ---
@@ -52,7 +56,7 @@ const inputClass = "px-4 py-3 rounded border border-[color:var(--color-divider)]
   </form>
 </div>
 
-<script is:inline define:vars={{ MAIL: SITE.contact.email }}>
+<script is:inline define:vars={{ MAIL: SITE.contact.email, MAILTO: mailto }}>
   (function () {
     function init() {
       const form = document.getElementById("contactForm");
@@ -66,9 +70,10 @@ const inputClass = "px-4 py-3 rounded border border-[color:var(--color-divider)]
         const checkout = data.get("checkout") || "";
         const guests = data.get("guests") || "";
         const message = data.get("message") || "";
-        const subject = encodeURIComponent(`Vila Emes — message from ${name}`);
+        const L = MAILTO.labels;
+        const subject = encodeURIComponent(MAILTO.subject.replace("{name}", name));
         const body = encodeURIComponent(
-          `Name: ${name}\nEmail: ${email}\nCheck-in: ${arrival}\nCheck-out: ${checkout}\nGuests: ${guests}\n\n${message}\n`
+          `${L.name}: ${name}\n${L.email}: ${email}\n${L.check_in}: ${arrival}\n${L.check_out}: ${checkout}\n${L.guests}: ${guests}\n\n${message}\n`
         );
         window.location.href = `mailto:${MAIL}?subject=${subject}&body=${body}`;
         document.getElementById("contactFormSuccess")?.classList.remove("hidden");

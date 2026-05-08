@@ -181,6 +181,16 @@ export const collections = {
           }),
           submit: z.string(),
           success: z.string(),
+          mailto: z.object({
+            subject: z.string(),
+            labels: z.object({
+              name: z.string(),
+              email: z.string(),
+              check_in: z.string(),
+              check_out: z.string(),
+              guests: z.string(),
+            }),
+          }),
         }),
         sidebar: z.object({
           address_label: z.string(),
