@@ -134,6 +134,14 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
     transform: translateY(-4px);
   }
 
+  /* Scroll-driven exit: copy lifts (-16px) and fades as --hero-progress goes 0→1.
+     Default of 0 (var fallback) keeps copy fully visible when JS hasn't bound. */
+  [data-hero-copy] {
+    opacity: calc(1 - var(--hero-progress, 0));
+    transform: translateY(calc(var(--hero-progress, 0) * -16px));
+    will-change: opacity, transform;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-slide { transition: none; opacity: 1; }
     .hero-slide:not([data-active="true"]) { opacity: 0; }
