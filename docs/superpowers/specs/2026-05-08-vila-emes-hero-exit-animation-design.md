@@ -76,11 +76,12 @@ Three small, contained changes inside `src/components/Hero.astro`:
    - Reduced-motion fallback is automatic via the `var(...)` default of `0` — copy renders at opacity 1, transform 0 when the JS never installs the listener.
 
 3. **Script** — extend the existing IIFE in `Hero.astro:147-204`:
-   - Lift the `IntersectionObserver` and scroll listener registration to **IIFE-level** (above the `init()` function), guarded by the existing `window.__heroInited` check. This guarantees they're registered exactly once, even across Astro view transitions.
-   - `init()` continues to handle slideshow + rotator timers; the new code runs alongside it, not inside it.
-   - `prefers-reduced-motion: reduce` → skip listener installation entirely.
-   - On scroll: read `getBoundingClientRect()`, compute progress, set `--hero-progress` on `[data-hero]` via `style.setProperty`. `passive: true`, rAF-throttled.
-   - IO with `threshold: 0` and a generous `rootMargin` toggles a boolean that short-circuits the scroll handler when the hero is fully off-screen (e.g., user is at the footer). Saves work without missing edges.
+   - Lift the `IntersectionObserver` instance, scroll listener, and a module-scoped `currentHero` reference to **IIFE-level** (above the `init()` function), guarded by the existing `window.__heroInited` check. This guarantees they're registered exactly once, even across Astro view transitions.
+   - `init()` updates `currentHero` to the freshly-rendered `[data-hero]` element on each call, calls `io.unobserve(prev)` + `io.observe(currentHero)`, then continues to handle slideshow + rotator timers as today.
+   - The scroll handler reads `currentHero` (not a closure-captured stale element), short-circuits when `currentHero` is null or when the IO `isIntersecting` flag is false, and writes `--hero-progress` to `currentHero` via `style.setProperty`.
+   - `prefers-reduced-motion: reduce` → skip listener installation entirely. (`init()` still runs to clear timers and rebind the slideshow + rotator, but neither IO nor scroll listener is registered.)
+   - On scroll: read `getBoundingClientRect()`, compute progress, set `--hero-progress` on `currentHero`. `passive: true`, rAF-throttled.
+   - IO with `threshold: 0` and a generous `rootMargin` toggles the `isIntersecting` flag the scroll handler reads. Saves work below the fold without missing edges.
 
 Estimated diff: ~30 lines of JS + 1 CSS rule + 1 attribute.
 
@@ -126,7 +127,7 @@ A reviewer can verify the spec is satisfied if all of the following are true:
 3. **Photo holds** — slideshow + Ken Burns continue regardless of scroll position; no transform/opacity changes on `.hero-slide` or `.hero-img` driven by `--hero-progress`
 4. **Polaroid holds** — `figure.polaroid-wobble` keeps its enter-state opacity throughout scroll
 5. **Reduced motion** — with `prefers-reduced-motion: reduce`, the copy block has computed `opacity: 1` and `transform: none` at any scroll position, and DevTools shows no scroll listener bound to the window from this script
-6. **Cross-browser** — works in Chrome 115+, Safari 17+, Firefox 120+ (no `animation-timeline` dependency)
+6. **Cross-browser** — works in all evergreen browsers; the only non-baseline web platform feature is `IntersectionObserver` (universal since 2019). No `animation-timeline` dependency.
 7. **No double-bind** — under normal motion, after one or more Astro view transitions back to home, exactly one scroll listener bound by this script exists on the window (verifiable in DevTools event listeners panel)
 8. **Build clean** — `npm run build` succeeds with 12 pages; `npx astro check` reports 0/0/0
 9. **No console errors** on any of `/`, `/al/`, `/it/`, `/de/` at desktop and mobile widths
