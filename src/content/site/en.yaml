@@ -187,6 +187,7 @@ ui:
     details: "View details"
     next_room: "Next room →"
     write: "Write to us"
+    call: "Call"
   filter:
     all: "All · 11"
     apartments: "Apartments · 2"

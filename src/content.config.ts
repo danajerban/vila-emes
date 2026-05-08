@@ -205,6 +205,7 @@ export const collections = {
           details: z.string(),
           next_room: z.string(),
           write: z.string(),
+          call: z.string(),
         }),
         filter: z.object({
           all: z.string(),

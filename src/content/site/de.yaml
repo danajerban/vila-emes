@@ -187,6 +187,7 @@ ui:
     details: "Details ansehen"
     next_room: "Nächstes Zimmer →"
     write: "Schreiben Sie uns"
+    call: "Anrufen"
   filter:
     all: "Alle · 11"
     apartments: "Apartments · 2"

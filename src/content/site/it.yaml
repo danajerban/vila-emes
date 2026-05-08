@@ -187,6 +187,7 @@ ui:
     details: "Vedi dettagli"
     next_room: "Prossima camera →"
     write: "Scrivici"
+    call: "Chiama"
   filter:
     all: "Tutte · 11"
     apartments: "Appartamenti · 2"

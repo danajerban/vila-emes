@@ -187,6 +187,7 @@ ui:
     details: "Shiko detajet"
     next_room: "Dhoma tjetër →"
     write: "Na shkruani"
+    call: "Telefono"
   filter:
     all: "Të gjitha · 11"
     apartments: "Apartamente · 2"

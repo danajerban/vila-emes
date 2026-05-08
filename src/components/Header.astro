@@ -9,8 +9,9 @@ interface Props {
   isHome?: boolean;
   hotelName: string;
   bookLabel: string;
+  callLabel: string;
 }
-const { lang, ui, isHome = false, hotelName, bookLabel } = Astro.props;
+const { lang, ui, isHome = false, hotelName, bookLabel, callLabel } = Astro.props;
 
 const path = (Astro.url.pathname.replace(/\/+$/, "") || "/");
 const links = [
@@ -101,7 +102,7 @@ const links = [
       <a
         href={`tel:${SITE.contact.phone.replace(/\s+/g, "")}`}
         class="flex-1 inline-flex items-center justify-center px-4 py-2 border border-[color:var(--color-divider)] rounded text-[12px] tracking-[0.18em] uppercase tappable"
-      >Call</a>
+      >{callLabel}</a>
     </div>
   </div>
 </header>
