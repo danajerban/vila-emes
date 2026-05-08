@@ -30,7 +30,7 @@ Astro is the web framework for content-driven websites. This file is the upstrea
 | View Transitions | `<ClientRouter />` is mounted in `src/layouts/Base.astro` `<head>`. All initialisation listens on `astro:page-load`, not `DOMContentLoaded`, to survive client-side nav. |
 | No client framework | Vanilla TS only (lightbox, lang switcher, mobile nav, FAQ, sticky header, room filter, mailto compose, reveal-on-scroll). |
 | Photo pipeline | `node scripts/optimize-photos.mjs` reads `/Users/erbandanaj/Downloads/Emes/<folder>/` and writes 3-size webp into `src/assets/photos/`. Curated picks documented in `docs/photos-shortlist.md`. |
-| Hosting | Cloudflare Pages, auto-build on push to `main`. Site URL `https://vila-emes.pages.dev` (until custom domain). |
+| Hosting | Cloudflare Pages, auto-build on push to `main`. Site URL `https://www.vilaemes.com`. CF Pages preview also lives at `vila-emes.pages.dev` (redirect to canonical once domain is live). |
 | Local dev | `npm run dev` → `http://localhost:4321`. iOS-only bugs: tunnel via ngrok; `vite.server.allowedHosts` already permits `.ngrok-free.app`. |
 
 ---
@@ -94,7 +94,7 @@ Conventions:
 
 | Option | Notes |
 |--------|-------|
-| `site` | Final deployed URL. Used to generate sitemaps and canonical URLs. **Currently `https://vila-emes.pages.dev`** — TODO swap when custom domain lands. |
+| `site` | Final deployed URL. Used to generate sitemaps and canonical URLs. **`https://www.vilaemes.com`** — keep in lockstep with `SITE.url` in `src/config/site.ts`. |
 | `i18n.locales` / `defaultLocale` | `["en","al","it","de"]` / `"en"`. URL key `al` ≠ BCP 47 `sq` — see `LOCALE_TO_LANG` in `src/i18n/locales.ts`. |
 | `i18n.routing.prefixDefaultLocale` | `false` — EN is unprefixed. Don't flip this without a redirect plan. |
 | `vite.plugins` | Tailwind v4 via `@tailwindcss/vite`. Don't add `@astrojs/tailwind` — that's the v3 path. |
@@ -108,7 +108,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://vila-emes.pages.dev", // TODO: replace with custom domain when purchased
+  site: "https://www.vilaemes.com",
   i18n: {
     defaultLocale: "en",
     locales: ["en", "al", "it", "de"],

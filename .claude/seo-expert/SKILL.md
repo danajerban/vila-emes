@@ -8,7 +8,7 @@ description: Technical SEO for the Vila Emes Astro 6 hotel site — canonical UR
 ## Project context
 
 - **Stack:** Astro 6 (static SSG only — no SSR), Tailwind v4, Cloudflare Pages.
-- **Domain:** `https://vila-emes.pages.dev` (until custom domain). Defined once in `astro.config.mjs` (`site`) and `src/config/site.ts` (`SITE.url`). **Treat both as the same value** — a custom-domain switch must update both.
+- **Domain:** `https://www.vilaemes.com`. Defined once in `astro.config.mjs` (`site`) and `src/config/site.ts` (`SITE.url`). **Treat both as the same value** — both must change together if the canonical domain ever shifts.
 - **Locales:** `en` (default, **unprefixed**), `al`, `it`, `de` — subdir routing, `prefixDefaultLocale: false`.
 - **URL-key vs BCP 47:** the URL key `al` maps to language tag `sq` (Albanian) via `LOCALE_TO_LANG` in `src/i18n/locales.ts`. Anywhere a real language tag is required (`<html lang>`, hreflang, `og:locale`), use the BCP 47 form, not the URL key.
 - **Pages are thin:** routes in `src/pages/{,al,it,de}/{index,rooms,contact}.astro` import a `*View.astro` from `src/views/`. The `<head>` is owned by `src/layouts/Base.astro`.
@@ -33,19 +33,19 @@ description: Technical SEO for the Vila Emes Astro 6 hotel site — canonical UR
 | `<title>` + optional `<meta name="description">` | Done | `Base.astro:29-30` |
 | Basic Open Graph (`og:title`, `og:description`, `og:type`, `og:image`, `og:url`) | Done | `Base.astro:32-36` |
 | Favicon (`.svg` + `.ico`) | Done | `public/favicon.{svg,ico}` |
-| OG image present (`/og-image.png`) | Done — but **1024×1024**, not the 1200×630 social-card target | `public/og-image.png` (53 KB; resize before launch) |
-| Canonical URL | **Missing** | should land in `Base.astro` head |
-| `og:site_name`, `og:locale`, `og:locale:alternate` | **Missing** | `Base.astro` |
-| `og:image:width` / `:height` / `:alt`, `og:image:secure_url` | **Missing** | `Base.astro` |
-| Twitter Card meta (`twitter:card`, `:title`, `:description`, `:image`) | **Missing** | `Base.astro` |
-| `<link rel="alternate" hreflang>` per page | **Missing** | view via `getRelativeLocaleUrl` or sitemap-driven |
-| JSON-LD: `Hotel` / `LodgingBusiness` on home | **Missing** | `HomeView.astro` |
-| JSON-LD: `FAQPage` (FAQ block on home + contact) | **Missing** | `HomeView.astro`, `ContactView.astro` |
-| JSON-LD: `BreadcrumbList` on inner pages | **Missing** | `RoomsView.astro`, `ContactView.astro` |
-| `@astrojs/sitemap` integration (auto hreflang) | **Missing** | `astro.config.mjs` + `package.json` |
-| `public/robots.txt` | **Missing** | `public/robots.txt` |
-| Localized `seo.title` / `seo.description` keys in all 4 YAMLs | **Missing** | currently views build titles inline from `hotel.name + tagline` |
-| Per-page description passed to `<Base>` | Partial | `HomeView.astro` passes only `title`; description is undefined |
+| OG image present (`/og-image.png`) | Done — 1200×630 | `public/og-image.png` |
+| Canonical URL | Done | `src/components/Seo.astro:30` (per-locale, trailing-slash-mirrored) |
+| `og:site_name`, `og:locale`, `og:locale:alternate` | Done | `Seo.astro:60-63` (via `astro-seo` `openGraph.optional`) |
+| `og:image:width` / `:height` / `:alt`, `og:image:secure_url` | Done | `Seo.astro:66-71` (1200×630 set explicitly) |
+| Twitter Card meta (`twitter:card`, `:title`, `:description`, `:image`) | Done | `Seo.astro:73-79` (`summary_large_image`) |
+| `<link rel="alternate" hreflang>` per page | Done | `Seo.astro:35-41` (en/sq/it/de + `x-default`) |
+| JSON-LD: `Hotel` on home | Done | `src/lib/seo.ts` builder + `Base.astro:32` (escapes `<` as `<`) |
+| JSON-LD: `FAQPage` (FAQ block on home + contact) | **Missing** | `HomeView.astro`, `ContactView.astro` (out of v1 scope) |
+| JSON-LD: `BreadcrumbList` on inner pages | **Missing** | `RoomsView.astro`, `ContactView.astro` (out of v1 scope) |
+| `@astrojs/sitemap` integration (auto hreflang) | Done | `astro.config.mjs` (`integrations: [sitemap({ i18n: { defaultLocale, locales: { al: "sq", ... } } })]`) |
+| `public/robots.txt` | Done | `public/robots.txt` (Sitemap directive → www.vilaemes.com) |
+| Localized `seo.title` / `seo.description` keys in all 4 YAMLs | Done | `src/content/site/{en,al,it,de}.yaml` + schema in `content.config.ts:64-68` |
+| Per-page description passed to `<Base>` | Done | views forward `site.data.seo.{home,rooms,contact}.description` |
 
 ## Implementation plan (suggested order)
 
@@ -110,9 +110,8 @@ const alternates = LOCALES.map((l) => ({
 ))}
 <meta property="og:image" content={ogImg} />
 <meta property="og:image:secure_url" content={ogImg} />
-{/* Current og-image.png is 1024×1024. Replace with 1200×630 before launch and update these dims together. */}
-<meta property="og:image:width" content="1024" />
-<meta property="og:image:height" content="1024" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 {ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
 
 <meta name="twitter:card" content="summary_large_image" />
@@ -173,10 +172,9 @@ const languageAlternates = [
       localeAlternate: LOCALES.filter((l) => l !== lang).map((l) => LOCALE_TO_LANG[l].replace("-", "_")),
     },
     image: {
-      // og-image.png is currently 1024×1024. Update both dims AND the file before launch.
       secureUrl: ogImg,
-      width: 1024,
-      height: 1024,
+      width: 1200,
+      height: 630,
       alt: "Vila Emes — family-run hotel by the sea, Plazh, Durrës",
     },
   }}
@@ -202,7 +200,7 @@ npx astro add sitemap --yes
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://vila-emes.pages.dev",
+  site: "https://www.vilaemes.com",
   i18n: {
     defaultLocale: "en",
     locales: ["en", "al", "it", "de"],
@@ -234,10 +232,10 @@ export default defineConfig({
 User-agent: *
 Allow: /
 
-Sitemap: https://vila-emes.pages.dev/sitemap-index.xml
+Sitemap: https://www.vilaemes.com/sitemap-index.xml
 ```
 
-Static file, copied as-is to `dist/`. Update the URL when the custom domain lands (along with `astro.config.mjs#site` and `SITE.url`).
+Static file, copied as-is to `dist/`. Keep this URL in lockstep with `astro.config.mjs#site` and `SITE.url` if the canonical domain ever changes.
 
 ### 4. JSON-LD — inject via `set:html` + `JSON.stringify`
 
@@ -355,7 +353,7 @@ const breadcrumbLd = {
 |---|---|---|
 | `<title>` | 50–60 chars | "Vila Emes — Family-run hotel in Durrës" fits. Don't pad with "best …" cruft. |
 | `<meta description>` | 150–160 chars | Action verb + benefit + locale signal (e.g. "Book a room at Vila Emes, a family-run beachfront hotel in Plazh, Durrës — two minutes from the sand. Check rates on Booking.com."). |
-| `og:image` | 1200×630, < 1 MB (Facebook/Twitter target) | Current `public/og-image.png` is **1024×1024** at 53 KB. Square crops poorly in feed previews — resize to 1200×630 before launch. |
+| `og:image` | 1200×630, < 1 MB (Facebook/Twitter target) | `public/og-image.png` is now 1200×630 (~440 KB). |
 | H1 | 1 per page | Existing views comply. Don't add a second `<h1>` to a section. |
 
 ## Common mistakes to avoid in this codebase
@@ -363,12 +361,12 @@ const breadcrumbLd = {
 | Mistake | Fix |
 |---|---|
 | Using URL key `al` as a language tag | Always go through `LOCALE_TO_LANG[lang]` to get `sq`. |
-| Hard-coding `https://vila-emes.pages.dev/...` | Use `SITE.url` from `src/config/site.ts`. One change for the custom-domain switch. |
+| Hard-coding `https://www.vilaemes.com/...` | Use `SITE.url` from `src/config/site.ts`. One change for the custom-domain switch. |
 | Adding metadata only to the EN view | Every locale needs the same SEO surface. Keep view + YAML changes parallel across en/al/it/de. |
 | Using `dangerouslySetInnerHTML` for JSON-LD | That's React. In Astro use `set:html={JSON.stringify(...)}`. |
 | Stringifying user-supplied content into JSON-LD without escaping | YAML content is owner-controlled, so `JSON.stringify` is enough. If sources expand to user input, escape `<` as `<` (HTML entities don't work inside `<script>`): `JSON.stringify(ld).replace(/</g, "\\u003c")` — prevents `</script>` injection. |
 | Putting hreflang only in the sitemap | Add per-page `<link rel="alternate" hreflang>` too — both signals reinforce each other. |
-| Hreflang missing `x-default` | Add `<link rel="alternate" hreflang="x-default" href="https://vila-emes.pages.dev/">` so SEs can pick a fallback. |
+| Hreflang missing `x-default` | Add `<link rel="alternate" hreflang="x-default" href="https://www.vilaemes.com/">` so SEs can pick a fallback. |
 | Forgetting the `og:image` is absolute-URL only | Already absolute via `${SITE.url}/og-image.png` — keep it that way. |
 | Adding `metadataBase` | Astro doesn't have a `metadataBase` like Next.js. Always emit absolute URLs from `SITE.url` directly. |
 | Building inline page titles like `${name} — ${tagline}` only | Fine for `<title>`, but pull a *separate* `seo.description` from YAML — repeating the tagline as the description hurts. |
@@ -385,7 +383,7 @@ const breadcrumbLd = {
 | `src/i18n/locales.ts` | `LOCALE_TO_LANG`, `localizedPath` — used everywhere SEO touches a URL or language tag. |
 | `astro.config.mjs` | `site` URL + `@astrojs/sitemap` integration with i18n option. |
 | `public/robots.txt` | **To create.** |
-| `public/og-image.png` | OG image, served from `SITE.url`. **Currently 1024×1024 — replace with 1200×630 before launch** and update `og:image:width/height` in the `<Seo>` component to match. |
+| `public/og-image.png` | OG image, served from `SITE.url`. 1200×630 — `og:image:width/height` in `Seo.astro` match. |
 
 ## Validation checklist
 
