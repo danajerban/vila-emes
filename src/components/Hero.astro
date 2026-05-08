@@ -59,7 +59,7 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
 
   <!-- Top + bottom gradient masks for legibility. -->
   <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/55 to-transparent pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" aria-hidden="true"></div>
 
   <!-- Polaroid (lg+ only). One-time wobble on enter via .polaroid-wobble. -->
   <figure class="absolute bottom-12 right-12 hidden lg:block reveal polaroid-wobble" style="transform: rotate(-3deg);">
@@ -72,7 +72,7 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
   </figure>
 
   <!-- Copy + CTAs. -->
-  <div class="relative max-w-[1180px] mx-auto px-5 md:px-10 pb-20 md:pb-28 text-[color:var(--color-cream)]">
+  <div class="relative max-w-[1180px] mx-auto px-5 md:px-10 pb-20 md:pb-28 text-center text-[color:var(--color-cream)]">
     <Eyebrow class="!text-[color:var(--color-cream)]/80">{eyebrow}</Eyebrow>
     <Handwritten as="p" color="terracotta" class="!text-[color:var(--color-cream)] mt-3 text-3xl md:text-4xl">
       {welcomeHandwritten}
@@ -80,17 +80,17 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
     <h1 class="font-serif text-6xl md:text-8xl mt-1 leading-none">{heading}</h1>
 
     {useRotator ? (
-      <p class="mt-5 max-w-2xl text-lg md:text-xl text-[color:var(--color-cream)]/90" aria-live="polite">
+      <p class="mt-5 max-w-2xl mx-auto text-lg md:text-xl text-[color:var(--color-cream)]/95" aria-live="polite">
         <span>{taglineStable}{" "}</span>
         <span class="hero-rotator inline-block min-w-[12ch]" data-rotators={JSON.stringify(taglineRotators)}>
           <span class="handwritten text-[color:var(--color-cream)]/95 text-[1.2em]">{taglineRotators![0]}</span>
         </span>
       </p>
     ) : (
-      <p class="mt-5 max-w-2xl text-lg md:text-xl text-[color:var(--color-cream)]/90">{sub}</p>
+      <p class="mt-5 max-w-2xl mx-auto text-lg md:text-xl text-[color:var(--color-cream)]/95">{sub}</p>
     )}
 
-    <div class="mt-8 flex flex-wrap gap-3">
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
       <a
         href={ctaPrimary.href}
         target="_blank"
