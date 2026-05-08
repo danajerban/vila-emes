@@ -82,8 +82,8 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
     {useRotator ? (
       <p class="mt-5 max-w-2xl mx-auto text-lg md:text-xl text-[color:var(--color-cream)]/95" aria-live="polite">
         <span>{taglineStable}{" "}</span>
-        <span class="hero-rotator inline-block min-w-[12ch]" data-rotators={JSON.stringify(taglineRotators)}>
-          <span class="handwritten text-[color:var(--color-cream)]/95 text-[1.2em]">{taglineRotators![0]}</span>
+        <span class="hero-rotator inline-block" data-rotators={JSON.stringify(taglineRotators)}>
+          <span class="handwritten text-[color:var(--color-terracotta)] text-[1.2em]">{taglineRotators![0]}</span>
         </span>
       </p>
     ) : (
