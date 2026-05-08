@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  tone?: "muted" | "current";
+}
+const { class: className = "my-8 md:my-12", tone = "muted" } = Astro.props;
+const lineColor = tone === "current" ? "currentColor" : "var(--color-muted)";
+---
+<div class:list={[className, "mx-auto w-[80%] max-w-[720px] flex items-center gap-3 px-5"]} aria-hidden="true">
+  <span class="flex-1 h-px" style={`background-image: linear-gradient(to right, transparent, ${lineColor});`}></span>
+  <svg width="22" height="28" viewBox="0 0 200 260" class="text-[color:var(--color-terracotta)] opacity-75 shrink-0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 250 C 102 180 100 100 100 70" />
+    <path d="M100 70 C 50 50 30 30 20 10 M100 70 C 60 80 30 100 20 130" />
+    <path d="M100 70 C 150 50 170 30 180 10 M100 70 C 140 80 170 100 180 130" />
+    <path d="M100 70 C 100 30 95 10 90 0 M100 70 C 105 30 115 15 130 5" />
+  </svg>
+  <span class="flex-1 h-px" style={`background-image: linear-gradient(to left, transparent, ${lineColor});`}></span>
+</div>

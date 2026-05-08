@@ -61,6 +61,12 @@ export const collections = {
         location: z.string(),
       }),
 
+      seo: z.object({
+        home: z.object({ title: z.string(), description: z.string() }),
+        rooms: z.object({ title: z.string(), description: z.string() }),
+        contact: z.object({ title: z.string(), description: z.string() }),
+      }),
+
       home: z.object({
         hero: z.object({
           eyebrow: z.string(),
@@ -99,8 +105,8 @@ export const collections = {
           eyebrow: z.string(),
           heading: z.string(),
           intro: z.string(),
-          captions: z.record(z.string(), z.string()).optional(),
-          alts: z.array(z.string()).length(12),
+          captions: z.array(z.string()).length(6),
+          alts: z.array(z.string()).length(6),
         }),
         location: z.object({
           eyebrow: z.string(),
@@ -123,7 +129,7 @@ export const collections = {
           eyebrow: z.string(),
           heading_part_1: z.string(),
           heading_part_2_handwritten: z.string(),
-          items: z.array(faqItem).length(6),
+          items: z.array(faqItem).length(8),
           footer_cta_handwritten: z.string(),
         }),
         ready_cta: z.object({
@@ -132,7 +138,7 @@ export const collections = {
           sub: z.string().optional(),
           wa_text: z.string().optional(),
           book_label: z.string(),
-          whatsapp_label: z.string(),
+          whatsapp_label: z.string().optional(),
           map_label: z.string(),
         }).optional(),
       }),
@@ -155,11 +161,6 @@ export const collections = {
           check_in: z.object({ label: z.string(), value: z.string(), note: z.string() }),
           check_out: z.object({ label: z.string(), value: z.string(), note: z.string() }),
           notes: z.object({ label: z.string(), value: z.string() }),
-        }),
-        cta: z.object({
-          handwritten: z.string(),
-          heading: z.string(),
-          button: z.string(),
         }),
       }),
 
@@ -224,6 +225,7 @@ export const collections = {
           next_room: z.string(),
           write: z.string(),
           call: z.string(),
+          reserve: z.string(),
         }),
         filter: z.object({
           all: z.string(),
@@ -251,6 +253,8 @@ export const collections = {
         footer: z.object({
           handwritten: z.string(),
           copyright: z.string(),
+          visit_label: z.string(),
+          reach_label: z.string(),
         }),
       }),
 

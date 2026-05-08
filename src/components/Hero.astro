@@ -33,7 +33,7 @@ const {
 
 const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length >= 2);
 ---
-<section class="relative isolate min-h-[100svh] flex items-end overflow-hidden" data-hero>
+<section class="relative isolate min-h-[100lvh] flex items-end justify-center overflow-hidden" data-hero>
   <!-- Slideshow track: each slide is a stacked absolute layer with the sunset filter. -->
   <div class="absolute inset-0" aria-hidden="true">
     {slides.map((slide, i) => (
@@ -57,9 +57,11 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
     ))}
   </div>
 
-  <!-- Top + bottom gradient masks for legibility. -->
-  <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/55 to-transparent pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <!-- Top + bottom gradient masks for legibility. Bumped on 2026-05-08 so
+       hero copy (heading/sub/handwritten welcome) stays readable on the
+       brighter midday slides. -->
+  <div class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/70 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/80 via-black/60 to-transparent pointer-events-none" aria-hidden="true"></div>
 
   <!-- Polaroid (lg+ only). One-time wobble on enter via .polaroid-wobble. -->
   <figure class="absolute bottom-12 right-12 hidden lg:block reveal polaroid-wobble" style="transform: rotate(-3deg);">
@@ -73,21 +75,21 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
 
   <!-- Copy + CTAs. -->
   <div data-hero-copy class="relative max-w-[1180px] mx-auto px-5 md:px-10 pb-20 md:pb-28 text-center text-[color:var(--color-cream)]">
-    <Eyebrow class="!text-[color:var(--color-cream)]/80">{eyebrow}</Eyebrow>
-    <Handwritten as="p" color="terracotta" class="!text-[color:var(--color-cream)] mt-3 text-3xl md:text-4xl">
+    <Eyebrow class="!text-[color:var(--color-cream)] !text-[12px] [text-shadow:0_1px_3px_rgb(0_0_0/0.55)]">{eyebrow}</Eyebrow>
+    <Handwritten as="p" color="terracotta" class="!text-[color:var(--color-cream)] mt-3 text-3xl md:text-4xl [text-shadow:0_2px_6px_rgb(0_0_0/0.55)]">
       {welcomeHandwritten}
     </Handwritten>
-    <h1 class="font-serif text-6xl md:text-8xl mt-1 leading-none">{heading}</h1>
+    <h1 class="font-serif text-6xl md:text-8xl mt-1 leading-none [text-shadow:0_3px_14px_rgb(0_0_0/0.6),0_1px_3px_rgb(0_0_0/0.5)]">{heading}</h1>
 
     {useRotator ? (
-      <p class="mt-5 max-w-2xl mx-auto text-lg md:text-xl text-[color:var(--color-cream)]/95" aria-live="polite">
+      <p class="hero-tagline-row mt-5 max-w-2xl mx-auto handwritten text-[color:var(--color-terracotta)] text-2xl md:text-3xl [text-shadow:0_2px_6px_rgb(0_0_0/0.55)]" aria-live="polite">
         <span>{taglineStable}{" "}</span>
         <span class="hero-rotator inline-block" data-rotators={JSON.stringify(taglineRotators)}>
-          <span class="handwritten text-[color:var(--color-terracotta)] text-[1.2em]">{taglineRotators![0]}</span>
+          <span>{taglineRotators![0]}</span>
         </span>
       </p>
     ) : (
-      <p class="mt-5 max-w-2xl mx-auto text-lg md:text-xl text-[color:var(--color-cream)]/95">{sub}</p>
+      <p class="mt-5 max-w-2xl mx-auto handwritten text-[color:var(--color-terracotta)] text-2xl md:text-3xl [text-shadow:0_2px_6px_rgb(0_0_0/0.55)]">{sub}</p>
     )}
 
     <div class="mt-8 flex flex-wrap justify-center gap-3">
@@ -125,13 +127,21 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
   .hero-slide[data-active="true"] .hero-img {
     transform: scale(1.06) translate3d(0.5%, -0.5%, 0);
   }
-  .hero-rotator > span {
-    display: inline-block;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+  /* Cross-fade the entire tagline row (not just the rotator word) so swaps
+     between rotator phrases of different widths don't visibly shift the
+     centered line horizontally — or wrap to a second line — mid-rotation.
+     Pure opacity with ease-in-out gives a soft, cinematic dissolve.
+     translateZ(0) gives the row its own compositing layer so iOS Safari
+     doesn't render the fade through the parent's will-change/opacity layer
+     (which used to cause skipped/abrupt fades on mobile). */
+  .hero-tagline-row {
+    opacity: 1;
+    transition: opacity 0.7s ease-in-out;
+    transform: translateZ(0);
+    will-change: opacity;
   }
-  .hero-rotator.fading > span {
+  .hero-tagline-row.fading {
     opacity: 0;
-    transform: translateY(-4px);
   }
 
   /* Scroll-driven exit: copy lifts (-16px) and fades as --hero-progress goes 0→1.
@@ -142,11 +152,25 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
     will-change: opacity, transform;
   }
 
+  /* iOS Safari (notably iOS 26 Liquid Glass URL bar) miscomputes 100svh and
+     leaves the next section peeking above the chrome. Overshoot the hero by
+     60px on mobile so any viewport-math drift is absorbed in dead scroll
+     space, and compensate the copy block's bottom padding so the CTAs stay
+     anchored in the visible viewport on initial load. */
+  @media (max-width: 768px) {
+    [data-hero] {
+      min-height: calc(100lvh + 60px);
+    }
+    [data-hero-copy] {
+      padding-bottom: calc(5rem + (100lvh - 100svh) + 60px);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-slide { transition: none; opacity: 1; }
     .hero-slide:not([data-active="true"]) { opacity: 0; }
     .hero-slide .hero-img { transition: none; transform: none; }
-    .hero-rotator > span { transition: none; }
+    .hero-tagline-row { transition: none; }
   }
 </style>
 
@@ -220,22 +244,47 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
         }, 6500));
       }
 
-      // 2) Tagline rotator
+      // 2) Tagline rotator — fade the whole <p> row so swaps don't cause
+      // horizontal shift (centered line) or wrap-jumps when rotator words
+      // differ in width across phrases or locales. Driven by transitionend
+      // (not setTimeout) so the swap waits for the actual fade-out frame —
+      // mobile Safari can stretch animations under load and a fixed timer
+      // would swap mid-fade and look like a flicker.
       const rotator = hero.querySelector(".hero-rotator");
-      if (!reduced && rotator) {
+      const row = rotator && rotator.closest(".hero-tagline-row");
+      if (!reduced && rotator && row) {
         let phrases = [];
         try { phrases = JSON.parse(rotator.getAttribute("data-rotators") || "[]"); } catch (e) {}
         if (Array.isArray(phrases) && phrases.length >= 2) {
           let idx = 0;
           const inner = rotator.querySelector("span");
           intervalIds.push(setInterval(() => {
-            rotator.classList.add("fading");
-            setTimeout(() => {
+            let swapped = false;
+            const swap = () => {
+              if (swapped) return;
+              swapped = true;
+              row.removeEventListener("transitionend", onEnd);
+              clearTimeout(safety);
               idx = (idx + 1) % phrases.length;
               if (inner) inner.textContent = phrases[idx];
-              rotator.classList.remove("fading");
-            }, 400);
-          }, 4000));
+              // Double RAF: ensures the new text is laid out & painted
+              // before we trigger the fade-back, so the first visible frame
+              // of the fade-in is the new text (not the old).
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => row.classList.remove("fading"));
+              });
+            };
+            const onEnd = (e) => {
+              if (e.target === row && e.propertyName === "opacity") swap();
+            };
+            row.addEventListener("transitionend", onEnd);
+            // Safety: if the browser pauses transitions (tab inactive,
+            // parent opacity 0 from scroll, reduced motion mid-cycle),
+            // transitionend never fires — swap anyway after a generous
+            // fallback so we never get stuck on a faded-out row.
+            const safety = setTimeout(swap, 1200);
+            row.classList.add("fading");
+          }, 4500));
         }
       }
 

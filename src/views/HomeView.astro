@@ -12,35 +12,34 @@ import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
 import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import Eyebrow from "../components/Eyebrow.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 
-import heroCover from "../assets/photos/main/dji-0379-2400.webp";
-import heroSlide2 from "../assets/photos/main/dji-0380-2400.webp";
-import heroSlide3 from "../assets/photos/main/dji-0382-2400.webp";
-import heroSlide4 from "../assets/photos/main/dji-0384-2400.webp";
-import heroSlide5 from "../assets/photos/main/beach-2400.webp";
-import heroPolaroid from "../assets/photos/main/691204535-1600.webp";
+import heroCover from "../assets/photos/main/dji-0377-2400.webp";
+import heroSlide2 from "../assets/photos/main/dji-main3-2400.webp";
+import heroSlide3 from "../assets/photos/main/dsc-0494-2400.webp";
+import heroSlide4 from "../assets/photos/apt-2bed/dsc-0471-2400.webp";
+import heroSlide5 from "../assets/photos/main/dsc-0370-2400.webp";
+import heroPolaroid from "../assets/photos/main/beach-1600.webp";
 import aboutPhoto from "../assets/photos/main/dji-0380-1600.webp";
 
-import g01 from "../assets/photos/main/dji-0377-1600.webp";
-import g02 from "../assets/photos/main/dji-0379-1600.webp";
-import g03 from "../assets/photos/main/dji-0380-1600.webp";
-import g04 from "../assets/photos/main/dji-0382-1600.webp";
-import g05 from "../assets/photos/main/dji-0384-1600.webp";
-import g06 from "../assets/photos/main/beach-1600.webp";
-import g07 from "../assets/photos/main/691204535-1600.webp";
-import g08 from "../assets/photos/deluxe-rooms/dsc-0327-1600.webp";
-import g09 from "../assets/photos/apt-1bed-terrace/dsc-0434-1600.webp";
-import g10 from "../assets/photos/apt-2bed/dsc-0457-1600.webp";
-import g11 from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
-import g12 from "../assets/photos/deluxe-rooms/dsc-0329-1600.webp";
+import gFirstLight from "../assets/photos/main/dji-0377-1600.webp";
+import gBeach from "../assets/photos/main/beach-1600.webp";
+import gEntrance from "../assets/photos/main/dsc-0494-1600.webp";
+import gPastry from "../assets/photos/main/dsc-0503-1600.webp";
+import gLocation from "../assets/photos/main/691204535-1600.webp";
+import gNeighborhood from "../assets/photos/main/dji-0385-1600.webp";
 
-import imgApt2Bed from "../assets/photos/apt-2bed/dsc-0457-1600.webp";
-import imgDeluxeKing from "../assets/photos/deluxe-rooms/dsc-0327-1600.webp";
-import imgFamilyBalc from "../assets/photos/standard-rooms/dsc-0384-1600.webp";
-import imgQuadSea from "../assets/photos/standard-rooms/dsc-0381-1600.webp";
+import imgApt2Bed01 from "../assets/photos/apt-2bed/dsc-0479-1600.webp";
+import imgApt2Bed02 from "../assets/photos/apt-2bed/dsc-0461-1600.webp";
+import imgDeluxeKing01 from "../assets/photos/deluxe-rooms/dsc-0333-1600.webp";
+import imgDeluxeKing02 from "../assets/photos/deluxe-rooms/dsc-0337-1600.webp";
+import imgFamilyBalc01 from "../assets/photos/standard-rooms/dsc-0402-1600.webp";
+import imgFamilyBalc02 from "../assets/photos/standard-rooms/dsc-0428-1600.webp";
+import imgQuadSea01 from "../assets/photos/standard-rooms/dsc-0386-1600.webp";
+import imgQuadSea02 from "../assets/photos/standard-rooms/dsc-0403-1600.webp";
 
 interface Props {
   lang: Lang;
@@ -56,10 +55,10 @@ const rooms = site.data.rooms;
 const get = (id: string) => rooms.find((r) => r.id === id)!;
 
 const previewFamilies = [
-  { room: get("apt-2bed"),       photo: imgApt2Bed,    numberLabel: "01", familyLabel: ui.family_groups.apartments },
-  { room: get("deluxe-king"),    photo: imgDeluxeKing, numberLabel: "02", familyLabel: ui.family_groups.deluxe },
-  { room: get("family-balcony"), photo: imgFamilyBalc, numberLabel: "03", familyLabel: ui.family_groups.family },
-  { room: get("quad-sea"),       photo: imgQuadSea,    numberLabel: "04", familyLabel: ui.family_groups.family },
+  { room: get("apt-2bed"),       photos: [imgApt2Bed01, imgApt2Bed02], numberLabel: "01", familyLabel: ui.family_groups.apartments },
+  { room: get("deluxe-king"),    photos: [imgDeluxeKing01, imgDeluxeKing02], numberLabel: "02", familyLabel: ui.family_groups.deluxe },
+  { room: get("family-balcony"), photos: [imgFamilyBalc01, imgFamilyBalc02],                  numberLabel: "03", familyLabel: ui.family_groups.family },
+  { room: get("quad-sea"),       photos: [imgQuadSea01, imgQuadSea02],                        numberLabel: "04", familyLabel: ui.family_groups.family },
 ];
 
 const tileLabels = home.contact_strip.tile_labels;
@@ -68,28 +67,14 @@ const tiles = [
   { kind: "whatsapp",  label: tileLabels.whatsapp,  value: SITE.contact.whatsapp, href: `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}` },
   { kind: "email",     label: tileLabels.email,     value: SITE.contact.email,    href: `mailto:${SITE.contact.email}` },
   { kind: "instagram", label: tileLabels.instagram, value: "@vilaemes",           href: SITE.links.instagram },
-  { kind: "booking",   label: tileLabels.booking,   value: "Book online",         href: SITE.links.booking_com },
 ] as const;
 
-const captions = home.gallery.captions ?? {};
-const alts = home.gallery.alts;
-const galleryPhotos = [
-  { src: g01, alt: alts[0],  caption: captions["DSC_0169"] },
-  { src: g02, alt: alts[1] },
-  { src: g03, alt: alts[2] },
-  { src: g04, alt: alts[3] },
-  { src: g05, alt: alts[4],  caption: captions["DSC_0204"] },
-  { src: g06, alt: alts[5],  caption: captions["DSC_0145"] },
-  { src: g07, alt: alts[6] },
-  { src: g08, alt: alts[7],  caption: captions["DSC_0123"] },
-  { src: g09, alt: alts[8] },
-  { src: g10, alt: alts[9] },
-  { src: g11, alt: alts[10] },
-  { src: g12, alt: alts[11] },
-];
+const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeighborhood].map(
+  (src, i) => ({ src, alt: home.gallery.alts[i], caption: home.gallery.captions[i] }),
+);
 ---
-<Base lang={lang} title={`${site.data.hotel.name} — ${site.data.hotel.tagline}`}>
-  <Header lang={lang} ui={ui.nav} isHome hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} callLabel={ui.buttons.call} menuToggleLabel={ui.aria_labels.menu_toggle} />
+<Base lang={lang} title={site.data.seo.home.title} description={site.data.seo.home.description}>
+  <Header lang={lang} ui={ui.nav} isHome hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} menuToggleLabel={ui.aria_labels.menu_toggle} />
 
   <Hero
     slides={[heroCover, heroSlide2, heroSlide3, heroSlide4, heroSlide5]}
@@ -137,8 +122,8 @@ const galleryPhotos = [
         <RoomCard
           href={`${baseLink}/rooms#${p.room.id}`}
           bookHref={SITE.links.booking_com}
-          bookLabel={ui.buttons.book_short ?? "Book us"}
-          photo={p.photo}
+          bookLabel={ui.buttons.reserve}
+          photos={p.photos}
           numberLabel={p.numberLabel}
           familyLabel={p.familyLabel}
           name={p.room.name}
@@ -201,16 +186,17 @@ const galleryPhotos = [
   />
 
   {home.ready_cta && (
-    <ReadyToBookCTA
-      handwritten={home.ready_cta.handwritten}
-      heading={home.ready_cta.heading}
-      sub={home.ready_cta.sub}
-      waText={home.ready_cta.wa_text}
-      bookLabel={home.ready_cta.book_label}
-      whatsappLabel={home.ready_cta.whatsapp_label}
-      mapLabel={home.ready_cta.map_label}
-    />
+    <>
+      <SectionDivider />
+      <ReadyToBookCTA
+        handwritten={home.ready_cta.handwritten}
+        heading={home.ready_cta.heading}
+        sub={home.ready_cta.sub}
+        bookLabel={home.ready_cta.book_label}
+        mapLabel={home.ready_cta.map_label}
+      />
+    </>
   )}
 
-  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} ui={ui} brandTagline={site.data.hotel.tagline} />
+  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} visitLabel={ui.footer.visit_label} reachLabel={ui.footer.reach_label} ui={ui} />
 </Base>

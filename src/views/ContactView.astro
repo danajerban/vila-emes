@@ -8,6 +8,7 @@ import Directions from "../components/Directions.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
 import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 
@@ -20,8 +21,8 @@ const ui = site.data.ui;
 const page = site.data.contact_page;
 const home = site.data.home;
 ---
-<Base lang={lang} title={`${ui.nav.contact} — ${site.data.hotel.name}`}>
-  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} callLabel={ui.buttons.call} menuToggleLabel={ui.aria_labels.menu_toggle} />
+<Base lang={lang} title={site.data.seo.contact.title} description={site.data.seo.contact.description}>
+  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} menuToggleLabel={ui.aria_labels.menu_toggle} />
 
   <PageHero
     eyebrow={page.hero_eyebrow}
@@ -57,11 +58,15 @@ const home = site.data.home;
     </div>
   </section>
 
+  <SectionDivider />
+
   <Directions
     eyebrow={page.directions.eyebrow}
     heading={page.directions.heading}
     mapsCta={ui.buttons.map}
   />
+
+  <SectionDivider />
 
   <FAQ
     eyebrow={home.faq.eyebrow}
@@ -72,16 +77,17 @@ const home = site.data.home;
   />
 
   {home.ready_cta && (
-    <ReadyToBookCTA
-      handwritten={home.ready_cta.handwritten}
-      heading={home.ready_cta.heading}
-      sub={home.ready_cta.sub}
-      waText={home.ready_cta.wa_text}
-      bookLabel={home.ready_cta.book_label}
-      whatsappLabel={home.ready_cta.whatsapp_label}
-      mapLabel={home.ready_cta.map_label}
-    />
+    <>
+      <SectionDivider />
+      <ReadyToBookCTA
+        handwritten={home.ready_cta.handwritten}
+        heading={home.ready_cta.heading}
+        sub={home.ready_cta.sub}
+        bookLabel={home.ready_cta.book_label}
+        mapLabel={home.ready_cta.map_label}
+      />
+    </>
   )}
 
-  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} ui={ui} brandTagline={site.data.hotel.tagline} />
+  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} visitLabel={ui.footer.visit_label} reachLabel={ui.footer.reach_label} ui={ui} />
 </Base>

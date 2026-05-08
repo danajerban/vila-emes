@@ -7,14 +7,10 @@ interface Props {
   handwritten: string;
   heading: string;
   sub?: string;
-  waText?: string;
   bookLabel: string;
-  whatsappLabel: string;
   mapLabel: string;
 }
-const { handwritten, heading, sub, waText, bookLabel, whatsappLabel, mapLabel } = Astro.props;
-
-const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(waText ?? "Hello, I'd like to book at Vila Emes")}`;
+const { handwritten, heading, sub, bookLabel, mapLabel } = Astro.props;
 ---
 <section class="relative bg-[color:var(--color-sub-bg)] py-24 md:py-32 reveal overflow-hidden">
   <div class="absolute left-4 md:left-12 top-12 text-[color:var(--color-terracotta)]" style="opacity: 0.3;" aria-hidden="true">
@@ -37,16 +33,10 @@ const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?te
         class="inline-flex items-center justify-center px-6 py-3 bg-[color:var(--color-terracotta)] hover:bg-[color:var(--color-terracotta-hover)] text-[color:var(--color-cream)] font-medium tracking-wide rounded-md transition tappable"
       >{bookLabel}</a>
       <a
-        href={waHref}
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center justify-center px-6 py-3 border border-[color:var(--color-divider)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-cream-elevated)] font-medium tracking-wide rounded-md transition tappable"
-      >{whatsappLabel}</a>
-      <a
         href={SITE.links.google_maps}
         target="_blank"
         rel="noopener"
-        class="inline-flex items-center justify-center px-6 py-3 border border-[color:var(--color-sea)] text-[color:var(--color-sea)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] font-medium tracking-wide rounded-md transition tappable"
+        class="inline-flex items-center justify-center px-6 py-3 border border-[color:var(--color-divider)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] hover:border-[color:var(--color-sea)] font-medium tracking-wide rounded-md transition tappable"
       >{mapLabel}</a>
     </div>
   </div>

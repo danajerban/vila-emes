@@ -9,6 +9,7 @@ import RoomsIncludes from "../components/RoomsIncludes.astro";
 import HouseRules from "../components/HouseRules.astro";
 import Footer from "../components/Footer.astro";
 import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
@@ -126,41 +127,47 @@ const roomPhotos: Record<string, ImageMetadata[]> = {
 
 const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
 ---
-<Base lang={lang} title={`${ui.nav.rooms} — ${site.data.hotel.name}`}>
-  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} callLabel={ui.buttons.call} menuToggleLabel={ui.aria_labels.menu_toggle} />
+<Base lang={lang} title={site.data.seo.rooms.title} description={site.data.seo.rooms.description}>
+  <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} menuToggleLabel={ui.aria_labels.menu_toggle} />
 
   <PageHero
     eyebrow={page.hero_eyebrow}
     headingPart1={page.hero_heading_part_1}
     headingPart2Handwritten={page.hero_heading_part_2_handwritten}
     intro={page.hero_intro}
+    tightBottom
   >
     <RoomFilterBar labels={ui.filter} />
   </PageHero>
 
   <main class="rooms-main">
     {orderedRooms.map((r, i) => (
-      <RoomDetails
-        id={r.id}
-        cat={r.family}
-        numberLabel={String(r.order).padStart(2, "0")}
-        familyLabel={ui.family_groups[r.family]}
-        name={r.name}
-        size={`${r.size_m2} m²`}
-        beds={r.beds}
-        view={r.view}
-        outdoor={r.outdoor}
-        capacity={r.sleeps_label}
-        description={r.description}
-        amenities={r.amenities.map((kind) => ({ kind, label: ui.amenity_labels[kind] }))}
-        photos={roomPhotos[r.id]}
-        bookHref={SITE.links.booking_com}
-        bookLabel={ui.buttons.book}
-        flip={i % 2 === 1}
-        labels={ui.labels}
-      />
+      <>
+        {i > 0 && <SectionDivider class="my-0" />}
+        <RoomDetails
+          id={r.id}
+          cat={r.family}
+          numberLabel={String(r.order).padStart(2, "0")}
+          familyLabel={ui.family_groups[r.family]}
+          name={r.name}
+          size={`${r.size_m2} m²`}
+          beds={r.beds}
+          view={r.view}
+          outdoor={r.outdoor}
+          capacity={r.sleeps_label}
+          description={r.description}
+          amenities={r.amenities.map((kind) => ({ kind, label: ui.amenity_labels[kind] }))}
+          photos={roomPhotos[r.id]}
+          bookHref={SITE.links.booking_com}
+          bookLabel={ui.buttons.book}
+          flip={i % 2 === 1}
+          labels={ui.labels}
+        />
+      </>
     ))}
   </main>
+
+  <SectionDivider />
 
   <RoomsIncludes
     eyebrow={page.includes.eyebrow}
@@ -169,6 +176,8 @@ const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
     pastryNote={page.includes.pastry_note}
     list={page.includes.list}
   />
+
+  <SectionDivider />
 
   <HouseRules
     eyebrow={page.rules.eyebrow}
@@ -179,16 +188,17 @@ const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
   />
 
   {home.ready_cta && (
-    <ReadyToBookCTA
-      handwritten={home.ready_cta.handwritten}
-      heading={home.ready_cta.heading}
-      sub={home.ready_cta.sub}
-      waText={home.ready_cta.wa_text}
-      bookLabel={home.ready_cta.book_label}
-      whatsappLabel={home.ready_cta.whatsapp_label}
-      mapLabel={home.ready_cta.map_label}
-    />
+    <>
+      <SectionDivider />
+      <ReadyToBookCTA
+        handwritten={home.ready_cta.handwritten}
+        heading={home.ready_cta.heading}
+        sub={home.ready_cta.sub}
+        bookLabel={home.ready_cta.book_label}
+        mapLabel={home.ready_cta.map_label}
+      />
+    </>
   )}
 
-  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} ui={ui} brandTagline={site.data.hotel.tagline} />
+  <Footer lang={lang} handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} visitLabel={ui.footer.visit_label} reachLabel={ui.footer.reach_label} ui={ui} />
 </Base>
