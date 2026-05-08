@@ -129,7 +129,7 @@ export const collections = {
           eyebrow: z.string(),
           heading_part_1: z.string(),
           heading_part_2_handwritten: z.string(),
-          items: z.array(faqItem).length(8),
+          items: z.array(faqItem).min(6).max(12),
           footer_cta_handwritten: z.string(),
         }),
         ready_cta: z.object({

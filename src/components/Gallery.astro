@@ -8,8 +8,11 @@ interface Props {
   eyebrow?: string;
   intro?: string;
   photos: { src: ImageMetadata; alt: string; caption?: string }[];
+  autoplayMs?: number;
 }
-const { heading, eyebrow, intro, photos } = Astro.props;
+const { heading, eyebrow, intro, photos, autoplayMs = 8000 } = Astro.props;
+const id = `gc-${Math.random().toString(36).slice(2, 8)}`;
+const initialCaption = photos[0]?.caption ?? "";
 ---
 <section class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 reveal">
   <div class="max-w-2xl">
@@ -18,238 +21,213 @@ const { heading, eyebrow, intro, photos } = Astro.props;
     {intro && <p class="mt-4 text-[color:var(--color-ink)]/80">{intro}</p>}
   </div>
 
-  <div class="mt-10 -mx-5 md:-mx-10 px-5 md:px-10">
-    <div class="gallery-track flex snap-x snap-mandatory overflow-x-auto gap-3 scroll-smooth no-scrollbar pb-2">
+  <div
+    class="gallery-carousel relative w-full max-w-[820px] mx-auto mt-10"
+    data-gallery-carousel
+    data-autoplay-ms={autoplayMs}
+    id={id}
+  >
+    <div class="gc-track flex snap-x snap-mandatory overflow-x-auto gap-3 scroll-smooth no-scrollbar" tabindex="0" aria-label={heading}>
       {photos.map((photo, i) => (
-        <figure class="snap-start shrink-0 w-[60vw] md:w-[280px]" data-gallery-index={i}>
-          <button
-            type="button"
-            class="block w-full overflow-hidden rounded-md cursor-zoom-in tappable"
-            data-lightbox-index={i}
-            data-lightbox-src={photo.src.src}
-            data-lightbox-caption={photo.caption ?? ""}
-            data-lightbox-alt={photo.alt}
-            aria-label={photo.alt}
-          >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              width={900}
-              quality={82}
-              class="w-full aspect-[4/3] object-cover photo-enter"
-              loading={i < 4 ? "eager" : "lazy"}
-            />
-          </button>
-          {photo.caption && (
-            <figcaption class="handwritten text-[color:var(--color-terracotta)] text-lg mt-2 px-1">
-              — {photo.caption}
-            </figcaption>
-          )}
+        <figure class="gc-slide snap-center shrink-0 w-full" data-slide-index={i} data-caption={photo.caption ?? ""}>
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            width={1600}
+            quality={82}
+            class="w-full aspect-[4/3] object-cover rounded-md"
+            loading={i === 0 ? "eager" : "lazy"}
+          />
         </figure>
       ))}
     </div>
-  </div>
 
-  <div
-    id="lightbox"
-    class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-6 select-none"
-    role="dialog"
-    aria-modal="true"
-    aria-label={heading}
-  >
-    <div id="lightbox-counter" class="absolute top-4 left-1/2 -translate-x-1/2 text-white/80 text-sm font-mono lightbox-control"></div>
-    <button type="button" id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl lightbox-control" aria-label="Close">×</button>
-    <button type="button" id="lightbox-prev" class="absolute left-4 text-white text-4xl lightbox-control" aria-label="Previous">‹</button>
-    <button type="button" id="lightbox-next" class="absolute right-4 text-white text-4xl lightbox-control" aria-label="Next">›</button>
-    <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-[92vw] object-contain transition-transform duration-300" />
-    <div id="lightbox-caption" class="absolute bottom-6 left-0 right-0 text-center handwritten text-[color:var(--color-cream)] text-xl px-6 lightbox-control"></div>
+    {photos.length > 1 && (
+      <>
+        <button type="button" class="gc-btn gc-prev" aria-label="Previous photo">‹</button>
+        <button type="button" class="gc-btn gc-next" aria-label="Next photo">›</button>
+        <div class="gc-dots mt-5 flex justify-center gap-2" aria-hidden="true">
+          {photos.map((_, i) => (
+            <span class="gc-dot" data-dot-index={i} data-active={i === 0 ? "true" : "false"} role="button" tabindex="0"></span>
+          ))}
+        </div>
+      </>
+    )}
+
+    <p
+      class="gc-caption handwritten text-[color:var(--color-terracotta)] text-xl md:text-2xl mt-3 text-center min-h-[1.6em]"
+      data-caption-display
+      aria-live="polite"
+    >{initialCaption ? `— ${initialCaption}` : ""}</p>
   </div>
 </section>
 
 <style>
   .no-scrollbar { scrollbar-width: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
-  .lightbox-control {
-    transition: opacity 0.3s ease;
+  .gc-btn {
+    position: absolute;
+    top: calc(50% - 1.6em);
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: color-mix(in oklab, white 82%, transparent);
+    color: var(--color-ink);
+    font-size: 26px;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+    z-index: 1;
   }
-  #lightbox-img { touch-action: none; }
-  #lightbox.hide-controls .lightbox-control {
-    opacity: 0;
-    pointer-events: none;
+  @media (hover: hover) {
+    .gc-btn { display: flex; opacity: 0.9; }
+    .gallery-carousel:hover .gc-btn { opacity: 1; }
+    .gc-btn:hover { background: color-mix(in oklab, white 95%, transparent); }
+  }
+  .gc-prev { left: 12px; }
+  .gc-next { right: 12px; }
+  .gc-dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-cream-elevated) 60%, var(--color-ink) 20%);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  .gc-dot[data-active="true"] {
+    background: var(--color-terracotta);
+    transform: scale(1.3);
+  }
+  .gc-dot:focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
   }
 </style>
 
 <script is:inline>
   (function () {
-    // Outer guard: only the FIRST script execution per session sets up
-    // window-scoped listeners. Inline scripts can re-execute when
-    // ClientRouter navigates back to a page, and document listeners
-    // don't get GC'd with the swapped DOM.
-    if (window.__galleryInited) return;
-    window.__galleryInited = true;
+    // Outer guard: ClientRouter can re-execute inline scripts on revisit.
+    if (window.__galleryCarouselInited) return;
+    window.__galleryCarouselInited = true;
 
-    // ONE-TIME: keyboard navigation. Re-query DOM each event so it works
-    // after ClientRouter swaps the page, and synthesize clicks on the
-    // lightbox buttons so the navigation logic stays in init()'s click
-    // handlers (single source of truth, also re-arms auto-hide).
-    document.addEventListener("keydown", (e) => {
-      const box = document.getElementById("lightbox");
-      if (!box || box.classList.contains("hidden")) return;
-      if (e.key === "Escape") document.getElementById("lightbox-close")?.click();
-      else if (e.key === "ArrowLeft") document.getElementById("lightbox-prev")?.click();
-      else if (e.key === "ArrowRight") document.getElementById("lightbox-next")?.click();
-    });
+    let autoplayIds = [];
+    function clearTimers() {
+      autoplayIds.forEach(clearInterval);
+      autoplayIds = [];
+    }
 
     function init() {
+      clearTimers();
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const photos = Array.from(document.querySelectorAll("[data-lightbox-index]")).map((btn) => ({
-        src: btn.getAttribute("data-lightbox-src") || "",
-        caption: btn.getAttribute("data-lightbox-caption") || "",
-        alt: btn.getAttribute("data-lightbox-alt") || "",
-        thumb: btn,
-      }));
-      const box = document.getElementById("lightbox");
-      const imgEl = document.getElementById("lightbox-img");
-      const captionEl = document.getElementById("lightbox-caption");
-      const counterEl = document.getElementById("lightbox-counter");
-      const close = document.getElementById("lightbox-close");
-      const prev = document.getElementById("lightbox-prev");
-      const next = document.getElementById("lightbox-next");
-      let current = 0;
-      let hideTimer;
-      let scale = 1;
-      let touchStart = null;
 
-      if (!box || !imgEl || photos.length === 0) return;
+      document.querySelectorAll("[data-gallery-carousel]").forEach((el) => {
+        const track = el.querySelector(".gc-track");
+        const slides = el.querySelectorAll(".gc-slide");
+        const dots = el.querySelectorAll(".gc-dot");
+        const prevBtn = el.querySelector(".gc-prev");
+        const nextBtn = el.querySelector(".gc-next");
+        const captionEl = el.querySelector("[data-caption-display]");
+        if (!track || slides.length < 2) return;
 
-      const resetZoom = () => { scale = 1; imgEl.style.transform = "translate3d(0,0,0) scale(1)"; };
+        const total = slides.length;
+        let current = 0;
+        let autoplay;
 
-      const updateCounter = () => {
-        if (counterEl) counterEl.textContent = `${current + 1} / ${photos.length}`;
-      };
+        const updateCaption = (i) => {
+          if (!captionEl) return;
+          const cap = slides[i].dataset.caption;
+          captionEl.textContent = cap ? `— ${cap}` : "";
+        };
 
-      const updateCaption = () => {
-        if (captionEl) {
-          captionEl.textContent = photos[current].caption ? `— ${photos[current].caption}` : "";
-        }
-      };
+        const updateDots = (i) => {
+          dots.forEach((d, j) => d.setAttribute("data-active", j === i ? "true" : "false"));
+        };
 
-      const armAutoHide = () => {
-        box.classList.remove("hide-controls");
-        clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => box.classList.add("hide-controls"), 2000);
-      };
+        const goTo = (i) => {
+          current = ((i % total) + total) % total;
+          const targetSlide = slides[current];
+          track.scrollTo({ left: targetSlide.offsetLeft - track.offsetLeft, behavior: "smooth" });
+          updateDots(current);
+          updateCaption(current);
+        };
 
-      const show = (i, originRect) => {
-        current = ((i % photos.length) + photos.length) % photos.length;
-        imgEl.src = photos[current].src;
-        imgEl.alt = photos[current].alt;
-        updateCounter();
-        updateCaption();
-        resetZoom();
-        box.classList.remove("hidden");
-        box.classList.add("flex");
-        document.body.style.overflow = "hidden";
-        armAutoHide();
+        prevBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current - 1); });
+        nextBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current + 1); });
 
-        // FLIP from thumbnail rect
-        if (!reduced && originRect && originRect.width > 0 && originRect.height > 0) {
-          requestAnimationFrame(() => {
-            const finalRect = imgEl.getBoundingClientRect();
-            const dx = originRect.left - finalRect.left;
-            const dy = originRect.top - finalRect.top;
-            const sx = originRect.width / finalRect.width;
-            const sy = originRect.height / finalRect.height;
-            // FLIP: snap instantly to inverted state, then animate to identity in next frame.
-            imgEl.style.transition = "none";
-            imgEl.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${(sx+sy)/2})`;
-            requestAnimationFrame(() => {
-              imgEl.style.transition = "transform 0.4s ease";
-              imgEl.style.transform = "translate3d(0,0,0) scale(1)";
-            });
+        dots.forEach((dot, j) => {
+          dot.addEventListener("click", () => { stopAutoplay(); goTo(j); });
+          dot.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              stopAutoplay();
+              goTo(j);
+            }
           });
-        }
-      };
-
-      const hide = () => {
-        box.classList.add("hidden");
-        box.classList.remove("flex");
-        document.body.style.overflow = "";
-        clearTimeout(hideTimer);
-        photos[current]?.thumb?.focus();
-      };
-
-      photos.forEach((p) => {
-        p.thumb.addEventListener("click", () => {
-          const rect = p.thumb.getBoundingClientRect();
-          show(Number(p.thumb.dataset.lightboxIndex), rect);
         });
+
+        // Sync dots + caption when user scrolls manually (drag/swipe).
+        let scrollTimer;
+        track.addEventListener("scroll", () => {
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(() => {
+            let closestIdx = 0;
+            let closestDist = Infinity;
+            slides.forEach((s, j) => {
+              const d = Math.abs(s.offsetLeft - track.scrollLeft - track.offsetLeft);
+              if (d < closestDist) { closestDist = d; closestIdx = j; }
+            });
+            current = closestIdx;
+            updateDots(current);
+            updateCaption(current);
+          }, 100);
+        });
+
+        // Autoplay (gated to in-view + not reduced-motion + not hovered/focused)
+        const startAutoplay = () => {
+          if (reduced || autoplay) return;
+          const ms = parseInt(el.dataset.autoplayMs || "8000", 10);
+          autoplay = setInterval(() => goTo(current + 1), ms);
+          autoplayIds.push(autoplay);
+        };
+        const stopAutoplay = () => {
+          if (autoplay) {
+            clearInterval(autoplay);
+            autoplayIds = autoplayIds.filter((id) => id !== autoplay);
+            autoplay = null;
+          }
+        };
+
+        el.addEventListener("pointerenter", stopAutoplay);
+        el.addEventListener("focusin", stopAutoplay);
+        el.addEventListener("pointerleave", () => {
+          if (entryObserver && entryObserver.lastEntry?.isIntersecting) startAutoplay();
+        });
+        el.addEventListener("focusout", () => {
+          if (entryObserver && entryObserver.lastEntry?.isIntersecting) startAutoplay();
+        });
+
+        const entryObserver = ("IntersectionObserver" in window) ? new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              entryObserver.lastEntry = entry;
+              if (entry.isIntersecting) startAutoplay();
+              else stopAutoplay();
+            });
+          },
+          { threshold: 0.4 }
+        ) : null;
+        if (entryObserver) entryObserver.observe(el);
+        else startAutoplay();
       });
-
-      close.addEventListener("click", hide);
-      prev.addEventListener("click", () => { armAutoHide(); show(current - 1); });
-      next.addEventListener("click", () => { armAutoHide(); show(current + 1); });
-
-      box.addEventListener("click", (e) => {
-        if (e.target === box || e.target === imgEl) {
-          // Tap on backdrop or image: arm auto-hide cycle (image tap = wake controls)
-          armAutoHide();
-        }
-      });
-      box.addEventListener("pointermove", armAutoHide);
-
-      // Swipe nav (left/right) + swipe-down dismiss
-      box.addEventListener("touchstart", (e) => {
-        if (e.touches.length === 1) {
-          touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
-        }
-      }, { passive: true });
-
-      box.addEventListener("touchend", (e) => {
-        if (!touchStart) return;
-        const t = e.changedTouches[0];
-        const dx = t.clientX - touchStart.x;
-        const dy = t.clientY - touchStart.y;
-        const dt = Date.now() - touchStart.t;
-        const fast = dt < 400;
-        if (Math.abs(dx) > 60 && fast && Math.abs(dx) > Math.abs(dy) && scale === 1) {
-          if (dx > 0) show(current - 1);
-          else show(current + 1);
-          armAutoHide();
-        } else if (dy > 90 && fast) {
-          hide();
-        }
-        touchStart = null;
-      }, { passive: true });
-
-      // Pinch-zoom (two-finger) — basic scale only
-      let pinchStartDist = 0;
-      let pinchStartScale = 1;
-      box.addEventListener("touchstart", (e) => {
-        if (e.touches.length === 2) {
-          const [a, b] = e.touches;
-          pinchStartDist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-          pinchStartScale = scale;
-        }
-      }, { passive: true });
-      box.addEventListener("touchmove", (e) => {
-        if (e.touches.length === 2 && pinchStartDist > 0) {
-          const [a, b] = e.touches;
-          const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-          scale = Math.max(1, Math.min(4, pinchStartScale * (dist / pinchStartDist)));
-          imgEl.style.transition = "none";
-          imgEl.style.transform = `translate3d(0,0,0) scale(${scale})`;
-        }
-      }, { passive: true });
-      box.addEventListener("touchend", (e) => {
-        if (e.touches.length === 0) pinchStartDist = 0;
-      }, { passive: true });
     }
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", init);
-    } else {
-      init();
-    }
+
+    // ClientRouter mounts in <head>; astro:page-load fires on initial AND
+    // every CR navigation. Single listener avoids stacking handlers.
     document.addEventListener("astro:page-load", init);
   })();
 </script>

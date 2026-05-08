@@ -18,7 +18,7 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
 >
   <div class="rc-track flex snap-x snap-mandatory overflow-x-auto gap-3 scroll-smooth no-scrollbar" tabindex="0" aria-label={alt}>
     {photos.map((p, i) => (
-      <div class="rc-slide snap-center shrink-0 w-[88%] md:w-[80%]" data-slide-index={i}>
+      <div class="rc-slide snap-center shrink-0 w-full" data-slide-index={i}>
         <Image
           src={p}
           alt={i === 0 ? alt : ""}
