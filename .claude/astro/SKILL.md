@@ -29,7 +29,7 @@ Astro is the web framework for content-driven websites. This file is the upstrea
 | Localized copy | `src/content/site/{en,al,it,de}.yaml` — parallel structure across locales, loaded via `getSite(lang)` in `src/i18n/content.ts`. |
 | View Transitions | `<ClientRouter />` is mounted in `src/layouts/Base.astro` `<head>`. All initialisation listens on `astro:page-load`, not `DOMContentLoaded`, to survive client-side nav. |
 | No client framework | Vanilla TS only (lightbox, lang switcher, mobile nav, FAQ, sticky header, room filter, mailto compose, reveal-on-scroll). |
-| Photo pipeline | `node scripts/optimize-photos.mjs` reads `/Users/erbandanaj/Downloads/Emes/<folder>/` and writes 3-size webp into `src/assets/photos/`. Curated picks documented in `docs/photos-shortlist.md`. |
+| Photo pipeline | `node scripts/optimize-photos.mjs` reads `$PHOTOS_SOURCE/<folder>/` (set in `.env`) and writes 3-size webp into `src/assets/photos/`. Curated picks documented in `docs/photos-shortlist.md`. |
 | Hosting | Cloudflare Pages, auto-build on push to `main`. Site URL `https://www.vilaemes.com`. CF Pages preview also lives at `vila-emes.pages.dev` (redirect to canonical once domain is live). |
 | Local dev | `npm run dev` → `http://localhost:4321`. iOS-only bugs: tunnel via ngrok; `vite.server.allowedHosts` already permits `.ngrok-free.app`. |
 
@@ -184,7 +184,7 @@ npm run preview    # serve dist/ locally
 
 ### Photo pipeline
 
-Source photos live **outside the repo** at `/Users/erbandanaj/Downloads/Emes/<folder>/`. To regenerate optimized webp:
+Source photos live **outside the repo** — set the path via `PHOTOS_SOURCE` in `.env` (gitignored). To regenerate optimized webp:
 
 ```bash
 node scripts/optimize-photos.mjs

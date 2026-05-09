@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // One-shot photo optimization for Vila Emes.
-// Reads /Users/erbandanaj/Downloads/Emes/<folder>/, writes webp at 3 sizes
+// Reads $PHOTOS_SOURCE/<folder>/ (set in .env), writes webp at 3 sizes
 // to src/assets/photos/<category>/<basename>-<size>.webp.
 
 import { readdir, mkdir } from "node:fs/promises";
@@ -8,7 +8,14 @@ import { existsSync } from "node:fs";
 import { join, basename, extname, resolve } from "node:path";
 import sharp from "sharp";
 
-const SOURCE = "/Users/erbandanaj/Downloads/Emes";
+if (existsSync(".env")) process.loadEnvFile();
+
+const SOURCE = process.env.PHOTOS_SOURCE;
+if (!SOURCE) {
+  console.error("Error: PHOTOS_SOURCE env var is required.");
+  console.error('Set it in .env (PHOTOS_SOURCE=/path/to/photos) or inline (PHOTOS_SOURCE=... node scripts/optimize-photos.mjs).');
+  process.exit(1);
+}
 const DEST = resolve("src/assets/photos");
 
 // Source folder → category mapping (R-05 from v2 plan)

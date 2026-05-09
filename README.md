@@ -36,7 +36,7 @@ npm run preview    # serve dist/
 
 ## Photo pipeline
 
-Source photos live outside the repo at `/Users/erbandanaj/Downloads/Emes/<folder>/`. To regenerate the optimized webp set:
+Source photos live outside the repo — set the absolute path via `PHOTOS_SOURCE` in `.env` (gitignored). To regenerate the optimized webp set:
 
 ```bash
 node scripts/optimize-photos.mjs
@@ -87,7 +87,7 @@ src/
 | `npm run dev` | Start dev server at `http://localhost:4321` |
 | `npm run build` | Build production site to `dist/` |
 | `npm run preview` | Preview the built site locally |
-| `node scripts/optimize-photos.mjs` | Regenerate optimized webps from `/Users/erbandanaj/Downloads/Emes/` |
+| `node scripts/optimize-photos.mjs` | Regenerate optimized webps from `PHOTOS_SOURCE` (set in `.env`) |
 | `./node_modules/.bin/svgo --multipass <path>` | Optimize an SVG in place |
 
 ## Claude Code

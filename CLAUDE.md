@@ -18,7 +18,7 @@ Guidance for [Claude Code](https://claude.ai/code) working in this repo. See [RE
 ## Project gotchas
 
 - **Content-schema edits force a dev restart** — changes to `src/content.config.ts` need `npm run dev` restart; `astro sync` alone isn't enough. Batch schema changes; prefer `.min().max()` over `.length()`.
-- **Source photos live outside the repo** at `/Users/erbandanaj/Downloads/Emes/<folder>/`. The optimized webps in `src/assets/` are what ship.
+- **Source photos live outside the repo** — local-only, path set via `PHOTOS_SOURCE` in `.env`. The optimized webps in `src/assets/` are what ship.
 - **Room names are English-only across all locales** (`rooms[].name` does not translate — by design).
 - **No bathtubs** — every room has shower only; the `bathtub-shower` amenity key is legacy and labels render as "Shower".
 - **Bed taxonomy is locale-aware** — AL: `krevat dopio` for all sizes, IT: `doppio` for all, EN/DE preserve queen/full distinction.
@@ -32,7 +32,7 @@ Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
 
 **Pre-build** (`scripts/optimize-photos.mjs`):
 
-- Source originals live outside the repo at `/Users/erbandanaj/Downloads/Emes/<folder>/`.
+- Source originals live outside the repo (path set via `PHOTOS_SOURCE` in `.env`).
 - Sharp 0.33.5 emits **213** WebP files into `src/assets/photos/<category>/` — 71 unique sources × 3 widths (`-800.webp`, `-1600.webp`, `-2400.webp`).
 - Largest source: ~860 KB. Total source: 30 MB.
 
