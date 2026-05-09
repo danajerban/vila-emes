@@ -102,6 +102,8 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     photoCaption={home.about.photo_caption}
   />
 
+  <SectionDivider />
+
   <TrustStrip
     bookingLabel={home.trust.booking_label}
     bookingScore={SITE.ratings.booking}
@@ -112,7 +114,9 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     readAllReviewsUrl={home.trust.read_all_reviews_url}
   />
 
-  <section class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-32 reveal">
+  <SectionDivider />
+
+  <section class="max-w-[1180px] mx-auto px-5 md:px-10 py-12 md:py-16 reveal">
     <div class="text-center max-w-2xl mx-auto">
       <Eyebrow>{home.rooms.eyebrow}</Eyebrow>
       <h2 class="mt-3 font-serif text-4xl md:text-5xl text-[color:var(--color-ink)]">{home.rooms.heading}</h2>
@@ -135,6 +139,8 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     </div>
   </section>
 
+  <SectionDivider />
+
   <Gallery
     eyebrow={home.gallery.eyebrow}
     heading={home.gallery.heading}
@@ -142,27 +148,31 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     photos={galleryPhotos}
   />
 
-  <section class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 grid md:grid-cols-2 gap-10 md:gap-16 items-start reveal">
-    <div>
+  <SectionDivider />
+
+  <section class="max-w-[1180px] mx-auto px-5 md:px-10 py-12 md:py-16 grid md:grid-cols-2 gap-10 md:gap-16 items-center reveal">
+    <div class="text-center">
       <Eyebrow>{home.location.eyebrow}</Eyebrow>
       <h2 class="mt-3 font-serif text-3xl md:text-4xl text-[color:var(--color-ink)]">{home.location.heading}</h2>
       <address class="mt-6 not-italic font-serif text-lg text-[color:var(--color-ink)] space-y-0.5">
         {SITE.contact.address.map((line) => <p>{line}</p>)}
       </address>
-      <ul class="mt-6 space-y-2 text-[color:var(--color-ink)]/85">
+      <ul class="mt-6 space-y-2 text-[color:var(--color-ink)]/85 inline-block text-left">
         {SITE.distances.map((d) => (
           <li class="flex items-baseline gap-3">
-            <span class="font-serif text-xl text-[color:var(--color-terracotta)] tabular-nums shrink-0">{d.value}</span>
+            <span class="font-serif text-xl text-[color:var(--color-terracotta)] tabular-nums shrink-0 w-16 text-right">{d.value}</span>
             <span>{d.label}</span>
           </li>
         ))}
       </ul>
-      <a
-        href={SITE.links.google_maps}
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center mt-8 px-5 py-3 border border-[color:var(--color-sea)] text-[color:var(--color-sea)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] rounded-md transition"
-      >{home.location.cta}</a>
+      <div class="mt-8">
+        <a
+          href={SITE.links.google_maps}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center px-5 py-3 border border-[color:var(--color-sea)] text-[color:var(--color-sea)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] rounded-md transition"
+        >{home.location.cta}</a>
+      </div>
     </div>
     <LocationMap
       embedUrl={SITE.links.google_maps_embed}
@@ -170,12 +180,16 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     />
   </section>
 
+  <SectionDivider />
+
   <ContactStrip
     eyebrow={home.contact_strip.eyebrow}
     headingPart1={home.contact_strip.heading_part_1}
     headingPart2Handwritten={home.contact_strip.heading_part_2_handwritten}
     tiles={tiles}
   />
+
+  <SectionDivider />
 
   <FAQ
     eyebrow={home.faq.eyebrow}

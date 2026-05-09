@@ -66,7 +66,7 @@ const links = [
       <button
         type="button"
         id="mobileNavToggle"
-        class="lg:hidden hamburger-btn -mr-2"
+        class="inline-flex lg:hidden hamburger-btn -mr-2"
         aria-label={menuToggleLabel}
         aria-expanded="false"
         aria-controls="mobileNav"
@@ -131,7 +131,6 @@ const links = [
   /* Hamburger → X transition. Keys off aria-expanded which the toggle
      handler in Base.astro already flips. */
   .hamburger-btn {
-    display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;

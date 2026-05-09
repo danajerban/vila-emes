@@ -14,8 +14,8 @@ const { heading, eyebrow, intro, photos, autoplayMs = 8000 } = Astro.props;
 const id = `gc-${Math.random().toString(36).slice(2, 8)}`;
 const initialCaption = photos[0]?.caption ?? "";
 ---
-<section class="max-w-[1180px] mx-auto px-5 md:px-10 py-20 md:py-28 reveal">
-  <div class="max-w-2xl">
+<section class="max-w-[1180px] mx-auto px-5 md:px-10 py-12 md:py-16 reveal">
+  <div class="text-center max-w-2xl mx-auto">
     {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
     <h2 class="mt-3 font-serif text-4xl md:text-5xl text-[color:var(--color-ink)] leading-tight">{heading}</h2>
     {intro && <p class="mt-4 text-[color:var(--color-ink)]/80">{intro}</p>}
