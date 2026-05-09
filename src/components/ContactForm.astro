@@ -1,6 +1,7 @@
 ---
 import Eyebrow from "./Eyebrow.astro";
 import { SITE } from "../config/site";
+import { obscureLink } from "../lib/contact-link";
 
 interface Props {
   heading: string;
@@ -14,6 +15,8 @@ interface Props {
   };
 }
 const { heading, intro, fields, submit, success, mailto } = Astro.props;
+
+const mailEncoded = obscureLink(SITE.contact.email);
 
 const inputClass = "px-4 py-3 rounded border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] focus:outline-none focus:border-[color:var(--color-terracotta)] focus:ring-2 focus:ring-[color:var(--color-terracotta)]/40 focus:ring-offset-1 focus:ring-offset-[color:var(--color-cream)]";
 ---
@@ -57,7 +60,7 @@ const inputClass = "px-4 py-3 rounded border border-[color:var(--color-divider)]
   </form>
 </div>
 
-<script is:inline define:vars={{ MAIL: SITE.contact.email, MAILTO: mailto }}>
+<script is:inline define:vars={{ MAIL_ENC: mailEncoded, MAILTO: mailto }}>
   (function () {
     function init() {
       const form = document.getElementById("contactForm");
@@ -76,7 +79,7 @@ const inputClass = "px-4 py-3 rounded border border-[color:var(--color-divider)]
         const body = encodeURIComponent(
           `${L.name}: ${name}\n${L.email}: ${email}\n${L.check_in}: ${arrival}\n${L.check_out}: ${checkout}\n${L.guests}: ${guests}\n\n${message}\n`
         );
-        window.location.href = `mailto:${MAIL}?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:${atob(MAIL_ENC)}?subject=${subject}&body=${body}`;
         document.getElementById("contactFormSuccess")?.classList.remove("hidden");
       });
     }

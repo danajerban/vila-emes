@@ -23,7 +23,7 @@ Guidance for [Claude Code](https://claude.ai/code) working in this repo. See [RE
 - **No bathtubs** — every room has shower only; the `bathtub-shower` amenity key is legacy and labels render as "Shower".
 - **Bed taxonomy is locale-aware** — AL: `krevat dopio` for all sizes, IT: `doppio` for all, EN/DE preserve queen/full distinction.
 - **No reservation system** — every booking CTA links out to **Booking.com**. Other CTAs link to Maps, Instagram, WhatsApp, email, phone.
-- **Vanilla TS only** — no React/Vue/Svelte. Inline `<script is:inline>` for lang switcher, mobile nav, FAQ, sticky header, room filter, gallery carousel, mailto compose, reveal-on-scroll, hero slideshow.
+- **Vanilla TS only** — no React/Vue/Svelte. Inline `<script is:inline>` for lang switcher, mobile nav, FAQ, sticky header, room filter, gallery carousel, mailto compose, contact link decoder, reveal-on-scroll, hero slideshow.
 - **Single owner edit point** — phone, WhatsApp, email, Booking URL, Instagram, Maps, ratings, distances all live in `src/config/site.ts`.
 
 ## Image pipeline
