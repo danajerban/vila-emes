@@ -13,7 +13,7 @@ import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
 import { localizedPath, type Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
-import { breadcrumbListJsonLd, jsonLdScriptBody } from "../lib/seo";
+import { breadcrumbListJsonLd, hotelRoomGraphJsonLd, jsonLdScriptBody } from "../lib/seo";
 
 // Apartments — apt-1bed-terrace (source folder 1+1)
 import imgApt1Bed1 from "../assets/photos/apt-1bed-terrace/dsc-0440-1600.webp";
@@ -119,10 +119,25 @@ const breadcrumbLd = breadcrumbListJsonLd([
   { name: ui.nav.home, path: localizedPath(lang, "/") },
   { name: ui.nav.rooms, path: localizedPath(lang, "/rooms") },
 ]);
+
+// HotelRoom @graph — one entry per layout. Pricing is owned by Booking.com,
+// so Offers/priceRange are intentionally omitted (placeholders hurt rich
+// results harder than missing fields).
+const roomsLd = hotelRoomGraphJsonLd(
+  orderedRooms.map((r) => ({
+    name: r.name,
+    description: r.description,
+    size_m2: r.size_m2,
+    sleeps: r.sleeps,
+    beds: r.beds,
+    amenities: r.amenities,
+  })),
+);
 ---
 <Base lang={lang} title={site.data.seo.rooms.title} description={site.data.seo.rooms.description}>
   <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} menuToggleLabel={ui.aria_labels.menu_toggle} />
   <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(breadcrumbLd)}></script>
+  <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(roomsLd)}></script>
 
   <PageHero
     eyebrow={page.hero_eyebrow}

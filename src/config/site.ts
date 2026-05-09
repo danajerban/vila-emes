@@ -26,6 +26,12 @@ export const SITE = {
   ratings: {
     booking: 9.0,
     google: 4.7,
+    // Review counts are snapshots — refresh roughly every 2 months from
+    // booking.com/hotel/al/vila-emes.html and the Google Business profile.
+    // Only `booking_review_count` is surfaced in JSON-LD aggregateRating
+    // (single-source rule); google_review_count is kept for reference.
+    booking_review_count: 111, // snapshot 2026-05-09
+    google_review_count: 37,   // snapshot 2026-05-09
   },
 
   distances: [

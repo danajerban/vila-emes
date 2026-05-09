@@ -8,9 +8,10 @@ import { SITE } from "../config/site";
 // Owner decisions baked in:
 //   - `starRating` is OMITTED — no official Albanian Ministry of Tourism
 //     classification on file.
-//   - `aggregateRating` is OMITTED — Booking.com review count not yet
-//     confirmed; fabricated counts are penalized by Google's review-snippet
-//     guidelines.
+//   - `aggregateRating` uses Booking.com only (single-source rule — never
+//     average review platforms). Counts in `SITE.ratings` are snapshots that
+//     need a manual refresh ~every 2 months. Fabricated counts are penalized
+//     by Google's review-snippet guidelines, but stale-but-truthful is fine.
 export function hotelJsonLd(name: string, tagline: string) {
   return {
     "@context": "https://schema.org",
@@ -39,6 +40,21 @@ export function hotelJsonLd(name: string, tagline: string) {
     "checkoutTime": "11:00",
     "petsAllowed": false,
     "priceRange": "€€",
+    "numberOfRooms": 17,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": SITE.ratings.booking,
+      "bestRating": "10",
+      "worstRating": "1",
+      "reviewCount": SITE.ratings.booking_review_count,
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": SITE.contact.phone,
+      "email": SITE.contact.email,
+      "contactType": "reservations",
+      "availableLanguage": ["English", "Albanian", "Italian"],
+    },
     "amenityFeature": [
       { "@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true },
@@ -76,6 +92,49 @@ export function breadcrumbListJsonLd(crumbs: ReadonlyArray<{ name: string; path:
       "name": c.name,
       "item": toAbs(c.path),
     })),
+  };
+}
+
+// HotelRoom blocks for /rooms — emitted as a single @graph so Google sees
+// every layout as a distinct entity. Offers/priceRange are deliberately
+// OMITTED: bookings happen on Booking.com, so any local price would be a
+// placeholder and Google penalises those harder than missing prices.
+type RoomLdInput = {
+  name: string;
+  description: string;
+  size_m2: number;
+  sleeps: number;
+  beds: string;
+  amenities: ReadonlyArray<string>;
+};
+
+export function hotelRoomJsonLd(room: RoomLdInput) {
+  return {
+    "@type": "HotelRoom",
+    "name": room.name,
+    "description": room.description,
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": room.size_m2,
+      "unitCode": "MTK", // ISO 80000 — square metre
+    },
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": room.sleeps,
+    },
+    "bed": room.beds,
+    "amenityFeature": room.amenities.map((a) => ({
+      "@type": "LocationFeatureSpecification",
+      "name": a,
+      "value": true,
+    })),
+  };
+}
+
+export function hotelRoomGraphJsonLd(rooms: ReadonlyArray<RoomLdInput>) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": rooms.map(hotelRoomJsonLd),
   };
 }
 
