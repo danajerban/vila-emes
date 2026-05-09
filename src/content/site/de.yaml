@@ -9,7 +9,7 @@ seo:
     description: "Familiengeführtes Strandhotel in Plazh, Durrës — 100 m vom Strand, 35 km vom Flughafen Tirana. 11 Zimmer, 9,0/10 auf Booking. Familienurlaub seit 1998."
   rooms:
     title: "Zimmer & Apartments — Vila Emes, Strand von Durrës"
-    description: "11 Zimmerkategorien in der Vila Emes — vom 30 m² Deluxe bis zum 90 m² Apartment mit zwei Schlafzimmern und Meerblick. Klimaanlage, WLAN, Balkone."
+    description: "9 Zimmerkategorien in der Vila Emes — vom 30 m² Deluxe bis zum 90 m² Apartment mit zwei Schlafzimmern und Meerblick. Klimaanlage, WLAN, Balkone."
   contact:
     title: "Kontakt Vila Emes — Telefon, WhatsApp, E-Mail"
     description: "Kontakt zu Vila Emes in Plazh, Durrës. 24-h-Rezeption, WhatsApp, Telefon, E-Mail — wir lesen jede Nachricht selbst und antworten noch am selben Tag."
@@ -25,7 +25,7 @@ home:
       - "seit 1998"
       - "mit Liebe"
       - "100 m vom Wasser"
-    sub: "11 Zimmerkategorien. Eine Familie, die Ihnen selbst die Tür öffnet. Jeden Morgen der gleiche Kaffee auf der Terrasse."
+    sub: "9 Zimmerkategorien. Eine Familie, die Ihnen selbst die Tür öffnet. Jeden Morgen der gleiche Kaffee auf der Terrasse."
     cta_primary: "Auf Booking.com buchen"
     cta_secondary: "Karte öffnen"
     polaroid_caption_handwritten: "— der Strandbereich"
@@ -69,7 +69,7 @@ home:
   rooms:
     eyebrow: "Übernachten"
     heading: "Unsere Zimmer"
-    intro: "Insgesamt 11 Zimmerkategorien, vom 30 m² großen Doppelzimmer bis zum 90 m² großen Apartment mit Meerblick."
+    intro: "Insgesamt 9 Zimmerkategorien, vom 30 m² großen Doppelzimmer bis zum 90 m² großen Apartment mit Meerblick."
     preview_card_cta: "Details ansehen →"
   gallery:
     eyebrow: "Innen & Außen"
@@ -139,7 +139,7 @@ rooms_page:
   hero_eyebrow: "Übernachten Sie bei uns"
   hero_heading_part_1: "Unsere"
   hero_heading_part_2_handwritten: "Zimmer"
-  hero_intro: "11 Zimmerkategorien in einem kleinen Familienhaus. Wählen Sie das passende für sich."
+  hero_intro: "9 Zimmerkategorien in einem kleinen Familienhaus. Wählen Sie das passende für sich."
   includes:
     eyebrow: "In jedem Zimmer"
     heading: "Was immer inklusive ist"

@@ -6,10 +6,10 @@ hotel:
 seo:
   home:
     title: "Vila Emes — Hotel a conduzione familiare a Durazzo (Durrës)"
-    description: "Hotel a conduzione familiare a Plazh, Durrës (Durazzo) — 100 m dalla spiaggia, 35 km dall'aeroporto di Tirana. 11 tipologie, 9.0/10 su Booking. Vacanze in famiglia."
+    description: "Hotel a conduzione familiare a Plazh, Durrës (Durazzo) — 100 m dalla spiaggia, 35 km dall'aeroporto di Tirana. 9 tipologie, 9.0/10 su Booking. Vacanze in famiglia."
   rooms:
     title: "Camere e appartamenti — Vila Emes, Durazzo (Durrës)"
-    description: "11 tipologie a Vila Emes, sulla spiaggia di Durazzo (Durrës), da una Deluxe di 30 m² a un appartamento bilocale di 90 m² con vista mare. Aria condizionata, Wi-Fi gratis."
+    description: "9 tipologie a Vila Emes, sulla spiaggia di Durazzo (Durrës), da una Deluxe di 30 m² a un appartamento bilocale di 90 m² con vista mare. Aria condizionata, Wi-Fi gratis."
   contact:
     title: "Contatta Vila Emes — Telefono, WhatsApp, Email"
     description: "Contatta Vila Emes a Durrës (Durazzo), 35 km dall'aeroporto di Tirana. Reception 24 ore, WhatsApp, telefono, email — rispondiamo in giornata."
@@ -25,7 +25,7 @@ home:
       - "dal 1998"
       - "con amore"
       - "a 100 m dall'acqua"
-    sub: "11 tipologie di camere. Una famiglia che apre la porta di persona. Lo stesso caffè in terrazza ogni mattina."
+    sub: "9 tipologie di camere. Una famiglia che apre la porta di persona. Lo stesso caffè in terrazza ogni mattina."
     cta_primary: "Prenota su Booking.com"
     cta_secondary: "Apri la mappa"
     polaroid_caption_handwritten: "— la zona della spiaggia"
@@ -69,7 +69,7 @@ home:
   rooms:
     eyebrow: "Soggiorno"
     heading: "Le nostre camere"
-    intro: "11 tipologie in totale, da una matrimoniale di 30 m² a un appartamento di 90 m² con vista mare."
+    intro: "9 tipologie in totale, da una matrimoniale di 30 m² a un appartamento di 90 m² con vista mare."
     preview_card_cta: "Vedi i dettagli →"
   gallery:
     eyebrow: "Dentro e fuori"
@@ -139,7 +139,7 @@ rooms_page:
   hero_eyebrow: "Soggiorna da noi"
   hero_heading_part_1: "Le nostre"
   hero_heading_part_2_handwritten: "camere"
-  hero_intro: "11 tipologie di camere in una piccola casa di famiglia. Scegli quella che fa per te."
+  hero_intro: "9 tipologie di camere in una piccola casa di famiglia. Scegli quella che fa per te."
   includes:
     eyebrow: "In ogni camera"
     heading: "Cosa è sempre incluso"

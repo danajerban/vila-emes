@@ -6,10 +6,10 @@ hotel:
 seo:
   home:
     title: "Vila Emes — A Family Hotel by the Sea in Durrës"
-    description: "Family-run hotel in Plazh, Durrës — 100 m from the beach, 35 km from Tirana airport. 11 layouts, 9.0/10 on Booking. Family vacations since 1998."
+    description: "Family-run hotel in Plazh, Durrës — 100 m from the beach, 35 km from Tirana airport. 9 layouts, 9.0/10 on Booking. Family vacations since 1998."
   rooms:
     title: "Rooms & Apartments — Vila Emes, Durrës Beach"
-    description: "11 layouts at Vila Emes, from a 30 m² Deluxe to a 90 m² two-bedroom apartment with sea view. Air conditioning, free Wi-Fi, balconies and terraces."
+    description: "9 layouts at Vila Emes, from a 30 m² Deluxe to a 90 m² two-bedroom apartment with sea view. Air conditioning, free Wi-Fi, balconies and terraces."
   contact:
     title: "Contact Vila Emes — Phone, WhatsApp, Email"
     description: "Get in touch with Vila Emes in Plazh, Durrës. 24-hour front desk, WhatsApp, phone, email — we read every message ourselves and reply the same day."
@@ -25,7 +25,7 @@ home:
       - "since 1998"
       - "with love"
       - "100 m from the water"
-    sub: "11 layouts. A family that opens the door in person. The same coffee on the terrace every morning."
+    sub: "9 layouts. A family that opens the door in person. The same coffee on the terrace every morning."
     cta_primary: "Book on Booking.com"
     cta_secondary: "Open the map"
     polaroid_caption_handwritten: "— the beach area"
@@ -69,7 +69,7 @@ home:
   rooms:
     eyebrow: "Stay"
     heading: "Our Rooms"
-    intro: "11 layouts in total, from a 30 m² double to a 90 m² apartment with sea view."
+    intro: "9 layouts in total, from a 30 m² double to a 90 m² apartment with sea view."
     preview_card_cta: "View details →"
   gallery:
     eyebrow: "Inside & out"
@@ -139,7 +139,7 @@ rooms_page:
   hero_eyebrow: "Stay with us"
   hero_heading_part_1: "Our"
   hero_heading_part_2_handwritten: "rooms"
-  hero_intro: "11 layouts across one small family house. Pick the one that fits."
+  hero_intro: "9 layouts across one small family house. Pick the one that fits."
   includes:
     eyebrow: "In every room"
     heading: "What's always included"

@@ -6,10 +6,10 @@ hotel:
 seo:
   home:
     title: "Vila Emes — Hotel familjar pranë detit në Durrës"
-    description: "Hotel familjar në Plazh, Durrës — 100 m nga deti, 35 km nga aeroporti i Tiranës. 11 tipologji dhomash, 9.0/10 në Booking. Pushime familjare që nga 1998."
+    description: "Hotel familjar në Plazh, Durrës — 100 m nga deti, 35 km nga aeroporti i Tiranës. 9 tipologji dhomash, 9.0/10 në Booking. Pushime familjare që nga 1998."
   rooms:
     title: "Dhoma & apartamente — Vila Emes, Plazhi i Durrësit"
-    description: "11 tipologji dhomash në Vila Emes, nga një Deluxe 30 m² te një apartament me dy dhoma 90 m² me pamje nga deti. Kondicioner, Wi-Fi falas, ballkone."
+    description: "9 tipologji dhomash në Vila Emes, nga një Deluxe 30 m² te një apartament me dy dhoma 90 m² me pamje nga deti. Kondicioner, Wi-Fi falas, ballkone."
   contact:
     title: "Kontakt Vila Emes — Telefon, WhatsApp, Email"
     description: "Na kontaktoni në Vila Emes në Plazh, Durrës. Recepsion 24-orësh, WhatsApp, telefon, email — i lexojmë vetë mesazhet dhe përgjigjemi po atë ditë."
@@ -25,7 +25,7 @@ home:
       - "që nga 1998"
       - "me dashuri"
       - "100 m nga deti"
-    sub: "11 tipologji dhomash. Një familje që ju hap derën vetë. E njëjta kafe në tarracë çdo mëngjes."
+    sub: "9 tipologji dhomash. Një familje që ju hap derën vetë. E njëjta kafe në tarracë çdo mëngjes."
     cta_primary: "Rezervo në Booking.com"
     cta_secondary: "Hap hartën"
     polaroid_caption_handwritten: "— zona e plazhit"
@@ -69,7 +69,7 @@ home:
   rooms:
     eyebrow: "Fjetja"
     heading: "Dhomat tona"
-    intro: "11 tipologji dhomash gjithsej — nga një dhomë dyshe 30 m² deri te një apartament 90 m² me pamje nga deti."
+    intro: "9 tipologji dhomash gjithsej — nga një dhomë dyshe 30 m² deri te një apartament 90 m² me pamje nga deti."
     preview_card_cta: "Shiko detajet →"
   gallery:
     eyebrow: "Brenda dhe jashtë"
@@ -139,7 +139,7 @@ rooms_page:
   hero_eyebrow: "Qëndroni me ne"
   hero_heading_part_1: "Dhomat"
   hero_heading_part_2_handwritten: "tona"
-  hero_intro: "11 tipologji dhomash në një shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
+  hero_intro: "9 tipologji dhomash në një shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
   includes:
     eyebrow: "Në çdo dhomë"
     heading: "Çfarë përfshihet gjithmonë"
