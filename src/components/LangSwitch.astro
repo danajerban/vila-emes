@@ -189,6 +189,21 @@ const others = LOCALES.filter((l) => l !== lang);
     if (window.__langDropdownInited) return;
     window.__langDropdownInited = true;
 
+    // Preserve URL hash when switching locales. SSR can't see hash (it's
+    // never sent to the server), so we append it at click time. Single
+    // document-level delegation — survives view transitions.
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a.flag-pill, a.lang-menu-item");
+      if (!a) return;
+      if (a.classList.contains("is-active")) return;
+      if (!location.hash) return;
+      const href = a.getAttribute("href");
+      if (!href || href.includes("#")) return;
+      e.preventDefault();
+      // Use location.assign so back-button still returns to the prior page.
+      location.assign(href + location.hash);
+    });
+
     function bind() {
       document.querySelectorAll("[data-lang-dropdown]").forEach((root) => {
         if (root.__bound) return;
