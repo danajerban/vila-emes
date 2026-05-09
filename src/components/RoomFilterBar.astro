@@ -50,11 +50,11 @@ const cats = [
           x.classList.toggle("is-active", x === b);
           x.setAttribute("aria-selected", x === b ? "true" : "false");
         });
-        const articles = document.querySelectorAll("article[data-cat]");
-        articles.forEach((a) => {
-          const cat = a.getAttribute("data-cat");
+        const wraps = document.querySelectorAll("[data-room-wrap]");
+        wraps.forEach((w) => {
+          const cat = w.getAttribute("data-cat");
           const show = filter === "all" || cat === filter;
-          a.style.display = show ? "" : "none";
+          w.style.display = show ? "" : "none";
         });
       }));
     }

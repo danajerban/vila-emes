@@ -151,11 +151,10 @@ const roomsLd = hotelRoomGraphJsonLd(
 
   <main class="rooms-main">
     {orderedRooms.map((r, i) => (
-      <>
+      <div data-room-wrap data-cat={r.family}>
         {i > 0 && <SectionDivider class="my-0" />}
         <RoomDetails
           id={r.id}
-          cat={r.family}
           numberLabel={String(r.order).padStart(2, "0")}
           familyLabel={ui.family_groups[r.family]}
           name={r.name}
@@ -172,7 +171,7 @@ const roomsLd = hotelRoomGraphJsonLd(
           flip={i % 2 === 1}
           labels={ui.labels}
         />
-      </>
+      </div>
     ))}
   </main>
 
