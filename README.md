@@ -70,6 +70,7 @@ src/
 
 ## Documentation
 
+- [`docs/Design_System.md`](docs/Design_System.md) — tokens, layout, typography, buttons, motion rules (extend before adding new patterns)
 - [`docs/Emes_Summary.md`](docs/Emes_Summary.md) — hotel/property facts (rooms, amenities, location, ratings)
 
 ## Deploy

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Guidance for [Claude Code](https://claude.ai/code) working in this repo. See [README.md](README.md) for stack, scripts, and structure, and [docs/Emes_Summary.md](docs/Emes_Summary.md) for hotel/property facts (rooms, amenities, location, ratings).
+Guidance for [Claude Code](https://claude.ai/code) working in this repo. See [README.md](README.md) for stack, scripts, and structure, [docs/Design_System.md](docs/Design_System.md) for tokens / layout / type / buttons / motion rules, and [docs/Emes_Summary.md](docs/Emes_Summary.md) for hotel/property facts (rooms, amenities, location, ratings).
 
 ## Skills
 
@@ -51,6 +51,6 @@ Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
 
 ## Doc workflow
 
-- `docs/Emes_Summary.md` is the only tracked doc — keep it as the single source of hotel facts.
+- `docs/Emes_Summary.md` (hotel facts) and `docs/Design_System.md` (design rules) are the only tracked docs — keep each focused on its domain.
 - Active specs/plans live in `docs/superpowers/{specs,plans}/` while in progress (untracked).
 - When a spec is done, move it to `docs/archive/` (gitignored) — preserved locally, out of git.
