@@ -103,6 +103,18 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
         // this block does not (it's behind the __baseInited guard above).
         // Element lookup happens at event time because ClientRouter swaps the
         // DOM nodes on navigation.
+
+        // Toggle `inert` on background content while the mobile drawer is open.
+        // Traps Tab focus inside the drawer and prevents accidental clicks on
+        // content edges peeking past the backdrop. Idempotent — safe to call
+        // multiple times.
+        const setBackgroundInert = (on) => {
+          document.querySelectorAll("main, footer").forEach((el) => {
+            if (on) el.setAttribute("inert", "");
+            else el.removeAttribute("inert");
+          });
+        };
+
         const closeMobileNav = () => {
           const n = document.getElementById("mobileNav");
           const b = document.getElementById("mobileNavToggle");
@@ -112,6 +124,7 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
           if (bd) bd.hidden = true;
           b.setAttribute("aria-expanded", "false");
           document.body.style.overflow = "";
+          setBackgroundInert(false);
         };
         document.addEventListener("click", (e) => {
           const n = document.getElementById("mobileNav");
@@ -149,6 +162,7 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
                 if (backdrop) backdrop.hidden = false;
                 btn.setAttribute("aria-expanded", "true");
                 document.body.style.overflow = "hidden";
+                setBackgroundInert(true);
               } else {
                 closeMobileNav();
               }
