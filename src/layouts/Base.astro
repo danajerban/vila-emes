@@ -74,6 +74,32 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
           headerStateIO.observe(hero);
         }
 
+        // Mobile nav: outside-click + Escape close. Module-level so listeners
+        // bind once per session — init() re-runs on every astro:page-load but
+        // this block does not (it's behind the __baseInited guard above).
+        // Element lookup happens at event time because ClientRouter swaps the
+        // DOM nodes on navigation.
+        const closeMobileNav = () => {
+          const n = document.getElementById("mobileNav");
+          const b = document.getElementById("mobileNavToggle");
+          const bd = document.getElementById("mobileNavBackdrop");
+          if (!n || !b || n.hidden) return;
+          n.hidden = true;
+          if (bd) bd.hidden = true;
+          b.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        };
+        document.addEventListener("click", (e) => {
+          const n = document.getElementById("mobileNav");
+          const b = document.getElementById("mobileNavToggle");
+          if (!n || !b || n.hidden) return;
+          if (n.contains(e.target) || b.contains(e.target)) return;
+          closeMobileNav();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeMobileNav();
+        });
+
         function init() {
           // Header state — transparent on home hero, cream when scrolled past or off-home.
           const header = document.getElementById("siteHeader");
@@ -86,18 +112,23 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
             }
           }
 
-          // Mobile nav toggle — body scroll-lock while open + close-on-link.
+          // Mobile nav toggle — body scroll-lock + close-on-link. Backdrop +
+          // outside-click/Escape closing are wired at IIFE top-level below so
+          // their document listeners only bind once per session.
           const btn = document.getElementById("mobileNavToggle");
           const nav = document.getElementById("mobileNav");
+          const backdrop = document.getElementById("mobileNavBackdrop");
           if (btn && nav) {
             const closeNav = () => {
               nav.hidden = true;
+              if (backdrop) backdrop.hidden = true;
               btn.setAttribute("aria-expanded", "false");
               document.body.style.overflow = "";
             };
             btn.addEventListener("click", () => {
               const willOpen = nav.hidden;
               nav.hidden = !willOpen;
+              if (backdrop) backdrop.hidden = !willOpen;
               btn.setAttribute("aria-expanded", String(willOpen));
               document.body.style.overflow = willOpen ? "hidden" : "";
             });

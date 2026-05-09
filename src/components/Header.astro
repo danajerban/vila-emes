@@ -79,6 +79,13 @@ const links = [
   </div>
 
   <div
+    id="mobileNavBackdrop"
+    hidden
+    aria-hidden="true"
+    class="lg:hidden fixed inset-x-0 top-16 bottom-0"
+  ></div>
+
+  <div
     id="mobileNav"
     hidden
     class="lg:hidden fixed inset-x-0 top-16 py-8 px-5 max-h-[calc(100vh-4rem)] overflow-y-auto"
@@ -110,6 +117,12 @@ const links = [
     color: var(--color-ink);
     background-color: var(--color-cream-elevated);
     border-bottom: 1px solid var(--color-divider);
+  }
+
+  /* Backdrop scrim behind the open drawer — soft ink dim, blocks tap-through
+     to underlying page content while the drawer is open. */
+  #mobileNavBackdrop {
+    background-color: rgba(46, 46, 46, 0.30);
   }
 
   /* Mobile drawer: solid cream by default; Liquid Glass when on hero (pairs
