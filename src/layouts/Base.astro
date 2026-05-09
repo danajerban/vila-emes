@@ -106,8 +106,9 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
 
         // Toggle `inert` on background content while the mobile drawer is open.
         // Traps Tab focus inside the drawer and prevents accidental clicks on
-        // content edges peeking past the backdrop. Idempotent — safe to call
-        // multiple times.
+        // content edges peeking past the backdrop. Selector is body-direct
+        // kids minus header/scripts because not every template uses <main>
+        // (HomeView and ContactView use <section>s directly).
         const setBackgroundInert = (on) => {
           document.querySelectorAll("body > *:not(header):not(script)").forEach((el) => {
             if (on) el.setAttribute("inert", "");
