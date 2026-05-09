@@ -39,9 +39,9 @@ description: Technical SEO for the Vila Emes Astro 6 hotel site — canonical UR
 | `og:image:width` / `:height` / `:alt`, `og:image:secure_url` | Done | `Seo.astro:66-71` (1200×630 set explicitly) |
 | Twitter Card meta (`twitter:card`, `:title`, `:description`, `:image`) | Done | `Seo.astro:73-79` (`summary_large_image`) |
 | `<link rel="alternate" hreflang>` per page | Done | `Seo.astro:35-41` (en/sq/it/de + `x-default`) |
-| JSON-LD: `Hotel` on home | Done | `src/lib/seo.ts` builder + `Base.astro:32` (escapes `<` as `<`) |
-| JSON-LD: `FAQPage` (FAQ block on home + contact) | **Missing** | `HomeView.astro`, `ContactView.astro` (out of v1 scope) |
-| JSON-LD: `BreadcrumbList` on inner pages | **Missing** | `RoomsView.astro`, `ContactView.astro` (out of v1 scope) |
+| JSON-LD: `Hotel` on home | Done | `src/lib/seo.ts#hotelJsonLd` + `Base.astro:32` (via `jsonLdScriptBody` helper) |
+| JSON-LD: `FAQPage` | Done — home only | `src/lib/seo.ts#faqPageJsonLd` + `HomeView.astro` (FAQ section). Contact reuses the same FAQ items but no second FAQPage block — would risk Google's duplicate-rich-result penalty. |
+| JSON-LD: `BreadcrumbList` on inner pages | Done | `src/lib/seo.ts#breadcrumbListJsonLd` + `RoomsView.astro` + `ContactView.astro`. Helper builds absolute URLs from path with trailing slash. |
 | `@astrojs/sitemap` integration (auto hreflang) | Done | `astro.config.mjs` (`integrations: [sitemap({ i18n: { defaultLocale, locales: { al: "sq", ... } } })]`) |
 | `public/robots.txt` | Done | `public/robots.txt` (Sitemap directive → www.vilaemes.com) |
 | Localized `seo.title` / `seo.description` keys in all 4 YAMLs | Done | `src/content/site/{en,al,it,de}.yaml` + schema in `content.config.ts:64-68` |
