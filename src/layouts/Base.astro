@@ -36,7 +36,7 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
 
     <script is:inline>
       (function () {
-        // Decode tel:/wa.me/mailto links that were base64-encoded at build time
+        // Decode tel:/wa.me/ links that were base64-encoded at build time
         // (see src/lib/contact-link.ts). Document-level delegation, set up
         // once per session — survives ClientRouter DOM swaps. Lives in <head>
         // so the listener is registered BEFORE any <a data-clx> in the body

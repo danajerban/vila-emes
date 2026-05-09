@@ -8,13 +8,12 @@ interface Props {
   intro: string;
   fields: { name: string; email: string; arrival: string; checkout: string; guests: string; message: string };
   submit: string;
-  success: string;
   mailto: {
     subject: string;
     labels: { name: string; email: string; check_in: string; check_out: string; guests: string };
   };
 }
-const { heading, intro, fields, submit, success, mailto } = Astro.props;
+const { heading, intro, fields, submit, mailto } = Astro.props;
 
 const mailEncoded = obscureLink(SITE.contact.email);
 

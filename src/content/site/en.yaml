@@ -187,7 +187,6 @@ contact_page:
       guests: "Guests"
       message: "Message"
     submit: "Send message"
-    success: "Thanks — your mail draft is open. Hit Send and we'll be in touch within hours."
     mailto:
       subject: "Vila Emes — message from {name}"
       labels:

@@ -187,7 +187,6 @@ contact_page:
       guests: "Mysafirë"
       message: "Mesazhi"
     submit: "Dërgo mesazhin"
-    success: "Faleminderit — drafti i email-it u hap. Shtypni Dërgo dhe ju kontaktojmë brenda pak orësh."
     mailto:
       subject: "Vila Emes — mesazh nga {name}"
       labels:

@@ -187,7 +187,6 @@ contact_page:
       guests: "Ospiti"
       message: "Messaggio"
     submit: "Invia messaggio"
-    success: "Grazie — la tua bozza email è aperta. Premi Invia e ti rispondiamo nel giro di poche ore."
     mailto:
       subject: "Vila Emes — messaggio da {name}"
       labels:

@@ -183,7 +183,6 @@ export const collections = {
             message: z.string(),
           }),
           submit: z.string(),
-          success: z.string(),
           mailto: z.object({
             subject: z.string(),
             labels: z.object({
