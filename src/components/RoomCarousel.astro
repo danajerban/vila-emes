@@ -189,11 +189,8 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
         else startAutoplay();
       });
     }
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", init);
-    } else {
-      init();
-    }
+    // ClientRouter mounts in <head>; astro:page-load fires on initial load
+    // AND every CR navigation. Single listener avoids stacking handlers.
     document.addEventListener("astro:page-load", init);
   })();
 </script>

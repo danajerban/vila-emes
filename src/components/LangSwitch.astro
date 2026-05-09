@@ -216,11 +216,8 @@ const others = LOCALES.filter((l) => l !== lang);
         });
       });
     }
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", bind);
-    } else {
-      bind();
-    }
+    // ClientRouter mounts in <head>; astro:page-load fires on initial load
+    // AND every CR navigation. Single listener avoids stacking handlers.
     document.addEventListener("astro:page-load", bind);
   })();
 </script>
