@@ -3,11 +3,12 @@ import { LOCALES, LOCALE_LABELS, stripLocalePrefix, localizedPath, type Lang } f
 
 interface Props {
   lang: Lang;
-  variant?: "inline" | "stacked";
+  variant?: "inline" | "stacked" | "dropdown";
 }
 const { lang, variant = "inline" } = Astro.props;
 
 const path = stripLocalePrefix(Astro.url.pathname.replace(/\/+$/, "") || "/");
+const others = LOCALES.filter((l) => l !== lang);
 ---
 {variant === "inline" ? (
   <nav class="flex items-center gap-1.5" aria-label="Language">
@@ -25,6 +26,36 @@ const path = stripLocalePrefix(Astro.url.pathname.replace(/\/+$/, "") || "/");
       );
     })}
   </nav>
+) : variant === "dropdown" ? (
+  <div class="lang-dropdown" data-lang-dropdown>
+    <button
+      type="button"
+      class="dropdown-trigger"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-label={`Language: ${LOCALE_LABELS[lang]}`}
+    >
+      <img src={`/flags/${lang}.svg`} alt="" width="28" height="20" />
+      <svg class="dropdown-chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+      </svg>
+    </button>
+    <ul class="lang-dropdown-menu" hidden role="menu" aria-label="Choose language">
+      {others.map((l) => (
+        <li role="none">
+          <a
+            href={localizedPath(l, path)}
+            class="lang-menu-item"
+            aria-label={LOCALE_LABELS[l]}
+            role="menuitem"
+          >
+            <img src={`/flags/${l}.svg`} alt="" width="22" height="15" />
+            <span>{LOCALE_LABELS[l]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 ) : (
   <nav class="flex flex-wrap items-center justify-center gap-3" aria-label="Language">
     {LOCALES.map((l) => {
@@ -72,4 +103,127 @@ const path = stripLocalePrefix(Astro.url.pathname.replace(/\/+$/, "") || "/");
     border-color: var(--color-terracotta);
     color: var(--color-terracotta);
   }
+
+  /* Dropdown variant: flag + chevron trigger; cream menu of (flag + label) rows. */
+  .lang-dropdown {
+    position: relative;
+  }
+  .dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 6px 8px;
+    min-height: 32px;
+    border-radius: 6px;
+    color: inherit;
+    opacity: 0.95;
+    transition: opacity 0.2s ease;
+  }
+  .dropdown-trigger:hover,
+  .dropdown-trigger:focus-visible {
+    opacity: 1;
+  }
+  .dropdown-trigger img { display: block; }
+  .dropdown-chev {
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+  }
+  .dropdown-trigger[aria-expanded="true"] .dropdown-chev {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 50;
+    min-width: 160px;
+    background: var(--color-cream-elevated);
+    border: 1px solid var(--color-divider);
+    border-radius: 8px;
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .lang-dropdown-menu[hidden] {
+    display: none;
+  }
+  .lang-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--color-ink);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .lang-menu-item:hover,
+  .lang-menu-item:focus-visible {
+    background-color: rgba(194, 91, 63, 0.10);
+    color: var(--color-terracotta);
+  }
+  .lang-menu-item img { display: block; }
+
+  /* iOS image-press bypass: a tap on the inner img normally invites a long-press
+     preview gesture that swallows the synthetic click. Routing pointer events
+     to the parent button/link makes the click fire reliably on iOS Safari. */
+  .lang-dropdown img,
+  .flag-pill img,
+  .flag-pill-stacked img {
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
 </style>
+
+<script is:inline>
+  // Lang dropdown: toggle on trigger click, close on outside-click or Escape.
+  // Idempotent under Astro view transitions.
+  (function () {
+    if (window.__langDropdownInited) return;
+    window.__langDropdownInited = true;
+
+    function bind() {
+      document.querySelectorAll("[data-lang-dropdown]").forEach((root) => {
+        if (root.__bound) return;
+        root.__bound = true;
+        const trigger = root.querySelector(".dropdown-trigger");
+        const menu = root.querySelector(".lang-dropdown-menu");
+        if (!trigger || !menu) return;
+        const close = () => {
+          menu.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        };
+        // No stopPropagation — the document handler below ignores in-root targets,
+        // which avoids an iOS Safari edge-case where stopPropagation on a
+        // synthetic click can interact oddly with delegated listeners.
+        trigger.addEventListener("click", (e) => {
+          // TEMPORARY diagnostic — remove once dropdown is confirmed working on iOS.
+          // Visible in Safari Web Inspector → Console when iPhone is connected.
+          console.log("[lang-dropdown] trigger click", e.target && e.target.tagName, "menu.hidden was:", menu.hidden);
+          const willOpen = menu.hidden;
+          menu.hidden = !willOpen;
+          trigger.setAttribute("aria-expanded", String(willOpen));
+        });
+        document.addEventListener("click", (e) => {
+          if (!root.contains(e.target)) close();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") close();
+        });
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", bind);
+    } else {
+      bind();
+    }
+    document.addEventListener("astro:page-load", bind);
+  })();
+</script>

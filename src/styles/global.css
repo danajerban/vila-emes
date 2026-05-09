@@ -41,6 +41,8 @@
     font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    /* Kill iOS Safari double-tap-to-zoom + 300ms tap delay. Pinch-zoom preserved (a11y). */
+    touch-action: manipulation;
   }
 
   @media (min-width: 768px) {
@@ -121,7 +123,7 @@
 
 /* Sunset filter — applied only to Hero photos (other photos render natural). */
 .sunset-photo {
-  filter: sepia(0.32) saturate(1.12) brightness(0.88) contrast(1.05);
+  filter: sepia(0.32) saturate(1.12) brightness(0.60) contrast(1.05);
 }
 .sunset-overlay {
   position: absolute;
