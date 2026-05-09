@@ -70,12 +70,7 @@ src/
 
 ## Documentation
 
-- `docs/superpowers/specs/2026-05-06-vila-emes-site-design.md` — full design spec (locked 2026-05-07)
-- `docs/superpowers/plans/2026-05-07-vila-emes-implementation-revisions.md` — v2 implementation plan (canonical)
-- `docs/superpowers/plans/2026-05-06-vila-emes-implementation.md` — v1 plan (reference)
-- `docs/design-analysis.md` — analysis of the design draft vs spec
-- `docs/source-of-truth/booking-content.md` — Booking.com content as source of truth for room facts, distances, ratings
-- `docs/photos-shortlist.md` — placeholder photos + swap workflow
+- [`docs/Emes_Summary.md`](docs/Emes_Summary.md) — hotel/property facts (rooms, amenities, location, ratings)
 
 ## Deploy
 

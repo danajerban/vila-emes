@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # brainstorming/visual companion artifacts (local, not for VCS)
 .superpowers/
+
+# archived planning docs (kept locally, not for VCS)
+docs/archive/
