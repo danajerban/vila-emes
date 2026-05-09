@@ -203,10 +203,7 @@ const others = LOCALES.filter((l) => l !== lang);
         // No stopPropagation — the document handler below ignores in-root targets,
         // which avoids an iOS Safari edge-case where stopPropagation on a
         // synthetic click can interact oddly with delegated listeners.
-        trigger.addEventListener("click", (e) => {
-          // TEMPORARY diagnostic — remove once dropdown is confirmed working on iOS.
-          // Visible in Safari Web Inspector → Console when iPhone is connected.
-          console.log("[lang-dropdown] trigger click", e.target && e.target.tagName, "menu.hidden was:", menu.hidden);
+        trigger.addEventListener("click", () => {
           const willOpen = menu.hidden;
           menu.hidden = !willOpen;
           trigger.setAttribute("aria-expanded", String(willOpen));
