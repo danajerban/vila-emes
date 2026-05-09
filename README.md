@@ -19,7 +19,7 @@ The site is **not** a reservation system — every booking CTA links to **Bookin
 | Route | Localized as |
 |---|---|
 | `/` — single-scroll home (hero · about · trust · rooms preview · gallery · location · contact · FAQ) | `/al/`, `/it/`, `/de/` |
-| `/rooms` — 11 individual rooms with 5-family filter, "always included", house rules | `/al/rooms`, `/it/rooms`, `/de/rooms` |
+| `/rooms` — 9 rooms with 4-family filter (apartments · deluxe · family · standard), "always included", house rules | `/al/rooms`, `/it/rooms`, `/de/rooms` |
 | `/contact` — 5-tile contact strip + minimal mailto form + sidebar + directions + Google Maps + FAQ | `/al/contact`, `/it/contact`, `/de/contact` |
 
 12 pages total.
@@ -58,7 +58,7 @@ Curated picks per slot are documented in `docs/photos-shortlist.md`. Owner revie
 ```
 src/
 ├── assets/         # webp photos + optimized hand-drawn logo + palm doodle
-├── components/     # 24 Astro components (chrome + sections)
+├── components/     # 29 Astro components (chrome + sections)
 ├── config/         # site.ts (constants)
 ├── content/site/   # en/al/it/de.yaml (Zod-validated via content.config.ts)
 ├── i18n/           # locale registry + content getter
@@ -92,3 +92,7 @@ src/
 | `npm run preview` | Preview the built site locally |
 | `node scripts/optimize-photos.mjs` | Regenerate optimized webps from `/Users/erbandanaj/Downloads/Emes/` |
 | `./node_modules/.bin/svgo --multipass <path>` | Optimize an SVG in place |
+
+## Claude Code
+
+See [CLAUDE.md](CLAUDE.md) for project skills, gotchas, and dev guidance for [Claude Code](https://www.anthropic.com/claude-code).
