@@ -82,13 +82,13 @@ const links = [
     id="mobileNavBackdrop"
     hidden
     aria-hidden="true"
-    class="lg:hidden fixed inset-x-0 top-16 bottom-0"
+    class="lg:hidden fixed inset-x-0 top-16 md:top-20 bottom-0"
   ></div>
 
   <div
     id="mobileNav"
     hidden
-    class="lg:hidden fixed inset-x-0 top-16 py-8 px-5 max-h-[calc(100vh-4rem)] overflow-y-auto"
+    class="lg:hidden fixed inset-x-0 top-16 md:top-20 py-8 px-5 max-h-[calc(100vh-4rem)] md:max-h-[calc(100vh-5rem)] overflow-y-auto"
   >
     <nav class="space-y-5 text-center" aria-label="Primary mobile">
       {links.map((l) => (
