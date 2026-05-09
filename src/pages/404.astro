@@ -1,0 +1,53 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import Handwritten from "../components/Handwritten.astro";
+import { getSite } from "../i18n/content";
+
+// 404 is served by Cloudflare Pages from dist/404.html for any unknown URL
+// across every locale, so the page is intentionally English-only with
+// language links at the bottom for users who landed from a localized URL.
+const site = await getSite("en");
+const ui = site.data.ui;
+---
+<Base lang="en" title="Page not found — Vila Emes" description="That page isn't here. Head back to the hotel." noindex>
+  <Header lang="en" ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} menuToggleLabel={ui.aria_labels.menu_toggle} />
+
+  <main class="py-20 md:py-28">
+    <div class="max-w-[1180px] mx-auto px-5 md:px-10 text-center">
+      <Eyebrow>404</Eyebrow>
+      <h1 class="font-serif text-4xl md:text-6xl mt-3 mb-4 text-[color:var(--color-ink)]">We can't find that page</h1>
+      <Handwritten as="p" class="text-2xl">— but the front desk is open</Handwritten>
+      <p class="mt-6 max-w-prose mx-auto text-[color:var(--color-ink-deep)]">
+        The page you're looking for has moved or never existed. Take a fresh look from the homepage, or browse our rooms.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="/"
+          class="px-6 py-3 bg-[color:var(--color-terracotta)] hover:bg-[color:var(--color-terracotta-hover)] text-[color:var(--color-cream)] font-medium tracking-wide rounded-md transition tappable"
+        >
+          Back to home
+        </a>
+        <a
+          href="/rooms/"
+          class="px-6 py-3 border border-[color:var(--color-divider)] hover:bg-[color:var(--color-sea)] hover:text-[color:var(--color-cream)] hover:border-[color:var(--color-sea)] font-medium tracking-wide rounded-md transition tappable"
+        >
+          See our rooms
+        </a>
+      </div>
+
+      <ul class="mt-12 flex gap-5 justify-center text-base text-[color:var(--color-muted)]">
+        <li><a href="/al/" class="link-underline" hreflang="sq">Shqip</a></li>
+        <li aria-hidden="true">·</li>
+        <li><a href="/it/" class="link-underline" hreflang="it">Italiano</a></li>
+        <li aria-hidden="true">·</li>
+        <li><a href="/de/" class="link-underline" hreflang="de">Deutsch</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <Footer lang="en" handwritten={ui.footer.handwritten} copyright={ui.footer.copyright} visitLabel={ui.footer.visit_label} reachLabel={ui.footer.reach_label} ui={ui} />
+</Base>

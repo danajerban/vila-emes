@@ -11,8 +11,9 @@ interface Props {
   lang: Lang;
   title: string;
   description?: string;
+  noindex?: boolean;
 }
-const { lang, title, description } = Astro.props;
+const { lang, title, description, noindex = false } = Astro.props;
 
 const htmlLang = LOCALE_TO_LANG[lang];
 
@@ -28,8 +29,8 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <Seo lang={lang} title={title} description={description} pathname={Astro.url.pathname} />
-    <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(jsonLd)}></script>
+    <Seo lang={lang} title={title} description={description} pathname={Astro.url.pathname} noindex={noindex} />
+    {!noindex && <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(jsonLd)}></script>}
 
     <ClientRouter />
   </head>
