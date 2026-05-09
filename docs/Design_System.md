@@ -73,7 +73,7 @@ Single source of truth for tokens, layout, type, buttons, motion. All tokens liv
 
 - **No new color hexes** — extend `@theme` in `global.css` instead
 - **No React/Vue/Svelte** — vanilla TS via `<script is:inline>` only
-- **No bare `<img>`** for photos — use `astro:assets` `<Image>` (raw `<img>` only for SVGs in `/public/`)
+- **No bare `<img>`** for photos — use `astro:assets` `<Picture>` (or `<Image>` for fixed-width photos); raw `<img>` only for SVGs in `/public/`
 - **No skipped `<SectionDivider />`** between sections
 - **No body text below 16px** — bump tiny captions/CTAs
 - **No new component without checking `src/components/` first** — reuse over invent

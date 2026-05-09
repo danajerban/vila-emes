@@ -38,8 +38,8 @@ Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
 
 **Build-time** (`astro build`):
 
-- Photo components use Astro's `<Image>` from `astro:assets`: `Hero`, `About`, `Gallery`, `RoomCarousel`, `Footer` (`RoomCard` delegates to `RoomCarousel`).
-- Fixed `quality={82}` everywhere.
+- Photo components use Astro's `<Picture>` from `astro:assets` at `quality={72}` with `formats={['avif', 'webp']}`: `Hero`, `About`, `Gallery`, `RoomCarousel` (`RoomCard` delegates to `RoomCarousel`).
+- `<Image>` at `quality={82}` is retained for `Footer` (logo, 140px) and `Hero` polaroid (decorative lg+, fixed 420px) — single-width, AVIF buys nothing.
 - `loading="eager"` on Hero slide #1 + Gallery slide #1; Hero #1 also gets `fetchpriority="high"`. Everything else `loading="lazy"`.
 
 **Raw `<img>` exceptions** (intentional — vector SVGs in `/public/`, no Astro processing needed):
