@@ -120,9 +120,11 @@ const links = [
   }
 
   /* Backdrop scrim behind the open drawer — soft ink dim, blocks tap-through
-     to underlying page content while the drawer is open. */
+     to underlying page content while the drawer is open. cursor: pointer is
+     load-bearing on iOS Safari: bare divs without it can swallow taps. */
   #mobileNavBackdrop {
     background-color: rgba(46, 46, 46, 0.30);
+    cursor: pointer;
   }
 
   /* Mobile drawer: solid cream by default; Liquid Glass when on hero (pairs

@@ -60,6 +60,9 @@
 
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
+  /* Tailwind v4's preflight no longer sets cursor:pointer on buttons. Restore it. */
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
 
   .reveal {
     opacity: 0;

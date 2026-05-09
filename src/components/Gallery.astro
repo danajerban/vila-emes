@@ -139,6 +139,10 @@ const initialCaption = photos[0]?.caption ?? "";
         const total = slides.length;
         let current = 0;
         let autoplay;
+        // Gates the rAF scroll handler during goTo()'s smooth-scroll so dots
+        // don't flicker through intermediate slides on arrow/dot click / autoplay.
+        let programmatic = false;
+        let programmaticTimer;
 
         const updateCaption = (i) => {
           if (!captionEl) return;
@@ -153,9 +157,12 @@ const initialCaption = photos[0]?.caption ?? "";
         const goTo = (i) => {
           current = ((i % total) + total) % total;
           const targetSlide = slides[current];
+          programmatic = true;
           track.scrollTo({ left: targetSlide.offsetLeft - track.offsetLeft, behavior: "smooth" });
           updateDots(current);
           updateCaption(current);
+          clearTimeout(programmaticTimer);
+          programmaticTimer = setTimeout(() => { programmatic = false; }, 800);
         };
 
         prevBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current - 1); });
@@ -176,7 +183,7 @@ const initialCaption = photos[0]?.caption ?? "";
         // so dots track the finger live instead of waiting for scroll to settle.
         let rafPending = false;
         track.addEventListener("scroll", () => {
-          if (rafPending) return;
+          if (programmatic || rafPending) return;
           rafPending = true;
           requestAnimationFrame(() => {
             rafPending = false;
@@ -193,6 +200,9 @@ const initialCaption = photos[0]?.caption ?? "";
             }
           });
         });
+        // scrollend (Safari 18.2+, Chrome 114+, FF 109+) clears the gate
+        // earlier when supported; the 800ms timeout above is the fallback.
+        track.addEventListener("scrollend", () => { programmatic = false; });
 
         // Autoplay (gated to in-view + not reduced-motion + not hovered/focused)
         const startAutoplay = () => {

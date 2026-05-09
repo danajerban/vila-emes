@@ -112,28 +112,25 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
             }
           }
 
-          // Mobile nav toggle — body scroll-lock + close-on-link. Backdrop +
-          // outside-click/Escape closing are wired at IIFE top-level below so
+          // Mobile nav toggle — body scroll-lock + close-on-link. Outside-click,
+          // Escape, and the close logic are wired at IIFE top-level above so
           // their document listeners only bind once per session.
           const btn = document.getElementById("mobileNavToggle");
           const nav = document.getElementById("mobileNav");
           const backdrop = document.getElementById("mobileNavBackdrop");
           if (btn && nav) {
-            const closeNav = () => {
-              nav.hidden = true;
-              if (backdrop) backdrop.hidden = true;
-              btn.setAttribute("aria-expanded", "false");
-              document.body.style.overflow = "";
-            };
             btn.addEventListener("click", () => {
-              const willOpen = nav.hidden;
-              nav.hidden = !willOpen;
-              if (backdrop) backdrop.hidden = !willOpen;
-              btn.setAttribute("aria-expanded", String(willOpen));
-              document.body.style.overflow = willOpen ? "hidden" : "";
+              if (nav.hidden) {
+                nav.hidden = false;
+                if (backdrop) backdrop.hidden = false;
+                btn.setAttribute("aria-expanded", "true");
+                document.body.style.overflow = "hidden";
+              } else {
+                closeMobileNav();
+              }
             });
             nav.querySelectorAll("a").forEach((a) => {
-              a.addEventListener("click", closeNav);
+              a.addEventListener("click", closeMobileNav);
             });
           }
 
