@@ -25,7 +25,7 @@ description: Technical SEO for the Vila Emes Astro 6 hotel site — canonical UR
 
 **NOT for:** marketing strategy, paid ads, analytics dashboards, or copywriting beyond meta-tag length compliance.
 
-## Current state (audit as of 2026-05)
+## Current state (audit as of 2026-05-09)
 
 | Feature | Status | File |
 |---|---|---|
@@ -39,7 +39,8 @@ description: Technical SEO for the Vila Emes Astro 6 hotel site — canonical UR
 | `og:image:width` / `:height` / `:alt`, `og:image:secure_url` | Done | `Seo.astro:66-71` (1200×630 set explicitly) |
 | Twitter Card meta (`twitter:card`, `:title`, `:description`, `:image`) | Done | `Seo.astro:73-79` (`summary_large_image`) |
 | `<link rel="alternate" hreflang>` per page | Done | `Seo.astro:35-41` (en/sq/it/de + `x-default`) |
-| JSON-LD: `Hotel` on home | Done | `src/lib/seo.ts#hotelJsonLd` + `Base.astro:32` (via `jsonLdScriptBody` helper) |
+| JSON-LD: `Hotel` on home (incl. `aggregateRating`, `contactPoint`, `numberOfRooms: 17`, `amenityFeature`, `petsAllowed`, `priceRange`, `checkinTime`/`checkoutTime`, `sameAs`) | Done | `src/lib/seo.ts#hotelJsonLd` + `Base.astro:33` (via `jsonLdScriptBody` helper, gated on `!noindex`) |
+| JSON-LD: `HotelRoom` `@graph` on `/rooms` (one entry per layout) | Done | `src/lib/seo.ts#hotelRoomGraphJsonLd` + `RoomsView.astro:140`. Offers/priceRange deliberately omitted — bookings live on Booking.com. |
 | JSON-LD: `FAQPage` | Done — home only | `src/lib/seo.ts#faqPageJsonLd` + `HomeView.astro` (FAQ section). Contact reuses the same FAQ items but no second FAQPage block — would risk Google's duplicate-rich-result penalty. |
 | JSON-LD: `BreadcrumbList` on inner pages | Done | `src/lib/seo.ts#breadcrumbListJsonLd` + `RoomsView.astro` + `ContactView.astro`. Helper builds absolute URLs from path with trailing slash. |
 | `@astrojs/sitemap` integration (auto hreflang) | Done | `astro.config.mjs` (`integrations: [sitemap({ i18n: { defaultLocale, locales: { al: "sq", ... } } })]`) |
@@ -265,19 +266,10 @@ const hotelLd = {
   },
   priceRange: "€€",
   hasMap: SITE.links.google_maps,
-  // Schema.org `AggregateRating` requires `reviewCount` (or `ratingCount`) to validate.
-  // Add to src/config/site.ts as e.g. `SITE.ratings.review_count` once the owner
-  // confirms the real number from Booking.com, then uncomment:
-  //
-  // aggregateRating: {
-  //   "@type": "AggregateRating",
-  //   ratingValue: SITE.ratings.booking,    // 9.0 / 10 — already in src/config/site.ts
-  //   bestRating: "10",
-  //   reviewCount: SITE.ratings.review_count,
-  // },
-  //
-  // Add `starRating` only if the owner confirms an official classification
-  // (Albanian hospitality registry / Booking listing).
+  // `aggregateRating` is live in `src/lib/seo.ts#hotelJsonLd` — sources from
+  // `SITE.ratings.booking` + `SITE.ratings.booking_review_count` (Booking.com only,
+  // single-source rule). `starRating` stays omitted: no official Albanian Ministry
+  // of Tourism classification on file. See seo.ts for the production shape.
 };
 ---
 <script type="application/ld+json" set:html={JSON.stringify(hotelLd)}></script>

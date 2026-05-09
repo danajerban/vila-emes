@@ -19,10 +19,11 @@ The site is **not** a reservation system — every booking CTA links to **Bookin
 | Route | Localized as |
 |---|---|
 | `/` — single-scroll home (hero · about · trust · rooms preview · gallery · location · contact · FAQ) | `/al/`, `/it/`, `/de/` |
-| `/rooms` — 9 rooms with 4-family filter (apartments · deluxe · family · standard), "always included", house rules | `/al/rooms`, `/it/rooms`, `/de/rooms` |
+| `/rooms` — 9 layouts with 4-family filter (apartments · deluxe · family · standard), "always included", house rules | `/al/rooms`, `/it/rooms`, `/de/rooms` |
 | `/contact` — 5-tile contact strip + minimal mailto form + sidebar + directions + Google Maps + FAQ | `/al/contact`, `/it/contact`, `/de/contact` |
+| `/404` — custom not-found page with `noindex` and locale fallback links | served on any unknown path |
 
-12 pages total.
+13 pages total.
 
 ## Local dev
 
