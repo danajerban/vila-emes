@@ -234,7 +234,7 @@ ui:
     wifi: "Wi-Fi gratuito"
     flat-tv: "TV a schermo piatto"
     private-bath: "Bagno privato"
-    bathtub-shower: "Doccia"
+    shower: "Doccia"
     sea-view: "Vista mare"
     balcony: "Balcone"
     terrace: "Terrazza"
@@ -301,7 +301,7 @@ rooms:
     view: "Città"
     outdoor: "—"
     description: "Ventisette metri quadrati di comfort raffinato — letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo. Ristrutturata nel 2024 con biancheria fresca e arredi sobri e neutri. Una camera tranquilla per due."
-    amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]
+    amenities: ["renovated-2024", "shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
     family: "deluxe"

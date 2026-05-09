@@ -234,7 +234,7 @@ ui:
     wifi: "Kostenloses WLAN"
     flat-tv: "Flachbildfernseher"
     private-bath: "Eigenes Badezimmer"
-    bathtub-shower: "Dusche"
+    shower: "Dusche"
     sea-view: "Meerblick"
     balcony: "Balkon"
     terrace: "Terrasse"
@@ -301,7 +301,7 @@ rooms:
     view: "Stadt"
     outdoor: "—"
     description: "Siebenundzwanzig Quadratmeter raffinierter Komfort — Queensize-Bett, ebenerdige Dusche mit Bidet, Flachbildfernseher mit Kabelanschluss. 2024 renoviert mit frischer Bettwäsche und ruhiger, neutraler Ausstattung. Ein ruhiges Zimmer für zwei Personen."
-    amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]
+    amenities: ["renovated-2024", "shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
     family: "deluxe"

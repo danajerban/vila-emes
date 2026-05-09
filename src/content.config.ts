@@ -9,7 +9,7 @@ export const AMENITIES = [
   "wifi",
   "flat-tv",
   "private-bath",
-  "bathtub-shower",
+  "shower",
   "sea-view",
   "balcony",
   "terrace",

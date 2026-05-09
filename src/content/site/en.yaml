@@ -234,7 +234,7 @@ ui:
     wifi: "Free Wi-Fi"
     flat-tv: "Flat-screen TV"
     private-bath: "Private bathroom"
-    bathtub-shower: "Shower"
+    shower: "Shower"
     sea-view: "Sea view"
     balcony: "Balcony"
     terrace: "Terrace"
@@ -301,7 +301,7 @@ rooms:
     view: "City"
     outdoor: "—"
     description: "Twenty-seven square metres, queen bed, walk-in shower with bidet, flat-screen with cable. Renovated in 2024 with fresh linens and quiet, neutral fittings. A calm room for two."
-    amenities: ["renovated-2024", "bathtub-shower", "air-con", "mini-fridge", "flat-tv"]
+    amenities: ["renovated-2024", "shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
     family: "deluxe"
