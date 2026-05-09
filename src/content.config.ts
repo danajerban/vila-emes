@@ -92,9 +92,10 @@ export const collections = {
         trust: z.object({
           booking_label: z.string(),
           google_label: z.string(),
-          quote: trustQuote,
-          read_all_reviews_label: z.string().optional(),
-          read_all_reviews_url: z.string().optional(),
+          quotes: z.array(trustQuote).min(1).max(4),
+          more_label: z.string(),
+          read_all_reviews_label: z.string(),
+          read_all_reviews_url: z.url(),
         }),
         rooms: z.object({
           eyebrow: z.string(),
