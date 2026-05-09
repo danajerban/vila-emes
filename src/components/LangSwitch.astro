@@ -204,6 +204,31 @@ const others = LOCALES.filter((l) => l !== lang);
       location.assign(href + location.hash);
     });
 
+    // Document-level dropdown listeners: registered ONCE per session.
+    // Iterate roots at event time so they survive view transitions.
+    function closeAll() {
+      document.querySelectorAll("[data-lang-dropdown]").forEach((root) => {
+        const trigger = root.querySelector(".dropdown-trigger");
+        const menu = root.querySelector(".lang-dropdown-menu");
+        if (!menu || menu.hidden) return;
+        menu.hidden = true;
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+      });
+    }
+    document.addEventListener("click", (e) => {
+      document.querySelectorAll("[data-lang-dropdown]").forEach((root) => {
+        const menu = root.querySelector(".lang-dropdown-menu");
+        if (!menu || menu.hidden) return;
+        if (root.contains(e.target)) return;
+        const trigger = root.querySelector(".dropdown-trigger");
+        menu.hidden = true;
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAll();
+    });
+
     function bind() {
       document.querySelectorAll("[data-lang-dropdown]").forEach((root) => {
         if (root.__bound) return;
@@ -211,23 +236,10 @@ const others = LOCALES.filter((l) => l !== lang);
         const trigger = root.querySelector(".dropdown-trigger");
         const menu = root.querySelector(".lang-dropdown-menu");
         if (!trigger || !menu) return;
-        const close = () => {
-          menu.hidden = true;
-          trigger.setAttribute("aria-expanded", "false");
-        };
-        // No stopPropagation — the document handler below ignores in-root targets,
-        // which avoids an iOS Safari edge-case where stopPropagation on a
-        // synthetic click can interact oddly with delegated listeners.
         trigger.addEventListener("click", () => {
           const willOpen = menu.hidden;
           menu.hidden = !willOpen;
           trigger.setAttribute("aria-expanded", String(willOpen));
-        });
-        document.addEventListener("click", (e) => {
-          if (!root.contains(e.target)) close();
-        });
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") close();
         });
       });
     }
