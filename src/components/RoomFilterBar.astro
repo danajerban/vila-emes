@@ -55,10 +55,23 @@ const cats = [
           x.setAttribute("aria-selected", x === b ? "true" : "false");
         });
         const wraps = document.querySelectorAll("[data-room-wrap]");
+        let firstShown = false;
         wraps.forEach((w) => {
           const cat = w.getAttribute("data-cat");
           const show = filter === "all" || cat === filter;
           w.style.display = show ? "" : "none";
+          // The leading SectionDivider (when present) is the wrap's first
+          // child and carries aria-hidden="true". Hide it on the first
+          // visible wrap so a filtered set doesn't begin with an orphan
+          // divider above its top card.
+          const lead = w.firstElementChild;
+          const isLead = lead && lead.getAttribute("aria-hidden") === "true";
+          if (show && !firstShown) {
+            if (isLead) lead.style.display = "none";
+            firstShown = true;
+          } else if (isLead) {
+            lead.style.display = "";
+          }
         });
       }));
     }
