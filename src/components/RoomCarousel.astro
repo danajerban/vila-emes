@@ -129,20 +129,25 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
         prevBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current - 1); });
         nextBtn?.addEventListener("click", () => { stopAutoplay(); goTo(current + 1); });
 
-        // Sync dots when user scrolls manually (drag/swipe).
-        let scrollTimer;
+        // Sync dots when user scrolls manually (drag/swipe). rAF-coalesced so
+        // dots track the finger live instead of waiting for scroll to settle.
+        let rafPending = false;
         track.addEventListener("scroll", () => {
-          clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(() => {
+          if (rafPending) return;
+          rafPending = true;
+          requestAnimationFrame(() => {
+            rafPending = false;
             let closestIdx = 0;
             let closestDist = Infinity;
             slides.forEach((s, j) => {
               const d = Math.abs(s.offsetLeft - track.scrollLeft - track.offsetLeft);
               if (d < closestDist) { closestDist = d; closestIdx = j; }
             });
-            current = closestIdx;
-            dots.forEach((d, j) => d.setAttribute("data-active", j === current ? "true" : "false"));
-          }, 100);
+            if (closestIdx !== current) {
+              current = closestIdx;
+              dots.forEach((d, j) => d.setAttribute("data-active", j === current ? "true" : "false"));
+            }
+          });
         });
 
         // Autoplay (gated to in-view + not reduced-motion + not hovered/focused)

@@ -172,21 +172,26 @@ const initialCaption = photos[0]?.caption ?? "";
           });
         });
 
-        // Sync dots + caption when user scrolls manually (drag/swipe).
-        let scrollTimer;
+        // Sync dots + caption when user scrolls manually (drag/swipe). rAF-coalesced
+        // so dots track the finger live instead of waiting for scroll to settle.
+        let rafPending = false;
         track.addEventListener("scroll", () => {
-          clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(() => {
+          if (rafPending) return;
+          rafPending = true;
+          requestAnimationFrame(() => {
+            rafPending = false;
             let closestIdx = 0;
             let closestDist = Infinity;
             slides.forEach((s, j) => {
               const d = Math.abs(s.offsetLeft - track.scrollLeft - track.offsetLeft);
               if (d < closestDist) { closestDist = d; closestIdx = j; }
             });
-            current = closestIdx;
-            updateDots(current);
-            updateCaption(current);
-          }, 100);
+            if (closestIdx !== current) {
+              current = closestIdx;
+              updateDots(current);
+              updateCaption(current);
+            }
+          });
         });
 
         // Autoplay (gated to in-view + not reduced-motion + not hovered/focused)
