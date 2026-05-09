@@ -61,7 +61,7 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
        hero copy (heading/sub/handwritten welcome) stays readable on the
        brighter midday slides. -->
   <div class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/70 to-transparent pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/80 via-black/60 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/70 via-black/60 to-transparent pointer-events-none" aria-hidden="true"></div>
 
   <!-- Polaroid (lg+ only). One-time wobble on enter via .polaroid-wobble. -->
   <figure class="absolute bottom-12 right-12 hidden lg:block reveal polaroid-wobble" style="transform: rotate(-3deg);">
@@ -163,6 +163,13 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
     }
     [data-hero-copy] {
       padding-bottom: calc(5rem + (100lvh - 100svh) + 60px);
+    }
+    /* Disable Ken Burns on mobile — the slow scale(1.06) compounds the
+       already-aggressive object-cover crop on portrait viewports. */
+    .hero-slide .hero-img,
+    .hero-slide[data-active="true"] .hero-img {
+      transform: none;
+      transition: none;
     }
   }
 
