@@ -43,10 +43,12 @@
     -webkit-font-smoothing: antialiased;
     /* Kill iOS Safari double-tap-to-zoom + 300ms tap delay. Pinch-zoom preserved (a11y). */
     touch-action: manipulation;
+    /* Header is fixed (h-16 / md:h-20) — scroll hash targets so they clear it. */
+    scroll-padding-top: 4rem;
   }
 
   @media (min-width: 768px) {
-    html { font-size: 18px; }
+    html { font-size: 18px; scroll-padding-top: 5rem; }
   }
 
   h1, h2, h3, h4 {
