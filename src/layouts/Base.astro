@@ -31,7 +31,6 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
     <Seo lang={lang} title={title} description={description} pathname={Astro.url.pathname} />
     <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(jsonLd)}></script>
 
-    <meta name="generator" content={Astro.generator} />
     <ClientRouter />
   </head>
   <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
