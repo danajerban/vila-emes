@@ -18,7 +18,7 @@ export function hotelJsonLd(name: string, tagline: string) {
     "name": name,
     "description": tagline,
     "url": SITE.url,
-    "image": `${SITE.url}/og-image.png`,
+    "image": `${SITE.url}/og-image.jpg`,
     "telephone": SITE.contact.phone,
     "email": SITE.contact.email,
     "address": {
