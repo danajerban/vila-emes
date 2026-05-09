@@ -12,7 +12,7 @@ The site is **not** a reservation system — every booking CTA links to **Bookin
 - **SVGO** — logo SVG compression
 - Fonts: **Cormorant Garamond** (serif), **Inter** (body), **Caveat** (handwritten accents) — all self-hosted via `@fontsource`
 - **Cloudflare Pages** — free hosting + auto-build on push to `main`
-- No client framework, no backend. Vanilla TS only for: lightbox, lang switcher, mobile nav, FAQ accordion, sticky header, room filter, contact-form mailto compose, reveal-on-scroll
+- No client framework, no backend. Vanilla TS only for: lang switcher, mobile nav, FAQ accordion, sticky header, room filter, image carousels, hero slideshow, contact-form mailto compose, contact link decoder, reveal-on-scroll
 
 ## Pages
 
