@@ -62,6 +62,10 @@ const inputClass = "px-4 py-3 rounded border border-[color:var(--color-divider)]
 
 <script is:inline define:vars={{ MAIL_ENC: mailEncoded, MAILTO: mailto }}>
   (function () {
+    // Outer guard: ClientRouter can re-execute inline scripts on revisit.
+    if (window.__contactFormInited) return;
+    window.__contactFormInited = true;
+
     function init() {
       const form = document.getElementById("contactForm");
       if (!form) return;

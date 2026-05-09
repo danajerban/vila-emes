@@ -41,6 +41,10 @@ const cats = [
 
 <script is:inline>
   (function () {
+    // Outer guard: ClientRouter can re-execute inline scripts on revisit.
+    if (window.__roomFilterBarInited) return;
+    window.__roomFilterBarInited = true;
+
     function init() {
       const btns = document.querySelectorAll(".room-filter-btn");
       if (btns.length === 0) return;
