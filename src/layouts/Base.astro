@@ -33,6 +33,30 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
     {!noindex && <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(jsonLd)}></script>}
 
     <ClientRouter />
+
+    <script is:inline>
+      (function () {
+        // Decode tel:/wa.me/mailto links that were base64-encoded at build time
+        // (see src/lib/contact-link.ts). Document-level delegation, set up
+        // once per session — survives ClientRouter DOM swaps. Lives in <head>
+        // so the listener is registered BEFORE any <a data-clx> in the body
+        // becomes interactive (race fix on slow networks).
+        if (window.__contactObfInited) return;
+        window.__contactObfInited = true;
+        document.addEventListener("click", function (e) {
+          var a = e.target.closest("a[data-clx]");
+          if (!a) return;
+          e.preventDefault();
+          var url;
+          try { url = atob(a.getAttribute("data-clx")); } catch (_) { return; }
+          if (a.target === "_blank") {
+            window.open(url, "_blank", "noopener");
+          } else {
+            window.location.href = url;
+          }
+        });
+      })();
+    </script>
   </head>
   <body class="bg-[color:var(--color-cream)] text-[color:var(--color-ink)] min-h-screen">
     <slot />
@@ -206,28 +230,6 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
         // DOMContentLoaded too would stack non-idempotent addEventListener
         // bindings (e.g. mobileNavToggle) on initial load.
         document.addEventListener("astro:page-load", init);
-      })();
-    </script>
-
-    <script is:inline>
-      (function () {
-        // Decode tel:/wa.me/ links that were base64-encoded at build time
-        // (see src/lib/contact-link.ts). Document-level delegation, set up
-        // once per session — survives ClientRouter DOM swaps.
-        if (window.__contactObfInited) return;
-        window.__contactObfInited = true;
-        document.addEventListener("click", function (e) {
-          var a = e.target.closest("a[data-clx]");
-          if (!a) return;
-          e.preventDefault();
-          var url;
-          try { url = atob(a.getAttribute("data-clx")); } catch (_) { return; }
-          if (a.target === "_blank") {
-            window.open(url, "_blank", "noopener");
-          } else {
-            window.location.href = url;
-          }
-        });
       })();
     </script>
   </body>
