@@ -1,5 +1,6 @@
 ---
 import { SITE } from "../config/site";
+import { obscureLink } from "../lib/contact-link";
 
 interface Props {
   waText: string;
@@ -8,9 +9,11 @@ interface Props {
 const { waText, ariaLabel } = Astro.props;
 
 const waHref = `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(waText)}`;
+const waEncoded = obscureLink(waHref);
 ---
 <a
-  href={waHref}
+  href="#"
+  data-clx={waEncoded}
   target="_blank"
   rel="noopener"
   aria-label={ariaLabel}

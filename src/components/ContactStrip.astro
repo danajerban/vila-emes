@@ -1,6 +1,7 @@
 ---
 import Eyebrow from "./Eyebrow.astro";
 import Handwritten from "./Handwritten.astro";
+import { obscureLink } from "../lib/contact-link";
 
 interface Tile {
   kind: "phone" | "whatsapp" | "email" | "instagram";
@@ -37,10 +38,13 @@ const ICONS: Record<Tile["kind"], string> = {
     </div>
 
     <ul class="mt-12 grid gap-4 grid-cols-2 md:grid-cols-4 max-w-[860px] mx-auto reveal-stagger">
-      {tiles.map((t) => (
+      {tiles.map((t) => {
+        const obfuscate = t.kind === "phone" || t.kind === "whatsapp";
+        return (
         <li>
           <a
-            href={t.href}
+            href={obfuscate ? "#" : t.href}
+            data-clx={obfuscate ? obscureLink(t.href) : undefined}
             target={t.kind === "instagram" ? "_blank" : undefined}
             rel={t.kind === "instagram" ? "noopener" : undefined}
             class="block h-full min-h-[180px] p-5 rounded-md bg-[color:var(--color-cream-elevated)] border border-[color:var(--color-divider)] hover:-translate-y-[2px] transition duration-300 text-center"
@@ -52,7 +56,8 @@ const ICONS: Record<Tile["kind"], string> = {
             <p class="font-serif text-base mt-1 text-[color:var(--color-ink)] break-words">{t.value}</p>
           </a>
         </li>
-      ))}
+        );
+      })}
     </ul>
   </div>
 </section>

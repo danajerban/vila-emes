@@ -180,5 +180,27 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
         document.addEventListener("astro:page-load", init);
       })();
     </script>
+
+    <script is:inline>
+      (function () {
+        // Decode tel:/wa.me/ links that were base64-encoded at build time
+        // (see src/lib/contact-link.ts). Document-level delegation, set up
+        // once per session — survives ClientRouter DOM swaps.
+        if (window.__contactObfInited) return;
+        window.__contactObfInited = true;
+        document.addEventListener("click", function (e) {
+          var a = e.target.closest("a[data-clx]");
+          if (!a) return;
+          e.preventDefault();
+          var url;
+          try { url = atob(a.getAttribute("data-clx")); } catch (_) { return; }
+          if (a.target === "_blank") {
+            window.open(url, "_blank", "noopener");
+          } else {
+            window.location.href = url;
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
