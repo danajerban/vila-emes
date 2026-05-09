@@ -109,7 +109,7 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
         // content edges peeking past the backdrop. Idempotent — safe to call
         // multiple times.
         const setBackgroundInert = (on) => {
-          document.querySelectorAll("main, footer").forEach((el) => {
+          document.querySelectorAll("body > *:not(header):not(script)").forEach((el) => {
             if (on) el.setAttribute("inert", "");
             else el.removeAttribute("inert");
           });
