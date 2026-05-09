@@ -2,7 +2,7 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "zod";
 
-export const FAMILIES = ["apartments", "deluxe", "family", "standard", "economy"] as const;
+export const FAMILIES = ["apartments", "deluxe", "family", "standard"] as const;
 
 export const AMENITIES = [
   "air-con",
@@ -233,7 +233,6 @@ export const collections = {
           deluxe: z.string(),
           family: z.string(),
           standard: z.string(),
-          economy: z.string(),
         }),
         labels: z.object({
           sleeps: z.string(),
@@ -247,7 +246,6 @@ export const collections = {
           deluxe: z.string(),
           family: z.string(),
           standard: z.string(),
-          economy: z.string(),
         }),
         amenity_labels: z.record(z.enum(AMENITIES), z.string()),
         footer: z.object({
@@ -258,7 +256,7 @@ export const collections = {
         }),
       }),
 
-      rooms: z.array(room).length(11),
+      rooms: z.array(room).length(9),
     }),
   }),
 };

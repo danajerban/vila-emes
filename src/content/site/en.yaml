@@ -211,12 +211,11 @@ ui:
     call: "Call"
     reserve: "Reserve"
   filter:
-    all: "All · 11"
+    all: "All · 9"
     apartments: "Apartments · 2"
     deluxe: "Deluxe · 3"
     family: "Family · 3"
     standard: "Standard · 1"
-    economy: "Economy · 2"
   labels:
     sleeps: "Sleeps"
     beds: "Beds"
@@ -228,7 +227,6 @@ ui:
     deluxe: "Deluxe"
     family: "Family"
     standard: "Standard"
-    economy: "Economy"
   amenity_labels:
     air-con: "Air conditioning"
     wifi: "Free Wi-Fi"
@@ -329,10 +327,10 @@ rooms:
     description: "Three beds, a balcony with a view straight out to the Adriatic, and twenty-seven square metres of well-organised space. Built for families who want the sea in front of them when they wake up."
     amenities: ["sea-view", "balcony", "air-con", "wifi", "family-friendly"]
 
-  - id: "quad-balcony"
+  - id: "family-balcony-city"
     family: "family"
     order: 7
-    name: "Quadruple Room with Balcony"
+    name: "Family Room (City Balcony)"
     size_m2: 30
     sleeps: 4
     sleeps_label: "4 people"
@@ -355,41 +353,15 @@ rooms:
     description: "The most flexible room in the house — a queen, two bunks, and a pull-out sofa, all with a balcony onto the sea. Up to five guests in a single, well-thought-out thirty square metres."
     amenities: ["balcony", "sea-view", "air-con", "sofa-bed", "family-friendly"]
 
-  - id: "family-standard"
+  - id: "triple-room"
     family: "standard"
     order: 9
-    name: "Standard Family Room"
+    name: "Economic Triple Room"
     size_m2: 30
-    sleeps: 4
-    sleeps_label: "4 people"
-    beds: "1 queen · 2 bunk beds"
-    view: "City"
-    outdoor: "Balcony"
-    description: "Our straightforward family option — thirty square metres, three beds, a balcony, and everything you need for a comfortable few nights without the deluxe upgrade."
-    amenities: ["balcony", "air-con", "mini-fridge", "family-friendly", "wifi"]
-
-  - id: "econ-triple"
-    family: "economy"
-    order: 10
-    name: "Economy Triple Room"
-    size_m2: 27
     sleeps: 3
     sleeps_label: "3 people"
     beds: "1 queen · 1 sofa bed"
     view: "City"
     outdoor: "Balcony"
-    description: "Twenty-seven square metres, a queen bed and a pull-out sofa, balcony onto the avenue. Our value pick for three travellers who want the location without the deluxe price."
+    description: "Thirty square metres, a queen bed and a pull-out sofa, balcony onto the avenue. Our value pick for three travellers who want the location without the deluxe price."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
-
-  - id: "budget-triple"
-    family: "economy"
-    order: 11
-    name: "Budget Triple Room"
-    size_m2: 30
-    sleeps: 3
-    sleeps_label: "3 people"
-    beds: "1 queen · 1 sofa bed"
-    view: "City"
-    outdoor: "Balcony"
-    description: "Three sleeps, a balcony, and the essentials done well — air conditioning, private bath, free Wi-Fi. The simplest, friendliest way to stay at Vila Emes."
-    amenities: ["balcony", "air-con", "private-bath", "wifi", "sofa-bed"]

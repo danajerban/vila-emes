@@ -1,6 +1,6 @@
 ---
 interface Props {
-  labels: { all: string; apartments: string; deluxe: string; family: string; standard: string; economy: string };
+  labels: { all: string; apartments: string; deluxe: string; family: string; standard: string };
 }
 const { labels } = Astro.props;
 const cats = [
@@ -9,7 +9,6 @@ const cats = [
   { value: "deluxe",      label: labels.deluxe },
   { value: "family",      label: labels.family },
   { value: "standard",    label: labels.standard },
-  { value: "economy",     label: labels.economy },
 ];
 ---
 <div class="mt-10 flex justify-center">

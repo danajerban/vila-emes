@@ -211,12 +211,11 @@ ui:
     call: "Telefono"
     reserve: "Rezervo"
   filter:
-    all: "Të gjitha · 11"
+    all: "Të gjitha · 9"
     apartments: "Apartamente · 2"
     deluxe: "Deluxe · 3"
     family: "Familjare · 3"
     standard: "Standarde · 1"
-    economy: "Ekonomike · 2"
   labels:
     sleeps: "Fle"
     beds: "Shtretër"
@@ -228,7 +227,6 @@ ui:
     deluxe: "Deluxe"
     family: "Familjare"
     standard: "Standarde"
-    economy: "Ekonomike"
   amenity_labels:
     air-con: "Ajër i kondicionuar"
     wifi: "Wi-Fi falas"
@@ -329,10 +327,10 @@ rooms:
     description: "Tre shtretër, një ballkon me pamje drejt e në Adriatik, dhe njëzet e shtatë metra katrorë hapësirë e organizuar mirë. E ndërtuar për familjet që duan detin përpara tyre kur zgjohen."
     amenities: ["sea-view", "balcony", "air-con", "wifi", "family-friendly"]
 
-  - id: "quad-balcony"
+  - id: "family-balcony-city"
     family: "family"
     order: 7
-    name: "Quadruple Room with Balcony"
+    name: "Family Room (City Balcony)"
     size_m2: 30
     sleeps: 4
     sleeps_label: "4 persona"
@@ -355,41 +353,15 @@ rooms:
     description: "Dhoma më fleksibile në shtëpi — një dopio, dy krevate marinari dhe një divan i palosshëm, të gjitha me ballkon nga deti. Deri në pesë mysafirë në një dhomë të vetme, të menduar mirë, prej tridhjetë metrash katrorë."
     amenities: ["balcony", "sea-view", "air-con", "sofa-bed", "family-friendly"]
 
-  - id: "family-standard"
+  - id: "triple-room"
     family: "standard"
     order: 9
-    name: "Standard Family Room"
+    name: "Economic Triple Room"
     size_m2: 30
-    sleeps: 4
-    sleeps_label: "4 persona"
-    beds: "1 dopio · 2 krevate marinari"
-    view: "Qytet"
-    outdoor: "Ballkon"
-    description: "Opsioni ynë familjar i drejtpërdrejtë — tridhjetë metra katrorë, tre shtretër, një ballkon, dhe gjithçka që ju nevojitet për disa netë të rehatshme pa nivelin deluxe."
-    amenities: ["balcony", "air-con", "mini-fridge", "family-friendly", "wifi"]
-
-  - id: "econ-triple"
-    family: "economy"
-    order: 10
-    name: "Economy Triple Room"
-    size_m2: 27
     sleeps: 3
     sleeps_label: "3 persona"
     beds: "1 dopio · 1 divan-krevat"
     view: "Qytet"
     outdoor: "Ballkon"
-    description: "Njëzet e shtatë metra katrorë, një krevat dopio dhe një divan i palosshëm, ballkon mbi bulevard. Zgjedhja jonë me vlerë për tre udhëtarë që duan vendndodhjen pa çmimin deluxe."
+    description: "Tridhjetë metra katrorë, një krevat dopio dhe një divan i palosshëm, ballkon mbi bulevard. Zgjedhja jonë me vlerë për tre udhëtarë që duan vendndodhjen pa çmimin deluxe."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
-
-  - id: "budget-triple"
-    family: "economy"
-    order: 11
-    name: "Budget Triple Room"
-    size_m2: 30
-    sleeps: 3
-    sleeps_label: "3 persona"
-    beds: "1 dopio · 1 divan-krevat"
-    view: "Qytet"
-    outdoor: "Ballkon"
-    description: "Tre vende fjetjeje, një ballkon, dhe gjërat thelbësore të bëra mirë — ajër i kondicionuar, banjo private, Wi-Fi falas. Mënyra më e thjeshtë dhe më miqësore për të qëndruar te Vila Emes."
-    amenities: ["balcony", "air-con", "private-bath", "wifi", "sofa-bed"]
