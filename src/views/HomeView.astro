@@ -79,6 +79,8 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
 
   <Hero
     slides={[heroCover, heroSlide2, heroSlide3, heroSlide4, heroSlide5]}
+    slideAlts={home.hero.slide_alts}
+    fallbackAlt={`${site.data.hotel.name} — ${site.data.hotel.location}`}
     polaroid={heroPolaroid}
     eyebrow={home.hero.eyebrow}
     welcomeHandwritten={home.hero.welcome_handwritten}

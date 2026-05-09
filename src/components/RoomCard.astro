@@ -27,7 +27,7 @@ const {
 } = Astro.props;
 ---
 <article data-room-card class="overflow-hidden rounded-md border border-[color:var(--color-divider)] bg-[color:var(--color-cream-elevated)] tappable transition duration-500 flex flex-col h-full">
-  <RoomCarousel photos={photos} alt={name} />
+  <RoomCarousel photos={photos} alt={`${name} — Vila Emes, Plazh, Durrës`} />
   <a href={href} class="block">
     <div class="p-5 pb-3">
       <Eyebrow>{numberLabel} · {familyLabel}</Eyebrow>

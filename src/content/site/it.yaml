@@ -5,14 +5,14 @@ hotel:
 
 seo:
   home:
-    title: "Vila Emes — Albergo a conduzione familiare a Durrës"
-    description: "A conduzione familiare dal 1998 a Plazh, Durrës — 100 m dall'acqua, 11 tipologie, 9.0 su Booking. Prenota diretto, su Booking.com o su WhatsApp."
+    title: "Vila Emes — Hotel a conduzione familiare a Durazzo (Durrës)"
+    description: "Hotel a conduzione familiare a Plazh, Durrës (Durazzo) — 100 m dalla spiaggia, 35 km dall'aeroporto di Tirana. 11 tipologie, 9.0/10 su Booking. Vacanze in famiglia."
   rooms:
-    title: "Camere e appartamenti — Vila Emes, Spiaggia di Durrës"
-    description: "11 tipologie a Vila Emes, da una Deluxe di 30 m² a un appartamento bilocale di 90 m² con vista mare. Aria condizionata, Wi-Fi gratis, balconi."
+    title: "Camere e appartamenti — Vila Emes, Durazzo (Durrës)"
+    description: "11 tipologie a Vila Emes, sulla spiaggia di Durazzo (Durrës), da una Deluxe di 30 m² a un appartamento bilocale di 90 m² con vista mare. Aria condizionata, Wi-Fi gratis."
   contact:
     title: "Contatta Vila Emes — Telefono, WhatsApp, Email"
-    description: "Mettiti in contatto con Vila Emes a Plazh, Durrës. Reception 24 ore, WhatsApp, telefono, email — leggiamo ogni messaggio noi e rispondiamo in giornata."
+    description: "Contatta Vila Emes a Durrës (Durazzo), 35 km dall'aeroporto di Tirana. Reception 24 ore, WhatsApp, telefono, email — rispondiamo in giornata."
 
 home:
   hero:
@@ -29,6 +29,12 @@ home:
     cta_primary: "Prenota su Booking.com"
     cta_secondary: "Apri la mappa"
     polaroid_caption_handwritten: "— la zona della spiaggia"
+    slide_alts:
+      - "Vista aerea di Vila Emes e dell'Adriatico — Plazh, Durrës (Durazzo)"
+      - "Interno di un appartamento bilocale a Vila Emes — Plazh, Durrës"
+      - "Ingresso di Vila Emes e il viale — Plazh, Durrës"
+      - "Appartamento bilocale con terrazza a Vila Emes — Plazh, Durrës"
+      - "Esterno dell'hotel Vila Emes — Plazh, Durrës (Durazzo)"
   about:
     eyebrow: "La nostra storia"
     heading_part_1: "Una piccola casa,"
@@ -43,11 +49,21 @@ home:
   trust:
     booking_label: "Booking.com"
     google_label: "Google"
-    quote:
-      text: "Accogliente hotel a conduzione familiare. Personale eccezionalmente gentile, sempre cordiale e disponibile. Posizione eccellente. Tutto ciò di cui avete bisogno è nelle vicinanze. A due passi dalla spiaggia. Altamente consigliato!"
-      author: "Gry"
-      location: "Norvegia"
-      when: "soggiorno della scorsa estate"
+    quotes:
+      - text: "Accogliente hotel a conduzione familiare. Personale eccezionalmente gentile, sempre cordiale e disponibile. Posizione eccellente. Tutto ciò di cui avete bisogno è nelle vicinanze. A due passi dalla spiaggia. Altamente consigliato!"
+        author: "Gry"
+        location: "Norvegia"
+        when: "soggiorno della scorsa estate"
+      - text: "Non è un finto hotel di lusso — è un posto semplice con un cuore vero."
+        author: "Baling"
+        location: "Ungheria"
+      - text: "I proprietari hanno fatto di tutto per rendere piacevole il nostro soggiorno. Torneremo sicuramente."
+        author: "Mikhail"
+        location: "Stati Uniti"
+      - text: "Vicinissimo alla spiaggia, proprietario gentile, tanti ristoranti — per il prezzo, ne è valsa assolutamente la pena."
+        author: "Loubna"
+        location: "Francia"
+    more_label: "Altro dal nostro libro degli ospiti"
     read_all_reviews_label: "Leggi tutte le recensioni su Booking →"
     read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
@@ -67,12 +83,12 @@ home:
       - "la posizione"
       - "il quartiere"
     alts:
-      - "Vila Emes dall'alto alla prima luce"
-      - "Spiaggia a pochi minuti dall'hotel"
-      - "Ingresso di Vila Emes"
-      - "Pasticceria al piano terra"
-      - "Vila Emes vicino al mare"
-      - "Vista aerea del quartiere"
+      - "Vila Emes dall'alto alla prima luce — Plazh, Durrës (Durazzo)"
+      - "Spiaggia di Durazzo a pochi minuti da Vila Emes"
+      - "Ingresso di Vila Emes — Plazh, Durrës"
+      - "Pasticceria al piano terra di Vila Emes — Plazh, Durrës"
+      - "Vila Emes vicino all'Adriatico — Plazh, Durrës (Durazzo)"
+      - "Vista aerea del quartiere intorno a Vila Emes — Plazh, Durrës"
   location:
     eyebrow: "Dove siamo"
     heading: "Sul viale, in riva al mare"
@@ -106,6 +122,8 @@ home:
         a: "Gli animali domestici non sono ammessi a Vila Emes."
       - q: "Sono disponibili culle o letti supplementari?"
         a: "Non abbiamo culle. Un letto supplementare si può aggiungere nella maggior parte delle camere a 5 € a persona per notte — faccelo sapere in anticipo."
+      - q: "Come arrivo dall'aeroporto di Tirana?"
+        a: "L'aeroporto internazionale di Tirana (TIA / Rinas) dista 35 km — i taxi partono dalla stazione dell'aeroporto tutto il giorno, circa 35 minuti d'auto con traffico leggero. Inviaci i dettagli del volo su WhatsApp e ti aiutiamo a organizzare il percorso. Anche gli autobus pubblici dal centro di Tirana raggiungono Durazzo."
       - q: "Quali lingue parlate?"
         a: "Inglese, italiano e albanese — tutti i giorni, dalla mattina alla sera."
     footer_cta_handwritten: "Non trovi la tua domanda? Scrivici →"

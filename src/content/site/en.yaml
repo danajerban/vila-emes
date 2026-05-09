@@ -6,7 +6,7 @@ hotel:
 seo:
   home:
     title: "Vila Emes — A Family Hotel by the Sea in Durrës"
-    description: "Family-run since 1998 in Plazh, Durrës — 100 m from the water, 11 layouts, 9.0 on Booking. Book direct, on Booking.com, or message us on WhatsApp."
+    description: "Family-run hotel in Plazh, Durrës — 100 m from the beach, 35 km from Tirana airport. 11 layouts, 9.0/10 on Booking. Family vacations since 1998."
   rooms:
     title: "Rooms & Apartments — Vila Emes, Durrës Beach"
     description: "11 layouts at Vila Emes, from a 30 m² Deluxe to a 90 m² two-bedroom apartment with sea view. Air conditioning, free Wi-Fi, balconies and terraces."
@@ -29,6 +29,12 @@ home:
     cta_primary: "Book on Booking.com"
     cta_secondary: "Open the map"
     polaroid_caption_handwritten: "— the beach area"
+    slide_alts:
+      - "Aerial view of Vila Emes and the Adriatic — Plazh, Durrës"
+      - "Inside a two-bedroom apartment at Vila Emes — Plazh, Durrës"
+      - "Vila Emes entrance and the avenue — Plazh, Durrës"
+      - "Two-bedroom apartment with terrace at Vila Emes — Plazh, Durrës"
+      - "Vila Emes hotel exterior — Plazh, Durrës"
   about:
     eyebrow: "Our story"
     heading_part_1: "A small house,"
@@ -43,11 +49,21 @@ home:
   trust:
     booking_label: "Booking.com"
     google_label: "Google"
-    quote:
-      text: "Cozy family-run hotel. Exceptionally nice staff, always friendly and helpful. Excellent location. Everything you need is nearby. Just a stone's throw from the beach. Highly recommended!"
-      author: "Gry"
-      location: "Norway"
-      when: "stayed last summer"
+    quotes:
+      - text: "Cozy family-run hotel. Exceptionally nice staff, always friendly and helpful. Excellent location. Everything you need is nearby. Just a stone's throw from the beach. Highly recommended!"
+        author: "Gry"
+        location: "Norway"
+        when: "stayed last summer"
+      - text: "Not a fake luxury hotel — just a simple place with a real heart."
+        author: "Baling"
+        location: "Hungary"
+      - text: "They went above and beyond to make our stay enjoyable. We would definitely return."
+        author: "Mikhail"
+        location: "United States"
+      - text: "Super close to the beach, friendly owner, plenty of restaurants — for the price, totally worth it."
+        author: "Loubna"
+        location: "France"
+    more_label: "More from our guestbook"
     read_all_reviews_label: "Read all reviews on Booking →"
     read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
@@ -67,12 +83,12 @@ home:
       - "the location"
       - "the neighborhood"
     alts:
-      - "Vila Emes from above at first light"
-      - "Beach a few minutes from the hotel"
-      - "Vila Emes entrance"
-      - "Pastry shop on the ground floor"
-      - "Vila Emes by the sea"
-      - "Aerial view of the neighborhood"
+      - "Vila Emes from above at first light — Plazh, Durrës"
+      - "Durrës beach a few minutes from Vila Emes"
+      - "Vila Emes entrance — Plazh, Durrës"
+      - "Pastry shop on the ground floor of Vila Emes — Plazh, Durrës"
+      - "Vila Emes by the Adriatic — Plazh, Durrës"
+      - "Aerial view of the neighborhood around Vila Emes — Plazh, Durrës"
   location:
     eyebrow: "Where we are"
     heading: "On the avenue, by the sea"
@@ -106,6 +122,8 @@ home:
         a: "Pets are not allowed at Vila Emes."
       - q: "Are cribs or extra beds available?"
         a: "Cribs are not available. An extra bed can be added to most rooms for €5 per person, per night — let us know in advance."
+      - q: "How do I get from Tirana airport?"
+        a: "Tirana International Airport (TIA / Rinas) is 35 km away — door-to-door taxis run all day from the airport rank, about 35 minutes by car in light traffic. Send us your flight details on WhatsApp and we'll help you sort the route. Public buses to Durrës also run from Tirana center."
       - q: "What languages do you speak?"
         a: "English, Italian, and Albanian — every day, all day."
     footer_cta_handwritten: "Don't see your question? Write to us →"

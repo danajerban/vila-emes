@@ -6,7 +6,7 @@ hotel:
 seo:
   home:
     title: "Vila Emes — Hotel familjar pranë detit në Durrës"
-    description: "Familja Emes që nga 1998 në Plazh, Durrës — 100 m nga deti, 11 tipologji dhomash, 9.0 në Booking. Rezervo direkt ose në Booking.com."
+    description: "Hotel familjar në Plazh, Durrës — 100 m nga deti, 35 km nga aeroporti i Tiranës. 11 tipologji dhomash, 9.0/10 në Booking. Pushime familjare që nga 1998."
   rooms:
     title: "Dhoma & apartamente — Vila Emes, Plazhi i Durrësit"
     description: "11 tipologji dhomash në Vila Emes, nga një Deluxe 30 m² te një apartament me dy dhoma 90 m² me pamje nga deti. Kondicioner, Wi-Fi falas, ballkone."
@@ -29,6 +29,12 @@ home:
     cta_primary: "Rezervo në Booking.com"
     cta_secondary: "Hap hartën"
     polaroid_caption_handwritten: "— zona e plazhit"
+    slide_alts:
+      - "Pamje ajrore e Vila Emes dhe Adriatikut — Plazh, Durrës"
+      - "Brenda një apartamenti me dy dhoma në Vila Emes — Plazh, Durrës"
+      - "Hyrja e Vila Emes dhe bulevardi — Plazh, Durrës"
+      - "Apartament me dy dhoma me tarracë në Vila Emes — Plazh, Durrës"
+      - "Pamja e jashtme e hotelit Vila Emes — Plazh, Durrës"
   about:
     eyebrow: "Historia jonë"
     heading_part_1: "Një shtëpi e vogël,"
@@ -43,11 +49,21 @@ home:
   trust:
     booking_label: "Booking.com"
     google_label: "Google"
-    quote:
-      text: "Hotel familjar dhe i ngrohtë. Stafi është jashtëzakonisht i sjellshëm, gjithmonë miqësor dhe i gatshëm të ndihmojë. Vendndodhje e shkëlqyer. Gjithçka që ju nevojitet është afër. Vetëm dy hapa nga plazhi. Rekomandohet pa hezitim!"
-      author: "Gry"
-      location: "Norvegji"
-      when: "qëndroi verën e kaluar"
+    quotes:
+      - text: "Hotel familjar dhe i ngrohtë. Stafi është jashtëzakonisht i sjellshëm, gjithmonë miqësor dhe i gatshëm të ndihmojë. Vendndodhje e shkëlqyer. Gjithçka që ju nevojitet është afër. Vetëm dy hapa nga plazhi. Rekomandohet pa hezitim!"
+        author: "Gry"
+        location: "Norvegji"
+        when: "qëndroi verën e kaluar"
+      - text: "Nuk është një hotel luksoz fasadë — është një vend i thjeshtë me një zemër të vërtetë."
+        author: "Baling"
+        location: "Hungari"
+      - text: "Pronarët bënë gjithçka për ta bërë qëndrimin tonë sa më të këndshëm. Do të kthehemi pa hezitim."
+        author: "Mikhail"
+        location: "Shtetet e Bashkuara"
+      - text: "Shumë afër plazhit, pronar miqësor, plot restorante — për çmimin që paguam, ia vlejti pa diskutim."
+        author: "Loubna"
+        location: "Francë"
+    more_label: "Më shumë nga libri ynë i mysafirëve"
     read_all_reviews_label: "Lexo të gjitha rishikimet në Booking →"
     read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
@@ -67,12 +83,12 @@ home:
       - "vendndodhja"
       - "lagjja"
     alts:
-      - "Vila Emes nga lart, në dritën e parë"
-      - "Plazhi disa minuta larg hotelit"
-      - "Hyrja e Vila Emes"
-      - "Pastiçeria në katin përdhes"
-      - "Vila Emes pranë detit"
-      - "Pamje ajrore e lagjes"
+      - "Vila Emes nga lart, në dritën e parë — Plazh, Durrës"
+      - "Plazhi i Durrësit disa minuta larg Vila Emes"
+      - "Hyrja e Vila Emes — Plazh, Durrës"
+      - "Pastiçeria në katin përdhes të Vila Emes — Plazh, Durrës"
+      - "Vila Emes pranë Adriatikut — Plazh, Durrës"
+      - "Pamje ajrore e lagjes rreth Vila Emes — Plazh, Durrës"
   location:
     eyebrow: "Ku ndodhemi"
     heading: "Në bulevard, pranë detit"
@@ -106,6 +122,8 @@ home:
         a: "Kafshët shtëpiake nuk lejohen në Vila Emes."
       - q: "A ofroni djepa ose shtretër shtesë?"
         a: "Djepa nuk ofrojmë. Një shtrat shtesë mund të shtohet në shumicën e dhomave — 5 € për person, për natë. Na lajmëroni paraprakisht."
+      - q: "Si shkoj nga aeroporti i Tiranës?"
+        a: "Aeroporti Ndërkombëtar i Tiranës (TIA / Rinas) është 35 km larg — taksitë qarkullojnë gjithë ditën nga stacioni i aeroportit, rreth 35 minuta me makinë në trafik të lehtë. Na dërgo detajet e fluturimit në WhatsApp dhe do të të ndihmojmë me rrugën. Autobusët publikë për Durrësin nisen nga qendra e Tiranës."
       - q: "Çfarë gjuhësh flisni?"
         a: "Anglisht, italisht dhe shqip — çdo ditë, gjithë ditën."
     footer_cta_handwritten: "Nuk e gjeni pyetjen tuaj? Na shkruani →"

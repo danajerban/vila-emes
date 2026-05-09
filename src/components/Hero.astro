@@ -6,6 +6,8 @@ import Handwritten from "./Handwritten.astro";
 
 interface Props {
   slides: ImageMetadata[];
+  slideAlts?: string[];
+  fallbackAlt: string;
   polaroid: ImageMetadata;
   eyebrow: string;
   welcomeHandwritten: string;
@@ -19,6 +21,8 @@ interface Props {
 }
 const {
   slides,
+  slideAlts,
+  fallbackAlt,
   polaroid,
   eyebrow,
   welcomeHandwritten,
@@ -44,7 +48,7 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
       >
         <Picture
           src={slide}
-          alt=""
+          alt={slideAlts?.[i] ?? fallbackAlt}
           widths={[800, 1200, 1600, 2400]}
           sizes="100vw"
           formats={['avif', 'webp']}

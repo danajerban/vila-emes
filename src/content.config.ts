@@ -78,6 +78,7 @@ export const collections = {
           cta_primary: z.string(),
           cta_secondary: z.string(),
           polaroid_caption_handwritten: z.string(),
+          slide_alts: z.array(z.string()).optional(),
         }),
         about: z.object({
           eyebrow: z.string(),

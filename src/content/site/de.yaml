@@ -6,7 +6,7 @@ hotel:
 seo:
   home:
     title: "Vila Emes — Familienhotel am Meer in Durrës"
-    description: "Familiengeführt seit 1998 in Plazh, Durrës — 100 m vom Wasser, 11 Zimmerkategorien, 9.0 auf Booking. Direkt, auf Booking.com oder per WhatsApp buchen."
+    description: "Familiengeführtes Strandhotel in Plazh, Durrës — 100 m vom Strand, 35 km vom Flughafen Tirana. 11 Zimmer, 9,0/10 auf Booking. Familienurlaub seit 1998."
   rooms:
     title: "Zimmer & Apartments — Vila Emes, Strand von Durrës"
     description: "11 Zimmerkategorien in der Vila Emes — vom 30 m² Deluxe bis zum 90 m² Apartment mit zwei Schlafzimmern und Meerblick. Klimaanlage, WLAN, Balkone."
@@ -29,6 +29,12 @@ home:
     cta_primary: "Auf Booking.com buchen"
     cta_secondary: "Karte öffnen"
     polaroid_caption_handwritten: "— der Strandbereich"
+    slide_alts:
+      - "Luftaufnahme der Vila Emes und der Adria — Plazh, Durrës"
+      - "Innenansicht eines Zwei-Zimmer-Apartments in der Vila Emes — Plazh, Durrës"
+      - "Eingang der Vila Emes und die Allee — Plazh, Durrës"
+      - "Zwei-Zimmer-Apartment mit Terrasse in der Vila Emes — Plazh, Durrës"
+      - "Außenansicht des Hotels Vila Emes — Plazh, Durrës"
   about:
     eyebrow: "Unsere Geschichte"
     heading_part_1: "Ein kleines Haus,"
@@ -43,11 +49,21 @@ home:
   trust:
     booking_label: "Booking.com"
     google_label: "Google"
-    quote:
-      text: "Gemütliches familiengeführtes Hotel. Außergewöhnlich nettes Personal, immer freundlich und hilfsbereit. Hervorragende Lage. Alles, was man braucht, ist in der Nähe. Nur einen Steinwurf vom Strand entfernt. Sehr empfehlenswert!"
-      author: "Gry"
-      location: "Norwegen"
-      when: "Aufenthalt letzten Sommer"
+    quotes:
+      - text: "Gemütliches familiengeführtes Hotel. Außergewöhnlich nettes Personal, immer freundlich und hilfsbereit. Hervorragende Lage. Alles, was man braucht, ist in der Nähe. Nur einen Steinwurf vom Strand entfernt. Sehr empfehlenswert!"
+        author: "Gry"
+        location: "Norwegen"
+        when: "Aufenthalt letzten Sommer"
+      - text: "Kein falsches Luxushotel — ein einfacher Ort mit einem echten Herzen."
+        author: "Baling"
+        location: "Ungarn"
+      - text: "Die Gastgeber haben alles getan, damit wir uns wohlfühlen. Wir kommen definitiv wieder."
+        author: "Mikhail"
+        location: "Vereinigte Staaten"
+      - text: "Direkt am Strand, freundlicher Gastgeber, viele Restaurants — für den Preis hat es sich absolut gelohnt."
+        author: "Loubna"
+        location: "Frankreich"
+    more_label: "Mehr aus unserem Gästebuch"
     read_all_reviews_label: "Alle Bewertungen auf Booking lesen →"
     read_all_reviews_url: "https://www.booking.com/hotel/al/vila-emes.html#tab-reviews"
   rooms:
@@ -67,12 +83,12 @@ home:
       - "die Lage"
       - "die Nachbarschaft"
     alts:
-      - "Vila Emes von oben im ersten Licht"
-      - "Strand wenige Minuten vom Hotel entfernt"
-      - "Eingang der Vila Emes"
-      - "Konditorei im Erdgeschoss"
-      - "Vila Emes am Meer"
-      - "Luftaufnahme der Nachbarschaft"
+      - "Vila Emes von oben im ersten Licht — Plazh, Durrës"
+      - "Strand von Durrës wenige Minuten von der Vila Emes entfernt"
+      - "Eingang der Vila Emes — Plazh, Durrës"
+      - "Konditorei im Erdgeschoss der Vila Emes — Plazh, Durrës"
+      - "Vila Emes an der Adria — Plazh, Durrës"
+      - "Luftaufnahme der Nachbarschaft um die Vila Emes — Plazh, Durrës"
   location:
     eyebrow: "Wo wir sind"
     heading: "An der Allee, am Meer"
@@ -106,6 +122,8 @@ home:
         a: "Haustiere sind in der Vila Emes nicht erlaubt."
       - q: "Sind Babybetten oder Zustellbetten verfügbar?"
         a: "Babybetten sind nicht verfügbar. Ein Zustellbett kann in den meisten Zimmern für 5 € pro Person und Nacht hinzugefügt werden — bitte geben Sie uns im Voraus Bescheid."
+      - q: "Wie komme ich vom Flughafen Tirana hierher?"
+        a: "Der Flughafen Tirana (TIA / Rinas) ist 35 km entfernt — Taxis fahren rund um die Uhr vom Flughafen-Stand, etwa 35 Minuten Autofahrt bei wenig Verkehr. Schicken Sie uns Ihre Flugdaten per WhatsApp, dann helfen wir bei der Routenplanung. Öffentliche Busse aus Tirana-Zentrum erreichen Durrës ebenfalls."
       - q: "Welche Sprachen sprechen Sie?"
         a: "Englisch, Italienisch und Albanisch — jeden Tag, von früh bis spät."
     footer_cta_handwritten: "Ihre Frage ist nicht dabei? Schreiben Sie uns →"
