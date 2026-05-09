@@ -10,7 +10,8 @@ import Footer from "../components/Footer.astro";
 import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
-import type { Lang } from "../i18n/locales";
+import { localizedPath, type Lang } from "../i18n/locales";
+import { breadcrumbListJsonLd, jsonLdScriptBody } from "../lib/seo";
 
 interface Props {
   lang: Lang;
@@ -20,9 +21,15 @@ const site = await getSite(lang);
 const ui = site.data.ui;
 const page = site.data.contact_page;
 const home = site.data.home;
+
+const breadcrumbLd = breadcrumbListJsonLd([
+  { name: ui.nav.home, path: localizedPath(lang, "/") },
+  { name: ui.nav.contact, path: localizedPath(lang, "/contact") },
+]);
 ---
 <Base lang={lang} title={site.data.seo.contact.title} description={site.data.seo.contact.description}>
   <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} menuToggleLabel={ui.aria_labels.menu_toggle} />
+  <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(breadcrumbLd)}></script>
 
   <PageHero
     eyebrow={page.hero_eyebrow}

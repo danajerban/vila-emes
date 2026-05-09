@@ -11,8 +11,9 @@ import Footer from "../components/Footer.astro";
 import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
-import type { Lang } from "../i18n/locales";
+import { localizedPath, type Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
+import { breadcrumbListJsonLd, jsonLdScriptBody } from "../lib/seo";
 
 // Apartments — 7 photos each
 import imgApt1Bed1 from "../assets/photos/apt-1bed-terrace/dsc-0434-1600.webp";
@@ -126,9 +127,15 @@ const roomPhotos: Record<string, ImageMetadata[]> = {
 };
 
 const orderedRooms = [...rooms].sort((a, b) => a.order - b.order);
+
+const breadcrumbLd = breadcrumbListJsonLd([
+  { name: ui.nav.home, path: localizedPath(lang, "/") },
+  { name: ui.nav.rooms, path: localizedPath(lang, "/rooms") },
+]);
 ---
 <Base lang={lang} title={site.data.seo.rooms.title} description={site.data.seo.rooms.description}>
   <Header lang={lang} ui={ui.nav} hotelName={site.data.hotel.name} bookLabel={ui.buttons.book_short ?? "Book us"} menuToggleLabel={ui.aria_labels.menu_toggle} />
+  <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(breadcrumbLd)}></script>
 
   <PageHero
     eyebrow={page.hero_eyebrow}

@@ -4,7 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import { LOCALE_TO_LANG, type Lang } from "../i18n/locales";
 import { getSite } from "../i18n/content";
 import Seo from "../components/Seo.astro";
-import { hotelJsonLd } from "../lib/seo";
+import { hotelJsonLd, jsonLdScriptBody } from "../lib/seo";
 import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 
 interface Props {
@@ -29,7 +29,7 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <Seo lang={lang} title={title} description={description} pathname={Astro.url.pathname} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")}></script>
+    <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(jsonLd)}></script>
 
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />

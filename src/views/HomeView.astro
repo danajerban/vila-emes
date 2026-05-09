@@ -16,6 +16,7 @@ import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
 import type { Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
+import { faqPageJsonLd, jsonLdScriptBody } from "../lib/seo";
 
 import heroCover from "../assets/photos/main/dji-0377-2400.webp";
 import heroSlide2 from "../assets/photos/main/dji-main3-2400.webp";
@@ -66,7 +67,7 @@ const tiles = [
   { kind: "phone",     label: tileLabels.phone,     value: SITE.contact.phone,    href: `tel:${SITE.contact.phone.replace(/\s+/g, "")}` },
   { kind: "whatsapp",  label: tileLabels.whatsapp,  value: SITE.contact.whatsapp, href: `https://wa.me/${SITE.contact.whatsapp.replace(/[^0-9]/g, "")}` },
   { kind: "email",     label: tileLabels.email,     value: SITE.contact.email,    href: `mailto:${SITE.contact.email}` },
-  { kind: "instagram", label: tileLabels.instagram, value: "@vilaemes",           href: SITE.links.instagram },
+  { kind: "instagram", label: tileLabels.instagram, value: "@vila_emes",          href: SITE.links.instagram },
 ] as const;
 
 const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeighborhood].map(
@@ -184,6 +185,7 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     footerCtaHandwritten={home.faq.footer_cta_handwritten}
     footerCtaHref={`${baseLink}/contact`}
   />
+  <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(faqPageJsonLd(home.faq.items))}></script>
 
   {home.ready_cta && (
     <>

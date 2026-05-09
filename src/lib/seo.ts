@@ -52,3 +52,36 @@ export function hotelJsonLd(name: string, tagline: string) {
     ],
   };
 }
+
+export function faqPageJsonLd(items: ReadonlyArray<{ q: string; a: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": items.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": { "@type": "Answer", "text": item.a },
+    })),
+  };
+}
+
+export function breadcrumbListJsonLd(crumbs: ReadonlyArray<{ name: string; path: string }>) {
+  const toAbs = (p: string) => new URL(p.endsWith("/") ? p : `${p}/`, SITE.url).href;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": c.name,
+      "item": toAbs(c.path),
+    })),
+  };
+}
+
+// `<` inside any string field would terminate the surrounding <script> tag
+// early when emitted via set:html. Escape to < — JSON.parse decodes it
+// back to `<` on the browser side.
+export function jsonLdScriptBody(jsonLd: object): string {
+  return JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+}
