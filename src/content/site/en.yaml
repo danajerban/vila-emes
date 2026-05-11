@@ -9,7 +9,7 @@ seo:
     description: "Family-run hotel in Plazh, Durrës — 100 m from the beach, 35 km from Tirana airport. 9 layouts, 9.0/10 on Booking. Family vacations since 1998."
   rooms:
     title: "Rooms & Apartments — Vila Emes, Durrës Beach"
-    description: "9 layouts at Vila Emes, from a 30 m² Deluxe to a 90 m² two-bedroom apartment with sea view. Air conditioning, free Wi-Fi, balconies and terraces."
+    description: "9 layouts at Vila Emes, from a 30 m² Deluxe to a 90 m² 2-bedroom apartment with sea view. Air conditioning, free Wi-Fi, balconies and terraces."
   contact:
     title: "Contact Vila Emes — Phone, WhatsApp, Email"
     description: "Get in touch with Vila Emes in Plazh, Durrës. 24-hour front desk, WhatsApp, phone, email — we read every message ourselves and reply the same day."
@@ -31,9 +31,9 @@ home:
     polaroid_caption_handwritten: "— the beach area"
     slide_alts:
       - "Aerial view of Vila Emes and the Adriatic — Plazh, Durrës"
-      - "Inside a two-bedroom apartment at Vila Emes — Plazh, Durrës"
+      - "Inside a 2-bedroom apartment at Vila Emes — Plazh, Durrës"
       - "Vila Emes entrance and the avenue — Plazh, Durrës"
-      - "Two-bedroom apartment with terrace at Vila Emes — Plazh, Durrës"
+      - "2-bedroom apartment with terrace at Vila Emes — Plazh, Durrës"
       - "Vila Emes hotel exterior — Plazh, Durrës"
   about:
     eyebrow: "Our story"
@@ -43,7 +43,7 @@ home:
     body:
       - "Vila Emes opened in 1998. The same family has run the business and welcomed guests ever since."
       - "We sit on Rruga Pavarësia in Plazh, the avenue along the beach in Durrës. The pastry shop downstairs opens early — cappuccino, espresso, fresh croissants. Restaurants, supermarkets, and the bus stop are minutes away."
-      - "A hundred metres to the water, 24-hour front desk, simple rooms cared for daily — not a luxury hotel, just a place with a real heart."
+      - "100 metres to the water, 24-hour front desk, simple rooms cared for daily — not a luxury hotel, just a place with a real heart."
     signature_handwritten: "— with love, the Emes family"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
@@ -73,7 +73,7 @@ home:
     preview_card_cta: "View details →"
   gallery:
     eyebrow: "Inside & out"
-    heading: "Six frames"
+    heading: "6 frames"
     intro: "The hotel from above, the beach, the doorway, the pastry shop."
     captions:
       - "the first light"
@@ -111,7 +111,7 @@ home:
       - q: "What time is check-in and check-out?"
         a: "Check-in from 12:00 to 18:00. Check-out from 07:00 to 11:00. The front desk is open 24 hours, so late arrivals are fine — just let us know by WhatsApp so we can meet you."
       - q: "Is breakfast included?"
-        a: "Breakfast is not included in the room rate, but our ground-floor pastry shop opens early and serves cappuccino, espresso, and fresh pastries — five steps from reception."
+        a: "Breakfast is not included in the room rate, but our ground-floor pastry shop opens early and serves cappuccino, espresso, and fresh pastries — 5 steps from reception."
       - q: "Are sunbeds included?"
         a: "Sunbeds and umbrellas at the beach are not included in the room rate. They're rented directly at the beach for the day."
       - q: "Where do I park?"
@@ -254,7 +254,7 @@ ui:
     balcony: "Balcony"
     terrace: "Terrace"
     kitchenette: "Kitchen"
-    "2-bedrooms": "Two bedrooms"
+    "2-bedrooms": "2 bedrooms"
     mini-fridge: "Mini-fridge"
     family-friendly: "Family-friendly"
     sofa-bed: "Sofa bed"
@@ -269,14 +269,14 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "1-Bedroom Apartment with Terrace"
+    name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
     sleeps_label: "up to 4 people"
     beds: "1 full · 2 bunk beds"
     view: "Sea + city"
     outdoor: "Private terrace"
-    description: "Eighty square metres across one bedroom, a living room, and a private kitchen — stovetop, oven, washing machine — with a generous terrace looking over the avenue toward the sea. Three beds total. Great for two couples travelling together, or a family that wants to cook a few meals at home."
+    description: "80 square metres across one bedroom, a living room, and a private kitchen — stovetop, oven, washing machine — with a generous terrace looking over the avenue toward the sea. 3 beds total. Great for 2 couples travelling together, or a family that wants to cook a few meals at home."
     amenities: ["terrace", "kitchenette", "air-con", "wifi", "family-friendly"]
 
   - id: "apt-2bed"
@@ -289,7 +289,7 @@ rooms:
     beds: "1 full · 1 twin · 2 bunk beds"
     view: "Sea + city"
     outdoor: "Balcony + terrace"
-    description: "Our largest layout — ninety square metres, two separate bedrooms, a full kitchen with oven, dining table, washing machine, balcony off the living room, and a terrace. Up to six guests. Two families on holiday together, or one family that values its own space."
+    description: "Our largest layout — 90 square metres, 2 separate bedrooms, a full kitchen with oven, dining table, washing machine, balcony off the living room, and a terrace. Up to 6 guests. 2 families on holiday together, or one family that values its own space."
     amenities: ["kitchenette", "2-bedrooms", "balcony", "terrace", "family-friendly"]
 
   - id: "deluxe-king"
@@ -302,7 +302,7 @@ rooms:
     beds: "1 queen bed"
     view: "City"
     outdoor: "—"
-    description: "A spacious thirty square metres, queen bed, walk-in shower with bidet, flat-screen with cable, and a quiet seating corner. Recently renovated — the linens, the bathroom fittings, and the flooring are all new in 2024."
+    description: "A spacious 30 square metres, queen bed, walk-in shower with bidet, flat-screen with cable, and a quiet seating corner. Recently renovated — the linens, the bathroom fittings, and the flooring are all new in 2024."
     amenities: ["renovated-2024", "air-con", "mini-fridge", "private-bath", "flat-tv"]
 
   - id: "deluxe-queen"
@@ -315,7 +315,7 @@ rooms:
     beds: "1 queen bed"
     view: "City"
     outdoor: "—"
-    description: "Twenty-seven square metres, queen bed, walk-in shower with bidet, flat-screen with cable. Renovated in 2024 with fresh linens and quiet, neutral fittings. A calm room for two."
+    description: "27 square metres, queen bed, walk-in shower with bidet, flat-screen with cable. Renovated in 2024 with fresh linens and quiet, neutral fittings. A calm room for 2."
     amenities: ["renovated-2024", "shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
@@ -328,7 +328,7 @@ rooms:
     beds: "1 queen bed"
     view: "Quiet street"
     outdoor: "Balcony"
-    description: "Thirty square metres with a private balcony onto a quieter side street — cooler in summer, easier to sleep in. Walk-in shower, flat-screen, mini-fridge. Renovated in 2024."
+    description: "30 square metres with a private balcony onto a quieter side street — cooler in summer, easier to sleep in. Walk-in shower, flat-screen, mini-fridge. Renovated in 2024."
     amenities: ["renovated-2024", "balcony", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "quad-sea"
@@ -341,7 +341,7 @@ rooms:
     beds: "1 full · 2 bunk beds"
     view: "Sea"
     outdoor: "Balcony"
-    description: "Three beds, a balcony with a view straight out to the Adriatic, and twenty-seven square metres of well-organised space. Built for families who want the sea in front of them when they wake up."
+    description: "3 beds, a balcony with a view straight out to the Adriatic, and 27 square metres of well-organised space. Built for families who want the sea in front of them when they wake up."
     amenities: ["sea-view", "balcony", "air-con", "wifi", "family-friendly"]
 
   - id: "family-balcony-city"
@@ -354,7 +354,7 @@ rooms:
     beds: "1 queen · 2 bunk beds"
     view: "City"
     outdoor: "Balcony"
-    description: "Thirty square metres, three beds, a balcony onto the avenue. Family-friendly without compromise: parents in the queen bed, kids in the bunks, and a balcony to drink coffee on while they sleep in."
+    description: "30 square metres, 3 beds, a balcony onto the avenue. Family-friendly without compromise: parents in the queen bed, kids in the bunks, and a balcony to drink coffee on while they sleep in."
     amenities: ["balcony", "air-con", "mini-fridge", "wifi", "family-friendly"]
 
   - id: "family-balcony"
@@ -367,7 +367,7 @@ rooms:
     beds: "1 queen · 2 bunk · 1 sofa bed"
     view: "Sea"
     outdoor: "Balcony"
-    description: "The most flexible room in the house — a queen, two bunks, and a pull-out sofa, all with a balcony onto the sea. Up to five guests in a single, well-thought-out thirty square metres."
+    description: "The most flexible room in the house — a queen, 2 bunks, and a pull-out sofa, all with a balcony onto the sea. Up to 5 guests in a single, well-thought-out 30 square metres."
     amenities: ["balcony", "sea-view", "air-con", "sofa-bed", "family-friendly"]
 
   - id: "triple-room"
@@ -380,5 +380,5 @@ rooms:
     beds: "1 queen · 1 sofa bed"
     view: "City"
     outdoor: "Balcony"
-    description: "Thirty square metres, a queen bed and a pull-out sofa, balcony onto the avenue. Our value pick for three travellers who want the location without the deluxe price."
+    description: "30 square metres, a queen bed and a pull-out sofa, balcony onto the avenue. Our value pick for 3 travellers who want the location without the deluxe price."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]

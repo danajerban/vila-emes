@@ -9,7 +9,7 @@ seo:
     description: "Familiengeführtes Strandhotel in Plazh, Durrës — 100 m vom Strand, 35 km vom Flughafen Tirana. 9 Zimmerkategorien, 9,0/10 auf Booking. Familienurlaub seit 1998."
   rooms:
     title: "Zimmer & Apartments — Vila Emes, Strand von Durrës"
-    description: "9 Zimmerkategorien in der Vila Emes — vom 30 m² Deluxe bis zum 90 m² Apartment mit zwei Schlafzimmern und Meerblick. Klimaanlage, WLAN, Balkone."
+    description: "9 Zimmerkategorien in der Vila Emes — vom 30 m² Deluxe bis zum 90 m² Apartment mit 2 Schlafzimmern und Meerblick. Klimaanlage, WLAN, Balkone."
   contact:
     title: "Kontakt Vila Emes — Telefon, WhatsApp, E-Mail"
     description: "Kontakt zu Vila Emes in Plazh, Durrës. 24-h-Rezeption, WhatsApp, Telefon, E-Mail — wir lesen jede Nachricht selbst und antworten noch am selben Tag."
@@ -31,9 +31,9 @@ home:
     polaroid_caption_handwritten: "— der Strandbereich"
     slide_alts:
       - "Luftaufnahme der Vila Emes und der Adria — Plazh, Durrës"
-      - "Innenansicht eines Zwei-Zimmer-Apartments in der Vila Emes — Plazh, Durrës"
+      - "Innenansicht eines 2-Zimmer-Apartments in der Vila Emes — Plazh, Durrës"
       - "Eingang der Vila Emes und die Allee — Plazh, Durrës"
-      - "Zwei-Zimmer-Apartment mit Terrasse in der Vila Emes — Plazh, Durrës"
+      - "2-Zimmer-Apartment mit Terrasse in der Vila Emes — Plazh, Durrës"
       - "Außenansicht des Hotels Vila Emes — Plazh, Durrës"
   about:
     eyebrow: "Unsere Geschichte"
@@ -43,7 +43,7 @@ home:
     body:
       - "Die Vila Emes wurde 1998 eröffnet. Seitdem führt dieselbe Familie den Betrieb und begrüßt die Gäste."
       - "Wir befinden uns an der Rruga Pavarësia in Plazh, der Allee am Strand entlang in Durrës. Die Bäckerei in unserem Erdgeschoss öffnet früh — Cappuccino, Espresso, frische Croissants. Restaurants, Supermärkte und die Bushaltestelle sind nur wenige Minuten entfernt."
-      - "Hundert Meter bis zum Wasser, 24-Stunden-Rezeption, einfache, täglich gepflegte Zimmer — kein Luxushotel, sondern ein Ort mit echtem Herz."
+      - "100 Meter bis zum Wasser, 24-Stunden-Rezeption, einfache, täglich gepflegte Zimmer — kein Luxushotel, sondern ein Ort mit echtem Herz."
     signature_handwritten: "— mit Liebe, die Familie Emes"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
@@ -73,7 +73,7 @@ home:
     preview_card_cta: "Details ansehen →"
   gallery:
     eyebrow: "Innen & Außen"
-    heading: "Sechs Bilder"
+    heading: "6 Bilder"
     intro: "Das Hotel von oben, der Strand, der Eingang, die Konditorei."
     captions:
       - "das erste Licht"
@@ -111,7 +111,7 @@ home:
       - q: "Wann ist Check-in und Check-out?"
         a: "Check-in von 12:00 bis 18:00 Uhr. Check-out von 07:00 bis 11:00 Uhr. Die Rezeption ist 24 Stunden besetzt, späte Anreisen sind also kein Problem — geben Sie uns einfach per WhatsApp Bescheid, damit wir Sie empfangen können."
       - q: "Ist das Frühstück inklusive?"
-        a: "Das Frühstück ist nicht im Zimmerpreis enthalten. Unsere Bäckerei im Erdgeschoss öffnet jedoch früh und serviert Cappuccino, Espresso und frisches Gebäck — nur fünf Schritte von der Rezeption entfernt."
+        a: "Das Frühstück ist nicht im Zimmerpreis enthalten. Unsere Bäckerei im Erdgeschoss öffnet jedoch früh und serviert Cappuccino, Espresso und frisches Gebäck — nur 5 Schritte von der Rezeption entfernt."
       - q: "Sind Strandliegen inklusive?"
         a: "Strandliegen und Sonnenschirme am Strand sind nicht im Zimmerpreis enthalten. Sie werden direkt am Strand tageweise gemietet."
       - q: "Wo kann ich parken?"
@@ -254,7 +254,7 @@ ui:
     balcony: "Balkon"
     terrace: "Terrasse"
     kitchenette: "Küche"
-    "2-bedrooms": "Zwei Schlafzimmer"
+    "2-bedrooms": "2 Schlafzimmer"
     mini-fridge: "Minikühlschrank"
     family-friendly: "Familienfreundlich"
     sofa-bed: "Schlafsofa"
@@ -269,14 +269,14 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "1-Bedroom Apartment with Terrace"
+    name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
     sleeps_label: "bis zu 4 Personen"
     beds: "1 Doppelbett · 2 Etagenbetten"
     view: "Meer + Stadt"
     outdoor: "Private Terrasse"
-    description: "Achtzig Quadratmeter mit einem Schlafzimmer, einem Wohnzimmer und einer eigenen Küche — Herd, Backofen, Waschmaschine — sowie einer großzügigen Terrasse mit Blick über die Allee zum Meer. Insgesamt drei Betten. Ideal für zwei Paare auf gemeinsamer Reise oder eine Familie, die ein paar Mahlzeiten zu Hause kochen möchte."
+    description: "80 Quadratmeter mit einem Schlafzimmer, einem Wohnzimmer und einer eigenen Küche — Herd, Backofen, Waschmaschine — sowie einer großzügigen Terrasse mit Blick über die Allee zum Meer. Insgesamt 3 Betten. Ideal für 2 Paare auf gemeinsamer Reise oder eine Familie, die ein paar Mahlzeiten zu Hause kochen möchte."
     amenities: ["terrace", "kitchenette", "air-con", "wifi", "family-friendly"]
 
   - id: "apt-2bed"
@@ -289,7 +289,7 @@ rooms:
     beds: "1 Doppelbett · 1 Einzelbett · 2 Etagenbetten"
     view: "Meer + Stadt"
     outdoor: "Balkon + Terrasse"
-    description: "Unser größtes Apartment — neunzig Quadratmeter, zwei separate Schlafzimmer, eine voll ausgestattete Küche mit Backofen, Esstisch, Waschmaschine, Balkon am Wohnzimmer und eine Terrasse. Für bis zu sechs Gäste. Zwei Familien, die gemeinsam Urlaub machen, oder eine Familie, die Wert auf Privatsphäre legt."
+    description: "Unser größtes Apartment — 90 Quadratmeter, 2 separate Schlafzimmer, eine voll ausgestattete Küche mit Backofen, Esstisch, Waschmaschine, Balkon am Wohnzimmer und eine Terrasse. Für bis zu 6 Gäste. 2 Familien, die gemeinsam Urlaub machen, oder eine Familie, die Wert auf Privatsphäre legt."
     amenities: ["kitchenette", "2-bedrooms", "balcony", "terrace", "family-friendly"]
 
   - id: "deluxe-king"
@@ -302,7 +302,7 @@ rooms:
     beds: "1 Queensize-Bett"
     view: "Stadt"
     outdoor: "—"
-    description: "Geräumige dreißig Quadratmeter, Queensize-Bett, ebenerdige Dusche mit Bidet, Flachbildfernseher mit Kabelanschluss und eine ruhige Sitzecke. Kürzlich renoviert — Bettwäsche, Badezimmerausstattung und Bodenbeläge wurden 2024 erneuert."
+    description: "Geräumige 30 Quadratmeter, Queensize-Bett, ebenerdige Dusche mit Bidet, Flachbildfernseher mit Kabelanschluss und eine ruhige Sitzecke. Kürzlich renoviert — Bettwäsche, Badezimmerausstattung und Bodenbeläge wurden 2024 erneuert."
     amenities: ["renovated-2024", "air-con", "mini-fridge", "private-bath", "flat-tv"]
 
   - id: "deluxe-queen"
@@ -315,7 +315,7 @@ rooms:
     beds: "1 Queensize-Bett"
     view: "Stadt"
     outdoor: "—"
-    description: "Siebenundzwanzig Quadratmeter raffinierter Komfort — Queensize-Bett, ebenerdige Dusche mit Bidet, Flachbildfernseher mit Kabelanschluss. 2024 renoviert mit frischer Bettwäsche und ruhiger, neutraler Ausstattung. Ein ruhiges Zimmer für zwei Personen."
+    description: "27 Quadratmeter raffinierter Komfort — Queensize-Bett, ebenerdige Dusche mit Bidet, Flachbildfernseher mit Kabelanschluss. 2024 renoviert mit frischer Bettwäsche und ruhiger, neutraler Ausstattung. Ein ruhiges Zimmer für 2 Personen."
     amenities: ["renovated-2024", "shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
@@ -328,7 +328,7 @@ rooms:
     beds: "1 Queensize-Bett"
     view: "Ruhige Straße"
     outdoor: "Balkon"
-    description: "Dreißig Quadratmeter mit privatem Balkon zu einer ruhigeren Seitenstraße — im Sommer kühler, leichter zum Schlafen. Ebenerdige Dusche, Flachbildfernseher, Minikühlschrank. 2024 renoviert."
+    description: "30 Quadratmeter mit privatem Balkon zu einer ruhigeren Seitenstraße — im Sommer kühler, leichter zum Schlafen. Ebenerdige Dusche, Flachbildfernseher, Minikühlschrank. 2024 renoviert."
     amenities: ["renovated-2024", "balcony", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "quad-sea"
@@ -341,7 +341,7 @@ rooms:
     beds: "1 Doppelbett · 2 Etagenbetten"
     view: "Meer"
     outdoor: "Balkon"
-    description: "Drei Betten, ein Balkon mit direktem Blick auf die Adria und siebenundzwanzig Quadratmeter gut aufgeteilter Raum. Geschaffen für Familien, die das Meer vor sich haben möchten, wenn sie aufwachen."
+    description: "3 Betten, ein Balkon mit direktem Blick auf die Adria und 27 Quadratmeter gut aufgeteilter Raum. Geschaffen für Familien, die das Meer vor sich haben möchten, wenn sie aufwachen."
     amenities: ["sea-view", "balcony", "air-con", "wifi", "family-friendly"]
 
   - id: "family-balcony-city"
@@ -354,7 +354,7 @@ rooms:
     beds: "1 Queensize-Bett · 2 Etagenbetten"
     view: "Stadt"
     outdoor: "Balkon"
-    description: "Dreißig Quadratmeter, drei Betten, ein Balkon zur Allee. Familienfreundlich ohne Kompromisse: Eltern im Queensize-Bett, Kinder in den Etagenbetten und ein Balkon, auf dem man Kaffee trinken kann, während sie ausschlafen."
+    description: "30 Quadratmeter, 3 Betten, ein Balkon zur Allee. Familienfreundlich ohne Kompromisse: Eltern im Queensize-Bett, Kinder in den Etagenbetten und ein Balkon, auf dem man Kaffee trinken kann, während sie ausschlafen."
     amenities: ["balcony", "air-con", "mini-fridge", "wifi", "family-friendly"]
 
   - id: "family-balcony"
@@ -367,7 +367,7 @@ rooms:
     beds: "1 Queensize-Bett · 2 Etagenbetten · 1 Schlafsofa"
     view: "Meer"
     outdoor: "Balkon"
-    description: "Das flexibelste Zimmer im Haus — ein Queensize-Bett, zwei Etagenbetten und ein ausziehbares Sofa, alle mit Balkon zum Meer. Bis zu fünf Gäste auf gut durchdachten dreißig Quadratmetern."
+    description: "Das flexibelste Zimmer im Haus — ein Queensize-Bett, 2 Etagenbetten und ein ausziehbares Sofa, alle mit Balkon zum Meer. Bis zu 5 Gäste auf gut durchdachten 30 Quadratmetern."
     amenities: ["balcony", "sea-view", "air-con", "sofa-bed", "family-friendly"]
 
   - id: "triple-room"
@@ -380,5 +380,5 @@ rooms:
     beds: "1 Queensize-Bett · 1 Schlafsofa"
     view: "Stadt"
     outdoor: "Balkon"
-    description: "Dreißig Quadratmeter, ein Queensize-Bett und ein ausziehbares Sofa, Balkon zur Allee. Unsere Empfehlung für drei Reisende, die die Lage wollen, aber nicht den Deluxe-Preis."
+    description: "30 Quadratmeter, ein Queensize-Bett und ein ausziehbares Sofa, Balkon zur Allee. Unsere Empfehlung für 3 Reisende, die die Lage wollen, aber nicht den Deluxe-Preis."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]

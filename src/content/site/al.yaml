@@ -139,7 +139,7 @@ rooms_page:
   hero_eyebrow: "Qëndroni me ne"
   hero_heading_part_1: "Dhomat"
   hero_heading_part_2_handwritten: "tona"
-  hero_intro: "9 tipologji dhomash në 1 shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
+  hero_intro: "9 tipologji dhomash në një shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
   includes:
     eyebrow: "Në çdo dhomë"
     heading: "Çfarë përfshihet gjithmonë"
@@ -269,14 +269,14 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "1-Bedroom Apartment with Terrace"
+    name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
     sleeps_label: "deri në 4 persona"
     beds: "1 dopio · 2 krevate marinari"
     view: "Det + qytet"
     outdoor: "Tarracë private"
-    description: "80 metra katrorë me 1 dhomë gjumi, një dhomë ndenjeje dhe një kuzhinë private — sobë, furrë, lavatriçe — me një tarracë të gjerë me pamje nga bulevardi drejt detit. 3 shtretër gjithsej. I shkëlqyer për 2 çifte që udhëtojnë së bashku, ose për një familje që dëshiron të gatuajë disa vakte në shtëpi."
+    description: "80 metra katrorë me një dhomë gjumi, një dhomë ndenjeje dhe një kuzhinë private — sobë, furrë, lavatriçe — me një tarracë të gjerë me pamje nga bulevardi drejt detit. 3 shtretër gjithsej. I shkëlqyer për 2 çifte që udhëtojnë së bashku, ose për një familje që dëshiron të gatuajë disa vakte në shtëpi."
     amenities: ["terrace", "kitchenette", "air-con", "wifi", "family-friendly"]
 
   - id: "apt-2bed"
@@ -289,7 +289,7 @@ rooms:
     beds: "1 dopio · 1 tek · 2 krevate marinari"
     view: "Det + qytet"
     outdoor: "Ballkon + tarracë"
-    description: "Planimetria jonë më e madhe — 90 metra katrorë, 2 dhoma gjumi të ndara, kuzhinë e plotë me furrë, tavolinë ngrënieje, lavatriçe, ballkon nga dhoma e ndenjes dhe një tarracë. Deri në 6 mysafirë. 2 familje me pushime së bashku, ose 1 familje që do hapësirën e vet."
+    description: "Planimetria jonë më e madhe — 90 metra katrorë, 2 dhoma gjumi të ndara, kuzhinë e plotë me furrë, tavolinë ngrënieje, lavatriçe, ballkon nga dhoma e ndenjes dhe një tarracë. Deri në 6 mysafirë. 2 familje me pushime së bashku, ose një familje që do hapësirën e vet."
     amenities: ["kitchenette", "2-bedrooms", "balcony", "terrace", "family-friendly"]
 
   - id: "deluxe-king"
@@ -380,5 +380,5 @@ rooms:
     beds: "1 dopio · 1 divan-krevat"
     view: "Qytet"
     outdoor: "Ballkon"
-    description: "Tridhjetë metra katrorë, një krevat dopio dhe një divan i palosshëm, ballkon mbi bulevard. Zgjedhja jonë me vlerë për tre udhëtarë që duan vendndodhjen pa çmimin deluxe."
+    description: "30 metra katrorë, një krevat dopio dhe një divan i palosshëm, ballkon mbi bulevard. Zgjedhja jonë me vlerë për 3 udhëtarë që duan vendndodhjen pa çmimin deluxe."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]

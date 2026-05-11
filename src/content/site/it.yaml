@@ -43,14 +43,14 @@ home:
     body:
       - "Vila Emes ha aperto nel 1998. Da allora la stessa famiglia gestisce l'attività e accoglie gli ospiti."
       - "Ci troviamo in Rruga Pavarësia a Plazh, il viale che costeggia la spiaggia di Durrës. La pasticceria al piano terra apre presto — cappuccino, espresso, croissant freschi. Ristoranti, supermercati e la fermata dell'autobus sono a pochi minuti."
-      - "Cento metri dall'acqua, reception 24 ore su 24, camere semplici curate ogni giorno — non un albergo di lusso, solo un posto con un vero cuore."
+      - "100 metri dall'acqua, reception 24 ore su 24, camere semplici curate ogni giorno — non un albergo di lusso, solo un posto con un vero cuore."
     signature_handwritten: "— con amore, la famiglia Emes"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
     booking_label: "Booking.com"
     google_label: "Google"
     quotes:
-      - text: "Accogliente hotel a conduzione familiare. Personale eccezionalmente gentile, sempre cordiale e disponibile. Posizione eccellente. Tutto ciò di cui avete bisogno è nelle vicinanze. A due passi dalla spiaggia. Altamente consigliato!"
+      - text: "Accogliente hotel a conduzione familiare. Personale eccezionalmente gentile, sempre cordiale e disponibile. Posizione eccellente. Tutto ciò di cui avete bisogno è nelle vicinanze. A 2 passi dalla spiaggia. Altamente consigliato!"
         author: "Gry"
         location: "Norvegia"
         when: "soggiorno della scorsa estate"
@@ -73,7 +73,7 @@ home:
     preview_card_cta: "Vedi i dettagli →"
   gallery:
     eyebrow: "Dentro e fuori"
-    heading: "Sei inquadrature"
+    heading: "6 inquadrature"
     intro: "L'hotel dall'alto, la spiaggia, l'ingresso, la pasticceria."
     captions:
       - "la prima luce"
@@ -96,7 +96,7 @@ home:
   contact_strip:
     eyebrow: "Vieni a salutarci"
     heading_part_1: "Scrivici"
-    heading_part_2_handwritten: "due righe"
+    heading_part_2_handwritten: "2 righe"
     tile_labels:
       phone: "Telefono"
       whatsapp: "WhatsApp"
@@ -111,7 +111,7 @@ home:
       - q: "A che ora sono il check-in e il check-out?"
         a: "Check-in dalle 12:00 alle 18:00. Check-out dalle 07:00 alle 11:00. La reception è aperta 24 ore su 24, quindi gli arrivi tardivi non sono un problema — basta avvisarci su WhatsApp così possiamo accogliervi."
       - q: "La colazione è inclusa?"
-        a: "La colazione non è inclusa nel prezzo della camera, ma la nostra pasticceria al piano terra apre presto e serve cappuccino, espresso e pasticcini freschi — a cinque passi dalla reception."
+        a: "La colazione non è inclusa nel prezzo della camera, ma la nostra pasticceria al piano terra apre presto e serve cappuccino, espresso e pasticcini freschi — a 5 passi dalla reception."
       - q: "I lettini in spiaggia sono inclusi?"
         a: "I lettini e gli ombrelloni in spiaggia non sono inclusi nel prezzo della camera. Si noleggiano direttamente in spiaggia, a giornata."
       - q: "Dove posso parcheggiare?"
@@ -254,7 +254,7 @@ ui:
     balcony: "Balcone"
     terrace: "Terrazza"
     kitchenette: "Cucina"
-    "2-bedrooms": "Due camere da letto"
+    "2-bedrooms": "2 camere da letto"
     mini-fridge: "Mini-frigo"
     family-friendly: "Adatto alle famiglie"
     sofa-bed: "Divano letto"
@@ -269,14 +269,14 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "1-Bedroom Apartment with Terrace"
+    name: "One-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
     sleeps_label: "fino a 4 persone"
     beds: "1 doppio · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Terrazza privata"
-    description: "Ottanta metri quadrati su una camera da letto, un soggiorno e una cucina privata — piano cottura, forno, lavatrice — con un'ampia terrazza che si affaccia sul viale verso il mare. Tre letti in totale. Ottimo per due coppie in viaggio insieme, o per una famiglia che vuole cucinarsi qualche pasto a casa."
+    description: "80 metri quadrati su una camera da letto, un soggiorno e una cucina privata — piano cottura, forno, lavatrice — con un'ampia terrazza che si affaccia sul viale verso il mare. 3 letti in totale. Ottimo per 2 coppie in viaggio insieme, o per una famiglia che vuole cucinarsi qualche pasto a casa."
     amenities: ["terrace", "kitchenette", "air-con", "wifi", "family-friendly"]
 
   - id: "apt-2bed"
@@ -289,7 +289,7 @@ rooms:
     beds: "1 doppio · 1 singolo · 2 letti a castello"
     view: "Mare + città"
     outdoor: "Balcone + terrazza"
-    description: "La nostra tipologia più ampia — novanta metri quadrati, due camere da letto separate, una cucina completa con forno, tavolo da pranzo, lavatrice, balcone che si apre dal soggiorno e una terrazza. Fino a sei ospiti. Due famiglie in vacanza insieme, o una famiglia che apprezza i propri spazi."
+    description: "La nostra tipologia più ampia — 90 metri quadrati, 2 camere da letto separate, una cucina completa con forno, tavolo da pranzo, lavatrice, balcone che si apre dal soggiorno e una terrazza. Fino a 6 ospiti. 2 famiglie in vacanza insieme, o una famiglia che apprezza i propri spazi."
     amenities: ["kitchenette", "2-bedrooms", "balcony", "terrace", "family-friendly"]
 
   - id: "deluxe-king"
@@ -302,7 +302,7 @@ rooms:
     beds: "1 doppio"
     view: "Città"
     outdoor: "—"
-    description: "Trenta metri quadrati spaziosi, letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo e un tranquillo angolo relax. Recentemente ristrutturata — biancheria, sanitari e pavimenti tutti nuovi del 2024."
+    description: "30 metri quadrati spaziosi, letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo e un tranquillo angolo relax. Recentemente ristrutturata — biancheria, sanitari e pavimenti tutti nuovi del 2024."
     amenities: ["renovated-2024", "air-con", "mini-fridge", "private-bath", "flat-tv"]
 
   - id: "deluxe-queen"
@@ -315,7 +315,7 @@ rooms:
     beds: "1 doppio"
     view: "Città"
     outdoor: "—"
-    description: "Ventisette metri quadrati di comfort raffinato — letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo. Ristrutturata nel 2024 con biancheria fresca e arredi sobri e neutri. Una camera tranquilla per due."
+    description: "27 metri quadrati di comfort raffinato — letto queen, doccia walk-in con bidet, TV a schermo piatto con canali via cavo. Ristrutturata nel 2024 con biancheria fresca e arredi sobri e neutri. Una camera tranquilla per 2."
     amenities: ["renovated-2024", "shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
@@ -328,7 +328,7 @@ rooms:
     beds: "1 doppio"
     view: "Strada tranquilla"
     outdoor: "Balcone"
-    description: "Trenta metri quadrati con balcone privato su una strada laterale più tranquilla — più fresco d'estate, più facile per dormire. Doccia walk-in, TV a schermo piatto, mini-frigo. Ristrutturata nel 2024."
+    description: "30 metri quadrati con balcone privato su una strada laterale più tranquilla — più fresco d'estate, più facile per dormire. Doccia walk-in, TV a schermo piatto, mini-frigo. Ristrutturata nel 2024."
     amenities: ["renovated-2024", "balcony", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "quad-sea"
@@ -341,7 +341,7 @@ rooms:
     beds: "1 doppio · 2 letti a castello"
     view: "Mare"
     outdoor: "Balcone"
-    description: "Tre letti, un balcone con vista diretta sull'Adriatico e ventisette metri quadrati di spazio ben organizzato. Pensata per le famiglie che vogliono il mare davanti quando si svegliano."
+    description: "3 letti, un balcone con vista diretta sull'Adriatico e 27 metri quadrati di spazio ben organizzato. Pensata per le famiglie che vogliono il mare davanti quando si svegliano."
     amenities: ["sea-view", "balcony", "air-con", "wifi", "family-friendly"]
 
   - id: "family-balcony-city"
@@ -354,7 +354,7 @@ rooms:
     beds: "1 doppio · 2 letti a castello"
     view: "Città"
     outdoor: "Balcone"
-    description: "Trenta metri quadrati, tre letti, un balcone affacciato sul viale. Adatta alle famiglie senza compromessi: i genitori nel letto queen, i bambini nei letti a castello, e un balcone dove prendere il caffè mentre dormono ancora."
+    description: "30 metri quadrati, 3 letti, un balcone affacciato sul viale. Adatta alle famiglie senza compromessi: i genitori nel letto queen, i bambini nei letti a castello, e un balcone dove prendere il caffè mentre dormono ancora."
     amenities: ["balcony", "air-con", "mini-fridge", "wifi", "family-friendly"]
 
   - id: "family-balcony"
@@ -367,7 +367,7 @@ rooms:
     beds: "1 doppio · 2 letti a castello · 1 divano letto"
     view: "Mare"
     outdoor: "Balcone"
-    description: "La camera più versatile della casa — un queen, due letti a castello e un divano letto, il tutto con balcone vista mare. Fino a cinque ospiti in trenta metri quadrati ben pensati."
+    description: "La camera più versatile della casa — un queen, 2 letti a castello e un divano letto, il tutto con balcone vista mare. Fino a 5 ospiti in 30 metri quadrati ben pensati."
     amenities: ["balcony", "sea-view", "air-con", "sofa-bed", "family-friendly"]
 
   - id: "triple-room"
@@ -380,5 +380,5 @@ rooms:
     beds: "1 doppio · 1 divano letto"
     view: "Città"
     outdoor: "Balcone"
-    description: "Trenta metri quadrati, un letto queen e un divano letto, balcone affacciato sul viale. La nostra scelta conveniente per tre viaggiatori che vogliono la posizione senza il prezzo deluxe."
+    description: "30 metri quadrati, un letto queen e un divano letto, balcone affacciato sul viale. La nostra scelta conveniente per 3 viaggiatori che vogliono la posizione senza il prezzo deluxe."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
