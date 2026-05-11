@@ -78,7 +78,7 @@ src/
 
 - Connect this repo to Cloudflare Pages — build command `astro build`, output directory `dist`.
 - Every push to `main` rebuilds.
-- Until a custom domain is purchased, the canonical URL is `https://vila-emes.pages.dev`. Update `site:` in `astro.config.mjs` and `SITE.url` in `src/config/site.ts` when ready.
+- Canonical URL: `https://www.vilaemes.com` (custom domain — set in `astro.config.mjs` `site:` and `src/config/site.ts` `SITE.url`). The `vila-emes.pages.dev` URL still resolves and redirects.
 
 ## Commands
 
