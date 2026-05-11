@@ -14,6 +14,17 @@ export const LOCALE_TO_LANG: Record<Lang, string> = {
   de: "de",
 };
 
+// Locale key → Open Graph locale (language_TERRITORY per OG spec).
+// Used in og:locale and og:locale:alternate. en_US chosen as the most
+// common default for international tourist audiences; swap to en_GB if
+// targeting UK-first markets.
+export const LOCALE_TO_OG_LOCALE: Record<Lang, string> = {
+  en: "en_US",
+  al: "sq_AL",
+  it: "it_IT",
+  de: "de_DE",
+};
+
 // Locale key → human-readable name (used in lang switcher)
 export const LOCALE_LABELS: Record<Lang, string> = {
   en: "English",

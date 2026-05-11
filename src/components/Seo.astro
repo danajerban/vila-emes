@@ -1,6 +1,6 @@
 ---
 import { SEO } from "astro-seo";
-import { LOCALES, LOCALE_TO_LANG, localizedPath, stripLocalePrefix, type Lang } from "../i18n/locales";
+import { LOCALES, LOCALE_TO_LANG, LOCALE_TO_OG_LOCALE, localizedPath, stripLocalePrefix, type Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 
 interface Props {
@@ -30,8 +30,7 @@ const localized = (loc: Lang) => {
 
 const canonical = new URL(localized(lang), SITE.url).href;
 const ogImageUrl = new URL(ogImage, SITE.url).href;
-const htmlLang = LOCALE_TO_LANG[lang];
-const ogLocale = htmlLang.replace("-", "_");
+const ogLocale = LOCALE_TO_OG_LOCALE[lang];
 
 const languageAlternates = [
   ...LOCALES.map((loc) => ({
@@ -43,7 +42,7 @@ const languageAlternates = [
 
 const localeAlternate = LOCALES
   .filter((loc) => loc !== lang)
-  .map((loc) => LOCALE_TO_LANG[loc].replace("-", "_"));
+  .map((loc) => LOCALE_TO_OG_LOCALE[loc]);
 ---
 <SEO
   title={title}
