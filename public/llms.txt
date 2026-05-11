@@ -2,7 +2,7 @@
 
 > A family-run hotel by the Adriatic in Plazh, Durrës, Albania. 100 m from the beach, 35 km from Tirana International Airport. 9 room layouts (17 physical rooms), 9.0/10 on Booking.com, 4.7/5 on Google. Operating since 1998.
 
-The site is published in four languages: English (default, no URL prefix), Albanian (`/al/`), Italian (`/it/`), and German (`/de/`). All rooms include a private bathroom with shower (no bathtubs), air conditioning, and free Wi-Fi.
+The site is published in 4 languages: English (default, no URL prefix), Albanian (`/al/`), Italian (`/it/`), and German (`/de/`). All rooms include a private bathroom with shower (no bathtubs), air conditioning, and free Wi-Fi.
 
 Bookings are handled exclusively on Booking.com. The site has no on-page reservation system; call-to-action buttons link out to Booking.com, WhatsApp, Google Maps, Instagram, email, and phone.
 
@@ -38,5 +38,5 @@ Bookings are handled exclusively on Booking.com. The site has no on-page reserva
 
 ## Optional
 
-- [XML sitemap](https://www.vilaemes.com/sitemap-index.xml): Machine-readable URL list with hreflang alternates for all four locales
+- [XML sitemap](https://www.vilaemes.com/sitemap-index.xml): Machine-readable URL list with hreflang alternates for all 4 locales
 - [robots.txt](https://www.vilaemes.com/robots.txt): Open to all crawlers; sitemap reference
