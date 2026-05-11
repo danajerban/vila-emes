@@ -9,7 +9,7 @@ seo:
     description: "Hotel familjar në Plazh, Durrës — 100 m nga deti, 35 km nga aeroporti i Tiranës. 9 tipologji dhomash, 9.0/10 në Booking. Pushime familjare që nga 1998."
   rooms:
     title: "Dhoma & apartamente — Vila Emes, Plazhi i Durrësit"
-    description: "9 tipologji dhomash në Vila Emes, nga një Deluxe 30 m² te një apartament me dy dhoma 90 m² me pamje nga deti. Kondicioner, Wi-Fi falas, ballkone."
+    description: "9 tipologji dhomash në Vila Emes, nga një Deluxe 30 m² te një apartament me 2 dhoma 90 m² me pamje nga deti. Kondicioner, Wi-Fi falas, ballkone."
   contact:
     title: "Kontakt Vila Emes — Telefon, WhatsApp, Email"
     description: "Na kontaktoni në Vila Emes në Plazh, Durrës. Recepsion 24-orësh, WhatsApp, telefon, email — i lexojmë vetë mesazhet dhe përgjigjemi po atë ditë."
@@ -31,26 +31,26 @@ home:
     polaroid_caption_handwritten: "— zona e plazhit"
     slide_alts:
       - "Pamje ajrore e Vila Emes dhe Adriatikut — Plazh, Durrës"
-      - "Brenda një apartamenti me dy dhoma në Vila Emes — Plazh, Durrës"
+      - "Brenda një apartamenti me 2 dhoma në Vila Emes — Plazh, Durrës"
       - "Hyrja e Vila Emes dhe bulevardi — Plazh, Durrës"
-      - "Apartament me dy dhoma me tarracë në Vila Emes — Plazh, Durrës"
+      - "Apartament me 2 dhoma me tarracë në Vila Emes — Plazh, Durrës"
       - "Pamja e jashtme e hotelit Vila Emes — Plazh, Durrës"
   about:
     eyebrow: "Historia jonë"
     heading_part_1: "Një shtëpi e vogël,"
-    heading_part_2_handwritten: "e mbajtur nga një familje."
+    heading_part_2_handwritten: "e mbajtur nga 1 familje."
     handwritten_year: "— që nga 1998"
     body:
       - "Vila Emes u hap në vitin 1998. E njëjta familje drejton biznesin dhe mirëpret mysafirët që atëherë."
       - "Ndodhemi në Rrugën Pavarësia në Plazh, bulevardi përgjatë plazhit të Durrësit. Pastiçeria në katin përdhes hapet herët — kapuçino, espresso, kroasanë të freskët. Restorantet, supermarketet dhe stacioni i autobusit janë vetëm pak minuta larg."
-      - "Njëqind metra nga deti, recepsion 24-orësh, dhoma të thjeshta të mirëmbajtura çdo ditë — jo një hotel luksoz, thjesht një vend me një zemër të vërtetë."
+      - "100 metra nga deti, recepsion 24-orësh, dhoma të thjeshta të mirëmbajtura çdo ditë — jo një hotel luksoz, thjesht një vend me një zemër të vërtetë."
     signature_handwritten: "— me dashuri, familja Emes"
     photo_caption: "Vila Emes · Plazh, Durrës"
   trust:
     booking_label: "Booking.com"
     google_label: "Google"
     quotes:
-      - text: "Hotel familjar dhe i ngrohtë. Stafi është jashtëzakonisht i sjellshëm, gjithmonë miqësor dhe i gatshëm të ndihmojë. Vendndodhje e shkëlqyer. Gjithçka që ju nevojitet është afër. Vetëm dy hapa nga plazhi. Rekomandohet pa hezitim!"
+      - text: "Hotel familjar dhe i ngrohtë. Stafi është jashtëzakonisht i sjellshëm, gjithmonë miqësor dhe i gatshëm të ndihmojë. Vendndodhje e shkëlqyer. Gjithçka që ju nevojitet është afër. Vetëm 2 hapa nga plazhi. Rekomandohet pa hezitim!"
         author: "Gry"
         location: "Norvegji"
         when: "qëndroi verën e kaluar"
@@ -73,7 +73,7 @@ home:
     preview_card_cta: "Shiko detajet →"
   gallery:
     eyebrow: "Brenda dhe jashtë"
-    heading: "Gjashtë korniza"
+    heading: "6 korniza"
     intro: "Hoteli nga lart, plazhi, hyrja, pastiçeria."
     captions:
       - "drita e parë"
@@ -111,7 +111,7 @@ home:
       - q: "Në çfarë ore janë check-in dhe check-out?"
         a: "Check-in nga 12:00 deri 18:00. Check-out nga 07:00 deri 11:00. Recepsioni është i hapur 24 orë, kështu që mbërritjet e vona janë në rregull — thjesht na njoftoni në WhatsApp dhe ju presim."
       - q: "A përfshihet mëngjesi?"
-        a: "Mëngjesi nuk përfshihet në çmimin e dhomës, por pastiçeria jonë në katin përdhes hapet herët dhe shërben kapuçino, espresso dhe ëmbëlsira të freskëta — pesë hapa nga holli."
+        a: "Mëngjesi nuk përfshihet në çmimin e dhomës, por pastiçeria jonë në katin përdhes hapet herët dhe shërben kapuçino, espresso dhe ëmbëlsira të freskëta — 5 hapa nga holli."
       - q: "A përfshihen shtretërit e plazhit?"
         a: "Shtretërit dhe çadrat e plazhit nuk përfshihen në çmimin e dhomës. Ato merren me qira drejtpërdrejt te plazhi, për ditën."
       - q: "Ku mund të parkoj?"
@@ -139,7 +139,7 @@ rooms_page:
   hero_eyebrow: "Qëndroni me ne"
   hero_heading_part_1: "Dhomat"
   hero_heading_part_2_handwritten: "tona"
-  hero_intro: "9 tipologji dhomash në një shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
+  hero_intro: "9 tipologji dhomash në 1 shtëpi të vogël familjare. Zgjidhni atë që ju përshtatet."
   includes:
     eyebrow: "Në çdo dhomë"
     heading: "Çfarë përfshihet gjithmonë"
@@ -254,7 +254,7 @@ ui:
     balcony: "Ballkon"
     terrace: "Tarracë"
     kitchenette: "Kuzhinë"
-    "2-bedrooms": "Dy dhoma gjumi"
+    "2-bedrooms": "2 dhoma gjumi"
     mini-fridge: "Mini-frigorifer"
     family-friendly: "Miqësore për familjet"
     sofa-bed: "Divan-krevat"
@@ -269,27 +269,27 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "One-Bedroom Apartment with Terrace"
+    name: "1-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
     sleeps_label: "deri në 4 persona"
     beds: "1 dopio · 2 krevate marinari"
     view: "Det + qytet"
     outdoor: "Tarracë private"
-    description: "Tetëdhjetë metra katrorë me një dhomë gjumi, një dhomë ndenjeje dhe një kuzhinë private — sobë, furrë, lavatriçe — me një tarracë të gjerë me pamje nga bulevardi drejt detit. Tre shtretër gjithsej. I shkëlqyer për dy çifte që udhëtojnë së bashku, ose për një familje që dëshiron të gatuajë disa vakte në shtëpi."
+    description: "80 metra katrorë me 1 dhomë gjumi, një dhomë ndenjeje dhe një kuzhinë private — sobë, furrë, lavatriçe — me një tarracë të gjerë me pamje nga bulevardi drejt detit. 3 shtretër gjithsej. I shkëlqyer për 2 çifte që udhëtojnë së bashku, ose për një familje që dëshiron të gatuajë disa vakte në shtëpi."
     amenities: ["terrace", "kitchenette", "air-con", "wifi", "family-friendly"]
 
   - id: "apt-2bed"
     family: "apartments"
     order: 2
-    name: "Two-Bedroom Apartment with Balcony and Terrace"
+    name: "2-Bedroom Apartment with Balcony and Terrace"
     size_m2: 90
     sleeps: 6
     sleeps_label: "deri në 6 persona"
     beds: "1 dopio · 1 tek · 2 krevate marinari"
     view: "Det + qytet"
     outdoor: "Ballkon + tarracë"
-    description: "Planimetria jonë më e madhe — nëntëdhjetë metra katrorë, dy dhoma gjumi të ndara, kuzhinë e plotë me furrë, tavolinë ngrënieje, lavatriçe, ballkon nga dhoma e ndenjes dhe një tarracë. Deri në gjashtë mysafirë. Dy familje me pushime së bashku, ose një familje që do hapësirën e vet."
+    description: "Planimetria jonë më e madhe — 90 metra katrorë, 2 dhoma gjumi të ndara, kuzhinë e plotë me furrë, tavolinë ngrënieje, lavatriçe, ballkon nga dhoma e ndenjes dhe një tarracë. Deri në 6 mysafirë. 2 familje me pushime së bashku, ose 1 familje që do hapësirën e vet."
     amenities: ["kitchenette", "2-bedrooms", "balcony", "terrace", "family-friendly"]
 
   - id: "deluxe-king"
@@ -302,7 +302,7 @@ rooms:
     beds: "1 krevat dopio"
     view: "Qytet"
     outdoor: "—"
-    description: "Tridhjetë metra katrorë të gjerë, krevat dopio, dush me kabinë me bide, TV me ekran të sheshtë me kabllo, dhe një cep i qetë për t'u ulur. I rinovuar së fundmi — çarçafët, pajisjet e banjos dhe dyshemeja janë të gjitha të reja në vitin 2024."
+    description: "30 metra katrorë të gjerë, krevat dopio, dush me kabinë me bide, TV me ekran të sheshtë me kabllo, dhe një cep i qetë për t'u ulur. I rinovuar së fundmi — çarçafët, pajisjet e banjos dhe dyshemeja janë të gjitha të reja në vitin 2024."
     amenities: ["renovated-2024", "air-con", "mini-fridge", "private-bath", "flat-tv"]
 
   - id: "deluxe-queen"
@@ -315,7 +315,7 @@ rooms:
     beds: "1 krevat dopio"
     view: "Qytet"
     outdoor: "—"
-    description: "Njëzet e shtatë metra katrorë rehati e rafinuar — krevat dopio, dush me kabinë me bide, TV me ekran të sheshtë me kabllo. I rinovuar në 2024 me çarçafë të freskët dhe pajisje neutrale e të qeta. Një dhomë e qetë për dy."
+    description: "27 metra katrorë rehati e rafinuar — krevat dopio, dush me kabinë me bide, TV me ekran të sheshtë me kabllo. I rinovuar në 2024 me çarçafë të freskët dhe pajisje neutrale e të qeta. Një dhomë e qetë për 2."
     amenities: ["renovated-2024", "shower", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "deluxe-balcony"
@@ -328,7 +328,7 @@ rooms:
     beds: "1 krevat dopio"
     view: "Rrugë e qetë"
     outdoor: "Ballkon"
-    description: "Tridhjetë metra katrorë me ballkon privat në një rrugë anësore më të qetë — më freskët në verë, më e lehtë për të fjetur. Dush me kabinë, TV me ekran të sheshtë, mini-frigorifer. I rinovuar në 2024."
+    description: "30 metra katrorë me ballkon privat në një rrugë anësore më të qetë — më freskët në verë, më e lehtë për të fjetur. Dush me kabinë, TV me ekran të sheshtë, mini-frigorifer. I rinovuar në 2024."
     amenities: ["renovated-2024", "balcony", "air-con", "mini-fridge", "flat-tv"]
 
   - id: "quad-sea"
@@ -341,7 +341,7 @@ rooms:
     beds: "1 dopio · 2 krevate marinari"
     view: "Det"
     outdoor: "Ballkon"
-    description: "Tre shtretër, një ballkon me pamje drejt e në Adriatik, dhe njëzet e shtatë metra katrorë hapësirë e organizuar mirë. E ndërtuar për familjet që duan detin përpara tyre kur zgjohen."
+    description: "3 shtretër, një ballkon me pamje drejt e në Adriatik, dhe 27 metra katrorë hapësirë e organizuar mirë. E ndërtuar për familjet që duan detin përpara tyre kur zgjohen."
     amenities: ["sea-view", "balcony", "air-con", "wifi", "family-friendly"]
 
   - id: "family-balcony-city"
@@ -354,7 +354,7 @@ rooms:
     beds: "1 dopio · 2 krevate marinari"
     view: "Qytet"
     outdoor: "Ballkon"
-    description: "Tridhjetë metra katrorë, tre shtretër, një ballkon mbi bulevard. Miqësore për familjet pa kompromis: prindërit në krevatin dopio, fëmijët në krevatet marinari, dhe një ballkon për të pirë kafe ndërsa ata flenë gjatë."
+    description: "30 metra katrorë, 3 shtretër, një ballkon mbi bulevard. Miqësore për familjet pa kompromis: prindërit në krevatin dopio, fëmijët në krevatet marinari, dhe një ballkon për të pirë kafe ndërsa ata flenë gjatë."
     amenities: ["balcony", "air-con", "mini-fridge", "wifi", "family-friendly"]
 
   - id: "family-balcony"
@@ -367,7 +367,7 @@ rooms:
     beds: "1 dopio · 2 krevate marinari · 1 divan-krevat"
     view: "Det"
     outdoor: "Ballkon"
-    description: "Dhoma më fleksibile në shtëpi — një dopio, dy krevate marinari dhe një divan i palosshëm, të gjitha me ballkon nga deti. Deri në pesë mysafirë në një dhomë të vetme, të menduar mirë, prej tridhjetë metrash katrorë."
+    description: "Dhoma më fleksibile në shtëpi — një dopio, 2 krevate marinari dhe një divan i palosshëm, të gjitha me ballkon nga deti. Deri në 5 mysafirë në një dhomë të vetme, të menduar mirë, prej 30 metrash katrorë."
     amenities: ["balcony", "sea-view", "air-con", "sofa-bed", "family-friendly"]
 
   - id: "triple-room"

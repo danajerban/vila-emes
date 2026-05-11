@@ -269,7 +269,7 @@ rooms:
   - id: "apt-1bed-terrace"
     family: "apartments"
     order: 1
-    name: "One-Bedroom Apartment with Terrace"
+    name: "1-Bedroom Apartment with Terrace"
     size_m2: 80
     sleeps: 4
     sleeps_label: "up to 4 people"
@@ -282,7 +282,7 @@ rooms:
   - id: "apt-2bed"
     family: "apartments"
     order: 2
-    name: "Two-Bedroom Apartment with Balcony and Terrace"
+    name: "2-Bedroom Apartment with Balcony and Terrace"
     size_m2: 90
     sleeps: 6
     sleeps_label: "up to 6 people"
