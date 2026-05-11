@@ -1,6 +1,6 @@
 # Vila Emes — Hotel Website
 
-Static marketing site for [Vila Emes](https://vila-emes.pages.dev), a small family-run hotel in Plazh, Durrës, Albania. Run by **Shaban Emes** with his daughter and son since **1998**. Two generations of one family by the sea.
+Static marketing site for [Vila Emes](https://vila-emes.pages.dev), a small family-run hotel in Plazh, Durrës, Albania. Run by **Shaban Emes** with his daughter and son since **1998**. 2 generations of one family by the sea.
 
 The site is **not** a reservation system — every booking CTA links to **Booking.com**. Other CTAs link to Google Maps, Instagram, WhatsApp, email, and phone.
 

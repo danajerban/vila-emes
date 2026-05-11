@@ -10,7 +10,7 @@
 
 **Guest Satisfaction:** Highly rated for its attentive staff, convenient location, and beach access.
 
-Couples in particular like the location – they rated it 9.5 for a two-person trip.
+Couples in particular like the location – they rated it 9.5 for a 2-person trip.
 
 > Distance in property description is calculated using © OpenStreetMap
 
@@ -31,7 +31,7 @@ Couples in particular like the location – they rated it 9.5 for a two-person t
 *Automated summary based on 47 reviews from the past 12 months.*
 
 - **Location:** Surrounded by restaurants, cafes, supermarkets, and public transport links.
-- **Beach Access:** A two-minute walk to public and private swimming areas.
+- **Beach Access:** A 2-minute walk to public and private swimming areas.
 - **Housekeeping:** Daily service keeps rooms spotless with fresh linens.
 - **Staff:** Friendly team available 24/7 to assist with requests.
 - **Host:** Welcoming family owners provide personal assistance with parking and local tips.
@@ -75,7 +75,7 @@ Couples in particular like the location – they rated it 9.5 for a two-person t
 >
 > — **Etain**, Ireland
 
-> We are four Italians on vacation and we decided to stay at this property, managed by a truly lovely and kind gentleman. Really fair price for the type of service. The rooms are equipped with a refrigerator and air conditioning. Complimentary toiletries provided, impeccable cleanliness. The furnishings in the rooms are very simple and humble, but this certainly won't affect your stay, because everything else will be exceptional. Location very close to the sea, on a long avenue full of shops. Breakfast is not included, but there's a good pastry shop just below the hotel that also serves cappuccino and excellent espresso.
+> We are 4 Italians on vacation and we decided to stay at this property, managed by a truly lovely and kind gentleman. Really fair price for the type of service. The rooms are equipped with a refrigerator and air conditioning. Complimentary toiletries provided, impeccable cleanliness. The furnishings in the rooms are very simple and humble, but this certainly won't affect your stay, because everything else will be exceptional. Location very close to the sea, on a long avenue full of shops. Breakfast is not included, but there's a good pastry shop just below the hotel that also serves cappuccino and excellent espresso.
 >
 > — **Anna**, Germany
 
@@ -411,7 +411,7 @@ The spacious double room offers air conditioning, a seating area, as well as a p
 
 ---
 
-## Two-Bedroom Apartment with Balcony and Terrace
+## 2-Bedroom Apartment with Balcony and Terrace
 
 **Tags:** Entire apartment · 90 m² · Private kitchen · Private bathroom · Balcony · Sea view · City view · Air conditioning · Patio · Flat-screen TV · Terrace · Free Wifi
 
