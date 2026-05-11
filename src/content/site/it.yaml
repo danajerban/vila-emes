@@ -111,7 +111,7 @@ home:
       - q: "A che ora sono il check-in e il check-out?"
         a: "Check-in dalle 12:00 alle 18:00. Check-out dalle 07:00 alle 11:00. La reception è aperta 24 ore su 24, quindi gli arrivi tardivi non sono un problema — basta avvisarci su WhatsApp così possiamo accogliervi."
       - q: "La colazione è inclusa?"
-        a: "La colazione non è inclusa nel prezzo della camera, ma la nostra pasticceria al piano terra apre presto e serve cappuccino, espresso e pasticcini freschi — a cinque passi dalla hall."
+        a: "La colazione non è inclusa nel prezzo della camera, ma la nostra pasticceria al piano terra apre presto e serve cappuccino, espresso e pasticcini freschi — a cinque passi dalla reception."
       - q: "I lettini in spiaggia sono inclusi?"
         a: "I lettini e gli ombrelloni in spiaggia non sono inclusi nel prezzo della camera. Si noleggiano direttamente in spiaggia, a giornata."
       - q: "Dove posso parcheggiare?"
