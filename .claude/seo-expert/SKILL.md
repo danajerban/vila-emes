@@ -128,7 +128,7 @@ const alternates = LOCALES.map((l) => ({
 [`astro-seo`](https://github.com/jonasmerlin/astro-seo) is a maintained component that bundles canonical, hreflang (`languageAlternates`), Open Graph, Twitter Cards, and an `extend` prop for arbitrary `<meta>`/`<link>` tags. It's the lower-effort default for most projects. The hand-rolled `<Seo>` above is only needed if a dependency is unwelcome or behaviour beyond the package's surface is required.
 
 ```bash
-npm install astro-seo
+pnpm add astro-seo
 ```
 
 ```astro
@@ -193,7 +193,7 @@ The package does **not** emit JSON-LD — keep the `set:html` JSON-LD blocks bel
 ### 2. Sitemap (auto hreflang)
 
 ```bash
-npx astro add sitemap --yes
+pnpm exec astro add sitemap --yes
 ```
 
 ```js
@@ -381,9 +381,9 @@ const breadcrumbLd = {
 
 After implementing any of the above, run all of these:
 
-- `npx astro check` — TS + content schema clean.
-- `npm run build` — produces `dist/sitemap-index.xml` and `dist/sitemap-0.xml`. Open `sitemap-0.xml` and confirm `<xhtml:link rel="alternate" hreflang>` entries for all four locales on every URL.
-- View source on `npm run preview` for `/`, `/rooms`, `/contact` and one localized mirror (e.g. `/al/`). Check: canonical points to the page itself in its own locale; hreflang tags include `en/sq/it/de/x-default`; one JSON-LD block per intended schema; OG image is absolute.
+- `pnpm exec astro check` — TS + content schema clean.
+- `pnpm build` — produces `dist/sitemap-index.xml` and `dist/sitemap-0.xml`. Open `sitemap-0.xml` and confirm `<xhtml:link rel="alternate" hreflang>` entries for all four locales on every URL.
+- View source on `pnpm preview` for `/`, `/rooms`, `/contact` and one localized mirror (e.g. `/al/`). Check: canonical points to the page itself in its own locale; hreflang tags include `en/sq/it/de/x-default`; one JSON-LD block per intended schema; OG image is absolute.
 - Paste a built page into Google's [Rich Results Test](https://search.google.com/test/rich-results) — Hotel + FAQ should validate.
 - Paste a URL into a Twitter / Facebook debugger to confirm OG image renders at 1200×630.
 - Confirm `dist/robots.txt` exists and points to the right sitemap URL.

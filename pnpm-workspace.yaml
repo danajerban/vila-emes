@@ -1,0 +1,11 @@
+packages:
+  - .
+
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+strictDepBuilds: true
+dangerouslyAllowAllBuilds: false
+savePrefix: ""
+allowBuilds:
+  esbuild: true
+  sharp: true

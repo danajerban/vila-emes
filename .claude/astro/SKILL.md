@@ -31,7 +31,7 @@ Astro is the web framework for content-driven websites. This file is the upstrea
 | No client framework | Vanilla TS only (lightbox, lang switcher, mobile nav, FAQ, sticky header, room filter, mailto compose, reveal-on-scroll). |
 | Photo pipeline | `node scripts/optimize-photos.mjs` reads `$PHOTOS_SOURCE/<folder>/` (set in `.env`) and writes 3-size webp into `src/assets/photos/`. Curated picks documented in `docs/photos-shortlist.md`. |
 | Hosting | Cloudflare Pages, auto-build on push to `main`. Site URL `https://www.vilaemes.com`. CF Pages preview also lives at `vila-emes.pages.dev` (redirect to canonical once domain is live). |
-| Local dev | `npm run dev` → `http://localhost:4321`. iOS-only bugs: tunnel via ngrok; `vite.server.allowedHosts` already permits `.ngrok-free.app`. |
+| Local dev | `pnpm dev` → `http://localhost:4321`. iOS-only bugs: tunnel via ngrok; `vite.server.allowedHosts` already permits `.ngrok-free.app`. |
 
 ---
 
@@ -42,11 +42,11 @@ CLI looks for `astro.config.js`, `astro.config.mjs`, `astro.config.cjs`, and `as
 
 ### CLI Commands
 
-- `npx astro dev` - Start the development server.
-- `npx astro build` - Build your project and write it to disk.
-- `npx astro check` - Check your project for errors.
-- `npx astro add` - Add an integration.
-- `npx astro sync` - Generate TypeScript types for all Astro modules.
+- `pnpm exec astro dev` - Start the development server.
+- `pnpm exec astro build` - Build your project and write it to disk.
+- `pnpm exec astro check` - Check your project for errors.
+- `pnpm exec astro add` - Add an integration.
+- `pnpm exec astro sync` - Generate TypeScript types for all Astro modules.
 
 **Re-run after adding/changing plugins.**
 
@@ -174,13 +174,13 @@ const { title, body } = Astro.props;
 ### Build + preview
 
 ```bash
-npm run dev        # http://localhost:4321  (HMR)
-npx astro check    # TS + content collection schema check — run before commits
-npm run build      # → dist/ (Cloudflare Pages reads this)
-npm run preview    # serve dist/ locally
+pnpm dev           # http://localhost:4321  (HMR)
+pnpm exec astro check    # TS + content collection schema check — run before commits
+pnpm build         # → dist/ (Cloudflare Pages reads this)
+pnpm preview       # serve dist/ locally
 ```
 
-`npx astro sync` regenerates `astro:content` types after editing `src/content.config.ts` or YAML schema. Re-run after schema changes.
+`pnpm exec astro sync` regenerates `astro:content` types after editing `src/content.config.ts` or YAML schema. Re-run after schema changes.
 
 ### Photo pipeline
 
@@ -196,9 +196,9 @@ Picks per slot are documented in `docs/photos-shortlist.md`. Implementer applies
 
 ## Deployment — Cloudflare Pages (no adapter)
 
-**No SSR adapter is installed and none is needed.** The site is pure static SSG. `npm run build` produces `dist/` and Cloudflare Pages serves it.
+**No SSR adapter is installed and none is needed.** The site is pure static SSG. `pnpm build` produces `dist/` and Cloudflare Pages serves it.
 
-If on-demand rendering ever becomes a requirement (e.g. a real reservations API), `npx astro add cloudflare --yes` is the right path — Cloudflare Pages Functions match the existing host. Until then: **do not add an adapter**.
+If on-demand rendering ever becomes a requirement (e.g. a real reservations API), `pnpm exec astro add cloudflare --yes` is the right path — Cloudflare Pages Functions match the existing host. Until then: **do not add an adapter**.
 
 `docs.astro.build/llms.txt` is a useful prompt context if context7 is unavailable.
 

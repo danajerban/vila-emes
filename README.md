@@ -28,10 +28,10 @@ The site is **not** a reservation system — every booking CTA links to **Bookin
 ## Local dev
 
 ```bash
-npm install        # one-time
-npm run dev        # http://localhost:4321
-npm run build      # → dist/
-npm run preview    # serve dist/
+pnpm install --frozen-lockfile  # one-time
+pnpm dev                        # http://localhost:4321
+pnpm build                      # -> dist/
+pnpm preview                    # serve dist/
 ```
 
 ## Photo pipeline
@@ -84,11 +84,11 @@ src/
 
 | Command | Action |
 |---|---|
-| `npm run dev` | Start dev server at `http://localhost:4321` |
-| `npm run build` | Build production site to `dist/` |
-| `npm run preview` | Preview the built site locally |
+| `pnpm dev` | Start dev server at `http://localhost:4321` |
+| `pnpm build` | Build production site to `dist/` |
+| `pnpm preview` | Preview the built site locally |
 | `node scripts/optimize-photos.mjs` | Regenerate optimized webps from `PHOTOS_SOURCE` (set in `.env`) |
-| `./node_modules/.bin/svgo --multipass <path>` | Optimize an SVG in place |
+| `pnpm svgo --multipass <path>` | Optimize an SVG in place |
 
 ## Claude Code
 
