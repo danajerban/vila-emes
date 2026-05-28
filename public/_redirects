@@ -4,3 +4,8 @@
 # Old OG image URL (before PNG → JPG conversion) — keep any cached or
 # externally-linked refs working. 301 because the move is permanent.
 /og-image.png /og-image.jpg 301
+
+# Bots/tools probe the conventional /sitemap.xml; canonical is /sitemap-index.xml.
+# 301 because the location is permanent. Resolves Search Console "Not found (404)"
+# entries for legacy or convention-following crawlers.
+/sitemap.xml /sitemap-index.xml 301

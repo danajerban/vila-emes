@@ -27,6 +27,15 @@ export default defineConfig({
           de: "de",
         },
       },
+      // Inject x-default per URL so the sitemap matches the
+      // <link rel="alternate" hreflang="x-default"> emitted in <head>.
+      // @astrojs/sitemap's i18n option only emits the configured locale
+      // alternates — x-default isn't supported natively.
+      serialize(item) {
+        const home = "https://www.vilaemes.com/";
+        item.links = [...(item.links ?? []), { lang: "x-default", url: home }];
+        return item;
+      },
     }),
   ],
   vite: {

@@ -14,7 +14,7 @@ import ReadyToBookCTA from "../components/ReadyToBookCTA.astro";
 import Eyebrow from "../components/Eyebrow.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 import { getSite } from "../i18n/content";
-import type { Lang } from "../i18n/locales";
+import { localizedPath, type Lang } from "../i18n/locales";
 import { SITE } from "../config/site";
 import { faqPageJsonLd, jsonLdScriptBody } from "../lib/seo";
 
@@ -66,8 +66,6 @@ interface Props {
 }
 const { lang } = Astro.props;
 const site = await getSite(lang);
-
-const baseLink = lang === "en" ? "" : `/${lang}`;
 
 const home = site.data.home;
 const ui = site.data.ui;
@@ -147,7 +145,7 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger">
       {previewFamilies.map((p) => (
         <RoomCard
-          href={`${baseLink}/rooms#${p.room.id}`}
+          href={`${localizedPath(lang, "/rooms/")}#${p.room.id}`}
           bookHref={SITE.links.booking_com}
           bookLabel={ui.buttons.reserve}
           photos={p.photos}
@@ -219,7 +217,7 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
     headingPart2Handwritten={home.faq.heading_part_2_handwritten}
     items={home.faq.items}
     footerCtaHandwritten={home.faq.footer_cta_handwritten}
-    footerCtaHref={`${baseLink}/contact`}
+    footerCtaHref={localizedPath(lang, "/contact/")}
   />
   <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(faqPageJsonLd(home.faq.items))}></script>
 

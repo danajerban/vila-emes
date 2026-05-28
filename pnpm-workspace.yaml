@@ -9,3 +9,11 @@ savePrefix: ""
 allowBuilds:
   esbuild: true
   sharp: true
+
+# Pin transitive deps that ship CVEs but haven't been bumped upstream yet.
+# Re-evaluate each entry when the parent package releases a fix.
+overrides:
+  # yaml@<2.8.3 — GHSA-48c2-rrv3-qjmp (Stack Overflow via deeply nested YAML).
+  # Reached only via astro-seo > @astrojs/check > volar-service-yaml chain
+  # (dev-only), but cheap to pin.
+  "yaml@<2.8.3": ">=2.8.3"

@@ -37,11 +37,20 @@ export function isLang(value: string): value is Lang {
   return (LOCALES as readonly string[]).includes(value);
 }
 
-// Build a path with the locale prefix. EN is unprefixed; others get `/<lang>` prefix.
+// Build a path with the locale prefix, always emitting a trailing slash.
+// EN is unprefixed; AL/IT/DE get `/<lang>` prefix.
+//
+// Trailing slash is canonical on Cloudflare Pages — `/foo` 308-redirects to
+// `/foo/`, which Search Console reports as "Page with redirect". All internal
+// hrefs must point to the trailing-slash form. Pass paths without anchors/
+// queries — for hash/query, build them separately:
+//   const base = localizedPath(lang, "/rooms/"); const href = `${base}#bed1`;
 export function localizedPath(lang: Lang, path: string): string {
   const clean = path.startsWith("/") ? path : `/${path}`;
-  if (lang === DEFAULT_LOCALE) return clean;
-  return `/${lang}${clean === "/" ? "" : clean}`;
+  const withSlash = clean.endsWith("/") ? clean : `${clean}/`;
+  if (lang === DEFAULT_LOCALE) return withSlash;
+  if (withSlash === "/") return `/${lang}/`;
+  return `/${lang}${withSlash}`;
 }
 
 // Strip a leading locale prefix from a path. Used by LangSwitch to find
