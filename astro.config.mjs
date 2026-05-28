@@ -31,9 +31,14 @@ export default defineConfig({
       // <link rel="alternate" hreflang="x-default"> emitted in <head>.
       // @astrojs/sitemap's i18n option only emits the configured locale
       // alternates — x-default isn't supported natively.
+      //
+      // x-default points to the EN equivalent of each URL (mirroring
+      // Seo.astro's per-page logic), not blanket-homepage. This keeps
+      // head and sitemap consistent so Search Console doesn't flag a
+      // discrepancy between the two signals.
       serialize(item) {
-        const home = "https://www.vilaemes.com/";
-        item.links = [...(item.links ?? []), { lang: "x-default", url: home }];
+        const enUrl = item.links?.find((l) => l.lang === "en")?.url ?? item.url;
+        item.links = [...(item.links ?? []), { lang: "x-default", url: enUrl }];
         return item;
       },
     }),

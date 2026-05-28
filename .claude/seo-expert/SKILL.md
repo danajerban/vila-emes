@@ -218,13 +218,21 @@ export default defineConfig({
           de: "de",
         },
       },
+      // x-default isn't emitted by the i18n option — inject it per URL
+      // pointing to the EN equivalent (mirrors Seo.astro's <head> logic
+      // so both signals agree).
+      serialize(item) {
+        const enUrl = item.links?.find((l) => l.lang === "en")?.url ?? item.url;
+        item.links = [...(item.links ?? []), { lang: "x-default", url: enUrl }];
+        return item;
+      },
     }),
   ],
   vite: { /* ...unchanged... */ },
 });
 ```
 
-`@astrojs/sitemap` will then emit `dist/sitemap-index.xml` + `dist/sitemap-0.xml` with `<xhtml:link rel="alternate" hreflang="…">` for every URL — no per-page hreflang code needed if you trust the sitemap. **Still keep per-page `<link rel="alternate" hreflang>`** for the in-page signal (search engines use both).
+`@astrojs/sitemap` will then emit `dist/sitemap-index.xml` + `dist/sitemap-0.xml` with `<xhtml:link rel="alternate" hreflang="…">` for every URL (including `x-default` via the `serialize` hook) — no per-page hreflang code needed if you trust the sitemap. **Still keep per-page `<link rel="alternate" hreflang>`** for the in-page signal (search engines use both).
 
 ### 3. `public/robots.txt`
 
