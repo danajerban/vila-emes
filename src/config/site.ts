@@ -37,6 +37,7 @@ export const SITE = {
   distances: [
     { value: "35 km", label: "Tirana International Airport", blurb: "Door-to-door taxis run all day; ~35 minutes in light traffic." },
     { value: "100 m", label: "Durrës Beach", blurb: "A 2-minute walk through the palm-lined avenue." },
+    { value: "3 km", label: "Durrës Port", blurb: "Ferries from Bari and Ancona dock here — about a 10-minute drive." },
     { value: "3.5 km", label: "Centre of Durrës", blurb: "City buses pass the corner every 10 minutes." },
     { value: "5 km", label: "Durres Amphitheatre", blurb: "The 2nd-century Roman amphitheatre is a 10-minute drive." },
   ],
