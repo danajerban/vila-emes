@@ -13,6 +13,8 @@ seo:
   contact:
     title: "Contatta Vila Emes — Telefono, WhatsApp, Email"
     description: "Contatta Vila Emes, hotel a conduzione familiare a Durrës (Durazzo). Reception 24 ore, WhatsApp, telefono, email — rispondiamo in giornata."
+  hotel_description: "Hotel a conduzione familiare ed economico a Plazh, Durrës (Durazzo), 100 m dalla spiaggia — ottimo rapporto qualità-prezzo per vacanze in famiglia dal 1998."
+  og_image_alt: "Vista frontale di Vila Emes — hotel familiare sul viale alberato a Plazh, Durrës (Durazzo)"
 
 home:
   hero:
@@ -382,3 +384,14 @@ rooms:
     outdoor: "Balcone"
     description: "30 metri quadrati, un letto queen e un divano letto, balcone affacciato sul viale. La nostra scelta conveniente per 3 viaggiatori che vogliono la posizione senza il prezzo deluxe."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
+
+photo_alts:
+  apt-1bed-terrace: ["One-Bedroom Apartment with Terrace — appartamento, Vila Emes, Plazh, Durrës"]
+  apt-2bed: ["2-Bedroom Apartment with Balcony and Terrace — appartamento, Vila Emes, Plazh, Durrës"]
+  deluxe-king: ["Deluxe King Room — camera deluxe, Vila Emes, Plazh, Durrës"]
+  deluxe-queen: ["Deluxe Queen Room — camera deluxe, Vila Emes, Plazh, Durrës"]
+  deluxe-balcony: ["Deluxe Double Room with Balcony — camera deluxe, Vila Emes, Plazh, Durrës"]
+  quad-sea: ["Quadruple Room with Sea View — camera familiare vista mare, Vila Emes, Plazh, Durrës"]
+  family-balcony-city: ["Family Room (City Balcony) — camera familiare, Vila Emes, Plazh, Durrës"]
+  family-balcony: ["Family Room with Balcony — camera familiare vista mare, Vila Emes, Plazh, Durrës"]
+  triple-room: ["Economic Triple Room — camera, Vila Emes, Plazh, Durrës"]

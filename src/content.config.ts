@@ -62,10 +62,17 @@ export const collections = {
       }),
 
       seo: z.object({
-        home: z.object({ title: z.string(), description: z.string() }),
-        rooms: z.object({ title: z.string(), description: z.string() }),
-        contact: z.object({ title: z.string(), description: z.string() }),
+        home: z.object({ title: z.string().max(60), description: z.string().max(160) }),
+        rooms: z.object({ title: z.string().max(60), description: z.string().max(160) }),
+        contact: z.object({ title: z.string().max(60), description: z.string().max(160) }),
+        hotel_description: z.string(),
+        og_image_alt: z.string(),
       }),
+
+      // Localized alt text for room photos, keyed by room id, index-aligned to
+      // roomPhotos[roomId] in RoomsView.astro. Index 0 = lead photo alt. Sparse:
+      // missing entries / "" mean a decorative near-duplicate (alt="").
+      photo_alts: z.record(z.string(), z.array(z.string())),
 
       home: z.object({
         hero: z.object({

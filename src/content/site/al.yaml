@@ -13,6 +13,8 @@ seo:
   contact:
     title: "Kontakt Vila Emes — Telefon, WhatsApp, Email"
     description: "Na kontaktoni në Vila Emes, hotel familjar në Plazh, Durrës. Recepsion 24-orësh, WhatsApp, telefon, email — përgjigjemi po atë ditë."
+  hotel_description: "Hotel familjar ekonomik me çmim të lirë në Plazh, Durrës, 100 m nga deti — vlerë e mirë për pushime familjare që nga 1998."
+  og_image_alt: "Pamja e përparme e Vila Emes — hotel familjar në bulevardin me palma në Plazh, Durrës"
 
 home:
   hero:
@@ -382,3 +384,14 @@ rooms:
     outdoor: "Ballkon"
     description: "30 metra katrorë, një krevat dopio dhe një divan i palosshëm, ballkon mbi bulevard. Zgjedhja jonë me vlerë për 3 udhëtarë që duan vendndodhjen pa çmimin deluxe."
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
+
+photo_alts:
+  apt-1bed-terrace: ["One-Bedroom Apartment with Terrace — apartament, Vila Emes, Plazh, Durrës"]
+  apt-2bed: ["2-Bedroom Apartment with Balcony and Terrace — apartament, Vila Emes, Plazh, Durrës"]
+  deluxe-king: ["Deluxe King Room — dhomë deluxe, Vila Emes, Plazh, Durrës"]
+  deluxe-queen: ["Deluxe Queen Room — dhomë deluxe, Vila Emes, Plazh, Durrës"]
+  deluxe-balcony: ["Deluxe Double Room with Balcony — dhomë deluxe, Vila Emes, Plazh, Durrës"]
+  quad-sea: ["Quadruple Room with Sea View — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
+  family-balcony-city: ["Family Room (City Balcony) — dhomë familjare, Vila Emes, Plazh, Durrës"]
+  family-balcony: ["Family Room with Balcony — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
+  triple-room: ["Economic Triple Room — dhomë, Vila Emes, Plazh, Durrës"]
