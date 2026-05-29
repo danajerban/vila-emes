@@ -50,7 +50,7 @@ const localeAlternate = LOCALES
   canonical={canonical}
   noindex={noindex}
   nofollow={noindex}
-  languageAlternates={languageAlternates}
+  languageAlternates={noindex ? undefined : languageAlternates}
   openGraph={{
     basic: {
       title,
