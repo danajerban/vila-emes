@@ -42,7 +42,7 @@ export const SITE = {
     { value: "100 m", label: "Durrës Beach" },
     { value: "3 km", label: "Durrës Port" },
     { value: "3.5 km", label: "Centre of Durrës" },
-    { value: "5 km", label: "Durres Amphitheatre" },
+    { value: "5 km", label: "Durrës Amphitheatre" },
   ],
 } as const;
 
