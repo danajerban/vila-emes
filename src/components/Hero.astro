@@ -52,6 +52,7 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
           widths={[800, 1200, 1600, 2400]}
           sizes="100vw"
           formats={['avif', 'webp']}
+          fallbackFormat="webp"
           quality={72}
           loading={i === 0 ? "eager" : "lazy"}
           fetchpriority={i === 0 ? "high" : undefined}

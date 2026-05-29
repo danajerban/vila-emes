@@ -25,6 +25,7 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
           widths={[400, 600, 800, 1200]}
           sizes="(max-width: 768px) 90vw, (max-width: 1180px) 50vw, 280px"
           formats={['avif', 'webp']}
+          fallbackFormat="webp"
           quality={72}
           loading={i === 0 ? "eager" : "lazy"}
           class="w-full aspect-[4/3] object-cover rounded-md"
