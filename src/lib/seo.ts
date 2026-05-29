@@ -8,11 +8,12 @@ import { SITE } from "../config/site";
 // Owner decisions baked in:
 //   - `starRating` is OMITTED — no official Albanian Ministry of Tourism
 //     classification on file.
-//   - `aggregateRating` is OMITTED — Google treats a business marking up a
-//     rating of itself (LocalBusiness/Hotel) as self-serving and ineligible
-//     for the star review feature, regardless of accuracy, so it could never
-//     surface. The real Booking 9.0 / Google 4.7 scores stay VISIBLE in the
-//     TrustStrip instead (plain content, no schema — which Google permits).
+//   - `aggregateRating` is OMITTED — the property itself is valid, but a
+//     SELF-SUPPLIED rating (a business marking up a rating of itself,
+//     LocalBusiness/Hotel) is not eligible to generate Google's star rich
+//     result and risks a review-snippet manual action, so it can't earn a
+//     snippet here. The real Booking 9.0 / Google 4.7 scores stay VISIBLE in
+//     the TrustStrip instead (plain content, no schema — which Google permits).
 export function hotelJsonLd(name: string, tagline: string) {
   return {
     "@context": "https://schema.org",
