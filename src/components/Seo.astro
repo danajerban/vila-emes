@@ -9,9 +9,10 @@ interface Props {
   description?: string;
   pathname: string;
   ogImage?: string;
+  ogImageAlt?: string;
   noindex?: boolean;
 }
-const { lang, title, description, pathname, ogImage = "/og-image.jpg", noindex = false } = Astro.props;
+const { lang, title, description, pathname, ogImage = "/og-image.jpg", ogImageAlt, noindex = false } = Astro.props;
 
 // Astro emits pathnames with a trailing slash for collection-style routes
 // (e.g. "/al/", "/it/contact/"). Mirror that exact form in the canonical so
@@ -65,7 +66,7 @@ const localeAlternate = LOCALES
       localeAlternate,
     },
     image: {
-      alt: title,
+      alt: ogImageAlt ?? title,
       type: "image/jpeg",
       width: 1200,
       height: 630,
@@ -76,6 +77,6 @@ const localeAlternate = LOCALES
     title,
     description,
     image: ogImageUrl,
-    imageAlt: title,
+    imageAlt: ogImageAlt ?? title,
   }}
 />

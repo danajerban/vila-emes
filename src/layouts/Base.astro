@@ -20,7 +20,7 @@ const htmlLang = LOCALE_TO_LANG[lang];
 const site = await getSite(lang);
 const waText = site.data.home.ready_cta?.wa_text ?? "Hello, I'd like to book at Vila Emes";
 
-const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
+const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.seo.hotel_description);
 ---
 <!doctype html>
 <html lang={htmlLang} data-vibe="sunset">
@@ -29,7 +29,7 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.hotel.tagline);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <Seo lang={lang} title={title} description={description} pathname={Astro.url.pathname} noindex={noindex} />
+    <Seo lang={lang} title={title} description={description} ogImageAlt={site.data.seo.og_image_alt} pathname={Astro.url.pathname} noindex={noindex} />
     {!noindex && <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(jsonLd)}></script>}
 
     <ClientRouter />
