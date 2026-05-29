@@ -70,8 +70,9 @@ export const collections = {
       }),
 
       // Localized alt text for room photos, keyed by room id, index-aligned to
-      // roomPhotos[roomId] in RoomsView.astro. Index 0 = lead photo alt. Sparse:
-      // missing entries / "" mean a decorative near-duplicate (alt="").
+      // roomPhotos[roomId] in RoomsView.astro. Index 0 = lead photo alt (must be
+      // non-empty). Sparse: missing entries / "" mean a decorative near-duplicate
+      // (alt="").
       photo_alts: z.record(z.string(), z.array(z.string())),
 
       home: z.object({
