@@ -403,9 +403,28 @@ photo_alts:
     - ""
     - "City view over the avenue — Vila Emes, Plazh, Durrës"
     - "Bathroom with walk-in shower — Vila Emes, Plazh, Durrës"
-  deluxe-king: ["Deluxe King Room — deluxe room, Vila Emes, Plazh, Durrës"]
-  deluxe-queen: ["Deluxe Queen Room — deluxe room, Vila Emes, Plazh, Durrës"]
-  deluxe-balcony: ["Deluxe Double Room with Balcony — deluxe room, Vila Emes, Plazh, Durrës"]
+  deluxe-king:
+    - "Deluxe King Room — deluxe room, Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - ""
+    - "City view over the avenue from the window seat — Vila Emes, Plazh, Durrës"
+    - "Walk-in shower in the renovated bathroom — Vila Emes, Plazh, Durrës"
+  deluxe-queen:
+    - "Deluxe Queen Room — deluxe room, Vila Emes, Plazh, Durrës"
+    - ""
+    - "Walk-in shower with bidet in the renovated bathroom — Vila Emes, Plazh, Durrës"
+    - ""
+    - "City view over the avenue from the window seat — Vila Emes, Plazh, Durrës"
+    - ""
+  deluxe-balcony:
+    - "Deluxe Double Room with Balcony — deluxe room, Vila Emes, Plazh, Durrës"
+    - "Private balcony with table and chairs onto a quiet side street — Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - ""
+    - "Walk-in shower with bidet in the renovated bathroom — Vila Emes, Plazh, Durrës"
+    - ""
   quad-sea: ["Quadruple Room with Sea View — sea-view family room, Vila Emes, Plazh, Durrës"]
   family-balcony-city: ["Family Room (City Balcony) — family room, Vila Emes, Plazh, Durrës"]
   family-balcony: ["Family Room with Balcony — sea-view family room, Vila Emes, Plazh, Durrës"]

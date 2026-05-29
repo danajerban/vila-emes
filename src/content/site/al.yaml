@@ -403,9 +403,28 @@ photo_alts:
     - ""
     - "Pamje nga qyteti mbi bulevardin — Vila Emes, Plazh, Durrës"
     - "Banjo me dush — Vila Emes, Plazh, Durrës"
-  deluxe-king: ["Deluxe King Room — dhomë deluxe, Vila Emes, Plazh, Durrës"]
-  deluxe-queen: ["Deluxe Queen Room — dhomë deluxe, Vila Emes, Plazh, Durrës"]
-  deluxe-balcony: ["Deluxe Double Room with Balcony — dhomë deluxe, Vila Emes, Plazh, Durrës"]
+  deluxe-king:
+    - "Deluxe King Room — dhomë deluxe, Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - ""
+    - "Pamje nga qyteti drejt bulevardit nga ndenjësja te dritarja — Vila Emes, Plazh, Durrës"
+    - "Dush në banjon e rinovuar — Vila Emes, Plazh, Durrës"
+  deluxe-queen:
+    - "Deluxe Queen Room — dhomë deluxe, Vila Emes, Plazh, Durrës"
+    - ""
+    - "Dush me bide në banjon e rinovuar — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Pamje nga qyteti drejt bulevardit nga ndenjësja te dritarja — Vila Emes, Plazh, Durrës"
+    - ""
+  deluxe-balcony:
+    - "Deluxe Double Room with Balcony — dhomë deluxe, Vila Emes, Plazh, Durrës"
+    - "Ballkon privat me tavolinë e karrige nga një rrugë anësore e qetë — Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - ""
+    - "Dush me bide në banjon e rinovuar — Vila Emes, Plazh, Durrës"
+    - ""
   quad-sea: ["Quadruple Room with Sea View — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
   family-balcony-city: ["Family Room (City Balcony) — dhomë familjare, Vila Emes, Plazh, Durrës"]
   family-balcony: ["Family Room with Balcony — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
