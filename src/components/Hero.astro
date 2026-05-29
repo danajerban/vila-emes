@@ -46,20 +46,45 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
         data-slide-index={i}
         data-active={i === 0 ? "true" : "false"}
       >
-        <Picture
-          src={slide}
-          alt={slideAlts?.[i] ?? fallbackAlt}
-          widths={[800, 1200, 1600, 2400]}
-          sizes="100vw"
-          formats={['avif', 'webp']}
-          fallbackFormat="webp"
-          quality={72}
-          loading={i === 0 ? "eager" : "lazy"}
-          fetchpriority={i === 0 ? "high" : undefined}
-          class="absolute inset-0 w-full h-full object-cover sunset-photo hero-img"
-        />
-        <div class="sunset-overlay"></div>
-        <div class="sunset-vignette"></div>
+        {i === 0 ? (
+          <>
+            <Picture
+              src={slide}
+              alt={slideAlts?.[i] ?? fallbackAlt}
+              widths={[800, 1200, 1600, 2400]}
+              sizes="100vw"
+              formats={['avif', 'webp']}
+              fallbackFormat="webp"
+              quality={72}
+              loading="eager"
+              fetchpriority="high"
+              class="absolute inset-0 w-full h-full object-cover sunset-photo hero-img"
+            />
+            <div class="sunset-overlay"></div>
+            <div class="sunset-vignette"></div>
+          </>
+        ) : (
+          /* Slides 2+ live in an inert <template> so the browser doesn't fetch
+             them during the initial paint — they sit in-viewport, so loading="lazy"
+             alone wouldn't defer them. The slideshow script clones them in after
+             LCP / before they rotate into view. Cuts initial image payload and
+             frees bandwidth for the LCP slide. */
+          <template data-slide-deferred>
+            <Picture
+              src={slide}
+              alt={slideAlts?.[i] ?? fallbackAlt}
+              widths={[800, 1200, 1600, 2400]}
+              sizes="100vw"
+              formats={['avif', 'webp']}
+              fallbackFormat="webp"
+              quality={72}
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover sunset-photo hero-img"
+            />
+            <div class="sunset-overlay"></div>
+            <div class="sunset-vignette"></div>
+          </template>
+        )}
       </div>
     ))}
   </div>
@@ -249,11 +274,34 @@ const useRotator = !!(taglineStable && taglineRotators && taglineRotators.length
 
       // 1) Slideshow crossfade with Ken Burns
       const slides = hero.querySelectorAll(".hero-slide");
+
+      // Slides 2+ ship inside an inert <template> (see Hero markup) so the
+      // browser doesn't fetch them during the initial paint. Cloning the
+      // template content into the slide is what makes the image load. Idempotent.
+      const hydrateSlide = (slide) => {
+        const tpl = slide && slide.querySelector("template[data-slide-deferred]");
+        if (!tpl) return;
+        slide.appendChild(tpl.content.cloneNode(true));
+        tpl.remove();
+      };
+
       if (!reduced && slides.length > 1) {
+        // Pull the deferred slides in once the browser is idle (after LCP) and
+        // well before the first 6.5s rotation, so their bytes land off the
+        // critical path but the slideshow is ready when it starts.
+        const hydrateAll = () => slides.forEach(hydrateSlide);
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(hydrateAll, { timeout: 2500 });
+        } else {
+          setTimeout(hydrateAll, 1500);
+        }
+
         let current = 0;
         intervalIds.push(setInterval(() => {
+          const next = (current + 1) % slides.length;
+          hydrateSlide(slides[next]); // never reveal an empty slide if idle hydration lagged
           slides[current].setAttribute("data-active", "false");
-          current = (current + 1) % slides.length;
+          current = next;
           slides[current].setAttribute("data-active", "true");
         }, 6500));
       }
