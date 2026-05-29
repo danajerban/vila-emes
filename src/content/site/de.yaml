@@ -212,6 +212,12 @@ contact_page:
   directions:
     eyebrow: "Anfahrt"
     heading: "So finden Sie uns"
+    blurbs:
+      - "Taxis von Tür zu Tür den ganzen Tag; bei wenig Verkehr rund 35 Minuten."
+      - "Zwei Minuten zu Fuß über die palmengesäumte Allee."
+      - "Hier legen die Fähren aus Bari und Ancona an — rund 10 Minuten mit dem Auto."
+      - "Stadtbusse fahren alle 10 Minuten an der Ecke vorbei."
+      - "Das römische Amphitheater aus dem 2. Jahrhundert ist 10 Minuten mit dem Auto entfernt."
 
 ui:
   nav:

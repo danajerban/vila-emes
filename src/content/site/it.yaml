@@ -212,6 +212,12 @@ contact_page:
   directions:
     eyebrow: "Come arrivare"
     heading: "Come trovarci"
+    blurbs:
+      - "Taxi porta a porta tutto il giorno; circa 35 minuti con poco traffico."
+      - "Due minuti a piedi lungo il viale delle palme."
+      - "Qui attraccano i traghetti da Bari e Ancona — circa 10 minuti in auto."
+      - "Gli autobus urbani passano all'angolo ogni 10 minuti."
+      - "L'anfiteatro romano del II secolo è a 10 minuti in auto."
 
 ui:
   nav:

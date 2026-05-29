@@ -34,12 +34,15 @@ export const SITE = {
     google_review_count: 37,   // snapshot 2026-05-09
   },
 
+  // value + label are language-neutral; the per-locale prose blurb for each
+  // entry lives in contact_page.directions.blurbs in src/content/site/*.yaml,
+  // index-aligned to this array.
   distances: [
-    { value: "35 km", label: "Tirana International Airport", blurb: "Door-to-door taxis run all day; ~35 minutes in light traffic." },
-    { value: "100 m", label: "Durrës Beach", blurb: "A 2-minute walk through the palm-lined avenue." },
-    { value: "3 km", label: "Durrës Port", blurb: "Ferries from Bari and Ancona dock here — about a 10-minute drive." },
-    { value: "3.5 km", label: "Centre of Durrës", blurb: "City buses pass the corner every 10 minutes." },
-    { value: "5 km", label: "Durres Amphitheatre", blurb: "The 2nd-century Roman amphitheatre is a 10-minute drive." },
+    { value: "35 km", label: "Tirana International Airport" },
+    { value: "100 m", label: "Durrës Beach" },
+    { value: "3 km", label: "Durrës Port" },
+    { value: "3.5 km", label: "Centre of Durrës" },
+    { value: "5 km", label: "Durres Amphitheatre" },
   ],
 } as const;
 

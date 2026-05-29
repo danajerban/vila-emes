@@ -217,6 +217,11 @@ export const collections = {
         directions: z.object({
           eyebrow: z.string(),
           heading: z.string(),
+          // Localized prose for the location list, index-aligned to SITE.distances
+          // in src/config/site.ts (value + label stay there language-neutral; the
+          // blurb lives here per-locale). Locked to 5 so the build fails loudly if a
+          // distance is added/removed without updating every locale at that index.
+          blurbs: z.array(z.string()).min(5).max(5),
         }),
       }),
 

@@ -212,6 +212,12 @@ contact_page:
   directions:
     eyebrow: "Getting here"
     heading: "How to find us"
+    blurbs:
+      - "Door-to-door taxis run all day; ~35 minutes in light traffic."
+      - "A 2-minute walk through the palm-lined avenue."
+      - "Ferries from Bari and Ancona dock here — about a 10-minute drive."
+      - "City buses pass the corner every 10 minutes."
+      - "The 2nd-century Roman amphitheatre is a 10-minute drive."
 
 ui:
   nav:

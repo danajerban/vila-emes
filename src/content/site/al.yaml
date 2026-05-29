@@ -212,6 +212,12 @@ contact_page:
   directions:
     eyebrow: "Si të arrini"
     heading: "Si të na gjeni"
+    blurbs:
+      - "Taksi derë më derë gjatë gjithë ditës; rreth 35 minuta me trafik të lehtë."
+      - "Dy minuta në këmbë përgjatë bulevardit me palma."
+      - "Tragetet nga Bari dhe Ankona mbërrijnë këtu — rreth 10 minuta me makinë."
+      - "Autobusët e qytetit kalojnë te qoshja çdo 10 minuta."
+      - "Amfiteatri romak i shekullit të dytë është 10 minuta me makinë."
 
 ui:
   nav:
