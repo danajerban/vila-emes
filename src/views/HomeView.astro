@@ -71,6 +71,9 @@ const home = site.data.home;
 const ui = site.data.ui;
 const rooms = site.data.rooms;
 const get = (id: string) => rooms.find((r) => r.id === id)!;
+const photoAlts = site.data.photo_alts;
+const altFor = (roomId: string, i: number, lead: string) =>
+  photoAlts[roomId]?.[i] ?? (i === 0 ? lead : "");
 
 const previewFamilies = [
   { room: get("apt-2bed"),       photos: [imgApt2Bed1, imgApt2Bed2, imgApt2Bed3, imgApt2Bed4],         numberLabel: "01", familyLabel: ui.family_groups.apartments },
@@ -148,7 +151,7 @@ const galleryPhotos = [gFirstLight, gBeach, gEntrance, gPastry, gLocation, gNeig
           href={`${localizedPath(lang, "/rooms")}#${p.room.id}`}
           bookHref={SITE.links.booking_com}
           bookLabel={ui.buttons.reserve}
-          photos={p.photos}
+          photos={p.photos.map((src, i) => ({ src, alt: altFor(p.room.id, i, `${p.room.name} — Vila Emes, Plazh, Durrës`) }))}
           numberLabel={p.numberLabel}
           familyLabel={p.familyLabel}
           name={p.room.name}

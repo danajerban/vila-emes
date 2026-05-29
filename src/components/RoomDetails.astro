@@ -21,7 +21,7 @@ interface Props {
   capacity: string;
   description: string;
   amenities: { kind: AmenityKind; label: string }[];
-  photos: ImageMetadata[];
+  photos: { src: ImageMetadata; alt: string }[];
   bookHref: string;
   bookLabel: string;
   flip?: boolean;

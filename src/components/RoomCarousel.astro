@@ -3,7 +3,7 @@ import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 interface Props {
-  photos: ImageMetadata[];
+  photos: { src: ImageMetadata; alt: string }[];
   alt: string;
   autoplayMs?: number;
 }
@@ -20,8 +20,8 @@ const id = `rc-${Math.random().toString(36).slice(2, 8)}`;
     {photos.map((p, i) => (
       <div class="rc-slide snap-center shrink-0 w-full" data-slide-index={i}>
         <Picture
-          src={p}
-          alt={i === 0 ? alt : ""}
+          src={p.src}
+          alt={p.alt}
           widths={[400, 600, 800, 1200]}
           sizes="(max-width: 768px) 90vw, (max-width: 1180px) 50vw, 280px"
           formats={['avif', 'webp']}

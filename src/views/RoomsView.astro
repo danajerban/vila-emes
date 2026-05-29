@@ -100,6 +100,9 @@ const ui = site.data.ui;
 const page = site.data.rooms_page;
 const home = site.data.home;
 const rooms = site.data.rooms;
+const photoAlts = site.data.photo_alts;
+const altFor = (roomId: string, i: number, lead: string) =>
+  photoAlts[roomId]?.[i] ?? (i === 0 ? lead : "");
 
 const roomPhotos: Record<string, ImageMetadata[]> = {
   "apt-1bed-terrace":    [imgApt1Bed1, imgApt1Bed2, imgApt1Bed3, imgApt1Bed4, imgApt1Bed5, imgApt1Bed6, imgApt1Bed7],
@@ -165,7 +168,7 @@ const roomsLd = hotelRoomGraphJsonLd(
           capacity={r.sleeps_label}
           description={r.description}
           amenities={r.amenities.map((kind) => ({ kind, label: ui.amenity_labels[kind] }))}
-          photos={roomPhotos[r.id]}
+          photos={roomPhotos[r.id].map((src, i) => ({ src, alt: altFor(r.id, i, `${r.name} — Vila Emes, Plazh, Durrës`) }))}
           bookHref={SITE.links.booking_com}
           bookLabel={ui.buttons.book}
           flip={i % 2 === 1}
