@@ -6,6 +6,10 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.vilaemes.com",
+  // Inline all CSS into each page's <head> to drop the render-blocking
+  // stylesheet request (PSI mobile flagged ~610 ms). The bundle is ~10 KB
+  // brotli; ClientRouter drives internal nav so it isn't re-fetched per page.
+  build: { inlineStylesheets: "always" },
   i18n: {
     defaultLocale: "en",
     locales: ["en", "al", "it", "de"],
