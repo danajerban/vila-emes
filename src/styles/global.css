@@ -1,9 +1,17 @@
 @import "tailwindcss";
 @import "@fontsource-variable/cormorant-garamond";
 @import "@fontsource-variable/inter";
-@import "@fontsource/caveat/400.css";
-@import "@fontsource/caveat/500.css";
-@import "@fontsource/caveat/600.css";
+/* Caveat: latin + latin-ext subsets only (drops unused cyrillic/cyrillic-ext).
+   AL/IT/EN/DE need latin + latin-ext for diacritics (ë ç ä ö ü ß); the
+   variable Inter/Cormorant packages ship all subsets via a single axis CSS
+   with no per-subset entry, so they're left as-is — unicode-range already
+   prevents browsers fetching their cyrillic/greek/vietnamese subsets. */
+@import "@fontsource/caveat/latin-400.css";
+@import "@fontsource/caveat/latin-ext-400.css";
+@import "@fontsource/caveat/latin-500.css";
+@import "@fontsource/caveat/latin-ext-500.css";
+@import "@fontsource/caveat/latin-600.css";
+@import "@fontsource/caveat/latin-ext-600.css";
 
 @theme {
   /* Page surfaces */
