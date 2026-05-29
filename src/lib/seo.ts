@@ -2,8 +2,8 @@ import { SITE } from "../config/site";
 
 // Hotel JSON-LD blob for the Vila Emes site, emitted on every locale page.
 // Coords/address/contact/amenities are language-neutral; description is
-// pulled from the per-locale `siteData.hotel.tagline` so the Google hotel
-// panel surfaces localized copy.
+// pulled from the per-locale `siteData.seo.hotel_description` so the Google
+// hotel panel surfaces localized copy.
 //
 // Owner decisions baked in:
 //   - `starRating` is OMITTED — no official Albanian Ministry of Tourism
