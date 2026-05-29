@@ -425,9 +425,28 @@ photo_alts:
     - ""
     - "Dush me bide në banjon e rinovuar — Vila Emes, Plazh, Durrës"
     - ""
-  quad-sea: ["Quadruple Room with Sea View — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
-  family-balcony-city: ["Family Room (City Balcony) — dhomë familjare, Vila Emes, Plazh, Durrës"]
-  family-balcony: ["Family Room with Balcony — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
+  quad-sea:
+    - "Quadruple Room with Sea View — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"
+    - ""
+    - "Krevate kat në një dhomë familjare me pamje deti — Vila Emes, Plazh, Durrës"
+    - "Ballkon me pamje nga deti Adriatik — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Banjo me dush — Vila Emes, Plazh, Durrës"
+    - ""
+  family-balcony-city:
+    - "Family Room (City Balcony) — dhomë familjare, Vila Emes, Plazh, Durrës"
+    - "Krevate kat në një dhomë familjare — Vila Emes, Plazh, Durrës"
+    - "Ballkon me pamje nga qyteti mbi bulevardin — Vila Emes, Plazh, Durrës"
+    - "Banjo me dush — Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - ""
+  family-balcony:
+    - "Family Room with Balcony — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"
+    - "Kanape krevat në një dhomë familjare me pamje deti — Vila Emes, Plazh, Durrës"
+    - "Krevate kat në një dhomë familjare me pamje deti — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Ballkon me pamje nga deti Adriatik — Vila Emes, Plazh, Durrës"
   triple-room:
     - "Economic Triple Room — dhomë, Vila Emes, Plazh, Durrës"
     - "Kanape krevat pranë derës së ballkonit — Vila Emes, Plazh, Durrës"

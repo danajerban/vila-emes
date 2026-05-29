@@ -425,9 +425,28 @@ photo_alts:
     - ""
     - "Walk-in shower with bidet in the renovated bathroom — Vila Emes, Plazh, Durrës"
     - ""
-  quad-sea: ["Quadruple Room with Sea View — sea-view family room, Vila Emes, Plazh, Durrës"]
-  family-balcony-city: ["Family Room (City Balcony) — family room, Vila Emes, Plazh, Durrës"]
-  family-balcony: ["Family Room with Balcony — sea-view family room, Vila Emes, Plazh, Durrës"]
+  quad-sea:
+    - "Quadruple Room with Sea View — sea-view family room, Vila Emes, Plazh, Durrës"
+    - ""
+    - "Bunk beds in a sea-view family room — Vila Emes, Plazh, Durrës"
+    - "Balcony with Adriatic sea view — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Bathroom with walk-in shower — Vila Emes, Plazh, Durrës"
+    - ""
+  family-balcony-city:
+    - "Family Room (City Balcony) — family room, Vila Emes, Plazh, Durrës"
+    - "Bunk beds in a family room — Vila Emes, Plazh, Durrës"
+    - "Balcony with city view over the avenue — Vila Emes, Plazh, Durrës"
+    - "Bathroom with walk-in shower — Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - ""
+  family-balcony:
+    - "Family Room with Balcony — sea-view family room, Vila Emes, Plazh, Durrës"
+    - "Sofa bed in a sea-view family room — Vila Emes, Plazh, Durrës"
+    - "Bunk beds in a sea-view family room — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Balcony with Adriatic sea view — Vila Emes, Plazh, Durrës"
   triple-room:
     - "Economic Triple Room — room, Vila Emes, Plazh, Durrës"
     - "Sofa bed beside the balcony door — Vila Emes, Plazh, Durrës"

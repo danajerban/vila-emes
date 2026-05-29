@@ -425,9 +425,28 @@ photo_alts:
     - ""
     - "Dusche mit Bidet im renovierten Bad — Vila Emes, Plazh, Durrës"
     - ""
-  quad-sea: ["Quadruple Room with Sea View — Familienzimmer mit Meerblick, Vila Emes, Plazh, Durrës"]
-  family-balcony-city: ["Family Room (City Balcony) — Familienzimmer, Vila Emes, Plazh, Durrës"]
-  family-balcony: ["Family Room with Balcony — Familienzimmer mit Meerblick, Vila Emes, Plazh, Durrës"]
+  quad-sea:
+    - "Quadruple Room with Sea View — Familienzimmer mit Meerblick, Vila Emes, Plazh, Durrës"
+    - ""
+    - "Etagenbetten in einem Familienzimmer mit Meerblick — Vila Emes, Plazh, Durrës"
+    - "Balkon mit Meerblick auf die Adria — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Bad mit Dusche — Vila Emes, Plazh, Durrës"
+    - ""
+  family-balcony-city:
+    - "Family Room (City Balcony) — Familienzimmer, Vila Emes, Plazh, Durrës"
+    - "Etagenbetten in einem Familienzimmer — Vila Emes, Plazh, Durrës"
+    - "Balkon mit Stadtblick über die Allee — Vila Emes, Plazh, Durrës"
+    - "Bad mit Dusche — Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - ""
+  family-balcony:
+    - "Family Room with Balcony — Familienzimmer mit Meerblick, Vila Emes, Plazh, Durrës"
+    - "Schlafsofa in einem Familienzimmer mit Meerblick — Vila Emes, Plazh, Durrës"
+    - "Etagenbetten in einem Familienzimmer mit Meerblick — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Balkon mit Meerblick auf die Adria — Vila Emes, Plazh, Durrës"
   triple-room:
     - "Economic Triple Room — Zimmer, Vila Emes, Plazh, Durrës"
     - "Schlafsofa neben der Balkontür — Vila Emes, Plazh, Durrës"
