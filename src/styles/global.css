@@ -1,17 +1,14 @@
 @import "tailwindcss";
 @import "@fontsource-variable/cormorant-garamond";
 @import "@fontsource-variable/inter";
-/* Caveat: latin + latin-ext subsets only (drops unused cyrillic/cyrillic-ext).
-   AL/IT/EN/DE need latin + latin-ext for diacritics (ë ç ä ö ü ß); the
-   variable Inter/Cormorant packages ship all subsets via a single axis CSS
-   with no per-subset entry, so they're left as-is — unicode-range already
-   prevents browsers fetching their cyrillic/greek/vietnamese subsets. */
-@import "@fontsource/caveat/latin-400.css";
-@import "@fontsource/caveat/latin-ext-400.css";
+/* Caveat (handwritten accents): only weight 500 is rendered (.handwritten), and
+   every glyph used — incl. AL ç/ë, DE ä/ö/ü/ß, IT à/è/é, and the em-dash — lives
+   in the `latin` subset, so a single latin-500 import covers everything (latin-ext
+   and the 400/600 weights were never needed). Inter/Cormorant are variable packages
+   that ship all subsets via one axis CSS with no per-subset entry, so they're left
+   as-is — unicode-range already prevents browsers fetching their cyrillic/greek/
+   vietnamese subsets. */
 @import "@fontsource/caveat/latin-500.css";
-@import "@fontsource/caveat/latin-ext-500.css";
-@import "@fontsource/caveat/latin-600.css";
-@import "@fontsource/caveat/latin-ext-600.css";
 
 @theme {
   /* Page surfaces */
