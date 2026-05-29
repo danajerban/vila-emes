@@ -8,10 +8,11 @@ import { SITE } from "../config/site";
 // Owner decisions baked in:
 //   - `starRating` is OMITTED — no official Albanian Ministry of Tourism
 //     classification on file.
-//   - `aggregateRating` uses Booking.com only (single-source rule — never
-//     average review platforms). Counts in `SITE.ratings` are snapshots that
-//     need a manual refresh ~every 2 months. Fabricated counts are penalized
-//     by Google's review-snippet guidelines, but stale-but-truthful is fine.
+//   - `aggregateRating` is OMITTED — Google treats a business marking up a
+//     rating of itself (LocalBusiness/Hotel) as self-serving and ineligible
+//     for the star review feature, regardless of accuracy, so it could never
+//     surface. The real Booking 9.0 / Google 4.7 scores stay VISIBLE in the
+//     TrustStrip instead (plain content, no schema — which Google permits).
 export function hotelJsonLd(name: string, tagline: string) {
   return {
     "@context": "https://schema.org",
@@ -41,13 +42,6 @@ export function hotelJsonLd(name: string, tagline: string) {
     "petsAllowed": false,
     "priceRange": "€€",
     "numberOfRooms": 17,
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": SITE.ratings.booking,
-      "bestRating": "10",
-      "worstRating": "1",
-      "reviewCount": SITE.ratings.booking_review_count,
-    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": SITE.contact.phone,
