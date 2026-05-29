@@ -8,6 +8,7 @@ Guidance for [Claude Code](https://claude.ai/code) working in this repo. See [RE
 
 - `astro` — Astro 6 + Tailwind v4 + 4-locale routing, customized for this site
 - `seo-expert` — canonical / hreflang / Open Graph / JSON-LD / sitemap / robots
+- `seo-audit` — technical / on-page / international SEO audit framework; vendored via skills.sh, so it lives at `.agents/skills/seo-audit/` with a symlink at `.claude/skills/seo-audit` (the two above are hand-authored dirs directly under `.claude/`)
 
 **Plugin** (`.claude/settings.json`):
 
@@ -38,7 +39,7 @@ Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
 
 **Build-time** (`astro build`):
 
-- Photo components use Astro's `<Picture>` from `astro:assets` at `quality={72}` with `formats={['avif', 'webp']}`: `Hero`, `About`, `Gallery`, `RoomCarousel` (`RoomCard` delegates to `RoomCarousel`).
+- Photo components use Astro's `<Picture>` from `astro:assets` at `quality={72}` with `formats={['avif', 'webp']}` and `fallbackFormat="webp"` (overrides Astro's default PNG fallback — this is what keeps the unused PNG variants out of the build): `Hero`, `About`, `Gallery`, `RoomCarousel` (`RoomCard` delegates to `RoomCarousel`).
 - `<Image>` at `quality={82}` is retained for `Footer` (logo, 140px) and `Hero` polaroid (decorative lg+, fixed 420px) — single-width, AVIF buys nothing.
 - `loading="eager"` on Hero slide #1 + Gallery slide #1; Hero #1 also gets `fetchpriority="high"`. Everything else `loading="lazy"`.
 

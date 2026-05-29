@@ -12,7 +12,7 @@ description: Technical SEO for the Vila Emes Astro 6 hotel site — canonical UR
 - **Locales:** `en` (default, **unprefixed**), `al`, `it`, `de` — subdir routing, `prefixDefaultLocale: false`.
 - **URL-key vs BCP 47:** the URL key `al` maps to language tag `sq` (Albanian) via `LOCALE_TO_LANG` in `src/i18n/locales.ts`. Anywhere a real language tag is required (`<html lang>`, hreflang, `og:locale`), use the BCP 47 form, not the URL key.
 - **Pages are thin:** routes in `src/pages/{,al,it,de}/{index,rooms,contact}.astro` import a `*View.astro` from `src/views/`. The `<head>` is owned by `src/layouts/Base.astro`.
-- **Single source of truth:** contact, ratings, distances, external links, `og-image.png` URL → `src/config/site.ts`. Don't duplicate into YAML or per-page metadata.
+- **Single source of truth:** contact, ratings, distances, external links, `og-image.jpg` URL → `src/config/site.ts`. Don't duplicate into YAML or per-page metadata.
 - **Localized copy:** `src/content/site/{en,al,it,de}.yaml`, loaded via `getSite(lang)` from `src/i18n/content.ts`.
 
 ## When to use
@@ -33,7 +33,7 @@ description: Technical SEO for the Vila Emes Astro 6 hotel site — canonical UR
 | `<title>` + optional `<meta name="description">` | Done | `Base.astro:29-30` |
 | Basic Open Graph (`og:title`, `og:description`, `og:type`, `og:image`, `og:url`) | Done | `Base.astro:32-36` |
 | Favicon (`.svg` + `.ico`) | Done | `public/favicon.{svg,ico}` |
-| OG image present (`/og-image.png`) | Done — 1200×630 | `public/og-image.png` |
+| OG image present (`/og-image.jpg`) | Done — 1200×630 | `public/og-image.jpg` |
 | Canonical URL | Done | `src/components/Seo.astro:30` (per-locale, trailing-slash-mirrored) |
 | `og:site_name`, `og:locale`, `og:locale:alternate` | Done | `Seo.astro:60-63` (via `astro-seo` `openGraph.optional`) |
 | `og:image:width` / `:height` / `:alt`, `og:image:secure_url` | Done | `Seo.astro:66-71` (1200×630 set explicitly) |
@@ -76,13 +76,13 @@ interface Props {
   description?: string;
   /** Path WITHOUT a locale prefix, e.g. "/", "/rooms", "/contact". */
   path: string;
-  /** Defaults to SITE.url + /og-image.png. */
+  /** Defaults to SITE.url + /og-image.jpg. */
   ogImage?: string;
   ogImageAlt?: string;
 }
 const { lang, title, description, path, ogImage, ogImageAlt } = Astro.props;
 
-const ogImg = ogImage ?? `${SITE.url}/og-image.png`;
+const ogImg = ogImage ?? `${SITE.url}/og-image.jpg`;
 const canonical = `${SITE.url}${localizedPath(lang, path)}`;
 const htmlLang = LOCALE_TO_LANG[lang]; // "sq" for al, etc.
 
@@ -147,7 +147,7 @@ interface Props {
 }
 const { lang, title, description, path } = Astro.props;
 
-const ogImg = `${SITE.url}/og-image.png`;
+const ogImg = `${SITE.url}/og-image.jpg`;
 const canonical = `${SITE.url}${localizedPath(lang, path)}`;
 const localeTag = LOCALE_TO_LANG[lang]; // "sq" for al, etc.
 
@@ -262,7 +262,7 @@ const hotelLd = {
   "@type": "Hotel",
   name: "Vila Emes",
   url: SITE.url,
-  image: `${SITE.url}/og-image.png`,
+  image: `${SITE.url}/og-image.jpg`,
   telephone: SITE.contact.phone,
   email: SITE.contact.email,
   address: {
@@ -353,7 +353,7 @@ const breadcrumbLd = {
 |---|---|---|
 | `<title>` | 50–60 chars | "Vila Emes — Family-run hotel in Durrës" fits. Don't pad with "best …" cruft. |
 | `<meta description>` | 150–160 chars | Action verb + benefit + locale signal (e.g. "Book a room at Vila Emes, a family-run beachfront hotel in Plazh, Durrës — two minutes from the sand. Check rates on Booking.com."). |
-| `og:image` | 1200×630, < 1 MB (Facebook/Twitter target) | `public/og-image.png` is now 1200×630 (~440 KB). |
+| `og:image` | 1200×630, < 1 MB (Facebook/Twitter target) | `public/og-image.jpg` is 1200×630 (~158 KB). |
 | H1 | 1 per page | Existing views comply. Don't add a second `<h1>` to a section. |
 
 ## Common mistakes to avoid in this codebase
@@ -367,7 +367,7 @@ const breadcrumbLd = {
 | Stringifying user-supplied content into JSON-LD without escaping | YAML content is owner-controlled, so `JSON.stringify` is enough. If sources expand to user input, escape `<` as `<` (HTML entities don't work inside `<script>`): `JSON.stringify(ld).replace(/</g, "\\u003c")` — prevents `</script>` injection. |
 | Putting hreflang only in the sitemap | Add per-page `<link rel="alternate" hreflang>` too — both signals reinforce each other. |
 | Hreflang missing `x-default` | Add `<link rel="alternate" hreflang="x-default" href="https://www.vilaemes.com/">` so SEs can pick a fallback. |
-| Forgetting the `og:image` is absolute-URL only | Already absolute via `${SITE.url}/og-image.png` — keep it that way. |
+| Forgetting the `og:image` is absolute-URL only | Already absolute via `${SITE.url}/og-image.jpg` — keep it that way. |
 | Adding `metadataBase` | Astro doesn't have a `metadataBase` like Next.js. Always emit absolute URLs from `SITE.url` directly. |
 | Building inline page titles like `${name} — ${tagline}` only | Fine for `<title>`, but pull a *separate* `seo.description` from YAML — repeating the tagline as the description hurts. |
 
@@ -376,14 +376,14 @@ const breadcrumbLd = {
 | File | Role |
 |---|---|
 | `src/layouts/Base.astro` | Owns `<head>`. Insertion point for the future `<Seo>` component. |
-| `src/components/Seo.astro` | **To create** — reusable SEO head fragment (see pattern above). |
+| `src/components/Seo.astro` | Reusable SEO head fragment — the `<Seo>` component (see pattern above). |
 | `src/views/{Home,Rooms,Contact}View.astro` | Compute per-page title/description + JSON-LD; pass to `<Base>` / `<Seo>`. |
 | `src/content/site/{en,al,it,de}.yaml` | Source of localized `seo.title` / `seo.description` (key to add). |
 | `src/config/site.ts` | `SITE.url`, contact, ratings, distances — feed JSON-LD. |
 | `src/i18n/locales.ts` | `LOCALE_TO_LANG`, `localizedPath` — used everywhere SEO touches a URL or language tag. |
 | `astro.config.mjs` | `site` URL + `@astrojs/sitemap` integration with i18n option. |
-| `public/robots.txt` | **To create.** |
-| `public/og-image.png` | OG image, served from `SITE.url`. 1200×630 — `og:image:width/height` in `Seo.astro` match. |
+| `public/robots.txt` | Crawl rules + sitemap reference. |
+| `public/og-image.jpg` | OG image, served from `SITE.url`. 1200×630 — `og:image:width/height` in `Seo.astro` match. |
 
 ## Validation checklist
 

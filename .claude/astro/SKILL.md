@@ -61,7 +61,7 @@ hotel-vila-emes/
 ├── package.json                # Astro 6, Tailwind v4, sharp, svgo
 ├── public/
 │   ├── favicon.svg / favicon.ico
-│   ├── og-image.png            # 1200×630, served from SITE.url
+│   ├── og-image.jpg            # 1200×630, served from SITE.url
 │   └── flags/                  # locale switcher icons
 ├── scripts/
 │   └── optimize-photos.mjs     # one-shot webp pipeline (3 sizes per source)
