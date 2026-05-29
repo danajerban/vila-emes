@@ -20,7 +20,7 @@
   /* Ink + accents */
   --color-ink:             #1F1A14;
   --color-ink-deep:        #5C5141;
-  --color-terracotta:      #C25B3F;
+  --color-terracotta:      #B34B31; /* darkened from #C25B3F → 4.65:1 on cream (WCAG AA) */
   --color-terracotta-hover: #A94A30;
   --color-sea:             #2E5C7E;
   --color-muted:           #736550;
