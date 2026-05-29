@@ -387,12 +387,33 @@ rooms:
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
 
 photo_alts:
-  apt-1bed-terrace: ["One-Bedroom Apartment with Terrace — apartament, Vila Emes, Plazh, Durrës"]
-  apt-2bed: ["2-Bedroom Apartment with Balcony and Terrace — apartament, Vila Emes, Plazh, Durrës"]
+  apt-1bed-terrace:
+    - "One-Bedroom Apartment with Terrace — apartament, Vila Emes, Plazh, Durrës"
+    - ""
+    - "Tarracë private me vende uljeje me pamje nga bulevardi drejt detit — Vila Emes, Plazh, Durrës"
+    - "Pamje nga deti përtej çative — Vila Emes, Plazh, Durrës"
+    - "Dhoma e ndenjes me kanape dhe tavolinë ngrënieje — Vila Emes, Plazh, Durrës"
+    - "Kuzhinë e plotë me furrë dhe pianurë — Vila Emes, Plazh, Durrës"
+    - "Banjo me dush — Vila Emes, Plazh, Durrës"
+  apt-2bed:
+    - "2-Bedroom Apartment with Balcony and Terrace — apartament, Vila Emes, Plazh, Durrës"
+    - "Dhoma e dytë e gjumit me krevat tek dhe krevate kat — Vila Emes, Plazh, Durrës"
+    - "Ballkon me pamje nga deti përtej çative — Vila Emes, Plazh, Durrës"
+    - "Tarracë me tavolinë ngrënieje dhe pamje nga qyteti — Vila Emes, Plazh, Durrës"
+    - ""
+    - "Pamje nga qyteti mbi bulevardin — Vila Emes, Plazh, Durrës"
+    - "Banjo me dush — Vila Emes, Plazh, Durrës"
   deluxe-king: ["Deluxe King Room — dhomë deluxe, Vila Emes, Plazh, Durrës"]
   deluxe-queen: ["Deluxe Queen Room — dhomë deluxe, Vila Emes, Plazh, Durrës"]
   deluxe-balcony: ["Deluxe Double Room with Balcony — dhomë deluxe, Vila Emes, Plazh, Durrës"]
   quad-sea: ["Quadruple Room with Sea View — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
   family-balcony-city: ["Family Room (City Balcony) — dhomë familjare, Vila Emes, Plazh, Durrës"]
   family-balcony: ["Family Room with Balcony — dhomë familjare me pamje deti, Vila Emes, Plazh, Durrës"]
-  triple-room: ["Economic Triple Room — dhomë, Vila Emes, Plazh, Durrës"]
+  triple-room:
+    - "Economic Triple Room — dhomë, Vila Emes, Plazh, Durrës"
+    - "Kanape krevat pranë derës së ballkonit — Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - "Banjo private me dush — Vila Emes, Plazh, Durrës"
+    - "Ballkon me pamje nga qyteti me tavolinë mbi bulevardin — Vila Emes, Plazh, Durrës"
+    - ""

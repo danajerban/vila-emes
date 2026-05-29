@@ -387,12 +387,33 @@ rooms:
     amenities: ["balcony", "sofa-bed", "air-con", "private-bath", "wifi"]
 
 photo_alts:
-  apt-1bed-terrace: ["One-Bedroom Apartment with Terrace — apartment, Vila Emes, Plazh, Durrës"]
-  apt-2bed: ["2-Bedroom Apartment with Balcony and Terrace — apartment, Vila Emes, Plazh, Durrës"]
+  apt-1bed-terrace:
+    - "One-Bedroom Apartment with Terrace — apartment, Vila Emes, Plazh, Durrës"
+    - ""
+    - "Private terrace with seating overlooking the avenue toward the sea — Vila Emes, Plazh, Durrës"
+    - "Sea view over the rooftops — Vila Emes, Plazh, Durrës"
+    - "Living room with sofas and dining table — Vila Emes, Plazh, Durrës"
+    - "Full kitchen with oven and stovetop — Vila Emes, Plazh, Durrës"
+    - "Bathroom with walk-in shower — Vila Emes, Plazh, Durrës"
+  apt-2bed:
+    - "2-Bedroom Apartment with Balcony and Terrace — apartment, Vila Emes, Plazh, Durrës"
+    - "Second bedroom with single bed and bunk beds — Vila Emes, Plazh, Durrës"
+    - "Balcony with sea view over the rooftops — Vila Emes, Plazh, Durrës"
+    - "Terrace with dining table and city view — Vila Emes, Plazh, Durrës"
+    - ""
+    - "City view over the avenue — Vila Emes, Plazh, Durrës"
+    - "Bathroom with walk-in shower — Vila Emes, Plazh, Durrës"
   deluxe-king: ["Deluxe King Room — deluxe room, Vila Emes, Plazh, Durrës"]
   deluxe-queen: ["Deluxe Queen Room — deluxe room, Vila Emes, Plazh, Durrës"]
   deluxe-balcony: ["Deluxe Double Room with Balcony — deluxe room, Vila Emes, Plazh, Durrës"]
   quad-sea: ["Quadruple Room with Sea View — sea-view family room, Vila Emes, Plazh, Durrës"]
   family-balcony-city: ["Family Room (City Balcony) — family room, Vila Emes, Plazh, Durrës"]
   family-balcony: ["Family Room with Balcony — sea-view family room, Vila Emes, Plazh, Durrës"]
-  triple-room: ["Economic Triple Room — room, Vila Emes, Plazh, Durrës"]
+  triple-room:
+    - "Economic Triple Room — room, Vila Emes, Plazh, Durrës"
+    - "Sofa bed beside the balcony door — Vila Emes, Plazh, Durrës"
+    - ""
+    - ""
+    - "Private bathroom with walk-in shower — Vila Emes, Plazh, Durrës"
+    - "City balcony with table overlooking the avenue — Vila Emes, Plazh, Durrës"
+    - ""
