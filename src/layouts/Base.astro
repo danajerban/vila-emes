@@ -6,6 +6,16 @@ import { getSite } from "../i18n/content";
 import Seo from "../components/Seo.astro";
 import { hotelJsonLd, jsonLdScriptBody } from "../lib/seo";
 import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+// Above-the-fold hero fonts, preloaded to kill the FOUT flick: Caveat
+// (.handwritten — welcome + tagline rotator) and Cormorant (font-serif <h1>).
+// Imported from the installed @fontsource packages so Vite emits the SAME
+// hashed asset the @font-face url() in global.css already references — the
+// preload matches the used URL (no double fetch). `?url` returns the bundled
+// path. Inter is left unpreloaded: its system-ui fallback is near-identical,
+// so its swap is imperceptible and a third preload would only contend with
+// the LCP hero image (fetchpriority="high").
+import caveatWoff2 from "@fontsource/caveat/files/caveat-latin-500-normal.woff2?url";
+import cormorantWoff2 from "@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-wght-normal.woff2?url";
 
 interface Props {
   lang: Lang;
@@ -28,6 +38,12 @@ const jsonLd = hotelJsonLd(site.data.hotel.name, site.data.seo.hotel_description
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preload the two above-the-fold hero fonts so they arrive at first
+         paint and the font-display:swap handoff is imperceptible. crossorigin
+         is required even same-origin (fonts always fetch in CORS mode). -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href={caveatWoff2} />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href={cormorantWoff2} />
 
     <Seo lang={lang} title={title} description={description} ogImageAlt={site.data.seo.og_image_alt} pathname={Astro.url.pathname} noindex={noindex} />
     {!noindex && <script is:inline type="application/ld+json" set:html={jsonLdScriptBody(jsonLd)}></script>}
