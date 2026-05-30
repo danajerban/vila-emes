@@ -31,3 +31,6 @@ docs/superpowers/
 
 # archived planning docs (kept locally, not for VCS)
 docs/archive/
+
+# internal hotel-facts doc (Booking-derived; local-only, not for public repo)
+docs/Emes_Summary.md
