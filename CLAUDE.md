@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Guidance for [Claude Code](https://claude.ai/code) working in this repo. See [README.md](README.md) for stack, scripts, and structure, [docs/Design_System.md](docs/Design_System.md) for tokens / layout / type / buttons / motion rules, and [docs/Emes_Summary.md](docs/Emes_Summary.md) for hotel/property facts (rooms, amenities, location, ratings).
+Guidance for [Claude Code](https://claude.ai/code) working in this repo. Stack, commands, content map, and layout are in the [Stack & development](#stack--development) section below. See [docs/Design_System.md](docs/Design_System.md) for tokens / layout / type / buttons / motion rules. Hotel/property facts (rooms, amenities, location, ratings) are in `docs/Emes_Summary.md` — **local-only / gitignored**, not in the public repo.
 
 ## Skills
 
@@ -27,6 +27,58 @@ Guidance for [Claude Code](https://claude.ai/code) working in this repo. See [RE
 - **Vanilla TS only** — no React/Vue/Svelte. Inline `<script is:inline>` for lang switcher, mobile nav, FAQ, sticky header, room filter, image carousels, mailto compose, contact link decoder, reveal-on-scroll, hero slideshow.
 - **Single owner edit point** — phone, WhatsApp, email, Booking URL, Instagram, Maps, ratings, distances all live in `src/config/site.ts`.
 
+## Stack & development
+
+- **Astro 6** — static site generation, TypeScript strict, four-locale routing (EN / AL / IT / DE)
+- **Tailwind CSS v4** — `@theme` token block in `src/styles/global.css`, no JS framework
+- **Sharp** — one-shot photo optimization; **SVGO** — logo SVG compression
+- Fonts: **Cormorant Garamond** (serif), **Inter** (body), **Caveat** (handwritten) — self-hosted via `@fontsource`
+- **Cloudflare Pages** — free hosting, auto-build on push to `main`. Canonical URL `https://www.vilaemes.com` (set in `astro.config.mjs` `site:` and `src/config/site.ts` `SITE.url`); `vila-emes.pages.dev` still resolves and redirects.
+
+### Local dev
+
+```bash
+pnpm install --frozen-lockfile  # one-time
+pnpm dev                        # http://localhost:4321
+pnpm build                      # -> dist/
+pnpm preview                    # serve dist/
+```
+
+### Editing content
+
+| What | Where |
+|---|---|
+| English copy (hotel name, hero, about, FAQ, room descriptions) | `src/content/site/en.yaml` |
+| Albanian / Italian / German copy | `src/content/site/{al,it,de}.yaml` |
+| Phone, WhatsApp, email, Booking URL, Instagram, Maps URLs, ratings, distances | `src/config/site.ts` — **single edit point** |
+| Color tokens, fonts, palette | `src/styles/global.css` (Tailwind v4 `@theme` block) |
+| Photo picks per slot | `src/views/HomeView.astro`, `src/views/RoomsView.astro` (top-of-file imports) |
+
+### Project layout
+
+```
+src/
+├── assets/         # webp photos + optimized logo + palm doodle
+├── components/     # Astro components (chrome + sections)
+├── config/         # site.ts (constants)
+├── content/site/   # en/al/it/de.yaml (Zod-validated via content.config.ts)
+├── i18n/           # locale registry + content getter
+├── layouts/        # Base.astro (head, scripts, scroll/reveal)
+├── pages/          # /, /rooms, /contact + /{al,it,de}/{...}
+├── styles/         # global.css with @theme tokens
+└── views/          # HomeView, RoomsView, ContactView (compose components)
+```
+
+### Commands
+
+| Command | Action |
+|---|---|
+| `pnpm dev` | Dev server at `http://localhost:4321` |
+| `pnpm build` | Build production site to `dist/` |
+| `pnpm preview` | Preview the built site locally |
+| `node scripts/optimize-photos.mjs` | Regenerate optimized webps from `PHOTOS_SOURCE` (`.env`) |
+| `pnpm svgo --multipass <path>` | Optimize an SVG in place |
+
 ## Image pipeline
 
 Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
@@ -52,6 +104,6 @@ Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
 
 ## Doc workflow
 
-- `docs/Emes_Summary.md` (hotel facts) and `docs/Design_System.md` (design rules) are the only tracked docs — keep each focused on its domain.
+- `docs/Design_System.md` (design rules) is the only tracked doc — keep it focused on its domain. `docs/Emes_Summary.md` (hotel facts) is **local-only / gitignored**.
 - Active specs/plans live in `docs/superpowers/{specs,plans}/` while in progress (untracked).
 - When a spec is done, move it to `docs/archive/` (gitignored) — preserved locally, out of git.
