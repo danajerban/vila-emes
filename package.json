@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "4.3.0",
     "astro": "6.3.0",
     "astro-seo": "1.1.0",
-    "sharp": "0.34.5",
+    "sharp": "0.35.2",
     "svgo": "4.0.1",
     "tailwindcss": "4.3.0",
     "zod": "4.4.3"
