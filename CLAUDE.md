@@ -4,11 +4,13 @@ Guidance for [Claude Code](https://claude.ai/code) working in this repo. Stack, 
 
 ## Skills
 
-**Project** (`.claude/`):
+**Project** — all three are discovered at `.claude/skills/<name>/SKILL.md`; that exact path is what makes a skill load:
 
 - `astro` — Astro 6 + Tailwind v4 + 4-locale routing, customized for this site
 - `seo-expert` — canonical / hreflang / Open Graph / JSON-LD / sitemap / robots
-- `seo-audit` — technical / on-page / international SEO audit framework; vendored via skills.sh, so it lives at `.agents/skills/seo-audit/` with a symlink at `.claude/skills/seo-audit` (the two above are hand-authored dirs directly under `.claude/`)
+- `seo-audit` — technical / on-page / international SEO audit framework; vendored via skills.sh, so the content lives at `.agents/skills/seo-audit/` and `.claude/skills/seo-audit` is a symlink to it
+
+`astro` and `seo-expert` are hand-authored dirs; keep `.agents/` for vendored skills only. A hand-authored skill placed anywhere but `.claude/skills/<name>/` silently never loads — no error, it just won't appear.
 
 **Plugin** (`.claude/settings.json`):
 
@@ -18,7 +20,7 @@ Guidance for [Claude Code](https://claude.ai/code) working in this repo. Stack, 
 
 ## Project gotchas
 
-- **No CI, by design — don't propose adding it** — GitHub Actions is deliberately disabled on the repo (`gh-harden.sh`: "Disable GitHub Actions (static site, no CI)"), so any `.github/workflows/*` file is inert and would only *look* like a gate. The Cloudflare Pages build is the only check, and it *is* the deploy. Known consequence: a transient Cloudflare failure can't be retried from GitHub and sticks as a red X (this is what stranded dependabot PR #4 for a month on a diff that built clean). Reproduce a suspect build locally with `pnpm build` rather than re-running the check.
+- **No CI, by design — don't propose adding it** — GitHub Actions is deliberately disabled at the repo level (verify: `gh api repos/danajerban/vila-emes/actions/permissions` → `"enabled": false`), so any `.github/workflows/*` file is inert and would only *look* like a gate. The Cloudflare Pages build is the only check, and it *is* the deploy. Known consequence: a transient Cloudflare failure can't be retried from GitHub and sticks as a red X (this is what stranded dependabot PR #4 for a month on a diff that built clean). Reproduce a suspect build locally with `pnpm build` rather than re-running the check.
 - **Content-schema edits force a dev restart** — changes to `src/content.config.ts` need `npm run dev` restart; `astro sync` alone isn't enough. Batch schema changes; prefer `.min().max()` over `.length()`.
 - **Source photos live outside the repo** — local-only, path set via `PHOTOS_SOURCE` in `.env`. The optimized webps in `src/assets/` are what ship.
 - **Two Sharps are installed, and bumping ours doesn't change the site** — Astro declares `optionalDependencies.sharp: "^0.34.0"`, which our pinned 0.35.3 doesn't satisfy, so pnpm installs both. `astro:assets` encodes with Astro's nested **0.34.5**; our direct dep is used *only* by `scripts/optimize-photos.mjs`. Don't force them together with a `pnpm.overrides` — sharp 0.35 removed the `failOnError` constructor property that Astro's image service passes, and retuned AVIF (~+31% bytes). They dedupe on their own once Astro widens to `^0.35`.
@@ -88,7 +90,7 @@ Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
 **Pre-build** (`scripts/optimize-photos.mjs`):
 
 - Source originals live outside the repo (path set via `PHOTOS_SOURCE` in `.env`).
-- Sharp 0.35.3 emits **213** WebP files into `src/assets/photos/<category>/` — 71 unique sources × 3 widths (`-800.webp`, `-1600.webp`, `-2400.webp`).
+- A clean run emits **213** WebP files into `src/assets/photos/<category>/` — 71 unique sources × 3 widths (`-800.webp`, `-1600.webp`, `-2400.webp`). Outputs are skip-existing (`scripts/optimize-photos.mjs:48`), so re-running against the current tree regenerates **nothing**; the committed set was encoded by Sharp 0.34.5, before the 0.35.3 bump.
 - Largest source: ~860 KB. Total source: 30 MB.
 
 **Build-time** (`astro build`):
