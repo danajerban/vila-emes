@@ -86,7 +86,7 @@ Two-stage: pre-build (manual, on demand) + build-time (automatic via Astro).
 **Pre-build** (`scripts/optimize-photos.mjs`):
 
 - Source originals live outside the repo (path set via `PHOTOS_SOURCE` in `.env`).
-- Sharp 0.34.5 emits **213** WebP files into `src/assets/photos/<category>/` — 71 unique sources × 3 widths (`-800.webp`, `-1600.webp`, `-2400.webp`).
+- Sharp 0.35.3 emits **213** WebP files into `src/assets/photos/<category>/` — 71 unique sources × 3 widths (`-800.webp`, `-1600.webp`, `-2400.webp`).
 - Largest source: ~860 KB. Total source: 30 MB.
 
 **Build-time** (`astro build`):
