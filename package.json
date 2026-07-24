@@ -17,7 +17,7 @@
     "@fontsource-variable/inter": "5.2.8",
     "@fontsource/caveat": "5.2.8",
     "@tailwindcss/vite": "4.3.2",
-    "astro": "6.4.8",
+    "astro": "7.1.0",
     "astro-seo": "1.1.0",
     "sharp": "0.35.3",
     "svgo": "4.0.1",
