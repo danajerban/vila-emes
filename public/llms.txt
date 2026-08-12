@@ -34,7 +34,7 @@ Bookings are handled exclusively on Booking.com. The site has no on-page reserva
 
 - [Book on Booking.com](https://www.booking.com/hotel/al/vila-emes.html): All reservations route through Booking.com; 9.0/10 across 111 reviews
 - [Google Maps listing](https://maps.app.goo.gl/PWWqRPcZb76uutfSA): Location, directions, photos, 4.7/5 across 37 reviews
-- [Instagram @vila_emes](https://www.instagram.com/vila_emes/): Photos and updates
+- [Instagram @vilaemes](https://www.instagram.com/vilaemes/): Photos and updates
 
 ## Optional
 
